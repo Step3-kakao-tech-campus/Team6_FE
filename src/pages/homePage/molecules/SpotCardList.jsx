@@ -1,5 +1,5 @@
 import PlaceCard from "../atoms/PlaceCard";
-import HorizontalListWrapper from "../atoms/HorizontalListWrapper";
+import HorizontalListWrapperMediaQuery from "../atoms/HorizontalListWrapperMediaQuery";
 
 const SpotCardList = ({ spots }) => {
   spots = [
@@ -30,7 +30,7 @@ const SpotCardList = ({ spots }) => {
   ];
 
   return (
-    <HorizontalListWrapper>
+    <HorizontalListWrapperMediaQuery>
       {spots.map((spot) => (
         <PlaceCard
           key={spot.id}
@@ -40,7 +40,7 @@ const SpotCardList = ({ spots }) => {
           to={`touristSpot/${spot.id}`}
         />
       ))}
-    </HorizontalListWrapper>
+    </HorizontalListWrapperMediaQuery>
   );
 };
 

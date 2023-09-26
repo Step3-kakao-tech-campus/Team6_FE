@@ -1,4 +1,4 @@
-import HorizontalListWrapper from "../atoms/HorizontalListWrapper";
+import HorizontalListWrapperMediaQuery from "../atoms/HorizontalListWrapperMediaQuery";
 import PlaceCard from "../atoms/PlaceCard";
 
 const RestaurantCardList = ({ restaurants }) => {
@@ -32,7 +32,7 @@ const RestaurantCardList = ({ restaurants }) => {
     },
   ];
   return (
-    <HorizontalListWrapper>
+    <HorizontalListWrapperMediaQuery>
       {restaurants.map((restaurant) => {
         return (
           <PlaceCard
@@ -45,7 +45,7 @@ const RestaurantCardList = ({ restaurants }) => {
           />
         );
       })}
-    </HorizontalListWrapper>
+    </HorizontalListWrapperMediaQuery>
   );
 };
 

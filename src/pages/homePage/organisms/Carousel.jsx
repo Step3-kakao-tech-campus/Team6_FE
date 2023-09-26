@@ -70,7 +70,7 @@ const Carousel = ({ slides }) => {
   const [enabled, setEnabled] = useState(true);
 
   return (
-    <div className={"carousel relative h-[400px] w-full bg-gray-300 overflow-hidden"}>
+    <div className={"carousel relative h-[240px] md:h-[340px] w-full bg-gray-300 overflow-hidden"}>
       {mountedSlides.map((slide, index) => (
         <CarouselSlide
           key={index}
