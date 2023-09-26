@@ -24,23 +24,27 @@ const SearchPage = () => {
         <h2>Restaurants:</h2>
         <ul>
           {results.restaurants &&
-            results.restaurants.map((restaurant, index) => (
-              <li key={index}>{restaurant.name}</li>
-            ))}
+            results.restaurants
+              .filter((restaurant) => restaurant.address.includes(query))
+              .map((restaurant, index) => (
+                <li key={index}>{restaurant.name}</li>
+              ))}
         </ul>
         <h2>Festivals:</h2>
         <ul>
           {results.festivals &&
-            results.festivals.map((festival, index) => (
-              <li key={index}>{festival.name}</li>
-            ))}
+            results.festivals
+              .filter((festival) => festival.address.includes(query))
+              .map((festival, index) => <li key={index}>{festival.name}</li>)}
         </ul>
         <h2>Tourist Spots:</h2>
         <ul>
           {results.touristSpots &&
-            results.touristSpots.map((spot, index) => (
-              <li key={index}>{spot.name}</li>
-            ))}
+            results.touristSpots
+              .filter((touristSpot) => touristSpot.address.includes(query))
+              .map((touristSpot, index) => (
+                <li key={index}>{touristSpot.name}</li>
+              ))}
         </ul>
       </div>
     </div>
