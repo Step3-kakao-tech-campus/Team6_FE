@@ -8,7 +8,7 @@ const PlaceCard = ({ image, name, address, to, alt }) => {
     >
       <div className={"image-wrapper h-[180px] w-full rounded-lg bg-gray-300 overflow-hidden"}>
         <img
-          className={"min-h-[180px] w-full hover:scale-105 transition-all"}
+          className={"h-full w-full hover:scale-105 transition-all"}
           src={image}
           alt={`${alt}`}
         />
