@@ -1,10 +1,13 @@
-// pages/SearchPage.js
 import React, { useState } from "react";
 import SearchBar from "../components/molecules/SearchBar";
+import FilterBar from "../components/molecules/FilterBar";
+import FilterResults from "../components/molecules/FilterResults";
+import FilterButton from "../components/atoms/FilterButton";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   const handleSearch = async () => {
     const response = await fetch(`/api/search?query=${query}`);
@@ -20,33 +23,9 @@ const SearchPage = () => {
         onChange={(e) => setQuery(e.target.value)}
         onSearch={handleSearch}
       />
-      <div>
-        <h2>Restaurants:</h2>
-        <ul>
-          {results.restaurants &&
-            results.restaurants
-              .filter((restaurant) => restaurant.address.includes(query))
-              .map((restaurant, index) => (
-                <li key={index}>{restaurant.name}</li>
-              ))}
-        </ul>
-        <h2>Festivals:</h2>
-        <ul>
-          {results.festivals &&
-            results.festivals
-              .filter((festival) => festival.address.includes(query))
-              .map((festival, index) => <li key={index}>{festival.name}</li>)}
-        </ul>
-        <h2>Tourist Spots:</h2>
-        <ul>
-          {results.touristSpots &&
-            results.touristSpots
-              .filter((touristSpot) => touristSpot.address.includes(query))
-              .map((touristSpot, index) => (
-                <li key={index}>{touristSpot.name}</li>
-              ))}
-        </ul>
-      </div>
+      <FilterBar filter={filter} setFilter={setFilter} />
+      {/* <FilterBar filter={filter} setFilter={setFilter} /> */}
+      {/* <FilterResults filter={filter} results={results} query={query} /> */}
     </div>
   );
 };
