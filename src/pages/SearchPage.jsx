@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SearchBar from "../components/molecules/SearchBar";
 import FilterBar from "../components/molecules/FilterBar";
-import FilterResults from "../components/molecules/FilterResults";
+import FilterResults from "../components/organisms/FilterResults";
 import FilterButton from "../components/atoms/FilterButton";
 
 const SearchPage = () => {
@@ -24,8 +24,7 @@ const SearchPage = () => {
         onSearch={handleSearch}
       />
       <FilterBar filter={filter} setFilter={setFilter} />
-      {/* <FilterBar filter={filter} setFilter={setFilter} /> */}
-      {/* <FilterResults filter={filter} results={results} query={query} /> */}
+      <FilterResults filter={filter} results={results} query={query} />
     </div>
   );
 };

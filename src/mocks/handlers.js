@@ -26,7 +26,7 @@ export const handlers = [
                 summary: "정문토스트는..",
                 image: "/image/restaurant/1",
                 address: "서울",
-                averageScore: 4.4,
+                averageScore: 3.7,
                 liked: true,
               },
             ],

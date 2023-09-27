@@ -13,7 +13,7 @@ const FilterBar = ({ filter, setFilter }) => {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-scroll whitespace-nowrap">
       {filterButtons.map((button, index) => (
         <FilterButton
           key={index}
