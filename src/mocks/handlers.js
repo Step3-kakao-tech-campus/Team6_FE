@@ -20,6 +20,15 @@ export const handlers = [
                 averageScore: 4.4,
                 liked: true,
               },
+              {
+                id: 1,
+                name: "부산대 칠성돌곱창",
+                summary: "정문토스트는..",
+                image: "/image/restaurant/1",
+                address: "서울",
+                averageScore: 4.4,
+                liked: true,
+              },
             ],
             festivals: [
               {
