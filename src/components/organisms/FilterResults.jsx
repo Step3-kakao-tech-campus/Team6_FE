@@ -1,4 +1,4 @@
-import Container from "../atoms/Container";
+import RestaurantCard from "../molecules/RestaurantCard";
 
 const FilterResults = ({ filter, results, query }) => {
   return (
@@ -11,9 +11,13 @@ const FilterResults = ({ filter, results, query }) => {
               results.restaurants
                 .filter((restaurant) => restaurant.address.includes(query))
                 .map((restaurant, index) => (
-                  <Container key={index}>
+                  <RestaurantCard
+                    key={index}
+                    averageScore={restaurant.averageScore}
+                  >
                     <li>{restaurant.name}</li>
-                  </Container>
+                    <li>{restaurant.averageScore}</li>
+                  </RestaurantCard>
                 ))}
           </ul>
         </div>
@@ -26,9 +30,9 @@ const FilterResults = ({ filter, results, query }) => {
               results.festivals
                 .filter((festival) => festival.address.includes(query))
                 .map((festival, index) => (
-                  <Container key={index}>
+                  <RestaurantCard key={index}>
                     <li>{festival.name}</li>
-                  </Container>
+                  </RestaurantCard>
                 ))}
           </ul>
         </div>
@@ -41,9 +45,9 @@ const FilterResults = ({ filter, results, query }) => {
               results.touristSpots
                 .filter((touristSpot) => touristSpot.address.includes(query))
                 .map((touristSpot, index) => (
-                  <Container key={index}>
+                  <RestaurantCard key={index}>
                     <li>{touristSpot.name}</li>
-                  </Container>
+                  </RestaurantCard>
                 ))}
           </ul>
         </div>
