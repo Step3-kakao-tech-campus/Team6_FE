@@ -15,8 +15,10 @@ const FilterResults = ({ filter, results, query }) => {
                     key={index}
                     averageScore={restaurant.averageScore}
                   >
-                    <li>{restaurant.name}</li>
-                    <li>{restaurant.averageScore}</li>
+                    <img src="/images/restaurant.jpg" alt="restaurant" />
+                    <span className="text-orange-500 font-semibold">
+                      {restaurant.name}
+                    </span>
                   </RestaurantCard>
                 ))}
           </ul>
