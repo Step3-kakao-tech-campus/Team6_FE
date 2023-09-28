@@ -1,8 +1,7 @@
 import { useState } from "react";
-import SearchBar from "../components/molecules/SearchBar";
-import FilterBar from "../components/molecules/FilterBar";
-import FilterResults from "../components/organisms/FilterResults";
-import FilterButton from "../components/atoms/FilterButton";
+import SearchBar from "../molecules/SearchBar";
+import FilterBar from "../molecules/FilterBar";
+import FilterResults from "../organisms/FilterResults";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
