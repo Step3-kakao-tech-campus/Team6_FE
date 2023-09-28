@@ -1,7 +1,7 @@
 import Input from "../atoms/Input";
 // import mapIcon from "../../assets/map-icon.png";
-import sideIcon from "../../assets/side-button.png";
-import userImage from "../../assets/user-image.png";
+import sideIcon from "../assets/side-button.png";
+import userImage from "../assets/user-image.png";
 import Button from "../atoms/Button";
 
 const SearchBar = ({ onChange, value, onSearch }) => {
