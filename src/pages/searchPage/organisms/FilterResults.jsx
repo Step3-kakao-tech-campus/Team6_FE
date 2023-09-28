@@ -1,4 +1,5 @@
 import RestaurantCard from "../molecules/RestaurantCard";
+import FestivalCard from "../molecules/FestivalCard";
 
 const FilterResults = ({ filter, results, query }) => {
   return (
@@ -16,9 +17,9 @@ const FilterResults = ({ filter, results, query }) => {
                     averageScore={restaurant.averageScore}
                   >
                     <img src="/images/restaurant.jpg" alt="restaurant" />
-                    <span className="text-orange-500 font-semibold">
+                    <div className="text-[#FF4800] font-semibold">
                       {restaurant.name}
-                    </span>
+                    </div>
                   </RestaurantCard>
                 ))}
           </ul>
@@ -32,9 +33,15 @@ const FilterResults = ({ filter, results, query }) => {
               results.festivals
                 .filter((festival) => festival.address.includes(query))
                 .map((festival, index) => (
-                  <RestaurantCard key={index}>
-                    <li>{festival.name}</li>
-                  </RestaurantCard>
+                  <FestivalCard
+                    key={index}
+                    averageScore={festival.averageScore}
+                  >
+                    <div className="text-[#FF4800] font-semibold">
+                      {festival.name}
+                    </div>
+                    <div className="text-sm">{festival.address}</div>
+                  </FestivalCard>
                 ))}
           </ul>
         </div>
