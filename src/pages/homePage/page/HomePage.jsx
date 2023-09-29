@@ -21,7 +21,7 @@ const dummySlides = [
 
 const HomePage = () => {
   return (
-    <div className={"home-page flex flex-col gap-2 py-2"}>
+    <div className={"home-page flex flex-col gap-2 py-2 w-full"}>
       <MainSearchRow />
       <Carousel slides={dummySlides} />
       <FestivalSection />
