@@ -1,253 +1,70 @@
-# Team6
-6조
-## 카카오 테크 캠퍼스 3단계 진행 보드
+# Getting Started with Create React App
 
-</br>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 배포와 관련하여
+## Available Scripts
 
-```
+In the project directory, you can run:
 
-최종 배포는 크램폴린으로 배포해야 합니다.
+### `npm start`
 
-하지만 배포 환경의 불편함이 있는 경우를 고려하여 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-임의의 배포를 위해 타 배포 환경을 자유롭게 이용해도 됩니다. (단, 금액적인 지원은 어렵습니다.)
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-아래는 추가적인 설정을 통해 (체험판, 혹은 프리 티어 등)무료로 클라우드 배포가 가능한 서비스입니다.
+### `npm test`
 
-ex ) AWS(아마존), GCP(구글), Azure(마이크로소프트), Cloudtype 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
-## Notice
+### `npm run build`
 
-```
-필요 산출물들은 수료 기준에 영향을 주는 것은 아니지만, 
-주차 별 산출물을 기반으로 평가가 이루어 집니다.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-주차 별 평가 점수는 추 후 최종 평가에 최종 합산 점수로 포함됩니다.
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-![레포지토리 운영-001 (1)](https://github.com/Step3-kakao-tech-campus/practice/assets/138656575/acb0dccd-0441-4200-999a-981865535d5f)
-![image](https://github.com/Step3-kakao-tech-campus/practice/assets/138656575/b42cbc06-c5e7-4806-8477-63dfa8e807a0)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-[git flowchart_FE.pdf](https://github.com/Step3-kakao-tech-campus/practice/files/12521045/git.flowchart_FE.pdf)
+### `npm run eject`
 
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-</br>
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## 필요 산출물
-<details>
-<summary>Step3. Week-1</summary>
-<div>
-    
-✅**1주차**
-    
-```
-    - 5 Whys
-    - 마켓 리서치
-    - 페르소나 & 저니맵
-    - 와이어 프레임
-    - 칸반보드
-```
-    
-</div>
-</details>
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
----
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-<details>
-<summary>Step3. Week-2</summary>
-<div>
-    
-✅**2주차**
-    
-```
-    - ERD 설계서
-    
-    - API 명세서
-```
-    
-</div>
-</details>
+## Learn More
 
----
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-<details>
-<summary>Step3. Week-3</summary>
-<div>
-    
-✅**3주차**
-    
-```
-    - 최종 기획안
-```
-    
-</div>
-</details>
+To learn React, check out the [React documentation](https://reactjs.org/).
 
----
+### Code Splitting
 
-<details>
-<summary>Step3. Week-4</summary>
-<div>
-    
-✅**4주차**
-    
-```
-    - 4주차 github
-    
-    - 4주차 노션
-```
-    
-</div>
-</details>
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
----
-<details>
-<summary>Step3. Week-5</summary>
-<div>
-    
-✅**5주차**
-    
-```
-    - 5주차 github
-    
-    - 5주차 노션
-```
-    
-</div>
-</details>
+### Analyzing the Bundle Size
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-<details>
-<summary>Step3. Week-6</summary>
-<div>
-    
-✅**6주차**
-    
-```
-    - 6주차 github
-    
-    - 중간발표자료
-    
-    - 피어리뷰시트
-```
-    
-</div>
-</details>
+### Making a Progressive Web App
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-<details>
-<summary>Step3. Week-7</summary>
-<div>
-    
-✅**7주차**
-    
-```
-    - 7주차 github
-    
-    - 7주차 노션
-```
-    
-</div>
-</details>
+### Advanced Configuration
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-<details>
-<summary>Step3. Week-8</summary>
-<div>
-    
-✅**8주차**
-    
-```
-    - 중간고사
-    
-```
-    
-</div>
-</details>
+### Deployment
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-<details>
-<summary>Step3. Week-9</summary>
-<div>
-    
-✅**9주차**
-    
-```
-    - 9주차 github
-    
-    - 9주차 노션
-```
-    
-</div>
-</details>
+### `npm run build` fails to minify
 
----
-
-<details>
-<summary>Step3. Week-10</summary>
-<div>
-    
-✅**10주차**
-    
-```
-    - 10주차 github
-    
-    - 테스트 시나리오 명세서
-    
-    - 테스트 결과 보고서
-```
-    
-</div>
-</details>
-
----
-
-<details>
-<summary>Step3. Week-11</summary>
-<div>
-    
-✅**11주차**
-    
-```
-    - 최종 기획안
-    
-    - 배포 인스턴스 링크
-```
-    
-</div>
-</details>
-
----
-
-## **과제 상세 : 수강생들이 과제를 진행할 때, 유념해야할 것**
-
-```
-1. README.md 파일은 동료 개발자에게 프로젝트에 쉽게 랜딩하도록 돕는 중요한 소통 수단입니다.
-해당 프로젝트에 대해 아무런 지식이 없는 동료들에게 설명하는 것처럼 쉽고, 간결하게 작성해주세요.
-
-2. 좋은 개발자는 디자이너, 기획자, 마케터 등 여러 포지션에 있는 분들과 소통을 잘합니다.
-UI 컴포넌트의 명칭과 이를 구현하는 능력은 필수적인 커뮤니케이션 스킬이자 필요사항이니 어떤 상황에서 해당 컴포넌트를 사용하면 좋을지 고민하며 코드를 작성해보세요.
-
-```
-
-</br>
-
-## **코드리뷰 관련: review branch로 PR시, 아래 내용을 포함하여 코멘트 남겨주세요.**
-
-**1. PR 제목과 내용을 아래와 같이 작성 해주세요.**
-
-> PR 제목 : 부산대_0조_아이템명_0주차
-> 
-
-</br>
-
-</div>
-
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
