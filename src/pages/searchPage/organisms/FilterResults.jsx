@@ -16,9 +16,19 @@ const FilterResults = ({ filter, results, query }) => {
                     key={index}
                     averageScore={restaurant.averageScore}
                   >
-                    <img src="/images/restaurant.jpg" alt="restaurant" />
-                    <div className="text-[#FF4800] font-semibold">
-                      {restaurant.name}
+                    <div className="flex items-center">
+                      <img
+                        src={restaurant.image}
+                        alt={restaurant.name}
+                        className="w-28 rounded-lg"
+                      />
+                      <div className="text-[#FF4800] text-sm/12 font-semibold pl-2 m-2">
+                        <span className="mb-0">{restaurant.name}</span>
+                        <br />
+                        <span className="text-sm text-gray-400">
+                          {restaurant.summary}
+                        </span>
+                      </div>
                     </div>
                   </RestaurantCard>
                 ))}
