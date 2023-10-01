@@ -14,8 +14,10 @@ export const handlers = [
               {
                 id: 1,
                 name: "Pusan National University Main Gate Toast",
-                summary: "Main Gate Toast is the best toast in the world.",
-                image: "/image/restaurant/1",
+                summary:
+                  "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",
+                image:
+                  "https://mp-seoul-image-production-s3.mangoplate.com/1297623_1569208351545507.jpg",
                 address: "Pusan National University, Pusan",
                 averageScore: 4.4,
                 liked: true,
