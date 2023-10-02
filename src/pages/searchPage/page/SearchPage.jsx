@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchBar from "../molecules/SearchBar";
 import FilterBar from "../molecules/FilterBar";
 import FilterResults from "../organisms/FilterResults";
+import { search } from "../../../apis/search";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
@@ -9,9 +10,7 @@ const SearchPage = () => {
   const [filter, setFilter] = useState("all");
 
   const handleSearch = async () => {
-    const response = await fetch(`/api/search?query=${query}`);
-    const data = await response.json();
-    setResults(data.results);
+    await search(query, setResults);
   };
 
   return (
