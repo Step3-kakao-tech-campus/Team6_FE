@@ -15,7 +15,6 @@ const SearchPage = () => {
 
   return (
     <div className="w-full">
-      <h1>Search Page</h1>
       <SearchBar
         value={query}
         onChange={(e) => setQuery(e.target.value)}
