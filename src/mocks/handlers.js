@@ -24,7 +24,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ result: {} }));
   }),
 
-  rest.get("/api/home", (req, res, ctx) => {
+  rest.get("/home", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -33,33 +33,57 @@ export const handlers = [
     );
   }),
 
-  rest.get("/api/restaurant/:id", (req, res, ctx) => {
+  rest.get("/restaurant/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getRestaurantDetail(id),
-      }),
-    );
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          results: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          results: null,
+        }),
+      );
   }),
 
-  rest.get("/api/festival/:id", (req, res, ctx) => {
+  rest.get("/festival/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getFestivalDetail(id),
-      }),
-    );
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          results: getFestivalDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          results: null,
+        }),
+      );
   }),
 
   rest.get("/api/touristSpot/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getRestaurantDetail(id),
-      }),
-    );
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          results: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          results: null,
+        }),
+      );
   }),
 ];
