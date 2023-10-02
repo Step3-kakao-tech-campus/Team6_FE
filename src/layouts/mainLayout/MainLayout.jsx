@@ -6,7 +6,7 @@ const MainLayout = () => {
     <>
       <div
         className={
-          "main-layout flex w-full min-w-[400px] max-w-[800px] justify-items-center pb-[70px]"
+          "main-layout flex w-full min-w-[370px] max-w-[800px] justify-items-center pb-[70px]"
         }
       >
         <Outlet />
