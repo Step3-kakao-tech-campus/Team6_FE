@@ -3,6 +3,8 @@ import TrendingNowSection from "../organisms/TrendingNowSection";
 import RestaurantSection from "../organisms/RestaurantSection";
 import Carousel from "../organisms/Carousel";
 import MainSearchRow from "../molecules/MainSearchRow";
+import { useQuery } from "react-query";
+import { getHome } from "../../../services/home";
 
 const dummySlides = [
   {
@@ -20,13 +22,18 @@ const dummySlides = [
 ];
 
 const HomePage = () => {
+  const { isLoading, error, data } = useQuery("products", () => getHome());
   return (
-    <div className={"home-page flex flex-col gap-2 py-2 w-full"}>
+    <div className={"home-page flex w-full flex-col gap-2 py-2"}>
       <MainSearchRow />
       <Carousel slides={dummySlides} />
-      <FestivalSection />
-      <TrendingNowSection />
-      <RestaurantSection />
+      {data && (
+        <>
+          <FestivalSection festivals={data.festivals} />
+          <TrendingNowSection touristSpots={data.touristSpots}/>
+          <RestaurantSection restaurants={data.restaurants}/>
+        </>
+      )}
     </div>
   );
 };
