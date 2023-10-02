@@ -1,5 +1,5 @@
 import RestaurantCardList from "../molecules/RestaurantCardList";
-import HorizontalListSection from "../atoms/HorizontalListSection";
+import HorizontalListSection from "../../../common/molecules/HorizontalListSection";
 
 const RestaurantSection = ({restaurants}) => {
   return (

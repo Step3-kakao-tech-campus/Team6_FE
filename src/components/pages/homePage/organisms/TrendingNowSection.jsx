@@ -1,5 +1,5 @@
 import SpotCardList from "../molecules/SpotCardList";
-import HorizontalListSection from "../atoms/HorizontalListSection";
+import HorizontalListSection from "../../../common/molecules/HorizontalListSection";
 
 const TrendingNowSection = ({touristSpots}) => {
   return (

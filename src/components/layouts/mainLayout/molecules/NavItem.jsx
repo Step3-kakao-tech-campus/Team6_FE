@@ -12,16 +12,16 @@ import { Link } from "react-router-dom";
  */
 const NavItem = ({ id, icon, label, to, isActivated }) => {
   return (
-      <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`}>
-        <Link to={to} className={"w-full"}>
-          <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center"}>
-            {icon}
-          </div>
-          <div className={"nav-bar-item-label flex w-full flex-col items-center justify-center text-sm text-gray-500"}>
-            {label}
-          </div>
-        </Link>
-      </div>
+    <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`}>
+      <Link to={to} className={"w-full"}>
+        <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center"}>
+          {icon}
+        </div>
+        <div className={"nav-bar-item-label flex w-full flex-col items-center justify-center text-sm text-gray-500"}>
+          {label}
+        </div>
+      </Link>
+    </div>
   );
 };
 

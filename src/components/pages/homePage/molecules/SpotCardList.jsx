@@ -1,12 +1,12 @@
 import PlaceCard from "../atoms/PlaceCard";
-import HorizontalListWrapperMediaQuery from "../atoms/HorizontalListWrapperMediaQuery";
+import HorizontalListWrapperMediaQuery from "../../../common/atoms/HorizontalListWrapperMediaQuery";
 
 const SpotCardList = ({ spots }) => {
   return (
     <HorizontalListWrapperMediaQuery>
-      {spots.map((spot) => (
+      {spots.map((spot, index) => (
         <PlaceCard
-          key={spot.id}
+          key={index}
           image={spot.image}
           name={spot.name}
           address={spot.address}

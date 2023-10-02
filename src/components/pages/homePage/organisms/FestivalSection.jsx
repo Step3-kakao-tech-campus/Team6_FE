@@ -1,5 +1,5 @@
 import FestivalCardList from "../molecules/FestivalCardList";
-import HorizontalListSection from "../atoms/HorizontalListSection";
+import HorizontalListSection from "../../../common/molecules/HorizontalListSection";
 
 const FestivalSection = ({festivals}) => {
   return (
