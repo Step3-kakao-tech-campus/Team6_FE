@@ -14,7 +14,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <h1>Search Page</h1>
       <SearchBar
         value={query}
