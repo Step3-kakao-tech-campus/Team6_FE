@@ -10,20 +10,16 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element} BottomNavBar의 NavItem
  * @constructor
  */
-const NavItem = ({ id, icon, label, link, isActivated }) => {
+const NavItem = ({ id, icon, label, to, isActivated }) => {
   return (
-    <div className={`nav-item-${id} w-full flex flex-col justify-center items-center`}>
-      <Link to={link}>
-        <div className={"nav-bar-item-icon w-full flex flex-col justify-center items-center"}>
+    <Link to={to} className={`nav-item-${id} flex w-full flex-col items-center justify-center`}>
+        <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center"}>
           {icon}
         </div>
-        <div
-          className={"nav-bar-item-label w-full flex flex-col justify-center items-center text-sm text-gray-500"}
-        >
+        <div className={"nav-bar-item-label flex w-full flex-col items-center justify-center text-sm text-gray-500"}>
           {label}
         </div>
-      </Link>
-    </div>
+    </Link>
   );
 };
 
