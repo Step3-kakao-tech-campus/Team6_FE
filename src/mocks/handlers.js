@@ -48,7 +48,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        results: getRestaurantDetail(id),
+        results: getFestivalDetail(id),
       }),
     );
   }),
