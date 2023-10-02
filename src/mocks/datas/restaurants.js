@@ -21,7 +21,7 @@ const RESTAURANTS = [
     contactInfo: "010-1234-5678",
     reservable: true,
     liked: true,
-    manus: [
+    menu: [
       {
         id: 1,
         name: "toast",
@@ -31,6 +31,20 @@ const RESTAURANTS = [
       },
       {
         id: 2,
+        name: "toast",
+        image: "https://picsum.photos/300",
+        price: 3000,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+      },
+      {
+        id: 3,
+        name: "toast",
+        image: "https://picsum.photos/300",
+        price: 3000,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+      },
+      {
+        id: 4,
         name: "toast",
         image: "https://picsum.photos/300",
         price: 3000,
