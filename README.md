@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# TripKoFE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 전달 사항
 
-## Available Scripts
+> 특정 수정이 저에게만 영향을 미친다면, 과감하게 수정했습니다.
+>
+> 그러나 아래의 5번과 같이 유정님에게도 영향을 끼치며, 이것이 뭔가 의아하다거나, 불편하다거나, 불필요하다거나 하는 경우에는 의견을 주시면 감사하겠습니다.
+>
+> 비전공자이기 때문에 자신감이 없을 수 있습니다. 하지만, 저 역시 프론트앤드를 비슷한 시점에 시작했기에 크게 나을 것이 없을 수 있습니다. 너무 겸손할 필요 없이 자유롭게 의견을 주시면 감사하겠습니다.
 
-In the project directory, you can run:
 
-### `npm start`
+1. 최대한 분리할 수 있도록 디렉터리 구조가 변경되었습니다. 좀 더 합리적인 구조가 있을 수 있다면 제안해 주세요
+2. `index.css`에 tailwind macro가 추가되었습니다. tailwind macro를 사용하면 공통적인 css를 적용할 수 있습니다. 적용은 `src/components/layout/organisms/BottomNavBar`를 참고해 주세요.
+3. 모든 단위는 `rem`으로 통일하였습니다. `px`는 사용하지 않습니다. `rem`은 `html`의 `font-size`를 기준으로 합니다. 이는 기기별로 통일된 레이아웃을 볼 수 있도록 돕습니다. 미처 적용되지 않은 곳은 수정해 주세요 `1rem`은 `16px`입니다.
+4. calender는 wrapper만 구현해 두었습니다. `react-datepicker`라는 라이브러리를 발견했습니다. 사용할 수 있을까요?
+5. mocking의 response-body를 api 명세에 맞게 수정해야 할 것 같습니다. 이는 많은 코드들을 수정하는 shotgun surgery를 유발할 수 있습니다. 후순위로 미루고 나중에 한 번에 처리할 지, 아니면 바로 처리할 지를 고민해야 합니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 디렉터리 구조
 
-### `npm test`
+```
+TripKoFE
+├── README.md
+├── package.json
+├── public
+├── src 
+│   ├── components
+│   │   ├── common
+│   │   ├── layouts
+│   │   ├── pages
+│   ├── hooks
+│   ├── mocks
+│   │   ├── datas
+│   ├── services
+│   ├── utils
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+`src` : 전체적인 소스코드가 들어있습니다.
 
-### `npm run build`
+`components` : 컴포넌트들이 들어있습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`components/common` : 공통으로 사용되는 컴포넌트들이 들어있습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`components/layouts` : 레이아웃별로 사용되는 컴포넌트들이 들어있습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`components/pages` : 페이지별로 사용되는 컴포넌트가 들어있습니다.
 
-### `npm run eject`
+`hooks` : 커스텀 훅이 들어있습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`mocks` : mocking 관련 파일이 들어있습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`mocks/data` : mocking data가 들어있습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`services` : api 관련 파일이 들어있습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`utils` : 공통으로 사용되는 함수들이 들어있습니다.
 
-## Learn More
+## TODO
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. px -> rem
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. festival page
