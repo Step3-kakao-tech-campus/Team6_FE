@@ -1,5 +1,8 @@
 // mocks/handlers.js
 import { rest } from "msw";
+import { getMainPageResponse } from "./home";
+import { getRestaurantCards, getRestaurantDetail } from "./restaurant";
+import { getFestivalCards, getFestivalDetail } from "./festival";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -10,53 +13,53 @@ export const handlers = [
         ctx.status(200),
         ctx.json({
           results: {
-            restaurants: [
-              {
-                id: 1,
-                name: "Pusan National University Main Gate Toast",
-                summary:
-                  "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",
-                image:
-                  "https://mp-seoul-image-production-s3.mangoplate.com/1297623_1569208351545507.jpg",
-                address: "Pusan National University, Pusan",
-                averageScore: 4.4,
-                liked: true,
-              },
-              {
-                id: 1,
-                name: "부산대 칠성돌곱창",
-                summary: "정문토스트는..",
-                image: "/image/restaurant/1",
-                address: "Seoul",
-                averageScore: 3.7,
-                liked: true,
-              },
-            ],
-            festivals: [
-              {
-                id: 1,
-                name: "2023 Pusan International Rock Festival",
-                summary: "부산 국제 락 페스티벌은...",
-                image: "/image/festival/1",
-                address: "Pusan Samrak Subyeon Park",
-                averageScore: 4.4,
-                liked: true,
-              },
-            ],
-            touristSpots: [
-              {
-                id: 1,
-                name: "Signiel Busan",
-                summary: "...",
-                address: "Pusan Haeundae",
-                liked: true,
-              },
-            ],
+            restaurants: getRestaurantCards(8),
+            festivals: getFestivalCards(8),
+            touristSpot: getRestaurantCards(8),
           },
-        })
+        }),
       );
     }
 
     return res(ctx.status(200), ctx.json({ result: {} }));
+  }),
+
+  rest.get("/api/home", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        results: getMainPageResponse(),
+      }),
+    );
+  }),
+
+  rest.get("/api/restaurant/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    return res(
+      ctx.status(200),
+      ctx.json({
+        results: getRestaurantDetail(id),
+      }),
+    );
+  }),
+
+  rest.get("/api/festival/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    return res(
+      ctx.status(200),
+      ctx.json({
+        results: getRestaurantDetail(id),
+      }),
+    );
+  }),
+
+  rest.get("/api/touristSpot/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    return res(
+      ctx.status(200),
+      ctx.json({
+        results: getRestaurantDetail(id),
+      }),
+    );
   }),
 ];
