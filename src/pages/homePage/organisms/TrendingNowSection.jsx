@@ -1,13 +1,13 @@
 import SpotCardList from "../molecules/SpotCardList";
 import HorizontalListSection from "../atoms/HorizontalListSection";
 
-const TrendingNowSection = () => {
+const TrendingNowSection = ({touristSpots}) => {
   return (
     <HorizontalListSection
       title={"Trending Now"}
       className={"trending-now-section"}
     >
-      <SpotCardList />
+      <SpotCardList spots={touristSpots}/>
     </HorizontalListSection>
   );
 };

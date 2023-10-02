@@ -1,13 +1,13 @@
 import FestivalCardList from "../molecules/FestivalCardList";
 import HorizontalListSection from "../atoms/HorizontalListSection";
 
-const FestivalSection = () => {
+const FestivalSection = ({festivals}) => {
   return (
     <HorizontalListSection
       className={"festival-section"}
       title={"Upcoming Events"}
     >
-      <FestivalCardList />
+      <FestivalCardList festivals={festivals} />
     </HorizontalListSection>
   );
 };
