@@ -4,7 +4,7 @@ import InfoElement from "../atoms/InfoElement";
 
 const InformationSection = ({ restaurant }) => {
   return (
-    <div className={"information-section"}>
+    <div className={"information-section flex flex-col gap-2"}>
       <SectionTitle title={"Information"} />
       <div
         className={
@@ -17,6 +17,7 @@ const InformationSection = ({ restaurant }) => {
         <InfoElement title={"Break Time"} value={restaurant.breakTime} />
       </div>
       <p className={"text-lg text-gray-500"}>{restaurant.description}</p>
+
     </div>
   );
 };
