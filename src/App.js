@@ -1,4 +1,5 @@
 import HomePage from "./pages/homePage/page/HomePage";
+import SearchPage from "./pages/searchPage/page/SearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/mainLayout/MainLayout";
 import RestaurantDetailPage from "./pages/restaurantDetailPage/page/RestaurantDetailPage";
@@ -18,7 +19,7 @@ function App() {
                 path="/restaurant/:id"
                 element={<RestaurantDetailPage />}
               />
-
+              <Route path="/search" element={<SearchPage />} />
               {/*<Route path="/festival/:id" element={<FestivalDetailPage />} />*/}
             </Route>
           </Routes>
