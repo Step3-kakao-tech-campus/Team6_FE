@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Noto Sans KR', sans-serif;
-  box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+@layer components {
+    .width-flex-layout {
+        @apply w-full min-w-[20rem] max-w-[50rem];
+    }
+
+    .height-flex-layout-small {
+        @apply h-[16rem] md:h-[24rem];
+    }
+
+    .height-flex-layout-medium {
+        @apply h-[24rem] md:h-[32rem];
+    }
 }
