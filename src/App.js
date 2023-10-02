@@ -2,7 +2,6 @@ import HomePage from "./pages/homePage/page/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/mainLayout/MainLayout";
 import RestaurantDetailPage from "./pages/restaurantDetailPage/page/RestaurantDetailPage";
-import { getHome } from "./services/home";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
