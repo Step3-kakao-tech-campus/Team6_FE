@@ -1,4 +1,3 @@
-import React from "react";
 import FilterButton from "../atoms/FilterButton";
 
 const FilterBar = ({ filter, setFilter }) => {
