@@ -3,6 +3,13 @@ import CarouselSlide from "../atoms/CarouselSlide";
 import CarouselButtonLeft from "../atoms/CarouselButtonLeft";
 import CarouselButtonRight from "../atoms/CarouselButtonRight";
 
+/**
+ * Carousel Component 입니다. height속성을 갖는 wrapper를 필요로 합니다.
+ * @param slides carousel에 들어갈 slides, slides의 형태는 다음과 같습니다.
+ * [{image: "image url",to: "link to"},...]
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const Carousel = ({ slides }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
 
@@ -70,7 +77,9 @@ const Carousel = ({ slides }) => {
   const [enabled, setEnabled] = useState(true);
 
   return (
-    <div className={"carousel relative h-[240px] md:h-[340px] w-full bg-gray-300 overflow-hidden"}>
+    <div
+      className={"carousel relative h-full w-full overflow-hidden bg-gray-300"}
+    >
       {mountedSlides.map((slide, index) => (
         <CarouselSlide
           key={index}

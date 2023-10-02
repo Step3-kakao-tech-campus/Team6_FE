@@ -4,7 +4,7 @@ import BottomNavBar from "./organisms/BottomNavBar";
 const MainLayout = () => {
   return (
     <>
-      <div className={"main-layout flex w-full min-w-[400px] max-w-[800px] flex-col items-center pb-[70px] shadow-inner"}>
+      <div className={"main-layout flex width-flex-layout flex-col items-center pb-[70px] shadow-inner"}>
         <Outlet />
         <BottomNavBar activatedTab={1} />
       </div>
