@@ -19,5 +19,5 @@ export const getRestaurantCards = (length) => {
 };
 
 export const getRestaurantDetail = (id) => {
-  return RESTAURANTS.find((restaurant) => restaurant.id === id);
+  return RESTAURANTS.find((restaurant) => restaurant.id === parseInt(id));
 };

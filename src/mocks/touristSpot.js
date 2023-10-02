@@ -12,5 +12,5 @@ export const getTouristSpotsResponse = (length) => {
 };
 
 export const getTouristSpotDetailResponse = (id) => {
-  return TOURIST_SPOTS.find((restaurant) => restaurant.id === id);
+  return TOURIST_SPOTS.find((restaurant) => restaurant.id === parseInt(id));
 };
