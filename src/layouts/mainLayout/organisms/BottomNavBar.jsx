@@ -1,5 +1,5 @@
 import NavItem from "../molecules/NavItem";
-import {AiOutlineHeart, AiOutlineSearch} from "react-icons/ai";
+import {AiOutlineHeart} from "react-icons/ai";
 import {GrMap} from "react-icons/gr";
 import {BiFoodMenu} from "react-icons/bi";
 import {HiOutlineTicket} from "react-icons/hi";
