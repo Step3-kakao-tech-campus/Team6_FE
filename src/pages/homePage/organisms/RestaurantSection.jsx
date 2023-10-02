@@ -1,13 +1,13 @@
 import RestaurantCardList from "../molecules/RestaurantCardList";
 import HorizontalListSection from "../atoms/HorizontalListSection";
 
-const RestaurantSection = () => {
+const RestaurantSection = ({restaurants}) => {
   return (
     <HorizontalListSection
       className={"restaurant-section"}
       title={"Restaurants"}
     >
-      <RestaurantCardList />
+      <RestaurantCardList restaurants={restaurants}/>
     </HorizontalListSection>
   );
 };
