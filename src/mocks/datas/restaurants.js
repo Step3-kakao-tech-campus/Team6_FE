@@ -14,7 +14,7 @@ const RESTAURANTS = [
       "https://picsum.photos/204",
     ],
     address: "Pusan National University, Pusan",
-    averageRating: 4.4,
+    averageScore: 4.4,
     holidayDate: "2021-10-10",
     open: "11:00~22:00",
     breakTime: "15:00~17:00",
