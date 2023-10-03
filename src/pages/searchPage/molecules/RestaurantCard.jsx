@@ -1,10 +1,10 @@
 import StarRating from "../atoms/StarRating";
 
-const RestaurantCard = ({ children, averageScore }) => {
+const RestaurantCard = ({ children, averageRating }) => {
   return (
-    <div className="rounded-tr-2xl rounded-br-2xl shadow-md bg-white p-4 m-2 text-xl">
+    <div className="m-2 rounded-br-2xl rounded-tr-2xl bg-white p-4 text-xl shadow-md">
       {children}
-      <StarRating averageScore={averageScore} />
+      <StarRating averageRating={averageRating} />
     </div>
   );
 };
