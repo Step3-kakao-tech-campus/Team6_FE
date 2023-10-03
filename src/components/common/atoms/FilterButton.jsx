@@ -8,7 +8,9 @@ const FilterButton = ({ label, value, filter, setFilter, onClick }) => {
         }
       }}
       className={`m-2 w-28 rounded-full shadow-xl  ${
-        filter === value ? "bg-orange-500 text-white" : "text-orange-500"
+        filter === value
+          ? "bg-orange-500 text-white shadow-inner"
+          : "text-orange-500"
       }`}
     >
       {label}

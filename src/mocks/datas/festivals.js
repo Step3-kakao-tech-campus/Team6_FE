@@ -14,7 +14,7 @@ const FESTIVALS = [
       "https://picsum.photos/207",
     ],
     address: "Pusan Samrak Subyeon Park",
-    averageRating: 4.4,
+    averageScore: 4.4,
     reservable: true,
     period: "2023-10-10~2023-10-12",
     liked: true,

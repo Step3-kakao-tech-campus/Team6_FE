@@ -14,23 +14,8 @@ const FilterResults = ({ filter, results, query }) => {
                 .map((restaurant, index) => (
                   <RestaurantCard
                     key={index}
-                    averageRating={restaurant.averageRating}
-                  >
-                    <div className="flex items-center">
-                      <img
-                        src={restaurant.image}
-                        alt={restaurant.name}
-                        className="w-28 rounded-lg"
-                      />
-                      <div className="text-sm/12 m-2 pl-2 font-semibold text-[#FF4800]">
-                        <span className="mb-0">{restaurant.name}</span>
-                        <br />
-                        <span className="text-sm text-gray-400">
-                          {restaurant.summary}
-                        </span>
-                      </div>
-                    </div>
-                  </RestaurantCard>
+                    restaurant={restaurant}
+                  ></RestaurantCard>
                 ))}
           </ul>
         </div>
