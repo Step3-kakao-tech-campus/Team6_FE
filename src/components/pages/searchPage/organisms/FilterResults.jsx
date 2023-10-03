@@ -28,15 +28,7 @@ const FilterResults = ({ filter, results, query }) => {
               results.festivals
                 .filter((festival) => festival.address.includes(query))
                 .map((festival, index) => (
-                  <FestivalCard
-                    key={index}
-                    averageScore={festival.averageScore}
-                  >
-                    <div className="font-semibold text-[#FF4800]">
-                      {festival.name}
-                    </div>
-                    <div className="text-sm">{festival.address}</div>
-                  </FestivalCard>
+                  <FestivalCard key={index} festival={festival}></FestivalCard>
                 ))}
           </ul>
         </div>
