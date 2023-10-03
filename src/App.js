@@ -1,8 +1,8 @@
-import HomePage from "./pages/homePage/page/HomePage";
-import SearchPage from "./pages/searchPage/page/SearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainLayout from "./layouts/mainLayout/MainLayout";
-import RestaurantDetailPage from "./pages/restaurantDetailPage/page/RestaurantDetailPage";
+import MainLayout from "./components/layouts/mainLayout/MainLayout";
+import HomePage from "./components/pages/homePage/page/HomePage";
+import SearchPage from "./components/pages/searchPage/page/SearchPage";
+import RestaurantDetailPage from "./components/pages/restaurantDetailPage/page/RestaurantDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();

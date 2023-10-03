@@ -1,8 +1,8 @@
-import Input from "../atoms/Input";
+import Input from "../../../common/atoms/Input";
 import { FaBars } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
-import Button from "../atoms/Button";
+import Button from "../../../common/atoms/Button";
 
 const SearchBar = ({ onChange, value, onSearch }) => {
   const handleKeyDown = (event) => {

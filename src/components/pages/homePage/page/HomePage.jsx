@@ -4,7 +4,7 @@ import RestaurantSection from "../organisms/RestaurantSection";
 import Carousel from "../organisms/Carousel";
 import MainSearchRow from "../molecules/MainSearchRow";
 import { useQuery } from "react-query";
-import { getHome } from "../../../services/home";
+import { getHome } from "../../../../services/home";
 
 const dummySlides = [
   {
@@ -30,8 +30,8 @@ const HomePage = () => {
       {data && (
         <>
           <FestivalSection festivals={data.festivals} />
-          <TrendingNowSection touristSpots={data.touristSpots}/>
-          <RestaurantSection restaurants={data.restaurants}/>
+          <TrendingNowSection touristSpots={data.touristSpots} />
+          <RestaurantSection restaurants={data.restaurants} />
         </>
       )}
     </div>

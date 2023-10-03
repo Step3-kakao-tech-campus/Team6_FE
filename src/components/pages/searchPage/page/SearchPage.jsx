@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchBar from "../molecules/SearchBar";
 import FilterBar from "../molecules/FilterBar";
 import FilterResults from "../organisms/FilterResults";
-import { search } from "../../../apis/search";
+import { search } from "../../../../apis/search";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
