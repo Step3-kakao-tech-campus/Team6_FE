@@ -1,7 +1,7 @@
 import MainDrawer from "../atoms/MainDrawer";
 import SearchBar from "../atoms/SearchBar";
 import UserInfoButton from "../atoms/UserInfoButton";
-import useInput from "../../../hooks/useInput";
+import useInput from "../../../../hooks/useInput";
 
 const MainSearchRow = () => {
   const { value, onChange } = useInput("");

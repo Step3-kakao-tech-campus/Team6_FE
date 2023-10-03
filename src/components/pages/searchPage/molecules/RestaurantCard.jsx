@@ -1,4 +1,4 @@
-import StarRating from "../atoms/StarRating";
+import StarRating from "../../../common/atoms/StarRating";
 
 const RestaurantCard = ({ children, averageRating }) => {
   return (

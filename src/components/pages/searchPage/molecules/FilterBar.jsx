@@ -1,4 +1,4 @@
-import FilterButton from "../atoms/FilterButton";
+import FilterButton from "../../../common/atoms/FilterButton";
 
 const FilterBar = ({ filter, setFilter }) => {
   const filterButtons = [

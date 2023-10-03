@@ -1,8 +1,8 @@
-import StarRating from "../atoms/StarRating";
+import StarRating from "../../../common/atoms/StarRating";
 
 const FestivalCard = ({ children, averageScore }) => {
   return (
-    <div className="shadow-md bg-white py-2 px-6 m-2 text-xl">
+    <div className="m-2 bg-white px-6 py-2 text-xl shadow-md">
       {children}
       <StarRating averageScore={averageScore} />
     </div>
