@@ -6,7 +6,7 @@ const FilterResults = ({ filter, results, query }) => {
     <div>
       {filter === "all" || filter === "restaurants" ? (
         <div>
-          <h2 className="text-xl font-bold m-2">Restaurants</h2>
+          <h2 className="m-2 text-xl font-bold">Restaurants</h2>
           <ul>
             {results.restaurants &&
               results.restaurants
@@ -14,7 +14,7 @@ const FilterResults = ({ filter, results, query }) => {
                 .map((restaurant, index) => (
                   <RestaurantCard
                     key={index}
-                    averageScore={restaurant.averageScore}
+                    averageRating={restaurant.averageRating}
                   >
                     <div className="flex items-center">
                       <img
@@ -22,7 +22,7 @@ const FilterResults = ({ filter, results, query }) => {
                         alt={restaurant.name}
                         className="w-28 rounded-lg"
                       />
-                      <div className="text-[#FF4800] text-sm/12 font-semibold pl-2 m-2">
+                      <div className="text-sm/12 m-2 pl-2 font-semibold text-[#FF4800]">
                         <span className="mb-0">{restaurant.name}</span>
                         <br />
                         <span className="text-sm text-gray-400">
@@ -37,7 +37,7 @@ const FilterResults = ({ filter, results, query }) => {
       ) : null}
       {filter === "all" || filter === "festivals" ? (
         <div>
-          <h2 className="text-xl font-bold m-2">Festivals</h2>
+          <h2 className="m-2 text-xl font-bold">Festivals</h2>
           <ul>
             {results.festivals &&
               results.festivals
@@ -47,7 +47,7 @@ const FilterResults = ({ filter, results, query }) => {
                     key={index}
                     averageScore={festival.averageScore}
                   >
-                    <div className="text-[#FF4800] font-semibold">
+                    <div className="font-semibold text-[#FF4800]">
                       {festival.name}
                     </div>
                     <div className="text-sm">{festival.address}</div>
@@ -58,7 +58,7 @@ const FilterResults = ({ filter, results, query }) => {
       ) : null}
       {filter === "all" || filter === "touristSpots" ? (
         <div>
-          <h2 className="text-xl font-bold m-2">Tourist Spots</h2>
+          <h2 className="m-2 text-xl font-bold">Tourist Spots</h2>
           <ul>
             {results.touristSpots &&
               results.touristSpots
