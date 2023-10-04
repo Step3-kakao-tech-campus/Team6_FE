@@ -1,5 +1,6 @@
 import RestaurantCard from "../molecules/RestaurantCard";
 import FestivalCard from "../molecules/FestivalCard";
+import TouristSpotCard from "../molecules/TouristSpotCard";
 
 const FilterResults = ({ filter, results, query }) => {
   return (
@@ -41,9 +42,9 @@ const FilterResults = ({ filter, results, query }) => {
               results.touristSpots
                 .filter((touristSpot) => touristSpot.address.includes(query))
                 .map((touristSpot, index) => (
-                  <RestaurantCard key={index}>
-                    <li>{touristSpot.name}</li>
-                  </RestaurantCard>
+                  <TouristSpotCard key={index} touristSpot={touristSpot}>
+                    {touristSpot.name}
+                  </TouristSpotCard>
                 ))}
           </ul>
         </div>
