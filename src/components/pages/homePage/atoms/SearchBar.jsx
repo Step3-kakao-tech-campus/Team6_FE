@@ -15,7 +15,7 @@ const SearchBar = ({ value, onChange }) => {
         }
         value={value}
         onChange={onChange}
-        onClick={() => (window.location.href = "/search")}
+        onClick={() => (window.location.href = "/search/all")}
       />
       <button
         className={
