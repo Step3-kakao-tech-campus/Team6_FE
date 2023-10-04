@@ -3,6 +3,7 @@ import { rest } from "msw";
 import { getMainPageResponse } from "./home";
 import { getRestaurantCards, getRestaurantDetail } from "./restaurant";
 import { getFestivalCards, getFestivalDetail } from "./festival";
+import { getTouristSpotCards, getTouristSpotDetail } from "./touristSpot";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -15,7 +16,7 @@ export const handlers = [
           results: {
             restaurants: getRestaurantCards(8),
             festivals: getFestivalCards(8),
-            touristSpot: getRestaurantCards(8),
+            touristSpots: getTouristSpotCards(8),
           },
         }),
       );
@@ -48,7 +49,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        results: getRestaurantDetail(id),
+        results: getFestivalDetail(id),
       }),
     );
   }),
@@ -58,7 +59,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        results: getRestaurantDetail(id),
+        results: getTouristSpotDetail(id),
       }),
     );
   }),
