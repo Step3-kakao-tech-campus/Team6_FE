@@ -13,10 +13,7 @@ const FilterResults = ({ filter, results, query }) => {
               results.restaurants
                 .filter((restaurant) => restaurant.address.includes(query))
                 .map((restaurant, index) => (
-                  <RestaurantCard
-                    key={index}
-                    restaurant={restaurant}
-                  ></RestaurantCard>
+                  <RestaurantCard key={index} restaurant={restaurant} />
                 ))}
           </ul>
         </div>
@@ -29,7 +26,7 @@ const FilterResults = ({ filter, results, query }) => {
               results.festivals
                 .filter((festival) => festival.address.includes(query))
                 .map((festival, index) => (
-                  <FestivalCard key={index} festival={festival}></FestivalCard>
+                  <FestivalCard key={index} festival={festival} />
                 ))}
           </ul>
         </div>
@@ -42,9 +39,7 @@ const FilterResults = ({ filter, results, query }) => {
               results.touristSpots
                 .filter((touristSpot) => touristSpot.address.includes(query))
                 .map((touristSpot, index) => (
-                  <TouristSpotCard key={index} touristSpot={touristSpot}>
-                    {touristSpot.name}
-                  </TouristSpotCard>
+                  <TouristSpotCard key={index} touristSpot={touristSpot} />
                 ))}
           </ul>
         </div>
