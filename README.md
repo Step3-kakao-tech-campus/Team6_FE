@@ -1,13 +1,5 @@
 # TripKoFE
 
-## 작업 내역
-1. 디렉터리 구조 변경
-2. tailwind macro 추가
-3. `rem`으로 단위 통일 (진행중)
-4. `RestaurantDetailPage` 추가
-5. 전체적인 mocking 모듈화
-6. axios api 요청 추₩
-
 ## 전달 사항
 
 > 특정 수정이 저에게만 영향을 미친다면, 과감하게 수정했습니다.
