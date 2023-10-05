@@ -29,7 +29,7 @@ const SearchBar = ({ onChange, value, onSearch }) => {
         onKeyDown={handleKeyDown}
       />
       <Button onclick={() => console.log("to userProfile")}>
-        <FaUserCircle size={30} />
+        <FaUserCircle size={30} className="mr-2" />
       </Button>
     </div>
   );
