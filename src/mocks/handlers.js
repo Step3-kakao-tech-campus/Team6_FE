@@ -1,9 +1,10 @@
 // mocks/handlers.js
 import { rest } from "msw";
 import { getMainPageResponse } from "./home";
-import { getRestaurantCards, getRestaurantDetail } from "./restaurant";
+import { getRestaurants, getRestaurantDetail } from "./restaurant";
 import { getFestivalCards, getFestivalDetail } from "./festival";
 import { getReviews } from "./review";
+import { getTouristSpots } from "./touristSpot";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -15,9 +16,9 @@ export const handlers = [
         ctx.json({
           success: true,
           response: {
-            restaurants: getRestaurantCards(8),
+            restaurants: getRestaurants(8),
             festivals: getFestivalCards(8),
-            touristSpot: getRestaurantCards(8),
+            touristSpots: getTouristSpots(8),
           },
         }),
       );

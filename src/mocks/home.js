@@ -1,11 +1,11 @@
-import {getFestivalCards} from "./festival";
-import {getRestaurantCards} from "./restaurant";
-import {getTouristSpotsResponse} from "./touristSpot";
+import { getFestivalCards } from "./festival";
+import { getRestaurants } from "./restaurant";
+import { getTouristSpots } from "./touristSpot";
 
 export const getMainPageResponse = () => {
   return {
     festivals: getFestivalCards(8),
-    restaurants: getRestaurantCards(8),
-    touristSpots: getTouristSpotsResponse(8),
+    restaurants: getRestaurants(8),
+    touristSpots: getTouristSpots(8),
   };
 };

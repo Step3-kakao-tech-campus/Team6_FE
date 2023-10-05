@@ -32,8 +32,8 @@ const HomePage = () => {
       {data && (
         <>
           <FestivalSection festivals={data.festivals} />
-          <TrendingNowSection touristSpots={data.touristSpots}/>
-          <RestaurantSection restaurants={data.restaurants}/>
+          <TrendingNowSection touristSpots={data.touristSpots} />
+          <RestaurantSection restaurants={data.restaurants} />
         </>
       )}
       {

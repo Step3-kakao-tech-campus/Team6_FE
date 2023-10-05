@@ -14,7 +14,7 @@ const RESTAURANTS = [
       "https://picsum.photos/203",
     ],
     address: "Pusan National University, Pusan",
-    averageRating: 4.4,
+    averageScore: 4.4,
     holidayDate: "2021-10-10",
     open: "11:00~22:00",
     breakTime: "15:00~17:00",
@@ -27,14 +27,16 @@ const RESTAURANTS = [
         name: "toast",
         image: "https://picsum.photos/300",
         price: 3000,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
       },
       {
         id: 2,
         name: "toast",
         image: "https://picsum.photos/301",
         price: 3000,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
       },
       {
         id: 3,

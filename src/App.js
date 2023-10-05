@@ -1,6 +1,7 @@
-import HomePage from "./components/pages/homePage/page/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layouts/mainLayout/MainLayout";
+import HomePage from "./components/pages/homePage/page/HomePage";
+import SearchPage from "./components/pages/searchPage/page/SearchPage";
 import RestaurantDetailPage from "./components/pages/restaurantDetailPage/page/RestaurantDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -18,7 +19,7 @@ function App() {
                 path="/restaurant/:id"
                 element={<RestaurantDetailPage />}
               />
-
+              <Route path="/search/:filter" element={<SearchPage />} />
               {/*<Route path="/festival/:id" element={<FestivalDetailPage />} />*/}
             </Route>
           </Routes>

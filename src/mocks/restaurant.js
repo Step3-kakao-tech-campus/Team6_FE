@@ -1,6 +1,6 @@
 import RESTAURANTS from "./datas/restaurants";
 
-export const getRestaurantCards = (length) => {
+export const getRestaurants = (length) => {
   const selectedKeys = [
     "id",
     "name",

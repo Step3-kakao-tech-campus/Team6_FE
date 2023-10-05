@@ -10,7 +10,7 @@ const StarRating = ({ averageScore }) => {
             key={i}
             color="#ffc107"
             style={{ display: "inline-block", fontSize: "16px" }}
-          />
+          />,
         );
       } else {
         stars.push(
@@ -18,7 +18,7 @@ const StarRating = ({ averageScore }) => {
             key={i}
             color="#e4e5e9"
             style={{ display: "inline-block", fontSize: "16px" }}
-          />
+          />,
         );
       }
     }
