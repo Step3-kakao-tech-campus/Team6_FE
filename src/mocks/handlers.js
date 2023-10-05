@@ -2,7 +2,7 @@
 import { rest } from "msw";
 import { getMainPageResponse } from "./home";
 import { getRestaurants, getRestaurantDetail } from "./restaurant";
-import { getFestivalCards, getFestivalDetail } from "./festival";
+import { getFestivals, getFestivalDetail } from "./festival";
 import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
 
@@ -17,7 +17,7 @@ export const handlers = [
           success: true,
           response: {
             restaurants: getRestaurants(8),
-            festivals: getFestivalCards(8),
+            festivals: getFestivals(8),
             touristSpots: getTouristSpots(8),
           },
         }),
