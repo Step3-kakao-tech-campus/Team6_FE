@@ -1,6 +1,6 @@
 import RESTAURANTS from "./datas/restaurants";
 
-export const getRestaurantCards = (length) => {
+export const getRestaurants = (length) => {
   const selectedKeys = [
     "id",
     "name",
@@ -19,5 +19,5 @@ export const getRestaurantCards = (length) => {
 };
 
 export const getRestaurantDetail = (id) => {
-  return RESTAURANTS.find((restaurant) => restaurant.id === id);
+  return RESTAURANTS.find((restaurant) => restaurant.id === parseInt(id));
 };
