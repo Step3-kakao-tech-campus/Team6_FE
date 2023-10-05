@@ -11,7 +11,7 @@ const SearchPage = () => {
   const handleSearch = async () => {
     const response = await fetch(`/api/search?query=${query}`);
     const data = await response.json();
-    setResults(data.results);
+    setResults(data.response);
   };
 
   return (

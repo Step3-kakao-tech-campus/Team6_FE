@@ -14,7 +14,7 @@ export const getRestaurantById = async (id) => {
     .then((response) => {
       return {
         isSuccess: true,
-        result: response.data.results,
+        result: response.data.response,
       };
     })
     .catch(error => Promise.reject(

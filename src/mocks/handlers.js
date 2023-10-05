@@ -3,6 +3,7 @@ import { rest } from "msw";
 import { getMainPageResponse } from "./home";
 import { getRestaurantCards, getRestaurantDetail } from "./restaurant";
 import { getFestivalCards, getFestivalDetail } from "./festival";
+import { getReviews } from "./review";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -12,7 +13,8 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: {
+          success: true,
+          response: {
             restaurants: getRestaurantCards(8),
             festivals: getFestivalCards(8),
             touristSpot: getRestaurantCards(8),
@@ -28,7 +30,8 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        results: getMainPageResponse(),
+        success: true,
+        response: getMainPageResponse(),
       }),
     );
   }),
@@ -39,14 +42,16 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getRestaurantDetail(id),
+          success: true,
+          response: getRestaurantDetail(id),
         }),
       );
     else
       return res(
         ctx.status(404),
         ctx.json({
-          results: null,
+          success: false,
+          response: null,
         }),
       );
   }),
@@ -57,14 +62,16 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getFestivalDetail(id),
+          success: true,
+          response: getFestivalDetail(id),
         }),
       );
     else
       return res(
         ctx.status(404),
         ctx.json({
-          results: null,
+          success: false,
+          response: null,
         }),
       );
   }),
@@ -75,7 +82,8 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getRestaurantDetail(id),
+          success: true,
+          response: getRestaurantDetail(id),
         }),
       );
     else
