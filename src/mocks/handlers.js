@@ -3,6 +3,7 @@ import { rest } from "msw";
 import { getMainPageResponse } from "./home";
 import { getRestaurants, getRestaurantDetail } from "./restaurant";
 import { getFestivalCards, getFestivalDetail } from "./festival";
+import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
 
 export const handlers = [
@@ -13,7 +14,8 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: {
+          success: true,
+          response: {
             restaurants: getRestaurants(8),
             festivals: getFestivalCards(8),
             touristSpots: getTouristSpots(8),
@@ -29,7 +31,8 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        results: getMainPageResponse(),
+        success: true,
+        response: getMainPageResponse(),
       }),
     );
   }),
@@ -40,14 +43,16 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getRestaurantDetail(id),
+          success: true,
+          response: getRestaurantDetail(id),
         }),
       );
     else
       return res(
         ctx.status(404),
         ctx.json({
-          results: null,
+          success: false,
+          response: null,
         }),
       );
   }),
@@ -58,14 +63,16 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getFestivalDetail(id),
+          success: true,
+          response: getFestivalDetail(id),
         }),
       );
     else
       return res(
         ctx.status(404),
         ctx.json({
-          results: null,
+          success: false,
+          response: null,
         }),
       );
   }),
@@ -76,14 +83,35 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: getRestaurantDetail(id),
+          success: true,
+          response: getRestaurantDetail(id),
         }),
       );
     else
       return res(
         ctx.status(404),
         ctx.json({
-          results: null,
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/restaurant/reviews/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
         }),
       );
   }),

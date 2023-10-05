@@ -6,6 +6,7 @@ import { imagesToSlides } from "../../../../utils/convert";
 import ButtonReserve from "../atoms/ButtonReserve";
 import { useState } from "react";
 import ReservationCalender from "../organisms/ReservationCalender";
+import ReviewSection from "../organisms/ReviewSection";
 // import { useState } from "react";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
@@ -31,7 +32,11 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       {/*  className={"dummy"}*/}
       {/*  style={{ width: `${width}px}`, height: `${height}px`}}*/}
       {/*></div>*/}
-      <div className={"restaurant-image-wrapper height-flex-layout-small overflow-hidden"}>
+      <div
+        className={
+          "restaurant-image-wrapper height-flex-layout-small overflow-hidden"
+        }
+      >
         <img
           className={"w-full object-cover"}
           src={restaurant.mainImage}
@@ -42,8 +47,11 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <MenuSection menu={restaurant.menu} />
         <InformationSection restaurant={restaurant} />
       </div>
-        <div className={"carousel-wrapper mt-4 height-flex-layout-medium"}>
-          <Carousel slides={imagesToSlides(restaurant.images)} />
+      <div className={"carousel-wrapper height-flex-layout-medium mt-4"}>
+        <Carousel slides={imagesToSlides(restaurant.images)} />
+      </div>
+      <div className={"detail-content-container px-2"}>
+        <ReviewSection placeId={restaurant.id} />
       </div>
       <ReservationCalender
         isActive={isActiveCalender}
