@@ -1,3 +1,3 @@
-export const isValidList = (data) => {
+export const utils = (data) => {
     return data !== undefined && data !== null && data.length > 0;
 }

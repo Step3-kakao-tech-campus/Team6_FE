@@ -5,7 +5,7 @@ import ButtonReserve from "./atoms/ButtonReserve";
 import { useState } from "react";
 import ReservationCalender from "./organisms/ReservationCalender";
 import ReviewSection from "./organisms/ReviewSection";
-import {imagesToSlides} from "./convert";
+import {imagesToSlides} from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
 import MenuCard from "../../molecules/MenuCard";

@@ -5,7 +5,7 @@ import { getHome } from "../../../apis/home";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
 import FestivalPoster from "../../molecules/FestivalPoster";
 import PlacePoster from "../../molecules/PlacePoster";
-import {isValidList} from "./isValidList";
+import {utils} from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../../atoms/HorizontalListSectionMediaQuery";
 
@@ -33,7 +33,7 @@ const HomePage = () => {
         <>
           <SectionTitle title={"Festivals"} />
           <HorizontalListSection>
-            {isValidList(data.festivals) && data.festivals.map((festival, index) => {
+            {utils(data.festivals) && data.festivals.map((festival, index) => {
               return (
                   <FestivalPoster
                       key={index}
@@ -46,7 +46,7 @@ const HomePage = () => {
           </HorizontalListSection>
             <SectionTitle title={"Restaurants"} />
           <HorizontalListSectionMediaQuery>
-            {isValidList(data.restaurants) && data.restaurants.map((restaurant, index) => {
+            {utils(data.restaurants) && data.restaurants.map((restaurant, index) => {
               return (
                   <PlacePoster
                       key={index}
@@ -61,7 +61,7 @@ const HomePage = () => {
           </HorizontalListSectionMediaQuery>
             <SectionTitle title={"Tourist Spots"} />
           <HorizontalListSectionMediaQuery>
-            {isValidList(data.touristSpots) && data.touristSpots.map((spot, index) => (
+            {utils(data.touristSpots) && data.touristSpots.map((spot, index) => (
                 <PlacePoster
                     key={index}
                     image={spot.image}
