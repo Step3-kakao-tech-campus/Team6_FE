@@ -1,5 +1,5 @@
-import StarRating from "../../../common/atoms/StarRating";
-import WishButton from "../../../common/atoms/WishButton";
+import StarRating from "../atoms/StarRating";
+import WishButton from "../atoms/WishButton";
 
 const RestaurantCard = ({ restaurant }) => {
   return (

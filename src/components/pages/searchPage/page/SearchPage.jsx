@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SearchBar from "../molecules/SearchBar";
-import FilterBar from "../molecules/FilterBar";
+import SearchBar from "../../../common/molecules/SearchBar";
+import FilterBar from "../../../common/molecules/FilterBar";
 import FilterResults from "../organisms/FilterResults";
 import { search } from "../../../../apis/search";
 

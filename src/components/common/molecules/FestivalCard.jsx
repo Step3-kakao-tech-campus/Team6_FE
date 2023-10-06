@@ -1,7 +1,7 @@
-import StarRating from "../../../common/atoms/StarRating";
+import StarRating from "../atoms/StarRating";
 import { Link } from "react-router-dom";
-import { comma } from "../../../../utils/convert";
-import WishButton from "../../../common/atoms/WishButton";
+import { comma } from "../../../utils/convert";
+import WishButton from "../atoms/WishButton";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const FestivalCard = ({ festival }) => {
