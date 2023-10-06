@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import {NavContext} from "../MainLayout";
+import {useContext} from "react";
 
 /**
  *
@@ -10,14 +12,15 @@ import { Link } from "react-router-dom";
  * @returns {JSX.Element} BottomNavBar의 NavItem
  * @constructor
  */
-const NavItem = ({ id, icon, label, to, isActivated }) => {
+const NavItem = ({ id, to, icon, label, labelColor}) => {
+  const {setActivatedTab} = useContext(NavContext)
   return (
-    <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`}>
-      <Link to={to} className={"w-full"}>
-        <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center"}>
+    <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`} onClick={() => setActivatedTab(id)}>
+      <Link to={to} className={"w-full hover:scale-110 duration-300 ease-in-out"}>
+        <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center "}>
           {icon}
         </div>
-        <div className={"nav-bar-item-label flex w-full flex-col items-center justify-center text-sm text-gray-500"}>
+        <div className={"nav-bar-item-label flex w-full flex-col items-center justify-center text-sm " + labelColor}>
           {label}
         </div>
       </Link>

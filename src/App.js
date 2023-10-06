@@ -4,6 +4,10 @@ import HomePage from "./components/features/homePage/HomePage";
 import SearchPage from "./components/features/searchPage/page/SearchPage";
 import RestaurantDetailPage from "./components/features/restaurantDetailPage/RestaurantDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
+import FoodSearchPage from "./components/features/foodSearchPage/FoodSearchPage";
+import WishlistPage from "./components/features/wishlistPage/WishlistPage";
+import FestivalDetailPage from "./components/features/festivalDetailPage/FestivalDetailPage";
+import ReservationListPage from "./components/features/reservationListPage/ReservationListPage";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +24,10 @@ function App() {
                 element={<RestaurantDetailPage />}
               />
               <Route path="/search/:filter" element={<SearchPage />} />
-              {/*<Route path="/festival/:id" element={<FestivalDetailPage />} />*/}
+              <Route path={"/foods"} element={<FoodSearchPage />} />
+              <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />} />
+              <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />} />
+              <Route path="/festival/:id" element={<FestivalDetailPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
