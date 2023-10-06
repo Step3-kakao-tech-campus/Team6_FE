@@ -4,11 +4,11 @@ const PlaceCard = ({ image, name, address, to, alt }) => {
   return (
     <Link
       to={to}
-      className="place-card flex flex-shrink-0 flex-col gap-1 rounded-lg border border-gray-500 p-2 md:w-[240px]"
+      className="place-card flex flex-shrink-0 flex-col gap-1 p-2 md:w-[15rem] shadow-rounded-card"
     >
       <div
         className={
-          "image-wrapper w-full overflow-hidden rounded-lg bg-tripKoOrange-300 md:h-[240px] min-h-[180px]"
+          "image-wrapper w-full overflow-hidden rounded-lg bg-tripKoOrange-300 md:h-[15rem] min-h-[11rem]"
         }
       >
         <picture>

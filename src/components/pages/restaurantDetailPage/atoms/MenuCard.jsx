@@ -3,7 +3,7 @@ import {comma, toUpperCaseFirstWord} from "../../../../utils/convert";
 const MenuCard = ({ menu }) => {
   return (
     <div
-      className={"menu-card flex w-full gap-2 rounded-xl border border-gray-300 p-2 md:flex-col"}>
+      className={"menu-card flex w-full gap-2 shadow-rounded-card p-2 md:flex-col"}>
       <div className={"menu-card-image h-[130px] w-[130px] md:h-[240px] md:w-[240px] flex-shrink-0 overflow-hidden rounded-xl"}>
         <img src={menu.image} alt={menu.name} />
       </div>

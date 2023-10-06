@@ -4,7 +4,7 @@ const SearchBar = ({ value, onChange }) => {
   return (
     <div
       className={
-        "search-container h-[40px] w-full flex flex-row justify-between rounded-3xl border-2 border-tripKoOrange-300 pl-4 text-lg focus:border-tripKoOrange"
+        "search-container h-[2.5rem] w-full flex flex-row justify-between rounded-3xl border-2 border-tripKoOrange-300 pl-4 text-lg focus:border-tripKoOrange"
       }
     >
       <input
