@@ -5,7 +5,7 @@ import ButtonReserve from "./atoms/ButtonReserve";
 import { useState } from "react";
 import ReservationCalender from "./organisms/ReservationCalender";
 import ReviewSection from "./organisms/ReviewSection";
-import {imagesToSlides} from "./utils";
+import { imagesToSlides } from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
 import MenuCard from "../../molecules/MenuCard";
@@ -14,20 +14,24 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const reservable = restaurant.reservable;
   return (
-    <div className={"restaurant-detail-template flex w-full flex-col"}>
-      <PageTitleBar name={restaurant.name}/>
-      <div className={"restaurant-image-wrapper height-flex-layout-small overflow-hidden"}>
+      <>
+      <PageTitleBar name={restaurant.name} />
+      <div
+        className={"restaurant-image-wrapper overflow-hidden fixed w-full -z-10 width-flex-layout"}>
         <img
           className={"w-full object-cover"}
           src={restaurant.mainImage}
           alt={restaurant.name}
         />
       </div>
+    <div className={"restaurant-detail-template flex w-full flex-col mt-[20rem] sm:mt-[30rem] bg-white pb-[4.2rem]"}>
       <div className={"detail-content-container px-2"}>
-          <SectionTitle title={"Menu"} />
-          <HorizontalListSection>
-              {restaurant.menu.map((menu, index) => (<MenuCard menu={menu} key={index}/>))}
-          </HorizontalListSection>
+        <SectionTitle title={"Menu"} />
+        <HorizontalListSection>
+          {restaurant.menu.map((menu, index) => (
+            <MenuCard menu={menu} key={index} />
+          ))}
+        </HorizontalListSection>
         <InformationSection restaurant={restaurant} />
       </div>
       <div className={"carousel-wrapper height-flex-layout-medium mt-4"}>
@@ -45,6 +49,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         enable={reservable}
       />
     </div>
+          </>
   );
 };
 
