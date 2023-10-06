@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CardTitle from "../atoms/CardTitle";
 import StarRating from "../common/atoms/StarRating";
+import UserAvatar from "../atoms/UserAvatar";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
@@ -12,13 +13,9 @@ const ReviewCard = ({ review }) => {
       onClick={() => navigate(`/review/${review.reviewId}`)}
     >
       <div className={"review-card-header flex gap-2"}>
-        <img
-          src={review.authorImage}
-          alt={review.authorNickname}
-          className={
-            "h-[4rem] w-[4rem] rounded-full border-4 border-tripKoOrange-300"
-          }
-        />
+        <div className={"review-card-header-image w-[4rem] h-[4rem] rounded-full overflow-hidden "}>
+        <UserAvatar image={review.authorImage} onClick={()=>console.log("userinfo")}/>
+        </div>
         <div className={"review-card-header-info justify-evenly"}>
           <CardTitle title={review.authorNickname} lineClamp={1}/>
           <StarRating averageScore={review.rating} />
