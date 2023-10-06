@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import CardTitle from "../atoms/CardTitle";
 
-const PlaceCard = ({ image, name, address, to, alt }) => {
+const PlacePoster = ({ image, name, address, to, alt }) => {
   return (
     <Link
       to={to}
@@ -29,4 +29,4 @@ const PlaceCard = ({ image, name, address, to, alt }) => {
   );
 };
 
-export default PlaceCard;
+export default PlacePoster;

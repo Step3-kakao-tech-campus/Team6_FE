@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FestivalCard = ({ image, to, alt }) => {
+const FestivalPoster = ({ image, to, alt }) => {
   return (
     <div className="festival-card h-[26rem] w-[22rem] flex-shrink-0 overflow-hidden">
       <Link to={to} className={""}>
@@ -14,4 +14,4 @@ const FestivalCard = ({ image, to, alt }) => {
   );
 };
 
-export default FestivalCard;
+export default FestivalPoster;

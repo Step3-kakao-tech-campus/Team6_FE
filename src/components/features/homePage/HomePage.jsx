@@ -3,8 +3,8 @@ import MainSearchRow from "./molecules/MainSearchRow";
 import { useQuery } from "react-query";
 import { getHome } from "../../../apis/home";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
-import FestivalCard from "../../molecules/FestivalCard";
-import PlaceCard from "../../molecules/PlaceCard";
+import FestivalPoster from "../../molecules/FestivalPoster";
+import PlacePoster from "../../molecules/PlacePoster";
 import {isValidList} from "./isValidList";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../../atoms/HorizontalListSectionMediaQuery";
@@ -35,7 +35,7 @@ const HomePage = () => {
           <HorizontalListSection>
             {isValidList(data.festivals) && data.festivals.map((festival, index) => {
               return (
-                  <FestivalCard
+                  <FestivalPoster
                       key={index}
                       image={festival.image}
                       alt={`poster of ${festival.name}`}
@@ -48,7 +48,7 @@ const HomePage = () => {
           <HorizontalListSectionMediaQuery>
             {isValidList(data.restaurants) && data.restaurants.map((restaurant, index) => {
               return (
-                  <PlaceCard
+                  <PlacePoster
                       key={index}
                       image={restaurant.image}
                       alt={`poster of ${restaurant.name}`}
@@ -62,7 +62,7 @@ const HomePage = () => {
             <SectionTitle title={"Tourist Spots"} />
           <HorizontalListSectionMediaQuery>
             {isValidList(data.touristSpots) && data.touristSpots.map((spot, index) => (
-                <PlaceCard
+                <PlacePoster
                     key={index}
                     image={spot.image}
                     name={spot.name}
