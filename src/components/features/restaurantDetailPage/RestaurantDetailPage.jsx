@@ -8,7 +8,6 @@ const RestaurantDetailPage = () => {
   const { data } = useQuery(`restaurant${params}`, () =>
     getRestaurantById(params),
   );
-
   return (
     <div className={"restaurant-detail-page w-full"}>
       {data && <RestaurantDetailTemplate restaurant={data.result} />}

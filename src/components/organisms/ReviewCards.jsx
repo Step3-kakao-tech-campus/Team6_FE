@@ -17,7 +17,6 @@ const ReviewCards = ({ placeId, count }) => {
             .map((review, index) => (
               <ReviewCard review={review} key={index} />
             ))}
-          <ButtonAllReviews />
         </div>
       )}
     </section>
