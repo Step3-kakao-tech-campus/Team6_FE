@@ -1,7 +1,6 @@
 import { getRestaurantReviewById } from "../../apis/review";
 import { useQuery } from "react-query";
 import ReviewCard from "../molecules/ReviewCard";
-import ButtonAllReviews from "../features/restaurantDetailPage/atoms/ButtonAllReviews";
 
 const ReviewCards = ({ placeId, count }) => {
   const { data } = useQuery(`review${placeId}`, () =>
