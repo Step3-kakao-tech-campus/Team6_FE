@@ -1,4 +1,4 @@
-import FilterButton from "../../../common/atoms/FilterButton";
+import FilterButton from "../atoms/FilterButton";
 import { useNavigate } from "react-router-dom";
 
 const FilterBar = ({ filter, setFilter }) => {
@@ -23,9 +23,9 @@ const FilterBar = ({ filter, setFilter }) => {
           value={button.value}
           filter={filter}
           setFilter={setFilter}
-          onClick={() => {
-            navigate(`/search/${button.value}`);
-          }}
+          // onClick={() => {
+          //   navigate(`/search/${button.value}`);
+          // }}
         />
       ))}
     </div>
