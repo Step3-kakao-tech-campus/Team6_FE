@@ -2,7 +2,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const TouristSpotCard = ({ touristSpot }) => {
   return (
-    <div className="mx-4 my-2 flex h-64 w-full flex-col items-center justify-center rounded-lg bg-white bg-white px-6 py-2 text-xl shadow-lg shadow-md">
+    <div className="shadow-rounded-card m-2 p-2">
       <img
         className="h-32 w-full rounded-t-lg object-cover"
         src={touristSpot.image}

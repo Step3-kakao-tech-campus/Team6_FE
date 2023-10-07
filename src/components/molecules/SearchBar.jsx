@@ -1,12 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { FaBars } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaUserCircle } from "react-icons/fa";
+import UserAvatar from "../atoms/UserAvatar";
 
 const SearchBar = ({ onChange, value, onSearch }) => {
+  const navigate = useNavigate();
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
+      navigate("/search");
       onSearch();
     }
   };
@@ -14,23 +18,25 @@ const SearchBar = ({ onChange, value, onSearch }) => {
   return (
     <div className="relative m-2 flex items-center">
       <Button onclick={() => console.log("to sideBar")}>
-        <FaBars size={20} />
+        <FaBars size={28} />
       </Button>
       <FaMapMarkerAlt
         size={15}
-        className="absolute left-10 top-1 h-6 text-orange-500"
+        className="absolute left-11 top-3 h-6 text-orange-500"
       />
       <Input
-        className="text-md mx-2 w-full rounded-lg bg-zinc-200 p-1 pl-10 outline-none"
+        className="text-md mx-1 w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
         type="search"
-        placeholder="Search"
+        placeholder="Search the location"
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyDown}
       />
-      <Button onclick={() => console.log("to userProfile")}>
-        <FaUserCircle size={30} className="mr-2" />
-      </Button>
+      <UserAvatar
+        image={"https://picsum.photos/230"}
+        onClick={() => console.log("clicked")}
+        className="h-12 w-12 rounded-full"
+      />
     </div>
   );
 };

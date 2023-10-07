@@ -19,7 +19,7 @@ function App() {
                 path="/restaurant/:id"
                 element={<RestaurantDetailPage />}
               />
-              <Route path="/search/:filter" element={<SearchPage />} />
+              <Route path="/search" element={<SearchPage />} />
               {/*<Route path="/festival/:id" element={<FestivalDetailPage />} />*/}
             </Route>
           </Routes>

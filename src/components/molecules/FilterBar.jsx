@@ -23,9 +23,9 @@ const FilterBar = ({ filter, setFilter }) => {
           value={button.value}
           filter={filter}
           setFilter={setFilter}
-          onClick={() => {
-            navigate(`/search/${button.value}`);
-          }}
+          // onClick={() => {
+          //   navigate(`/search/${button.value}`);
+          // }}
         />
       ))}
     </div>

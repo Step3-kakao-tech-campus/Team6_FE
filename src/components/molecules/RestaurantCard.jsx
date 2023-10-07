@@ -3,7 +3,7 @@ import WishButton from "../atoms/WishButton";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className="m-4 rounded-br-2xl rounded-tr-2xl bg-white px-4 shadow-md">
+    <div className="shadow-rounded-card m-4 px-4">
       <div className="flex">
         <img
           src={restaurant.image}
