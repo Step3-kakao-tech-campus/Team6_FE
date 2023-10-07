@@ -4,8 +4,8 @@ import Carousel from "../carousel/Carousel";
 import ButtonReserve from "./atoms/ButtonReserve";
 import { useState } from "react";
 import ReservationCalender from "./organisms/ReservationCalender";
-import ReviewSection from "./organisms/ReviewSection";
-import { imagesToSlides } from "./utils";
+import ReviewCards from "../../organisms/ReviewCards";
+import { imagesToSlides } from "../carousel/utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
 import MenuCard from "../../molecules/MenuCard";
@@ -38,7 +38,8 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <Carousel slides={imagesToSlides(restaurant.images)} />
       </div>
       <div className={"detail-content-container px-2"}>
-        <ReviewSection placeId={restaurant.id} />
+        <SectionTitle title={"Reviews"} />
+        <ReviewCards placeId={restaurant.id} count={4} />
       </div>
       <ReservationCalender
         isActive={isActiveCalender}
