@@ -1,3 +1,4 @@
+// FilterBar에 FilterButton을 렌더링하는데, FilterButton에 onClick 함수를 전달하고 있습니다.
 const FilterButton = ({ label, value, filter, setFilter, onClick }) => {
   return (
     <button

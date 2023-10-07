@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import HomePage from "./components/features/homePage/HomePage";
-import SearchPage from "./components/features/searchPage/page/SearchPage";
+import SearchPage from "./components/features/searchPage/SearchPage";
 import RestaurantDetailPage from "./components/features/restaurantDetailPage/RestaurantDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import FoodSearchPage from "./components/features/foodSearchPage/FoodSearchPage";
