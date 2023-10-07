@@ -1,9 +1,10 @@
 // mocks/handlers.js
 import { rest } from "msw";
 import { getMainPageResponse } from "./home";
-import { getRestaurantCards, getRestaurantDetail } from "./restaurant";
-import { getFestivalCards, getFestivalDetail } from "./festival";
-import { getTouristSpotCards, getTouristSpotDetail } from "./touristSpot";
+import { getRestaurants, getRestaurantDetail } from "./restaurant";
+import { getFestivals, getFestivalDetail } from "./festival";
+import { getReviews } from "./review";
+import { getTouristSpots } from "./touristSpot";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -13,10 +14,11 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: {
-            restaurants: getRestaurantCards(8),
-            festivals: getFestivalCards(8),
-            touristSpots: getTouristSpotCards(8),
+          success: true,
+          response: {
+            restaurants: getRestaurants(8),
+            festivals: getFestivals(8),
+            touristSpots: getTouristSpots(8),
           },
         }),
       );
@@ -25,42 +27,92 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ result: {} }));
   }),
 
-  rest.get("/api/home", (req, res, ctx) => {
+  rest.get("/home", (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
-        results: getMainPageResponse(),
+        success: true,
+        response: getMainPageResponse(),
       }),
     );
   }),
 
-  rest.get("/api/restaurant/:id", (req, res, ctx) => {
+  rest.get("/restaurant/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getRestaurantDetail(id),
-      }),
-    );
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   }),
 
-  rest.get("/api/festival/:id", (req, res, ctx) => {
+  rest.get("/festival/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getFestivalDetail(id),
-      }),
-    );
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getFestivalDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   }),
 
   rest.get("/api/touristSpot/:id", (req, res, ctx) => {
     const id = req.params.id;
-    return res(
-      ctx.status(200),
-      ctx.json({
-        results: getTouristSpotDetail(id),
-      }),
-    );
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/restaurant/reviews/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   }),
 ];

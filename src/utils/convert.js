@@ -13,3 +13,14 @@ export const comma = (num) => {
 
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
+
+export const toUpperCaseFirstWord = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export const toUpperCaseFirstWordAll = (str) => {
+    return str.split(' ').map((word) => {
+        return toUpperCaseFirstWord(word);
+    }).join(' ');
+}
+

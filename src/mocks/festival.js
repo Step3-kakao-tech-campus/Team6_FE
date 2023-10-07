@@ -1,6 +1,6 @@
 import FESTIVALS from "./datas/festivals";
 
-export const getFestivalCards = (length) => {
+export const getFestivals = (length) => {
   const selectedKeys = [
     "id",
     "name",
