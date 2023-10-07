@@ -22,7 +22,7 @@ const FestivalDetailTemplate = ({ festival }) => {
           className={"w-full"}
         />
       </div>
-      <div className={"festival-detail-content mt-[50rem] bg-white"}>
+      <div className={"festival-detail-content mt-[50rem] pb-[8rem] bg-white"}>
         <SectionTitle title={"Information"} />
         <div className={"detail-content-container px-2"}>
           {festival.description}

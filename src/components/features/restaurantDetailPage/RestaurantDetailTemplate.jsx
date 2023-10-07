@@ -30,7 +30,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       </div>
       <div
         className={
-          "restaurant-detail-template mt-[20rem] flex w-full flex-col bg-white pb-[4.2rem] sm:mt-[30rem]"
+          "restaurant-detail-content mt-[20rem] flex w-full flex-col bg-white pb-[8rem] sm:mt-[30rem]"
         }
       >
         <div className={"detail-content-container px-2"}>
