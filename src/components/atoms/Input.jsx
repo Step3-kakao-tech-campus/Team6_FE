@@ -1,10 +1,10 @@
-const Input = ({ type, value, onChange, onKeyDown, ...props }) => {
+const Input = ({ type, value, onChange, onKeyPress, ...props }) => {
   return (
     <input
       type={type}
       value={value}
       onChange={onChange}
-      onKeyDown={onKeyDown}
+      onKeyPress={onKeyPress}
       {...props}
     />
   );
