@@ -21,5 +21,5 @@ export const getFestivals = (length) => {
 };
 
 export const getFestivalDetail = (id) => {
-  return FESTIVALS.find((festival) => festival.id === id);
+  return FESTIVALS.find((festival) => festival.id === parseInt(id));
 };

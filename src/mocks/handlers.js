@@ -115,4 +115,24 @@ export const handlers = [
         }),
       );
   }),
+
+  rest.get("/festival/reviews/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
+  }),
 ];

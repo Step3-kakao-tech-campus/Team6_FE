@@ -1,14 +1,22 @@
 import { Outlet } from "react-router-dom";
 import BottomNavBar from "./navbar/BottomNavBar";
+import { createContext, useState } from "react";
+
+export const NavContext = createContext();
 
 const MainLayout = () => {
+  const [activatedTab, setActivatedTab] = useState(1);
   return (
-    <>
-      <div className={"main-layout flex width-flex-layout flex-col items-center pb-[70px] shadow-inner"}>
+    <NavContext.Provider value={{ activatedTab, setActivatedTab }}>
+      <div
+        className={
+          "main-layout width-flex-layout flex flex-col items-center shadow-lg"
+        }
+      >
         <Outlet />
-        <BottomNavBar activatedTab={1} />
+        <BottomNavBar activatedTab={activatedTab} />
       </div>
-    </>
+    </NavContext.Provider>
   );
 };
 

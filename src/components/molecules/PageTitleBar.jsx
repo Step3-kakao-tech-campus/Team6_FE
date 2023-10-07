@@ -5,7 +5,7 @@ const PageTitleBar = ({ name, resizeObserver }) => {
   return (
     <div
       className={
-        "width-flex-layout detail-title-bar fixed flex items-center justify-center rounded-b-3xl bg-white px-14 py-2 shadow-lg"
+        "width-flex-layout detail-title-bar fixed flex items-center justify-center rounded-b-3xl bg-white px-14 py-2 shadow-lg z-10"
       }
       ref={(ref) => {
         if (resizeObserver && ref) resizeObserver.observe(ref);

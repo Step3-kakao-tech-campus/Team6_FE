@@ -21,3 +21,17 @@ export const getRestaurantById = async (id) => {
         organizeError(error)
     ));
 };
+
+export const getFestivalById = async (id) => {
+  return await instance
+    .get(`/festival/${id}`)
+    .then((response) => {
+      return {
+        isSuccess: true,
+        result: response.data.response,
+      };
+    })
+    .catch(error => Promise.reject(
+        organizeError(error)
+    ));
+}

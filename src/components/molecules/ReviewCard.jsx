@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CardTitle from "../atoms/CardTitle";
-import StarRating from "../atoms/StarRating";
 import UserAvatar from "../atoms/UserAvatar";
+import StarRating from "../atoms/StarRating";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
@@ -13,18 +13,12 @@ const ReviewCard = ({ review }) => {
       onClick={() => navigate(`/review/${review.reviewId}`)}
     >
       <div className={"review-card-header flex gap-2"}>
-        <div
-          className={
-            "review-card-header-image h-[4rem] w-[4rem] overflow-hidden rounded-full "
-          }
-        >
-          <UserAvatar
-            image={review.authorImage}
-            onClick={() => console.log("userinfo")}
-          />
+        <div className={"review-card-header-image w-[4rem] h-[4rem] rounded-full overflow-hidden "}>
+        <UserAvatar image={review.authorImage} onClick={()=>console.log("userinfo")}/>
         </div>
-        <div className={"review-card-header-info justify-evenly"}>
-          <CardTitle title={review.authorNickname} lineClamp={1} />
+        <div className={"review-card-header-info justify-evenly flex flex-col"}>
+          <CardTitle title={review.authorNickname} lineClamp={1}/>
+            <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
           <StarRating averageScore={review.rating} />
         </div>
       </div>
