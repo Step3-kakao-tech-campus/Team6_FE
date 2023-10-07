@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CardTitle from "../atoms/CardTitle";
-import StarRating from "../common/atoms/StarRating";
 import UserAvatar from "../atoms/UserAvatar";
+import StarRating from "../atoms/StarRating";
 
 const ReviewCard = ({ review }) => {
   const navigate = useNavigate();
