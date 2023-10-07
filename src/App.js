@@ -8,6 +8,7 @@ import FoodSearchPage from "./components/features/foodSearchPage/FoodSearchPage"
 import WishlistPage from "./components/features/wishlistPage/WishlistPage";
 import FestivalDetailPage from "./components/features/festivalDetailPage/FestivalDetailPage";
 import ReservationListPage from "./components/features/reservationListPage/ReservationListPage";
+import ReviewListPage from "./components/features/ReviewListPage/ReviewListPage";
 
 const queryClient = new QueryClient();
 
@@ -19,10 +20,9 @@ function App() {
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
-              <Route
-                path="/restaurant/:id"
-                element={<RestaurantDetailPage />}
-              />
+              <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
+              <Route path="/restaurant/reviews/:id" element={<ReviewListPage placeType={"restaurant"}/>}/>
+              <Route path="/festivals/reviews/:id" element={<ReviewListPage placeType={"festivals"}/>}/>
               <Route path="/search/:filter" element={<SearchPage />} />
               <Route path={"/foods"} element={<FoodSearchPage />} />
               <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />} />
