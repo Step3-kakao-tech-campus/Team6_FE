@@ -16,8 +16,9 @@ const ReviewCard = ({ review }) => {
         <div className={"review-card-header-image w-[4rem] h-[4rem] rounded-full overflow-hidden "}>
         <UserAvatar image={review.authorImage} onClick={()=>console.log("userinfo")}/>
         </div>
-        <div className={"review-card-header-info justify-evenly"}>
+        <div className={"review-card-header-info justify-evenly flex flex-col"}>
           <CardTitle title={review.authorNickname} lineClamp={1}/>
+            <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
           <StarRating averageScore={review.rating} />
         </div>
       </div>
