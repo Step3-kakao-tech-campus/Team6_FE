@@ -13,7 +13,7 @@ import ButtonAllReviews from "./atoms/ButtonAllReviews";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveCalender, setIsActiveCalender] = useState(false);
-  const reservable = restaurant.reservable;
+  const [isActiveReview, setIsActiveReview] = useState(false);
   return (
     <>
       <PageTitleBar name={restaurant.name} />
@@ -47,16 +47,17 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         </div>
         <div className={"detail-content-container px-2"}>
           <SectionTitle title={"Reviews"} />
-          <ReviewCards placeId={restaurant.id} count={4} />
-          <ButtonAllReviews placeId={restaurant.id} placeType={"restaurant"}/>
+          <ReviewCards placeType={"restaurant"} placeId={restaurant.id} count={isActiveReview?0:4} />
+            {!isActiveReview && <ButtonAllReviews onClick={() => setIsActiveReview(true)} />}
         </div>
         <ReservationCalender
           isActive={isActiveCalender}
           setIsActive={setIsActiveCalender}
         />
+
         <ButtonReserve
           onClick={() => setIsActiveCalender(true)}
-          enable={reservable}
+          enable={restaurant.reservable}
         />
       </div>
     </>
