@@ -9,7 +9,7 @@ const InformationSection = ({ restaurant }) => {
         <SectionTitle title={"Information"} />
         <div
         className={
-          "information-card grid gap-2 rounded-lg border-2 border-gray-300 px-4 py-2 md:grid-cols-2"
+          "information-card grid gap-2 rounded-lg px-4 py-2 md:grid-cols-2"
         }
       >
         <AddressElement title={"Address"} value={restaurant.address} />
