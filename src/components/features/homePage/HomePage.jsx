@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Carousel from "../carousel/Carousel";
 import { useQuery } from "react-query";
 import { getHome } from "../../../apis/home";
@@ -8,6 +10,7 @@ import { utils } from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../../atoms/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
+import { search } from "../../../apis/search";
 
 const dummySlides = [
   {
@@ -22,10 +25,22 @@ const dummySlides = [
 ];
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const { data } = useQuery("products", () => getHome());
+  const [query, setQuery] = useState("");
+
+  const handleSearch = async (searchQuery) => {
+    await search(searchQuery);
+    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+  };
+
   return (
     <div className={"home-page flex w-full flex-col gap-2 py-2"}>
-      <SearchBar />
+      <SearchBar
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onSearch={handleSearch}
+      />
       <div className={"carousel-wrapper height-flex-layout-small"}>
         <Carousel slides={dummySlides} />
       </div>
