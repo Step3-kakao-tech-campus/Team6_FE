@@ -2,7 +2,6 @@ import FilterButton from "../atoms/FilterButton";
 import { useNavigate } from "react-router-dom";
 
 const FilterBar = ({ filter, setFilter }) => {
-  const navigate = useNavigate();
 
   const filterButtons = [
     { label: "All", value: "all" },
