@@ -24,7 +24,7 @@ const dummySlides = [
 const HomePage = () => {
   const { data } = useQuery("products", () => getHome());
   return (
-    <div className={"home-page flex w-full flex-col gap-2 py-2"}>
+    <div className={"home-page flex w-full flex-col gap-2 py-2 pb-16"}>
       <SearchBar />
       <div className={"carousel-wrapper height-flex-layout-small"}>
         <Carousel slides={dummySlides} />
