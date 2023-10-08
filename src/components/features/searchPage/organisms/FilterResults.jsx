@@ -2,7 +2,7 @@ import RestaurantCard from "../../../molecules/RestaurantCard";
 import FestivalCard from "../../../molecules/FestivalCard";
 import TouristSpotCard from "../../../molecules/TouristSpotCard";
 
-const FilterResults = ({ results, filter, query }) => {
+const FilterResults = ({ results, filter }) => {
   return (
     <div>
       {filter === "all" || filter === "restaurants" ? (

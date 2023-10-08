@@ -5,19 +5,19 @@ import { FaBars } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import UserAvatar from "../atoms/UserAvatar";
 
-const SearchBar = ({ onChange, value, onSearch }) => {
+const SearchBar = ({ value, onChange, onSearch }) => {
   const navigate = useNavigate();
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      navigate("/search");
-      onSearch();
+  const handleSearch = () => {
+    navigate(`/search?query=${encodeURIComponent(value)}`);
+    if (typeof onSearch === "function") {
+      onSearch(value);
     }
   };
 
   return (
     <div className="relative m-2 flex items-center">
-      <Button onclick={() => console.log("to sideBar")}>
+      <Button onClick={() => console.log("to sideBar")}>
         <FaBars size={28} />
       </Button>
       <FaMapMarkerAlt
@@ -30,7 +30,7 @@ const SearchBar = ({ onChange, value, onSearch }) => {
         placeholder="Search the location"
         value={value}
         onChange={onChange}
-        onKeyDown={handleKeyDown}
+        onKeyPress={(e) => e.key === "Enter" && handleSearch()}
       />
       <UserAvatar
         image={"https://picsum.photos/230"}

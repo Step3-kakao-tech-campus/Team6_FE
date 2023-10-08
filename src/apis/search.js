@@ -1,9 +1,9 @@
 import instance from "./api";
 
-export const search = async (query, setResults) => {
+export const search = async (query) => {
   try {
     const result = await instance.get(`/api/search?query=${query}`);
-    setResults(result.data.response);
+    return result.data.response;
   } catch (error) {
     console.error("Error performing search:", error);
   }
