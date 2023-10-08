@@ -10,7 +10,7 @@ const FilterButton = ({ label, value, filter, setFilter, onClick }) => {
       }}
       className={`m-1 w-auto rounded-full px-3 ${
         filter === value
-          ? "bg-orange-500 text-white"
+          ? "border border-[#ff4800] bg-[#fcefe7] text-[#ff4800]"
           : "border border-gray-300 text-black"
       }`}
     >
