@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt } from "react-icons/fa";
+import MapIcon from "../atoms/MapIcon";
 
 const TouristSpotCard = ({ touristSpot }) => {
   return (
@@ -11,7 +11,7 @@ const TouristSpotCard = ({ touristSpot }) => {
       <div className="flex h-28 w-full flex-col items-center justify-center">
         <h3 className="mb-2 text-xl font-bold">{touristSpot.name}</h3>
         <div className="flex">
-          <FaMapMarkerAlt size={15} className="mt-1 text-green-500" />
+          <MapIcon size={15} color="#22c55e" />
           <p className="text-sm">{touristSpot.address}</p>
         </div>
       </div>
