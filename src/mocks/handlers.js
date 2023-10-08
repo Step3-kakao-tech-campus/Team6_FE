@@ -1,5 +1,10 @@
 // mocks/handlers.js
 import { rest } from "msw";
+import { getMainPageResponse } from "./home";
+import { getRestaurants, getRestaurantDetail } from "./restaurant";
+import { getFestivals, getFestivalDetail } from "./festival";
+import { getReviews } from "./review";
+import { getTouristSpots } from "./touristSpot";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -9,54 +14,125 @@ export const handlers = [
       return res(
         ctx.status(200),
         ctx.json({
-          results: {
-            restaurants: [
-              {
-                id: 1,
-                name: "Pusan National University Main Gate Toast",
-                summary:
-                  "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",
-                image:
-                  "https://mp-seoul-image-production-s3.mangoplate.com/1297623_1569208351545507.jpg",
-                address: "Pusan National University, Pusan",
-                averageScore: 4.4,
-                liked: true,
-              },
-              {
-                id: 1,
-                name: "부산대 칠성돌곱창",
-                summary: "정문토스트는..",
-                image: "/image/restaurant/1",
-                address: "Seoul",
-                averageScore: 3.7,
-                liked: true,
-              },
-            ],
-            festivals: [
-              {
-                id: 1,
-                name: "2023 Pusan International Rock Festival",
-                summary: "부산 국제 락 페스티벌은...",
-                image: "/image/festival/1",
-                address: "Pusan Samrak Subyeon Park",
-                averageScore: 4.4,
-                liked: true,
-              },
-            ],
-            touristSpots: [
-              {
-                id: 1,
-                name: "Signiel Busan",
-                summary: "...",
-                address: "Pusan Haeundae",
-                liked: true,
-              },
-            ],
+          success: true,
+          response: {
+            restaurants: getRestaurants(8),
+            festivals: getFestivals(8),
+            touristSpots: getTouristSpots(8),
           },
-        })
+        }),
       );
     }
 
     return res(ctx.status(200), ctx.json({ result: {} }));
+  }),
+
+  rest.get("/home", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: getMainPageResponse(),
+      }),
+    );
+  }),
+
+  rest.get("/restaurant/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/festival/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getFestivalDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/api/touristSpot/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/restaurant/reviews/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
+  }),
+
+  rest.get("/festival/reviews/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   }),
 ];
