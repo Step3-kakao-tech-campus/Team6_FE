@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# TripKoFE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 작업 내역
+- [x] 홈페이지 작성
+- [x] 검색페이지 작성
+- [x] 상세페이지 작성
 
-## Available Scripts
+## 진행중
+- [ ] 리뷰 페이지
+- [ ] 예약 페이지
 
-In the project directory, you can run:
+## TODO NOW
 
-### `npm start`
+- [ ] ReviewCards.jsx 를 모달 형식으로 변경
+- [ ] ReviewCards.jsx 에서 더보기 버튼을 누르면 모달이 뜨도록 변경
+- [ ] 검색 페이지 디자인 손보기
+- [ ] 다음 주 작업 의논
+ 
+## 디렉터리 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+TripKoFE
+├── README.md
+├── package.json
+├── public
+├── src 
+│   ├── components  전체적인 컴포넌트
+│   │   ├── atoms
+│   │   ├── molecules
+│   │   ├── organisms
+│   │   ├── layouts
+│   │   ├── features        특정 기능에 대한 컴포넌트
+│   │   │   ├── feature...  특정 기능
+│   │   │   ├── HomePage    페이지 역시 특정 기능으로 분류했습니다.
+│   │   │   │   ├── atoms
+│   │   │   │   ├── molecules
+│   │   │   │   ├── organisms
+│   │   │   │   ├── Page.jsx
+│   │   │   │   ├── Template.jsx
+│   │   │   │   ├── utils.js
+│   ├── hooks
+│   ├── mocks
+│   │   ├── datas
+│   ├── apis
+│   ├── utils
+```
