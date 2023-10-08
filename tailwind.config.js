@@ -266,11 +266,25 @@ module.exports = {
       "rose-950": "#4c0519",
       white: "#ffffff",
       black: "#000000",
-      "tripKoOrange": "#ff7c03",
+      tripKoOrange: "#ff7c03",
       "tripKoOrange-100": "#fff5eb",
       "tripKoOrange-300": "#FFAF63",
       "tripKoOrange-500": "#FF4800",
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".clamp-3": {
+          display: "-webkit-box",
+          "-webkit-box-orient": "vertical",
+          "-webkit-line-clamp": "3",
+          overflow: "hidden",
+          "font-size": "11px",
+        },
+      };
+
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
 };
