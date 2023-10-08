@@ -22,6 +22,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
               <Route path="/restaurant/reviews/:id" element={<ReviewListPage placeType={"restaurant"}/>}/>
+              <Route path="/festival/reviews/:id" element={<ReviewListPage placeType={"festivals"}/>}/>
               <Route path="/festivals/reviews/:id" element={<ReviewListPage placeType={"festivals"}/>}/>
               <Route path="/search" element={<SearchPage />} />
               <Route path={"/foods"} element={<FoodSearchPage />} />

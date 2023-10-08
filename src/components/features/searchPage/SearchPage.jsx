@@ -16,11 +16,7 @@ const SearchPage = () => {
   const [searchKey, setSearchKey] = useState(["searchResults", query]);
   const [customError, setCustomError] = useState(null);
 
-  const {
-    data: results,
-    isLoading,
-    error,
-  } = useQuery(searchKey, () => search(query), {
+  const { data: results, isLoading, error,} = useQuery(searchKey, () => search(query), {
     onSuccess: (data) => {
       if (!data || data.length === 0) {
         setCustomError("No results found. Please try again.");

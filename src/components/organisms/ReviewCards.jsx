@@ -1,4 +1,4 @@
-import {getRestaurantReviewById, getReviewByIdAndType} from "../../apis/review";
+import {getReviewByIdAndType} from "../../apis/review";
 import { useQuery } from "react-query";
 import ReviewCard from "../molecules/ReviewCard";
 

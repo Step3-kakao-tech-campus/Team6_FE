@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Carousel from "../carousel/Carousel";
 import { useQuery } from "react-query";
 import { getHome } from "../../../apis/home";
@@ -11,6 +9,8 @@ import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../../atoms/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
 import { search } from "../../../apis/search";
+import {useNavigate} from "react-router-dom";
+import {useState} from "react";
 
 const dummySlides = [
   {
@@ -35,7 +35,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className={"home-page flex w-full flex-col gap-2 py-2"}>
+    <div className={"home-page flex w-full flex-col gap-2 py-2 pb-16"}>
       <SearchBar
         value={query}
         onChange={(e) => setQuery(e.target.value)}
