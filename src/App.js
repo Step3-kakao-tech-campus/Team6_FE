@@ -23,7 +23,7 @@ function App() {
               <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
               <Route path="/restaurant/reviews/:id" element={<ReviewListPage placeType={"restaurant"}/>}/>
               <Route path="/festivals/reviews/:id" element={<ReviewListPage placeType={"festivals"}/>}/>
-              <Route path="/search/:filter" element={<SearchPage />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route path={"/foods"} element={<FoodSearchPage />} />
               <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />} />
               <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />} />
