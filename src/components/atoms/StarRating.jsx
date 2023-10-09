@@ -38,7 +38,7 @@ const StarRating = ({ averageScore }) => {
     return stars;
   };
 
-  return <div className="text-orange-500">{renderRatingStars()}</div>;
+  return <div className=" text-orange-500">{renderRatingStars()}</div>;
 };
 
 export default StarRating;
