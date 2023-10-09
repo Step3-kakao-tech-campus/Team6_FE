@@ -1,5 +1,4 @@
 import FilterButton from "../atoms/FilterButton";
-import { useNavigate } from "react-router-dom";
 
 const FilterBar = ({ filter, setFilter }) => {
   const filterButtons = [
