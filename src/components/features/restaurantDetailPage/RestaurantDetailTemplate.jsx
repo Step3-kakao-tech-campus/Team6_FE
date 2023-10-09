@@ -1,66 +1,72 @@
 import PageTitleBar from "../../molecules/PageTitleBar";
-import InformationSection from "./organisms/InformationSection";
 import Carousel from "../carousel/Carousel";
-import ButtonReserve from "./atoms/ButtonReserve";
 import { useState } from "react";
-import ReservationCalender from "./organisms/ReservationCalender";
 import ReviewCards from "../../organisms/ReviewCards";
 import { imagesToSlides } from "../carousel/utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../../atoms/HorizontalListSection";
 import MenuCard from "../../molecules/MenuCard";
 import ButtonAllReviews from "./atoms/ButtonAllReviews";
+import { useQuery } from "react-query";
+import { getReviewByIdAndType } from "../../../apis/review";
+import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
+import InfoElement from "./atoms/InfoElement";
+import AddressElement from "./atoms/AddressElement";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
-  const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [isActiveReview, setIsActiveReview] = useState(false);
+  const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
+    getReviewByIdAndType(restaurant.id, "restaurant"),
+  );
   return (
-    <>
+    <div className={"restaurant-detail-template w-full"}>
       <PageTitleBar name={restaurant.name} />
+      {isActiveReview && (
+        <BottomPopModal onClose={() => setIsActiveReview(false)}>
+          <ReviewCards reviews={data.reviews} />
+        </BottomPopModal>
+      )}
       <div
         className={
-          "restaurant-image-wrapper width-flex-layout fixed -z-10 w-full overflow-hidden"
+          "restaurant-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "
         }
       >
         <img
-          className={"w-full object-cover"}
           src={restaurant.mainImage}
           alt={restaurant.name}
+          className={"w-full"}
         />
       </div>
       <div
         className={
-          "restaurant-detail-content mt-[20rem] flex w-full flex-col bg-white pb-[8rem] sm:mt-[30rem]"
+          "restaurant-detail-content relative mt-[30rem] bg-white pb-[8rem]"
         }
       >
+        <SectionTitle title={"Menu"} />
+        <HorizontalListSection>
+          {restaurant.menu.map((menu, index) => (
+            <MenuCard menu={menu} key={index} />
+          ))}
+        </HorizontalListSection>
+        <SectionTitle title={"Information"} />
         <div className={"detail-content-container px-2"}>
-          <SectionTitle title={"Menu"} />
-          <HorizontalListSection>
-            {restaurant.menu.map((menu, index) => (
-              <MenuCard menu={menu} key={index} />
-            ))}
-          </HorizontalListSection>
-          <InformationSection restaurant={restaurant} />
+          {restaurant.description}
         </div>
-        <div className={"carousel-wrapper height-flex-layout-medium mt-4"}>
+        <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
+          <AddressElement title={"Address"} value={restaurant.address} />
+          <AddressElement title={"Contact"} value={restaurant.contactInfo} />
+          <InfoElement title={"Operating Hours"} value={restaurant.open} />
+          <InfoElement title={"Break Time"} value={restaurant.breakTime} />
+        </div>
+        <SectionTitle title={"Photo"} />
+        <div className={"carousel-wrapper height-flex-layout-medium"}>
           <Carousel slides={imagesToSlides(restaurant.images)} />
         </div>
-        <div className={"detail-content-container px-2"}>
-          <SectionTitle title={"Reviews"} />
-          <ReviewCards placeType={"restaurant"} placeId={restaurant.id} count={isActiveReview?0:4} />
-            {!isActiveReview && <ButtonAllReviews onClick={() => setIsActiveReview(true)} />}
-        </div>
-        <ReservationCalender
-          isActive={isActiveCalender}
-          setIsActive={setIsActiveCalender}
-        />
-
-        <ButtonReserve
-          onClick={() => setIsActiveCalender(true)}
-          enable={restaurant.reservable}
-        />
+        <SectionTitle title={"Reviews"} />
+        {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
+        <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
       </div>
-    </>
+    </div>
   );
 };
 
