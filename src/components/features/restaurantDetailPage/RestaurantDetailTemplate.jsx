@@ -22,10 +22,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     <div className={"restaurant-detail-template w-full"}>
       <PageTitleBar name={restaurant.name} />
       {isActiveReview && (
-        <BottomPopModal
-          isActive={isActiveReview}
-          onClose={() => setIsActiveReview(false)}
-        >
+        <BottomPopModal onClose={() => setIsActiveReview(false)}>
           <ReviewCards reviews={data.reviews} />
         </BottomPopModal>
       )}

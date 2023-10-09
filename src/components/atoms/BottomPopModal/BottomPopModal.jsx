@@ -2,7 +2,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useCallback, useEffect, useState } from "react";
 import { lockBodyScroll } from "./utils";
 
-const BottomPopModal = ({ isActive, onClose, children }) => {
+const BottomPopModal = ({ onClose, children }) => {
 
   const [opened, setOpened] = useState(false);
 
@@ -19,8 +19,6 @@ const BottomPopModal = ({ isActive, onClose, children }) => {
   }, [onClose]);
 
   return (
-    <>
-      {isActive && (
         <>
           <div className={opened ? "modal-background" : "modal-background__hidden"}></div>
           <div className={opened ? "bottom-modal-board__opened" : "bottom-modal-board__closed"}>
@@ -36,8 +34,6 @@ const BottomPopModal = ({ isActive, onClose, children }) => {
             {children}
           </div>
         </>
-      )}
-    </>
   );
 };
 

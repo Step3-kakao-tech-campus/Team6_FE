@@ -20,10 +20,7 @@ const FestivalDetailTemplate = ({ festival }) => {
     <div className={"festival-detail-template w-full"}>
       <PageTitleBar name={festival.name} />
       {isActiveReview && (
-        <BottomPopModal
-          isActive={isActiveReview}
-          onClose={() => setIsActiveReview(false)}
-        >
+        <BottomPopModal onClose={() => setIsActiveReview(false)}>
           <ReviewCards reviews={data.reviews} />
         </BottomPopModal>
       )}
