@@ -3,7 +3,7 @@ import WishButton from "../atoms/WishButton";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className="shadow-rounded-card m-4 px-4">
+    <div className="shadow-rounded-card m-2 px-4">
       <div className="flex">
         <img
           src={restaurant.image}
@@ -14,6 +14,9 @@ const RestaurantCard = ({ restaurant }) => {
           <h4 className="text-lg font-semibold text-[#FF4800]">
             {restaurant.name}
           </h4>
+          <span className="text-xs text-gray-400">
+            {restaurant.address.split(" ").slice(-3, -1).join(" ")}
+          </span>
           <div className="clamp-3">{restaurant.summary}</div>
           <div className="flex items-center">
             <StarRating averageScore={restaurant.averageScore} />

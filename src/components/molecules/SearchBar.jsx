@@ -23,11 +23,10 @@ const SearchBar = ({ value, onChange, onSearch }) => {
       <div className="absolute left-11">
         <MapIcon size={20} color={"#FF4800"} />
       </div>
-
       <Input
         className="text-md mx-1 w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
         type="search"
-        placeholder="Search the location"
+        placeholder="Search your place..."
         value={value}
         onChange={onChange}
         onKeyPress={(e) => e.key === "Enter" && handleSearch()}

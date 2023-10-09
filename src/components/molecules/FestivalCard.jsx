@@ -4,7 +4,7 @@ import MapIcon from "../atoms/MapIcon";
 
 const FestivalCard = ({ festival }) => {
   return (
-    <div className="shadow-rounded-card mx-3 my-2 p-3">
+    <div className="shadow-rounded-card mx-3 p-3">
       <div className="flex">
         <img src={festival.image} alt={festival.name} className="h-32 w-24" />
         <div className="ml-2 w-full items-center">
@@ -13,7 +13,7 @@ const FestivalCard = ({ festival }) => {
             <WishButton initialIsWished={festival.liked} />
           </div>
 
-          <div className="mt-2 flex items-center">
+          <div className="mt-1 flex items-center">
             <MapIcon size={10} color={"#FF4800"} />
             <span className="ml-1 text-xs">{festival.address}</span>
           </div>
