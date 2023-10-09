@@ -29,7 +29,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
         placeholder="Search your place..."
         value={value}
         onChange={onChange}
-        onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
       />
       <UserAvatar
         image={"https://picsum.photos/230"}

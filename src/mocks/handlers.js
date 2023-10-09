@@ -137,8 +137,9 @@ export const handlers = [
       );
   }),
 
-  rest.get("/api/foods", (req, res, ctx) => {
+  rest.get("api/search/food", (req, res, ctx) => {
     const query = req.url.searchParams.get("query");
+
     if (query) {
       return res(
         ctx.status(200),
