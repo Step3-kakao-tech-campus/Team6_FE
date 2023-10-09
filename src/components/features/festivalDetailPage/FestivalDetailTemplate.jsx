@@ -6,25 +6,32 @@ import ReviewCards from "../../organisms/ReviewCards";
 import Carousel from "../carousel/Carousel";
 import { imagesToSlides } from "../carousel/utils";
 import ButtonAllReviews from "../restaurantDetailPage/atoms/ButtonAllReviews";
-import {useState} from "react";
+import { useState } from "react";
+import { useQuery } from "react-query";
+import { getReviewByIdAndType } from "../../../apis/review";
+import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
 
 const FestivalDetailTemplate = ({ festival }) => {
-    const [isActiveReview, setIsActiveReview] = useState(false);
+  const [isActiveReview, setIsActiveReview] = useState(false);
+  const { data } = useQuery(`festival/review/${festival.id}`, () =>
+    getReviewByIdAndType(festival.id, "festival"),
+  );
   return (
-    <>
+    <div className={"festival-detail-template w-full"}>
       <PageTitleBar name={festival.name} />
+      {isActiveReview && (
+        <BottomPopModal
+          isActive={isActiveReview}
+          onClose={() => setIsActiveReview(false)}
+        >
+          <ReviewCards reviews={data.reviews} />
+        </BottomPopModal>
+      )}
       <div
-        className={
-          "festival-image-wrapper width-flex-layout fixed -z-10 w-full overflow-hidden"
-        }
-      >
-        <img
-          src={festival.mainImage}
-          alt={festival.name}
-          className={"w-full"}
-        />
+        className={"festival-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "}>
+        <img src={festival.mainImage} alt={festival.name} className={"w-full"}/>
       </div>
-      <div className={"festival-detail-content mt-[50rem] bg-white pb-[8rem]"}>
+      <div className={"festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"}>
         <SectionTitle title={"Information"} />
         <div className={"detail-content-container px-2"}>
           {festival.description}
@@ -39,10 +46,10 @@ const FestivalDetailTemplate = ({ festival }) => {
           <Carousel slides={imagesToSlides(festival.images)} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <ReviewCards placeId={festival.id} placeType={"festival"} count={isActiveReview?0:4} />
-          {!isActiveReview && <ButtonAllReviews onClick={() => setIsActiveReview(true)} />}
+        {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
+        <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
       </div>
-    </>
+    </div>
   );
 };
 
