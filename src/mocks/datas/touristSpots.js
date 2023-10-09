@@ -14,7 +14,7 @@ const TOURIST_SPOTS = [
       "https://picsum.photos/204",
     ],
     address: "Pusan Haeundae",
-    liked: true,
+    isWished: true,
   },
 ];
 

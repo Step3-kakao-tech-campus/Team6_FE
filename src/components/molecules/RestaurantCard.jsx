@@ -24,7 +24,11 @@ const RestaurantCard = ({ restaurant }) => {
           </div>
         </div>
         <div className="mt-2">
-          <WishButton initialIsWished={restaurant.liked} />
+          <WishButton
+            filter={"restaurant"}
+            id={restaurant.id}
+            initialIsWished={restaurant.isWished}
+          />
         </div>
       </div>
     </div>

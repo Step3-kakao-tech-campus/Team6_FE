@@ -20,7 +20,7 @@ const RESTAURANTS = [
     breakTime: "15:00~17:00",
     contactInfo: "010-1234-5678",
     reservable: true,
-    liked: true,
+    isWished: true,
     menu: [
       {
         id: 1,

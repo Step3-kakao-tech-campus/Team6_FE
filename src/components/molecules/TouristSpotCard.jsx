@@ -11,7 +11,7 @@ const TouristSpotCard = ({ touristSpot }) => {
           alt={touristSpot.name}
         />
         <div className="absolute right-2 top-1">
-          <WishButton initialIsWished={touristSpot.liked} />
+          <WishButton initialIsWished={touristSpot.isWished} />
         </div>
       </div>
       <div className="flex h-16 w-full flex-col items-center justify-center">

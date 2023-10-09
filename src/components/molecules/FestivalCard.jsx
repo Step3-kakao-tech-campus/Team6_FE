@@ -10,7 +10,7 @@ const FestivalCard = ({ festival }) => {
         <div className="ml-2 w-full items-center">
           <div className="flex items-start justify-between">
             <h4 className="text-lg font-semibold">{festival.name}</h4>
-            <WishButton initialIsWished={festival.liked} />
+            <WishButton initialIsWished={festival.isWished} />
           </div>
 
           <div className="mt-1 flex items-center">
