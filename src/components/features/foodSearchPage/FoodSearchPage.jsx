@@ -1,46 +1,22 @@
 import { useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../atoms/Input";
-import SearchBar from "../../molecules/SearchBar";
 import { foodSearch } from "../../../apis/search";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();
-  const [foodSearchParams] = useSearchParams();
-  const initialQuery = foodSearchParams.get("query") || "";
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
 
-  const [query, setQuery] = useState(initialQuery);
-  const [searchKey, setSearchKey] = useState(["searchResults", query]);
-  const [customError, setCustomError] = useState(null);
-
-  const {
-    data: results,
-    isLoading,
-    error,
-  } = useQuery(searchKey, () => foodSearch(query), {
-    onSuccess: (data) => {
-      if (!data || data.length === 0) {
-        setCustomError("No results found. Please try again.");
-        return;
-      }
-      setCustomError(null);
-      navigate(`/foods?query=${encodeURIComponent(query)}`);
-    },
-    onError: (error) => {
-      console.log(error);
-      setCustomError("검색 중 오류가 발생했습니다. 다시 시도해 주세요.");
-    },
-  });
-
-  const handleSearch = (value) => {
-    setSearchKey(["searchResults", value]);
+  const handleSearch = async (query) => {
+    const data = await foodSearch(query);
+    setResults(data);
+    navigate(`/foods?query=${encodeURIComponent(query)}`);
   };
 
   return (
-    <div>
+    <div className="h-screen w-full bg-[url('https://media.cnn.com/api/v1/images/stellar/prod/181114130138-korean-food-2620014201204004k-jeonju-bibimbap.jpg?q=w_1600,h_900,x_0,y_0,c_fill/h_618')]">
       <h1 className="text-xl">Find Korea only for you</h1>
-
       <Input
         className="text-md mx-1 w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
         value={query}
@@ -48,6 +24,18 @@ const FoodSearchPage = () => {
         placeholder="Search for food"
         onKeyDown={(e) => e.key === "Enter" && handleSearch(query)}
       />
+      <div className="food-list">
+        {results.map((food) => (
+          <Link key={food.id} to={`/foods/${food.id}`}>
+            <div key={food.id} className="food-card">
+              <img src={food.image} alt={food.name} />
+              <h2>{food.name}</h2>
+              <p>{food.category}</p>
+              <p>{food.summary}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { getRestaurants, getRestaurantDetail } from "./restaurant";
 import { getFestivals, getFestivalDetail } from "./festival";
 import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
-import { getFoods } from "./food";
+import { getFoodDetail, getFoods } from "./food";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -150,5 +150,25 @@ export const handlers = [
       );
     }
     return res(ctx.status(200), ctx.json({ result: {} }));
+  }),
+
+  rest.get("food/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getFoods(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getFoodDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   }),
 ];

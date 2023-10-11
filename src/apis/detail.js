@@ -17,9 +17,7 @@ export const getRestaurantById = async (id) => {
         result: response.data.response,
       };
     })
-    .catch(error => Promise.reject(
-        organizeError(error)
-    ));
+    .catch((error) => Promise.reject(organizeError(error)));
 };
 
 export const getFestivalById = async (id) => {
@@ -31,7 +29,17 @@ export const getFestivalById = async (id) => {
         result: response.data.response,
       };
     })
-    .catch(error => Promise.reject(
-        organizeError(error)
-    ));
-}
+    .catch((error) => Promise.reject(organizeError(error)));
+};
+
+export const getFoodById = async (id) => {
+  return await instance
+    .get(`/food/${id}`)
+    .then((response) => {
+      return {
+        isSuccess: true,
+        result: response.data.response,
+      };
+    })
+    .catch((error) => Promise.reject(organizeError(error)));
+};
