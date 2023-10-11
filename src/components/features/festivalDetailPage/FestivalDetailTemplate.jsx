@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";
 import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
-import Calender from "../calender/Calender";
+import Calendar from "../calendar/Calendar";
 import { getCalenderByIdAndType } from "../../../apis/detail";
 
 const FestivalDetailTemplate = ({ festival }) => {
@@ -39,7 +39,7 @@ const FestivalDetailTemplate = ({ festival }) => {
         >
           {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
-            <Calender
+            <Calendar
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
               unavailableDays={operatingInfo.holiday}

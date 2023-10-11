@@ -13,7 +13,7 @@ import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
 import InfoElement from "./atoms/InfoElement";
 import AddressElement from "./atoms/AddressElement";
 import { getCalenderByIdAndType } from "../../../apis/detail";
-import Calender from "../calender/Calender";
+import Calendar from "../calendar/Calendar";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -41,7 +41,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         >
           {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
-            <Calender
+            <Calendar
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
               unavailableDays={operatingInfo.holiday}
