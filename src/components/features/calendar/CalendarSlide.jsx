@@ -1,11 +1,10 @@
 import CalendarDate from "./CalendarDate";
 import { isAvailableDay, isSameDay } from "./utils";
-import {useEffect} from "react";
 
 const CalendarSlide = ({ monthState, unavailableDays, setSelectedDate, selectedDate }) => {
   return (
     <div className={"calender-slide"}>
-        <div className={"calender-slide-body__day grid grid-cols-7"}>
+        <div className={"calender-slide-body__day grid grid-cols-7 text-lg font-semibold"}>
           {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((day) => (
             <div className={"calender-slide-body__day__item flex justify-center"}>
               {day}
