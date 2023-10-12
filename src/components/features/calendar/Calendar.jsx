@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../atoms/SectionTitle";
 import CalendarSlide from "./CalendarSlide";
+import {BiLeftArrowAlt, BiRightArrowAlt} from "react-icons/bi";
 
 const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
   const [monthState, setMonthState] = useState(new Date(new Date().getFullYear(), new Date().getMonth()));
   return (
     <div className={"calender flex flex-col"}>
       <SectionTitle title={"Select date to visit"} />
-      <div className={"calender-header flex justify-center"}>
+      <div className={"calender-header flex justify-center gap-2"}>
         <button
           className={"calender-header-button"}
           onClick={() => {
@@ -16,9 +17,9 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
             );
           }}
         >
-          {"<"}
+          <BiLeftArrowAlt size={30}/>
         </button>
-        <div className={"calender-month"}>
+        <div className={"calender-month text-xl font-bold text-tripKoOrange-500"}>
           {monthState.getFullYear()}년 {monthState.getMonth() + 1}월
         </div>
         <button
@@ -29,7 +30,7 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
             );
           }}
         >
-          {">"}
+          <BiRightArrowAlt size={30}/>
         </button>
       </div>
       <CalendarSlide
