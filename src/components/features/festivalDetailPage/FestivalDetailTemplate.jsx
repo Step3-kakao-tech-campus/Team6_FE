@@ -10,25 +10,59 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";
 import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
+import Calendar from "../calendar/Calendar";
+import { getCalenderByIdAndType } from "../../../apis/detail";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
+  const [isActiveCalender, setIsActiveCalender] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const { data } = useQuery(`festival/review/${festival.id}`, () =>
     getReviewByIdAndType(festival.id, "festival"),
   );
+
+  const { data: operatingInfo } = useQuery(
+    `festival/unavailableDays/${festival.id}`,
+    () => getCalenderByIdAndType(festival.id, "festival"),
+  );
+
   return (
     <div className={"festival-detail-template w-full"}>
       <PageTitleBar name={festival.name} />
-      {isActiveReview && (
-        <BottomPopModal onClose={() => setIsActiveReview(false)}>
-          <ReviewCards reviews={data.reviews} />
+      {(isActiveReview || isActiveCalender) && (
+        <BottomPopModal
+          onClose={() => {
+            setIsActiveReview(false);
+            setIsActiveCalender(false);
+          }}
+        >
+          {isActiveReview && <ReviewCards reviews={data.reviews} />}
+          {isActiveCalender && (
+            <Calendar
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              unavailableDays={operatingInfo.holiday}
+            />
+          )}
         </BottomPopModal>
       )}
       <div
-        className={"festival-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "}>
-        <img src={festival.mainImage} alt={festival.name} className={"w-full"}/>
+        className={
+          "festival-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "
+        }
+      >
+        <img
+          src={festival.mainImage}
+          alt={festival.name}
+          className={"w-full"}
+        />
       </div>
-      <div className={"festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"}>
+      <div
+        className={
+          "festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"
+        }
+      >
         <SectionTitle title={"Information"} />
         <div className={"detail-content-container px-2"}>
           {festival.description}
@@ -45,6 +79,7 @@ const FestivalDetailTemplate = ({ festival }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
+        <button onClick={() => setIsActiveCalender(true)}>Calender</button>
       </div>
     </div>
   );
