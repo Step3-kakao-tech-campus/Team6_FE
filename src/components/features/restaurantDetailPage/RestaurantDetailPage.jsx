@@ -10,7 +10,7 @@ const RestaurantDetailPage = () => {
   );
   return (
     <div className={"restaurant-detail-page w-full"}>
-      {data && <RestaurantDetailTemplate restaurant={data.result} />}
+      {data && <RestaurantDetailTemplate restaurant={data} />}
     </div>
   );
 };

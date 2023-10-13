@@ -12,10 +12,7 @@ export const getRestaurantById = async (id) => {
   return await instance
     .get(`${id}`)
     .then((response) => {
-      return {
-        isSuccess: true,
-        result: response.data.response,
-      };
+      return response.data.response;
     })
     .catch((error) => Promise.reject(organizeError(error)));
 };
@@ -24,10 +21,7 @@ export const getFestivalById = async (id) => {
   return await instance
     .get(`/festival/${id}`)
     .then((response) => {
-      return {
-        isSuccess: true,
-        result: response.data.response,
-      };
+      return response.data.response;
     })
     .catch((error) => Promise.reject(organizeError(error)));
 };
@@ -42,4 +36,15 @@ export const getFoodById = async (id) => {
       };
     })
     .catch((error) => Promise.reject(organizeError(error)));
+};
+
+export const getCalenderByIdAndType = async (id, type) => {
+  return await instance
+    .get(`/${type}/bookings/calender/${id}`)
+    .then((response) => {
+      return response.data.response;
+    })
+    .catch((error) => {
+      return Promise.reject(organizeError(error));
+    });
 };

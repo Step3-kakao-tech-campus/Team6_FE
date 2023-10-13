@@ -12,18 +12,41 @@ import { getReviewByIdAndType } from "../../../apis/review";
 import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
 import InfoElement from "./atoms/InfoElement";
 import AddressElement from "./atoms/AddressElement";
+import { getCalenderByIdAndType } from "../../../apis/detail";
+import Calendar from "../calendar/Calendar";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
+  const [isActiveCalender, setIsActiveCalender] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+
   const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
     getReviewByIdAndType(restaurant.id, "restaurant"),
   );
+
+  const { data: operatingInfo } = useQuery(
+    `restaurant/unavailableDays/${restaurant.id}`,
+    () => getCalenderByIdAndType(restaurant.id, "restaurant"),
+  );
+
   return (
     <div className={"restaurant-detail-template w-full"}>
       <PageTitleBar name={restaurant.name} />
-      {isActiveReview && (
-        <BottomPopModal onClose={() => setIsActiveReview(false)}>
-          <ReviewCards reviews={data.reviews} />
+      {(isActiveReview || isActiveCalender) && (
+        <BottomPopModal
+          onClose={() => {
+            setIsActiveReview(false);
+            setIsActiveCalender(false);
+          }}
+        >
+          {isActiveReview && <ReviewCards reviews={data.reviews} />}
+          {isActiveCalender && (
+            <Calendar
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+              unavailableDays={operatingInfo.holiday}
+            />
+          )}
         </BottomPopModal>
       )}
       <div
@@ -65,6 +88,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
+          <button onClick={() => setIsActiveCalender(true)}>Calender</button>
       </div>
     </div>
   );

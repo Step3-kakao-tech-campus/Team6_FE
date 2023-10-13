@@ -6,6 +6,7 @@ import { getFestivals, getFestivalDetail } from "./festival";
 import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
 import { getFoodDetail, getFoods } from "./food";
+import { availableDate } from "./datas/availableDates";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -168,6 +169,30 @@ export const handlers = [
         ctx.json({
           success: false,
           response: null,
+        }),
+      );
+  }),
+
+  rest.get("/restaurant/bookings/calender/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: availableDate,
+        }),
+      );
+  }),
+
+  rest.get("/festival/bookings/calender/:id", (req, res, ctx) => {
+    const id = req.params.id;
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: availableDate,
         }),
       );
   }),

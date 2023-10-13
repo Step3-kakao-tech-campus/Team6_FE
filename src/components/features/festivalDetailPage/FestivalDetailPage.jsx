@@ -8,7 +8,7 @@ const FestivalDetailPage = () => {
   const {data} = useQuery(`festival${params}`, () => getFestivalById(params));
     return (
         <div className={"festival-detail-page w-full"}>
-            {data && <FestivalDetailTemplate festival={data.result} />}
+            {data && <FestivalDetailTemplate festival={data} />}
         </div>
   );
 };
