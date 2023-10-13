@@ -34,7 +34,7 @@ const FoodSearchPage = () => {
               results.length > 0 ? "mt-6 flex" : "h-screen"
             }`}
           >
-            {results.length === 0 && (
+            {results?.length === 0 && (
               <h1 className="mb-4 text-center text-6xl font-extrabold">
                 Find Korea only for you
               </h1>
@@ -52,13 +52,13 @@ const FoodSearchPage = () => {
               }}
             />
           </div>
-          {results.length > 0 && currentQuery && (
+          {results?.length > 0 && currentQuery && (
             <h3 className="mx-4 mt-2 text-xl">
               Searching for "{currentQuery}"
             </h3>
           )}
           <div className="food-list grid w-full grid-cols-1 gap-0 md:grid-cols-2">
-            {results.map((food) => (
+            {results?.map((food) => (
               <Link key={food.id} to={`/foods/${food.id}`}>
                 <div
                   key={food.id}
