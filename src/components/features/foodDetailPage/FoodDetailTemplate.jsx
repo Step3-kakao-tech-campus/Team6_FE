@@ -43,7 +43,7 @@ const FoodDetailTemplate = ({ food }) => {
             <img
               src={restaurant.image}
               alt={restaurant.name}
-              className="h-40 w-full rounded-lg"
+              className="h-60 w-full rounded-lg object-cover"
             />
           </div>
         </div>
