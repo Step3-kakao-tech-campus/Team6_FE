@@ -153,7 +153,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ result: {} }));
   }),
 
-  rest.get("food/:id", (req, res, ctx) => {
+  rest.get("/food/:id", (req, res, ctx) => {
     const id = req.params.id;
     if (getFoods(id) != null)
       return res(
