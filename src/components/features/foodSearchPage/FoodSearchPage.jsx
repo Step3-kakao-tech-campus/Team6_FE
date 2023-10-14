@@ -27,10 +27,9 @@ const FoodSearchPage = () => {
   };
 
   return (
-    <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-y-auto">
-      <div className="absolute inset-0 top-0 z-0 h-full bg-food-search bg-cover bg-center bg-no-repeat brightness-50"></div>
-
-      <div className="absolute top-0 flex w-full flex-col items-center justify-center ">
+    <div className="relative flex h-screen w-full flex-col bg-food-search bg-cover bg-center bg-no-repeat">
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 flex flex-col overflow-y-auto">
         <div
           className={`input flex w-full transition-all ${
             results.length > 0
@@ -61,7 +60,7 @@ const FoodSearchPage = () => {
         {results?.length > 0 && currentQuery && (
           <h3 className="mx-4 mt-2 text-lg">Searching for "{currentQuery}"</h3>
         )}
-        <div className="food-list grid w-full grid-cols-1 gap-0 md:grid-cols-2">
+        <div className="food-list grid w-full grid-cols-1 gap-0 pb-16 md:grid-cols-2">
           {results?.map((food) => (
             <FoodCard key={food.id} food={food} />
           ))}
