@@ -18,6 +18,9 @@ const FoodSearchPage = () => {
       navigate(`/foods?query=${encodeURIComponent(query)}`, { replace: true });
       fetchSearchResults(query);
       setCurrentQuery(query);
+    } else {
+      setResults([]);
+      setCurrentQuery("");
     }
   }, [location.search]);
 
