@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../atoms/Input";
 import { foodSearch } from "../../../apis/search";
 import { FiSearch } from "react-icons/fi";
+import FoodCard from "../../molecules/FoodCard";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const FoodSearchPage = () => {
 
   return (
     <div className="relative flex h-screen w-full flex-col items-center justify-center overflow-y-auto">
-      <div className="bg-food-search absolute inset-0 top-0 z-0 h-full bg-cover bg-center bg-no-repeat brightness-50"></div>
+      <div className="absolute inset-0 top-0 z-0 h-full bg-food-search bg-cover bg-center bg-no-repeat brightness-50"></div>
 
       <div className="absolute top-0 flex w-full flex-col items-center justify-center ">
         <div
@@ -42,7 +43,7 @@ const FoodSearchPage = () => {
               Find Korea only for you
             </h1>
           )}
-          <div className="relative mx-4 flex w-full flex-col">
+          <div className="relative flex w-full flex-col px-4">
             <FiSearch className="absolute left-6 top-3 text-gray-500" />
             <Input
               className="text-md w-full rounded-lg bg-gray-100 p-2 pl-16 outline-none"
@@ -58,25 +59,11 @@ const FoodSearchPage = () => {
           </div>
         </div>
         {results?.length > 0 && currentQuery && (
-          <h3 className="mx-4 mt-2 text-xl">Searching for "{currentQuery}"</h3>
+          <h3 className="mx-4 mt-2 text-lg">Searching for "{currentQuery}"</h3>
         )}
         <div className="food-list grid w-full grid-cols-1 gap-0 md:grid-cols-2">
           {results?.map((food) => (
-            <Link key={food.id} to={`/foods/${food.id}`}>
-              <div
-                key={food.id}
-                className="food-card shadow-rounded-card mx-4 my-2 items-center bg-white p-4"
-              >
-                <img
-                  src={food.image}
-                  alt={food.name}
-                  className="mb-2 h-36 w-full rounded-md object-cover"
-                />
-                <span className="text-sm text-gray-500">{food.category}</span>
-                <h2 className="my-1 text-2xl font-bold">{food.name}</h2>
-                <p className="mb-4 text-gray-500 clamp-3">{food.summary}</p>
-              </div>
-            </Link>
+            <FoodCard key={food.id} food={food} />
           ))}
         </div>
       </div>
