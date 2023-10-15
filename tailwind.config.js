@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "food-search": "url('/public/bg_foodSearchPage.jpeg')",
+      },
+    },
     screens: {
       xs: "550px",
       // => @media (min-width: 550px) { ... }
