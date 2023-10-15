@@ -1,7 +1,7 @@
 const RESTAURANTS = [
   {
     id: 1,
-    name: "Pusan National University Main Gate Toast",
+    name: "Main Gate Toast",
     summary:
       "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",
     description:
@@ -13,14 +13,14 @@ const RESTAURANTS = [
       "https://picsum.photos/202",
       "https://picsum.photos/203",
     ],
-    address: "Pusan National University, Pusan",
+    address: "BuildingName1 RoadName1 GeumjeongGu JangjeonDong Busan",
     averageScore: 4.4,
     holidayDate: "2021-10-10",
     open: "11:00~22:00",
     breakTime: "15:00~17:00",
     contactInfo: "010-1234-5678",
     reservable: true,
-    liked: true,
+    isWished: true,
     menu: [
       {
         id: 1,
@@ -43,14 +43,16 @@ const RESTAURANTS = [
         name: "toast",
         image: "https://picsum.photos/302",
         price: 3000,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
       },
       {
         id: 4,
         name: "toast",
         image: "https://picsum.photos/303",
         price: 3000,
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
       },
     ],
   },

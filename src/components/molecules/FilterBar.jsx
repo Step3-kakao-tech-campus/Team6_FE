@@ -1,8 +1,6 @@
 import FilterButton from "../atoms/FilterButton";
-import { useNavigate } from "react-router-dom";
 
 const FilterBar = ({ filter, setFilter }) => {
-
   const filterButtons = [
     { label: "All", value: "all" },
     { label: "Restaurants", value: "restaurants" },
@@ -14,7 +12,7 @@ const FilterBar = ({ filter, setFilter }) => {
   ];
 
   return (
-    <div className="overflow-x-scroll whitespace-nowrap">
+    <div className="mx-2 overflow-x-scroll whitespace-nowrap">
       {filterButtons.map((button, index) => (
         <FilterButton
           key={index}
