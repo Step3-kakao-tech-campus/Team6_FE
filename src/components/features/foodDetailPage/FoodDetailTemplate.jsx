@@ -1,6 +1,6 @@
 import PageTitleBar from "../../molecules/PageTitleBar";
 import SectionTitle from "../../atoms/SectionTitle";
-import StarRating from "../../atoms/StarRating";
+import { FaStar } from "react-icons/fa";
 
 const FoodDetailTemplate = ({ food }) => {
   const { name, image, description, ingredients, restaurant } =
@@ -20,9 +20,9 @@ const FoodDetailTemplate = ({ food }) => {
         <div className="py-4">
           <SectionTitle title="Ingredient" />
           <div className="detail-content-container px-2">
-            {ingredients?.map((ingredient) => (
-              <div className="flex items-center justify-between">
-                <span>{ingredient.name}</span>
+            {ingredients?.map((ingredient, index) => (
+              <div key={index} className="flex items-center justify-between">
+                <span>{ingredient}</span>
               </div>
             ))}
           </div>
@@ -30,21 +30,27 @@ const FoodDetailTemplate = ({ food }) => {
         <div className="py-4">
           <SectionTitle title="Famous Retaurants" />
           <div className="flex flex-col px-2">
-            <span className="text-lg font-bold">{restaurant.name}</span>
-            <div className="flex items-baseline justify-between">
-              <span className="text-sm text-gray-400">
-                {restaurant.location}
-              </span>
-              <div className="mr-2 flex items-baseline">
-                <StarRating averageScore={restaurant.rating} />
-                <span className="ml-2 text-xs">{restaurant.rating}</span>
+            {restaurant.map((restaurant) => (
+              <div key={restaurant.name} className="my-2">
+                <span className="text-lg font-bold">{restaurant.name}</span>
+                <div className="mb-2 flex items-baseline justify-between">
+                  <span className="text-sm text-gray-400">
+                    {restaurant.location}
+                  </span>
+                  <div className="mr-2 flex">
+                    <FaStar color="#ffc107" />
+                    <span className="ml-2 text-xs">
+                      {restaurant.averageRating}
+                    </span>
+                  </div>
+                </div>
+                <img
+                  src={restaurant.image}
+                  alt={restaurant.name}
+                  className="h-60 w-full rounded-lg object-cover"
+                />
               </div>
-            </div>
-            <img
-              src={restaurant.image}
-              alt={restaurant.name}
-              className="h-60 w-full rounded-lg object-cover"
-            />
+            ))}
           </div>
         </div>
       </div>

@@ -154,6 +154,8 @@ export const handlers = [
   }),
 
   rest.get("/food/:id", (req, res, ctx) => {
+    console.log(req.params);
+
     const id = req.params.id;
     if (getFoods(id) != null)
       return res(
