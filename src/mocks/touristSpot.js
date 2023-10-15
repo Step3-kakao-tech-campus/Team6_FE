@@ -1,7 +1,7 @@
 import TOURIST_SPOTS from "./datas/touristSpots";
 
 export const getTouristSpots = (length) => {
-  const selectedKeys = ["id", "name", "summary", "address", "liked"];
+  const selectedKeys = ["id", "name", "summary", "address", "isWished"];
   const touristSpot = Object.fromEntries(
     Object.entries(TOURIST_SPOTS[0]).filter(([key, value]) =>
       selectedKeys.includes(key),

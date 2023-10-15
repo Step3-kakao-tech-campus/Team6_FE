@@ -7,7 +7,7 @@ export const getRestaurants = (length) => {
     "summary",
     "address",
     "averageScore",
-    "liked",
+    "isWished",
   ];
   const restaurantCard = Object.fromEntries(
     Object.entries(RESTAURANTS[0]).filter(([key, value]) =>
