@@ -1,10 +1,22 @@
 // 다형성을 가진 버튼 컴포넌트
-const Button = ({ onClick, children }) => {
+const Button = ({ as: Component = "button", onClick, children, ...rest }) => {
   return (
-    <button onClick={onClick} type="button">
+    <Component onClick={onClick} {...rest}>
       {children}
-    </button>
+    </Component>
   );
 };
 
 export default Button;
+
+{
+  /* <Button onClick={() => alert('Button clicked!')}>Click Me</Button> */
+}
+
+{
+  /* <Button as="a" href="https://example.com">Visit Example</Button> */
+}
+
+{
+  /* <Button as="div" onClick={() => alert('Div clicked!')}>Click Me</Button> */
+}
