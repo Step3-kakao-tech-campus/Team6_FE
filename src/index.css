@@ -3,40 +3,40 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Noto Sans KR', sans-serif;
-    box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
 
 @layer components {
-    .width-flex-layout {
-        @apply w-full min-w-[20rem] max-w-[50rem];
-    }
+  .width-flex-layout {
+    @apply w-full min-w-[20rem] max-w-[50rem];
+  }
 
-    .height-flex-layout-small {
-        @apply h-[16rem] md:h-[24rem];
-    }
+  .height-flex-layout-small {
+    @apply h-[16rem] md:h-[24rem];
+  }
 
-    .height-flex-layout-medium {
-        @apply h-[24rem] md:h-[32rem];
-    }
+  .height-flex-layout-medium {
+    @apply h-[24rem] md:h-[32rem];
+  }
 
-    .shadow-rounded-card {
-        @apply hover:scale-[102%] hover:shadow-2xl hover:bg-gray-50 transition duration-300 ease-in-out shadow-lg rounded-md;
-    }
+  .shadow-rounded-card {
+    @apply rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
+  }
 
-    .modal-background {
-        @apply width-flex-layout h-full absolute bg-black bg-opacity-50 z-[5];
-    }
+  .modal-background {
+    @apply width-flex-layout absolute z-[5] h-full bg-black bg-opacity-50;
+  }
 
-    .modal-background__hidden {
-        @apply hidden fixed bg-black bg-opacity-50 z-[5]
-    }
+  .modal-background__hidden {
+    @apply fixed z-[5] hidden bg-black bg-opacity-50;
+  }
 
-    .bottom-modal-board__opened {
-        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out
-    }
+  .bottom-modal-board__opened {
+    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
+  }
 
-    .bottom-modal-board__closed {
-        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out translate-y-full
-    }
+  .bottom-modal-board__closed {
+    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
+  }
 }
