@@ -10,6 +10,6 @@ const getDateFromString = (date) => {
 
 export const sortReservation = (reservations) => {
   return reservations.sort((a, b) => {
-    return new getDateFromString(a.date) - getDateFromString(b.date);
+    return getDateFromString(a.date) - getDateFromString(b.date);
   });
 };
