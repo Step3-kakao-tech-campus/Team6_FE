@@ -7,6 +7,7 @@ import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
 import { getFoodDetail, getFoods } from "./food";
 import { availableDate } from "./datas/availableDates";
+import {getFestivalReservation, getRestaurantReservation} from "./reservation";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -197,5 +198,25 @@ export const handlers = [
           response: availableDate,
         }),
       );
+  }),
+
+  rest.get("/userinfo/reservation/restaurant", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: getRestaurantReservation(),
+      }),
+    );
+  }),
+
+  rest.get("/userinfo/reservation/festival", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: getFestivalReservation(),
+      }),
+    );
   }),
 ];
