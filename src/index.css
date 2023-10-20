@@ -39,4 +39,36 @@
   .bottom-modal-board__closed {
     @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
   }
+
+  .ticket-card {
+    @apply width-flex-layout height-flex-layout-small relative rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl overflow-hidden;
+  }
+
+  .cutting-line {
+    @apply w-4/5 h-full border-l-[0.20rem] border-tripKoOrange absolute left-[7.80rem] border-dashed
+  }
+
+  .ticket-card-cut-right {
+    position : absolute;
+    right : -3rem;
+    top : 50%;
+    bottom : 50%;
+    transform : translate(0, -50%);
+    width : 6rem;
+    height : 6rem;
+    border-radius: 100%;
+    background-color: yellowgreen;
+  }
+
+  .ticket-card-cut-left {
+    position : absolute;
+    left : -3rem;
+    top : 50%;
+    bottom : 50%;
+    transform : translate(0, -50%);
+    width : 6rem;
+    height : 6rem;
+    border-radius: 100%;
+    background-color: yellowgreen;
+  }
 }
