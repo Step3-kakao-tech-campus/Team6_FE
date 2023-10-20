@@ -1,20 +1,14 @@
 import { useState } from "react";
-import Button from "../../atoms/Button";
-import PageTitleBar from "../../molecules/PageTitleBar";
-import FilterBar from "../../molecules/FilterBar";
+import { useQuery } from "react-query";
+import WishlistTemplate from "./WishlistTemplate";
 
 const WishlistPage = () => {
   const [filter, setFilter] = useState("all");
+  const { data } = useQuery(`wishlist${filter}`, () => filter);
 
   return (
     <div className="wishlist-page w-full">
-      <PageTitleBar name={"Wishlist"} />
-      <div className="filter-bar mt-20">
-        <FilterBar filter={filter} setFilter={setFilter} />
-      </div>
-      <Button as="a" href="/" variant="secondary">
-        Go to Home
-      </Button>
+      {data && <WishlistTemplate wishlist={data} filter={filter} />}
     </div>
   );
 };
