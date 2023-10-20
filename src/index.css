@@ -33,10 +33,10 @@
   }
 
   .bottom-modal-board__opened {
-    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
+    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
   }
 
   .bottom-modal-board__closed {
-    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
+    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
   }
 }
