@@ -14,16 +14,11 @@ const ReviewCard = ({ review }) => {
       onClick={() => setExtended(!isExtended)}
     >
       <div className={"review-card-header flex gap-2"}>
-        <div
-          className={
-            "review-card-header-image h-[4rem] w-[4rem] overflow-hidden rounded-full "
-          }
-        >
-          <UserAvatar
-            image={review.authorImage}
-            onClick={() => console.log("userinfo")}
-          />
-        </div>
+        <UserAvatar
+          image={review.authorImage}
+          onClick={() => console.log("userinfo")}
+          className={"h-[4rem] w-[4rem] overflow-hidden rounded-full"}
+        />
         <div className={"review-card-header-info flex flex-col justify-evenly"}>
           <CardTitle title={review.authorNickname} lineClamp={1} />
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
@@ -38,7 +33,9 @@ const ReviewCard = ({ review }) => {
         {isExtended && (
           <>
             <CardTitle title={"Photo"} />{" "}
-            <div className={"review-photo h-[15rem] w-full flex overflow-x-scroll"}>
+            <div
+              className={"review-photo-section flex h-[15rem] w-full overflow-x-scroll"}
+            >
               <Photo
                 className={"h-[15rem] w-[15rem] "}
                 src={review.image}
