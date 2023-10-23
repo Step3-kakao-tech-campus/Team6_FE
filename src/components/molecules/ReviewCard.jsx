@@ -2,6 +2,7 @@ import CardTitle from "../atoms/CardTitle";
 import UserAvatar from "../atoms/UserAvatar";
 import StarRating from "../atoms/StarRating";
 import { useState } from "react";
+import Photo from "../atoms/Photo";
 
 const ReviewCard = ({ review }) => {
   const [isExtended, setExtended] = useState(false);
@@ -34,7 +35,19 @@ const ReviewCard = ({ review }) => {
           {review.description}
         </p>
 
-        {isExtended && <><CardTitle title={"Photo"}/> <img src={review.image} alt={""} /></>}
+        {isExtended && (
+          <>
+            <CardTitle title={"Photo"} />{" "}
+            <div className={"review-photo h-[15rem] w-full flex overflow-x-scroll"}>
+              <Photo
+                className={"h-[15rem] w-[15rem] "}
+                src={review.image}
+                alt={""}
+                extendable={true}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

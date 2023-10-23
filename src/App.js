@@ -28,7 +28,6 @@ function App() {
                 <Route path="/festival/:id" element={<FestivalDetailPage />} />
                 <Route path={"/search"} element={<SearchPage />} />
 
-
                 <Route path={"/foods"} element={<FoodSearchPage />} />
                 <Route path={"/foods/:id"} element={<FoodDetailPage />} />
                 <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>

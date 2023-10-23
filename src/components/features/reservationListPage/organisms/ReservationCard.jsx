@@ -1,13 +1,14 @@
 import CardTitle from "../../../atoms/CardTitle";
 import MapIcon from "../../../atoms/MapIcon";
+import Photo from "../../../atoms/Photo";
 
 const ReservationCard = ({ reservation }) => {
   console.log(reservation);
   return (
     <div className="reservation-card-wrapper ticket-card flex h-40 w-full">
       <div className={"reservation-cutting-line cutting-line"} />
-      <img
-        className={"reservation-image h-40 w-[8rem] object-cover"}
+      <Photo
+        className={"reservation-image h-40 w-[12rem] object-cover"}
         src={reservation.image}
         alt={reservation.name}
       />
