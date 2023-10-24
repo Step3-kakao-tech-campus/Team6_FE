@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import {override} from "customize-cra";
 
 export const useComponentSize = (ref) => {
   const [size, setSize] = useState({

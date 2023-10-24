@@ -4,7 +4,7 @@ import { useState } from "react";
 import ReviewCards from "../../organisms/ReviewCards";
 import { imagesToSlides } from "../carousel/utils";
 import SectionTitle from "../../atoms/SectionTitle";
-import HorizontalListSection from "../../atoms/HorizontalListSection";
+import HorizontalListSection from "../carousel/HorizontalListSection";
 import MenuCard from "../../molecules/MenuCard";
 import ButtonAllReviews from "./atoms/ButtonAllReviews";
 import { useQuery } from "react-query";
