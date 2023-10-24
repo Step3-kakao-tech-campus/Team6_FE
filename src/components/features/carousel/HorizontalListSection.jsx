@@ -25,7 +25,7 @@ const HorizontalListSection = ({ children }) => {
         }}
       />
       <div
-        className="horizontal-list-wrapper relative w-full overflow-x-scroll"
+        className="horizontal-list-wrapper w-full overflow-x-scroll"
         ref={innerDivRef}
       >
         <div className="horizontal-list flex flex-row gap-4 px-4 py-3 ">

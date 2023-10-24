@@ -11,30 +11,34 @@ import ScrollButtonRight from "./ScrollButtonRight";
  */
 const HorizontalListSectionMediaQuery = ({ children }) => {
   const innerDivRef = useRef(null);
-  const divSize = useComponentSize(innerDivRef);
+  const innerDivSize = useComponentSize(innerDivRef);
   return (
     <div className={"relative"}>
-      <ScrollButtonLeft
-        onClick={() => {
-          innerDivRef.current.scrollBy({
-            left: divSize.width,
-            behavior: "smooth",
-          });
-        }}
-      />
-      <ScrollButtonRight
-        onClick={() => {
-          innerDivRef.current.scrollBy({
-            left: -divSize.width,
-            behavior: "smooth",
-          });
-        }}
-      />
-      <div
-        className="horizontal-list-wrapper-media-query w-full md:overflow-x-scroll"
-        ref={innerDivRef}
-      >
-        <div className="horizontal-list grid w-full grid-cols-1 gap-4 overflow-y-hidden px-4 py-4 xs:grid-cols-2 md:flex md:w-auto md:flex-row">
+      {innerDivSize?.width >= 768 && (
+        <>
+          <ScrollButtonLeft
+            onClick={() => {
+              innerDivRef.current.scrollBy({
+                left: innerDivSize.width,
+                behavior: "smooth",
+              });
+            }}
+          />
+          <ScrollButtonRight
+            onClick={() => {
+              innerDivRef.current.scrollBy({
+                left: -innerDivSize.width,
+                behavior: "smooth",
+              });
+            }}
+          />
+        </>
+      )}
+      <div className="horizontal-list-wrapper-media-query w-full md:overflow-x-scroll">
+        <div
+          className="horizontal-list grid w-full grid-cols-1 gap-4 overflow-y-hidden px-4 py-4 xs:grid-cols-2 md:flex md:w-auto md:flex-row"
+          ref={innerDivRef}
+        >
           {children}
         </div>
       </div>
