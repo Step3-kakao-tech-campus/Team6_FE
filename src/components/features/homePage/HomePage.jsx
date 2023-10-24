@@ -1,12 +1,12 @@
 import Carousel from "../carousel/Carousel";
 import { useQuery } from "react-query";
 import { getHome } from "../../../apis/home";
-import HorizontalListSection from "../../atoms/HorizontalListSection";
+import HorizontalListSection from "../carousel/HorizontalListSection";
 import FestivalPoster from "../../molecules/FestivalPoster";
 import PlacePoster from "../../molecules/PlacePoster";
 import { utils } from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
-import HorizontalListSectionMediaQuery from "../../atoms/HorizontalListSectionMediaQuery";
+import HorizontalListSectionMediaQuery from "../carousel/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
 import { search } from "../../../apis/search";
 import {useNavigate} from "react-router-dom";
