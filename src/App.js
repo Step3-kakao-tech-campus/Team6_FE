@@ -11,6 +11,9 @@ import FestivalDetailPage from "./components/features/festivalDetailPage/Festiva
 import ReservationListPage from "./components/features/reservationListPage/ReservationListPage";
 import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage";
 
+import LoginPage from "./components/features/loginPage/LoginPage";
+import RegisterPage from "./components/features/registerPage/RegisterPage";
+
 import { store } from "./store";
 
 const queryClient = new QueryClient();
@@ -32,8 +35,10 @@ function App() {
                 <Route path={"/foods/:id"} element={<FoodDetailPage />} />
                 <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
 
-                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}
-                />
+                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
+
+                <Route path={"/login"} element={<LoginPage />}/>
+                <Route path={"/register"} element={<RegisterPage />}/>
               </Route>
             </Routes>
           </BrowserRouter>
