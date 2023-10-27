@@ -3,40 +3,70 @@
 @tailwind utilities;
 
 * {
-  font-family: "Montserrat", sans-serif;
-  box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
 }
 
 @layer components {
-  .width-flex-layout {
-    @apply w-full min-w-[20rem] max-w-[50rem];
-  }
+    .width-flex-layout {
+        @apply w-full min-w-[20rem] max-w-[50rem];
+    }
 
-  .height-flex-layout-small {
-    @apply h-[16rem] md:h-[24rem];
-  }
+    .height-flex-layout-small {
+        @apply h-[16rem] md:h-[24rem];
+    }
 
-  .height-flex-layout-medium {
-    @apply h-[24rem] md:h-[32rem];
-  }
+    .height-flex-layout-medium {
+        @apply h-[24rem] md:h-[32rem];
+    }
 
-  .shadow-rounded-card {
-    @apply rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
-  }
+    .shadow-rounded-card {
+        @apply rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
+    }
 
-  .modal-background {
-    @apply width-flex-layout absolute z-[5] h-full bg-black bg-opacity-50;
-  }
+    .modal-background {
+        @apply width-flex-layout absolute z-[5] h-full bg-black bg-opacity-50;
+    }
 
-  .modal-background__hidden {
-    @apply fixed z-[5] hidden bg-black bg-opacity-50;
-  }
+    .modal-background__hidden {
+        @apply fixed z-[5] hidden bg-black bg-opacity-50;
+    }
 
-  .bottom-modal-board__opened {
-    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
-  }
+    .bottom-modal-board__opened {
+        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
+    }
 
-  .bottom-modal-board__closed {
-    @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
-  }
+    .bottom-modal-board__closed {
+        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
+    }
+
+    .modal-board__opened {
+        @apply max-w-[50rem] max-h-[50%] z-[9] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+    }
+
+    .ticket-card {
+        @apply width-flex-layout height-flex-layout-small relative rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl overflow-hidden;
+    }
+
+    .cutting-line {
+        @apply w-4/5 h-full border-l-[0.20rem] border-tripKoOrange absolute left-[7.80rem] border-dashed
+    }
+
+    .skeleton-wrapper {
+        @apply w-full h-full bg-gray-200 skeleton-pulse;
+    }
+
+    @keyframes pulse {
+        50%{
+            background-color: rgba(209, 213, 219, 1);
+        }
+    }
+
+    .skeleton-pulse {
+        animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .reservation-button {
+        @apply w-full text-white bg-tripKoOrange text-2xl py-2 rounded-full absolute font-bold
+    }
 }

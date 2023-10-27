@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CardTitle from "../atoms/CardTitle";
+import Photo from "../atoms/Photo";
 
 const PlacePoster = ({ image, name, address, to, alt }) => {
   return (
@@ -9,17 +10,14 @@ const PlacePoster = ({ image, name, address, to, alt }) => {
     >
       <div
         className={
-          "image-wrapper w-full overflow-hidden rounded-lg bg-tripKoOrange-300 md:h-[15rem] min-h-[11rem]"
+          "image-wrapper w-full overflow-hidden rounded-lg md:h-[15rem] min-h-[11rem]"
         }
       >
-        <picture>
-          <source srcSet={image} />
-          <img
+          <Photo
             src={image}
             alt={alt}
             className={"h-full w-full object-cover"}
           />
-        </picture>
       </div>
       <div className={"place-card-info"}>
         <CardTitle title={name} lineClamp={2}/>

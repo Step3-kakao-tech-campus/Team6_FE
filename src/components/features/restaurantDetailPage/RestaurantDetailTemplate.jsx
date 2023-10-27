@@ -9,11 +9,13 @@ import MenuCard from "../../molecules/MenuCard";
 import ButtonAllReviews from "./atoms/ButtonAllReviews";
 import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";
-import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
+import BottomPopModal from "../../atoms/Modals/BottomPopModal";
 import InfoElement from "./atoms/InfoElement";
 import AddressElement from "./atoms/AddressElement";
 import { getCalenderByIdAndType } from "../../../apis/detail";
 import Calendar from "../calendar/Calendar";
+import Photo from "../../atoms/Photo";
+import Button from "../../atoms/Button";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -51,13 +53,14 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       )}
       <div
         className={
-          "restaurant-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "
+          "restaurant-image-wrapper width-flex-layout fixed top-0 w-full "
         }
       >
-        <img
+        <Photo
           src={restaurant.mainImage}
           alt={restaurant.name}
-          className={"w-full"}
+          className={"min-h-[30rem] w-full"}
+          extendable={true}
         />
       </div>
       <div
@@ -88,7 +91,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-          <button onClick={() => setIsActiveCalender(true)}>Calender</button>
+        <Button className={"reservation-button"} onClick={() => setIsActiveCalender(true)}>Calender</Button>
       </div>
     </div>
   );

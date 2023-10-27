@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Photo from "../../atoms/Photo";
 
 const SLIDE_STATE = {
   PREV_INDEX: -1,
@@ -53,7 +54,7 @@ const CarouselSlide = ({ image, index, state, to, alt }) => {
       to={to}
       className={`carousel-slide-${index} absolute h-full w-full transform ${getTranslateX(slideState,)} duration-[400ms] ease-in-out`}
     >
-      <img className={"h-full w-full object-cover"} src={image} alt={alt} />
+      <Photo className={"h-full w-full object-cover"} src={image} alt={alt} />
     </Link>
   );
 };
