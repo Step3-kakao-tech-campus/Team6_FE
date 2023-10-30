@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import navStateReducer from "./navStateSlice";
+import navStateReducer from "./slice/navStateSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
