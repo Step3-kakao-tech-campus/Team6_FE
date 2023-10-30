@@ -9,9 +9,11 @@ import ButtonAllReviews from "../restaurantDetailPage/atoms/ButtonAllReviews";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";
-import BottomPopModal from "../../atoms/BottomPopModal/BottomPopModal";
+import BottomPopModal from "../../atoms/Modals/BottomPopModal";
 import Calendar from "../calendar/Calendar";
 import { getCalenderByIdAndType } from "../../../apis/detail";
+import Button from "../../atoms/Button";
+import Photo from "../../atoms/Photo";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -39,23 +41,34 @@ const FestivalDetailTemplate = ({ festival }) => {
         >
           {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
-            <Calendar
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-              unavailableDays={operatingInfo.holiday}
-            />
+            <div className={"calendar-wrapper flex flex-col justify-center"}>
+              <Calendar
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                unavailableDays={operatingInfo.holiday}
+              />
+              <Button
+                as="button"
+                onClick={() => alert("clicked!")}
+                variant="link"
+                className="rounded-button-[tripKoOrange] bg-tripKoOrange text-white w-full h-12 rounded-full"
+              >
+                Click me!{" "}
+              </Button>
+            </div>
           )}
         </BottomPopModal>
       )}
       <div
         className={
-          "festival-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden "
+          "festival-image-wrapper width-flex-layout fixed top-0 w-full "
         }
       >
-        <img
+        <Photo
           src={festival.mainImage}
           alt={festival.name}
-          className={"w-full"}
+          className={"w-full min-h-[50rem]"}
+          extendable={true}
         />
       </div>
       <div
@@ -79,7 +92,7 @@ const FestivalDetailTemplate = ({ festival }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-        <button onClick={() => setIsActiveCalender(true)}>Calender</button>
+        <Button className={"reservation-button"} onClick={() => setIsActiveCalender(true)}>Calender</Button>
       </div>
     </div>
   );

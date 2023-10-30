@@ -5,9 +5,7 @@ const FilterBar = ({ filter, setFilter }) => {
     { label: "All", value: "all" },
     { label: "Restaurants", value: "restaurants" },
     { label: "Festivals", value: "festivals" },
-    {
-      label: "Tourist Spots",
-      value: "touristSpots",
+    { label: "Tourist Spots", value: "touristSpots",
     },
   ];
 
