@@ -53,7 +53,7 @@
     }
 
     .skeleton-wrapper {
-        @apply w-full h-full bg-gray-200 skeleton-pulse;
+        @apply w-full h-full bg-gray-200 skeleton-pulse overflow-hidden;
     }
 
     @keyframes pulse {
