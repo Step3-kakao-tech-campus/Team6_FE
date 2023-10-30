@@ -11,10 +11,11 @@ import FestivalDetailPage from "./components/features/festivalDetailPage/Festiva
 import ReservationListPage from "./components/features/reservationListPage/ReservationListPage";
 import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage";
 
-import LoginPage from "./components/features/loginPage/LoginPage";
-import RegisterPage from "./components/features/registerPage/RegisterPage";
+import LoginPage from "./components/features/formPages/loginPage/LoginPage";
+import RegisterPage from "./components/features/formPages/registerPage/RegisterPage";
 
-import { store } from "./store";
+import {persistor, store} from "./store";
+import {PersistGate} from "redux-persist/integration/react";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className="App flex w-full flex-col items-center">
       <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
@@ -43,6 +45,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </QueryClientProvider>
+        </PersistGate>
       </Provider>
     </div>
   );

@@ -16,8 +16,16 @@ instance.interceptors.request.use(async (config) => {
   return config;
 });
 
-instance.interceptors.response.use((response) => {
-  return response;
-});
+instance.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error.response.status === 401) { // 401 Unauthorized
+        localStorage.removeItem("token");
+      }
+      return Promise.reject(error);
+    },
+);
 
 export default instance;
