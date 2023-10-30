@@ -2,7 +2,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import { wish } from "../../apis/wish";
 
-const WishButton = ({ filter, id, initialIsWished }) => {
+const WishButton = ({ filter, id, initialIsWished, onWishChange }) => {
   const [isWished, setIsWished] = useState(initialIsWished);
 
   const handleWishButtonClick = async () => {
@@ -10,6 +10,9 @@ const WishButton = ({ filter, id, initialIsWished }) => {
 
     await wish(filter, id, newWishState);
     setIsWished(newWishState);
+    if (onWishChange) {
+      onWishChange(newWishState);
+    }
   };
 
   return (

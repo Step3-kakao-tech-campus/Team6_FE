@@ -7,6 +7,7 @@ import { getReviews } from "./review";
 import { getTouristSpots } from "./touristSpot";
 import { getFoodDetail, getFoods } from "./food";
 import { availableDate } from "./datas/availableDates";
+import { getWishlist } from "./wished";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -197,5 +198,30 @@ export const handlers = [
           response: availableDate,
         }),
       );
+  }),
+
+  rest.get("/userinfo/:filter/wish", (req, res, ctx) => {
+    const { filter } = req.params;
+    const wishlistResponse = getWishlist(filter);
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: wishlistResponse,
+      }),
+    );
+  }),
+
+  rest.patch("/userinfo/wish", (req, res, ctx) => {
+    const { filter, id, isWished } = req.body;
+
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        message: `Wish status updated for ${filter} with ID ${id} to ${isWished}.`,
+      }),
+    );
   }),
 ];

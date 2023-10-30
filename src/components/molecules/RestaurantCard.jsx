@@ -1,7 +1,10 @@
+import { useState } from "react";
 import StarRating from "../atoms/StarRating";
 import WishButton from "../atoms/WishButton";
 
 const RestaurantCard = ({ restaurant }) => {
+  const [isWished, setIsWished] = useState(restaurant.isWished);
+
   return (
     <div className="shadow-rounded-card m-2 px-4">
       <div className="flex">
@@ -27,7 +30,8 @@ const RestaurantCard = ({ restaurant }) => {
           <WishButton
             filter={"restaurant"}
             id={restaurant.id}
-            initialIsWished={restaurant.isWished}
+            initialIsWished={isWished}
+            onWishChange={(newWishState) => setIsWished(newWishState)}
           />
         </div>
       </div>
