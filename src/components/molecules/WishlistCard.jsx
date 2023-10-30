@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import WishButton from "../atoms/WishButton";
+import Photo from "../atoms/Photo";
 
 const WishlistCard = ({ wishlist }) => {
   return (
     <Link to={`/festival/${wishlist.id}`} className="wishlist-card-container">
       <div className="wishlist-card shadow-rounded-card m-2 flex p-2">
         {wishlist.images && wishlist.images[0] && (
-          <img
+          <Photo
             src={wishlist.images[0]}
             alt="Wishlist Item"
             className="wishlist-card__image h-28 w-28 rounded-lg object-cover"
