@@ -49,7 +49,7 @@ const WishlistPage = () => {
   return (
     <div className="wishlist-page w-full">
       <PageTitle title="Wishlist" />
-      <div className="filters">
+      <div className="filter-bar my-2">
         <FilterBar filter={filter} setFilter={handleFilterChange} />
       </div>
       <div className="wishlist-items grid md:grid-cols-2">
