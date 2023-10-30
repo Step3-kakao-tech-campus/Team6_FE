@@ -6,9 +6,8 @@ const ReservationCard = ({ reservation }) => {
   console.log(reservation);
   return (
     <div className="reservation-card-wrapper ticket-card flex h-40 w-full">
-      <div className={"reservation-cutting-line cutting-line"} />
       <Photo
-        className={"reservation-image h-40 w-[12rem] object-cover"}
+        className={"reservation-image h-40 w-[12rem] object-cover cutting-line"}
         src={reservation.image}
         alt={reservation.name}
       />
