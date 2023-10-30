@@ -49,7 +49,7 @@
     }
 
     .cutting-line {
-        @apply w-4/5 h-full border-l-[0.20rem] border-tripKoOrange absolute left-[7.80rem] border-dashed
+        @apply border-r-[0.20rem] border-tripKoOrange border-dashed
     }
 
     .skeleton-wrapper {
