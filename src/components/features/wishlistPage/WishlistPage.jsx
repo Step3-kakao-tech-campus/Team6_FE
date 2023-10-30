@@ -1,17 +1,32 @@
-import React, { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getWishlist } from "../../../mocks/wished";
 import FilterBar from "../../molecules/FilterBar";
+import PageTitle from "../../atoms/PageTitle";
+import WishlistCard from "../../molecules/WishlistCard";
 
 const WishlistPage = () => {
-  const [filter, setFilter] = useState("all");
+  const { filter: urlFilter } = useParams();
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState(urlFilter || "all");
+
   const {
     data: queryData,
     isLoading,
     error,
   } = useQuery("wishlist", getWishlist);
-
   const data = queryData?.data.response;
+
+  useEffect(() => {
+    if (urlFilter !== filter) {
+      setFilter(urlFilter);
+    }
+  }, [urlFilter, filter]);
+
+  const handleFilterChange = (newFilter) => {
+    navigate(`/userinfo/wishlist/${newFilter}`);
+  };
 
   const filteredData = useMemo(() => {
     if (!data) return [];
@@ -30,17 +45,16 @@ const WishlistPage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;
 
+  // console.log(filteredData);
   return (
     <div className="wishlist-page w-full">
+      <PageTitle title="Wishlist" />
       <div className="filters">
-        <FilterBar filter={filter} setFilter={setFilter} />
+        <FilterBar filter={filter} setFilter={handleFilterChange} />
       </div>
-
-      <div className="wishlist-items">
+      <div className="wishlist-items grid md:grid-cols-2">
         {filteredData.map((item) => (
-          <div key={item.id} className="wishlist-item">
-            <h3>{item.name}</h3>
-          </div>
+          <WishlistCard key={item.id} wishlist={item} />
         ))}
       </div>
     </div>
