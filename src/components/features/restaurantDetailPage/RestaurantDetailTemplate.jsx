@@ -11,7 +11,6 @@ import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";
 import BottomPopModal from "../../atoms/Modals/BottomPopModal";
 import InfoElement from "./atoms/InfoElement";
-import AddressElement from "./atoms/AddressElement";
 import { getCalenderByIdAndType } from "../../../apis/detail";
 import Calendar from "../calendar/Calendar";
 import Photo from "../../atoms/Photo";
@@ -79,8 +78,8 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           {restaurant.description}
         </div>
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
-          <AddressElement title={"Address"} value={restaurant.address} />
-          <AddressElement title={"Contact"} value={restaurant.contactInfo} />
+          <InfoElement title={"Address"} value={restaurant.address} />
+          <InfoElement title={"Contact"} value={restaurant.contactInfo} />
           <InfoElement title={"Operating Hours"} value={restaurant.open} />
           <InfoElement title={"Break Time"} value={restaurant.breakTime} />
         </div>
