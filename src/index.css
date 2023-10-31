@@ -49,11 +49,11 @@
     }
 
     .cutting-line {
-        @apply w-4/5 h-full border-l-[0.20rem] border-tripKoOrange absolute left-[7.80rem] border-dashed
+        @apply border-r-[0.20rem] border-tripKoOrange border-dashed
     }
 
     .skeleton-wrapper {
-        @apply w-full h-full bg-gray-200 skeleton-pulse;
+        @apply w-full h-full bg-gray-200 skeleton-pulse overflow-hidden;
     }
 
     @keyframes pulse {
