@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { getWishlist } from "../../../mocks/wished";
+import { getWishlist } from "../../../apis/wish";
 import FilterBar from "../../molecules/FilterBar";
 import PageTitle from "../../atoms/PageTitle";
 import WishlistCard from "../../molecules/WishlistCard";
@@ -47,7 +47,7 @@ const WishlistPage = () => {
 
   // console.log(filteredData);
   return (
-    <div className="wishlist-page w-ful h-screen">
+    <div className="wishlist-page h-screen w-full">
       <PageTitle title="Wishlist" />
       <div className="filter-bar my-2">
         <FilterBar filter={filter} setFilter={handleFilterChange} />

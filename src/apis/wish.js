@@ -8,3 +8,8 @@ export const wish = async (filter, id, isWished) => {
   });
   return result.data.response;
 };
+
+export const getWishlist = async (filter) => {
+  const result = await instance.get(`/userinfo/${filter}/wish`);
+  return result.data.response;
+};
