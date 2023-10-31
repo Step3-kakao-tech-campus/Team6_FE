@@ -1,6 +1,7 @@
 const FESTIVALS = [
   {
     id: 1,
+    type: "festivals",
     name: "2023 Pusan International Rock Festival",
     summary:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tincidunt metus. Proin dictum nunc nisi, non consectetur dui posuere sed. Pellentesque eget lobortis metus. Sed vitae justo id lorem blandit dictum at congue sapien. Fusce erat orci, fermentum ut congue quis, pharetra ut mauris. Nam ornare ex id ante maximus maximus. Morbi sodales tortor non turpis iaculis, ut condimentum nunc eleifend. Nullam pretium quam vitae lorem cursus laoreet tincidunt nec mauris.",
