@@ -13,3 +13,14 @@ export const sortReservation = (reservations) => {
     return getDateFromString(a.date) - getDateFromString(b.date);
   });
 };
+
+export const RESERVE_STATUS = {
+    예약완료 : "Reserved",
+    확인중 : "Checking",
+    예약거절 : "Rejected",
+    이용완료 : "Finished",
+}
+
+export const getReserveText = (status) => {
+    return RESERVE_STATUS[status];
+}

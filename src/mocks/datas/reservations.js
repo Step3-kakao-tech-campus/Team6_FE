@@ -1,14 +1,14 @@
 export const RESTAURANT_RESERVATIONS = [
   {
-    id: 2,
+    id: 3,
     placeId: 1,
-    name: "식당 이름",
-    address: "식당 위치",
+    name: "Restaurant Name",
+    address: "location of restaurant",
     image: "https://picsum.photos/211",
     date: "2023/09/13",
     time: "18:30",
-    message: "양파 빼주세요",
-    status: "확인중",
+    message: "please give me a good seat",
+    status: "이용완료",
     headCount: 2,
   },
 ];
@@ -17,9 +17,19 @@ export const FESTIVAL_RESERVATIONS = [
   {
     id: 1,
     placeId: 1, //예약한 객체에 대한 id
-    name: "축제 이름",
-    address: "축제 위치",
+    name: "Festival Name",
+    address: "location of festival",
     image: "https://picsum.photos/212",
+    date: "2023/09/13",
+    time: "18:30",
+    message: "",
+    status: "확인중",
+  },  {
+    id: 2,
+    placeId: 1, //예약한 객체에 대한 id
+    name: "festival Name",
+    address: "location of festival",
+    image: "https://picsum.photos/213",
     date: "2023/09/13",
     time: "18:30",
     message: "",

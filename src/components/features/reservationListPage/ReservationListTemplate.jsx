@@ -1,12 +1,19 @@
-import PageTitleBar from "../../molecules/PageTitleBar";
 import ReservationCard from "./organisms/ReservationCard";
-import { sortReservation } from "./utils";
+import {getReserveText, sortReservation} from "./utils";
 import { useMemo } from "react";
 
 const ReservationListTemplate = ({ reservations }) => {
 
   const sortedReservation = useMemo(() => {
+
     if (!reservations) return [];
+
+    reservations?.restaurant.forEach(
+      (reservation) => (reservation.type = "restaurant"),
+    );
+    reservations?.festival.forEach(
+      (reservation) => (reservation.type = "festival"),
+    );
     return sortReservation([
       ...reservations.restaurant,
       ...reservations.festival,
@@ -15,15 +22,14 @@ const ReservationListTemplate = ({ reservations }) => {
 
   return (
     <>
-      <PageTitleBar name={"My Booking List"} />
       {reservations.length === 0 ? (
         <div className={"text-center text-2xl font-bold"}>
           You have no reservations yet.
         </div>
       ) : (
-        <div className={"grid grid-cols-1 gap-4 sm:grid-cols-2 px-2"}>
+        <div className={"grid grid-cols-1 gap-4 px-2 sm:grid-cols-2"}>
           {sortedReservation.map((reservation) => (
-            <ReservationCard key={reservation.id} reservation={reservation} />
+            <ReservationCard key={reservation.id} reservation={reservation} reviewable={reservation?.status==="이용완료"} />
           ))}
         </div>
       )}
