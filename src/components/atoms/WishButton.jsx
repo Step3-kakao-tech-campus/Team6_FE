@@ -5,7 +5,9 @@ import { wish } from "../../apis/wish";
 const WishButton = ({ filter, id, initialIsWished, onWishChange }) => {
   const [isWished, setIsWished] = useState(initialIsWished);
 
-  const handleWishButtonClick = async () => {
+  const handleWishButtonClick = async (event) => {
+    event.stopPropagation();
+
     const newWishState = !isWished;
 
     await wish(filter, id, newWishState);

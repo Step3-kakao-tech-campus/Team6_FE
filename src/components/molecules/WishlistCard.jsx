@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import WishButton from "../atoms/WishButton";
 import Photo from "../atoms/Photo";
 
 const WishlistCard = ({ wishlist }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/festival/${wishlist.id}`);
+  };
+
+  const handleWishButtonWrapperClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   return (
-    <Link to={`/festival/${wishlist.id}`} className="wishlist-card-container">
+    <div onClick={handleCardClick} className="wishlist-card-container">
       <div className="wishlist-card shadow-rounded-card m-2 flex p-2">
         {wishlist.images && wishlist.images[0] && (
           <Photo
@@ -18,11 +29,11 @@ const WishlistCard = ({ wishlist }) => {
           <h3 className="text-xl font-semibold">{wishlist.name}</h3>
           <span className="text-sm text-gray-400">{wishlist.address}</span>
         </div>
-        <div>
+        <div onClick={handleWishButtonWrapperClick}>
           <WishButton filter={wishlist.type} id={wishlist.id} />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
