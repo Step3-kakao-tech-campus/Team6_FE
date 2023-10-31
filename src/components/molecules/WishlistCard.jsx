@@ -30,7 +30,11 @@ const WishlistCard = ({ wishlist }) => {
           <span className="text-sm text-gray-400">{wishlist.address}</span>
         </div>
         <div onClick={handleWishButtonWrapperClick}>
-          <WishButton filter={wishlist.type} id={wishlist.id} />
+          <WishButton
+            filter={wishlist.type}
+            id={wishlist.id}
+            initialIsWished={wishlist.isWished}
+          />
         </div>
       </div>
     </div>
