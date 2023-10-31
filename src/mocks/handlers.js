@@ -224,7 +224,7 @@ export const handlers = [
     );
   }),
 
-  rest.get("/userinfo/:filter/wish", (req, res, ctx) => {
+  rest.get("/userinfo/wishlist", (req, res, ctx) => {
     const { filter } = req.params;
     const wishlistResponse = getWishlist(filter);
 
@@ -237,7 +237,7 @@ export const handlers = [
     );
   }),
 
-  rest.patch("/userinfo/wish", (req, res, ctx) => {
+  rest.patch("/userinfo/wishlist", (req, res, ctx) => {
     const { filter, id, isWished } = req.body;
 
     return res(

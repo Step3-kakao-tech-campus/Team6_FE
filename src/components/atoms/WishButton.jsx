@@ -1,20 +1,25 @@
-import { AiFillHeart } from "react-icons/ai";
+import { useMutation, useQueryClient } from "react-query";
 import { useState } from "react";
+import { AiFillHeart } from "react-icons/ai";
 import { wish } from "../../apis/wish";
 
 const WishButton = ({ filter, id, initialIsWished, onWishChange }) => {
   const [isWished, setIsWished] = useState(initialIsWished);
+  const queryClient = useQueryClient();
 
-  const handleWishButtonClick = async (event) => {
+  const { mutate } = useMutation(() => wish(filter, id, !isWished), {
+    onSuccess: () => {
+      setIsWished(!isWished);
+      if (onWishChange) {
+        onWishChange(!isWished);
+      }
+      queryClient.refetchQueries("wishlist");
+    },
+  });
+
+  const handleWishButtonClick = (event) => {
     event.stopPropagation();
-
-    const newWishState = !isWished;
-
-    await wish(filter, id, newWishState);
-    setIsWished(newWishState);
-    if (onWishChange) {
-      onWishChange(newWishState);
-    }
+    mutate();
   };
 
   return (
