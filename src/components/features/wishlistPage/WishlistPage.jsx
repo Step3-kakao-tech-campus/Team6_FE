@@ -47,7 +47,7 @@ const WishlistPage = () => {
 
   // console.log(filteredData);
   return (
-    <div className="wishlist-page w-full">
+    <div className="wishlist-page w-ful h-screen">
       <PageTitle title="Wishlist" />
       <div className="filter-bar my-2">
         <FilterBar filter={filter} setFilter={handleFilterChange} />
