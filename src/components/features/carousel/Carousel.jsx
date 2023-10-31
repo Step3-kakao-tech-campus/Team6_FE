@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import CarouselSlide from "./CarouselSlide";
-import CarouselButtonLeft from "./CarouselButtonLeft";
-import CarouselButtonRight from "./CarouselButtonRight";
+import ScrollButtonLeft from "./ScrollButtonLeft";
+import ScrollButtonRight from "./ScrollButtonRight";
 
 /**
  * Carousel Component 입니다. height속성을 갖는 wrapper를 필요로 합니다.
@@ -89,8 +89,8 @@ const Carousel = ({ slides }) => {
           to={slide.to}
         />
       ))}
-      <CarouselButtonRight onClick={onClickRightButton} />
-      <CarouselButtonLeft onClick={onClickLeftButton} />
+      <ScrollButtonRight onClick={onClickRightButton} />
+      <ScrollButtonLeft onClick={onClickLeftButton} />
     </div>
   );
 };
