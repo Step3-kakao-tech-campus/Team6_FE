@@ -1,12 +1,12 @@
 import CardTitle from "../../../atoms/CardTitle";
 import MapIcon from "../../../atoms/MapIcon";
 import Photo from "../../../atoms/Photo";
-import Stamp from "../atoms/Stamp";
-import { getReserveText } from "../utils";
 import {useContext, useMemo} from "react";
 import {useNavigate} from "react-router-dom";
 import {ModalContext} from "../../../../App";
 import ReviewForm from "../../formPages/writeReviewPage/ReviewForm";
+import {getReserveText} from "../../reservationListPage/utils";
+import Stamp from "../../reservationListPage/atoms/Stamp";
 
 const ReservationCard = ({ reservation, reviewable }) => {
 
@@ -14,16 +14,10 @@ const ReservationCard = ({ reservation, reviewable }) => {
     () => getReserveText(reservation.status),
     [reservation.status],
   );
-
-  const navigate = useNavigate();
-  const navigateToDetail = (e) => {
-    e.stopPropagation();
-    navigate(`/${reservation.type}/${reservation.id}`);
-  };
   const { show } = useContext(ModalContext)
 
   return (
-    <div className="reservation-card-wrapper ticket-card flex h-40 w-full">
+    <div className="reservation-card-wrapper relative flex h-40 w-full px-4">
       <Photo
         className={"reservation-image cutting-line h-40 w-[12rem] object-cover"}
         src={reservation.image}
@@ -37,7 +31,6 @@ const ReservationCard = ({ reservation, reviewable }) => {
         <div className={"reservation-content-top flex w-full flex-col"}>
           <CardTitle
             title={reservation?.name}
-            onClick={navigateToDetail}
             className={"cursor-pointer"}
           ></CardTitle>
           <div className={"reservation-time "}>
@@ -52,24 +45,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
             {reservation?.message}{" "}
           </div>
         </div>
-        <div
-          className={
-            "reservation-content-bottom flex items-center justify-between"
-          }
-        >
-          {reviewable && (
-            <button
-              className={"reservation-bottom underline text-tripKoOrange-500 cursor-pointer"}
-              onClick={(e) => {
-                e.stopPropagation();
-                show(<ReviewForm reservation={reservation} />);
-              }}
-            >
-              Submit Review
-            </button>
-          )}
-        </div>
-        <Stamp className={"absolute bottom-4 left-1 rotate-12 bg-white"}>
+        <Stamp className={"absolute bottom-4 right-4 -rotate-12"}>
           {status}
         </Stamp>
       </div>

@@ -1,5 +1,5 @@
 import ReservationCard from "./organisms/ReservationCard";
-import {getReserveText, sortReservation} from "./utils";
+import {sortReservation} from "./utils";
 import { useMemo } from "react";
 
 const ReservationListTemplate = ({ reservations }) => {
