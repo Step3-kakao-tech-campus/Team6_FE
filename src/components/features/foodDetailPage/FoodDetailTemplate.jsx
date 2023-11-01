@@ -1,6 +1,7 @@
 import PageTitleBar from "../../molecules/PageTitleBar";
 import SectionTitle from "../../atoms/SectionTitle";
 import { FaStar } from "react-icons/fa";
+import Photo from "../../atoms/Photo";
 
 const FoodDetailTemplate = ({ food }) => {
   const { name, image, description, ingredients, restaurant } =
@@ -10,7 +11,7 @@ const FoodDetailTemplate = ({ food }) => {
     <div className="food-detail-page w-full">
       <PageTitleBar name={name} />
       <div className="food-image-wrapper width-flex-layout fixed top-0 -z-10 w-full overflow-hidden">
-        <img src={image} alt={image} className="h-96 w-full object-cover" />
+        <Photo src={image} alt={image} className="h-96 w-full object-cover" />
       </div>
       <div className="bg-white pb-16">
         <div className="festival-detail-content relative mt-80">
@@ -44,7 +45,7 @@ const FoodDetailTemplate = ({ food }) => {
                     </span>
                   </div>
                 </div>
-                <img
+                <Photo
                   src={restaurant.image}
                   alt={restaurant.name}
                   className="h-60 w-full rounded-lg object-cover"

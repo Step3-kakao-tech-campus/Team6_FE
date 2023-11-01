@@ -1,6 +1,7 @@
 const RESTAURANTS = [
   {
     id: 1,
+    type: "restaurants",
     name: "Main Gate Toast",
     summary:
       "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Photo from "../atoms/Photo";
 
 const FoodCard = ({ food }) => {
   return (
@@ -7,7 +8,7 @@ const FoodCard = ({ food }) => {
         key={food.id}
         className="food-card shadow-rounded-card mx-4 my-2 items-center bg-white p-4"
       >
-        <img
+        <Photo
           src={food.image}
           alt={food.name}
           className="mb-2 h-36 w-full rounded-md object-cover"
