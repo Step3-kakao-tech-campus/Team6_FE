@@ -1,17 +1,26 @@
+import { useState } from "react";
 import MapIcon from "../atoms/MapIcon";
 import WishButton from "../atoms/WishButton";
+import Photo from "../atoms/Photo";
 
 const TouristSpotCard = ({ touristSpot }) => {
+  const [isWished, setIsWished] = useState(touristSpot.isWished);
+
   return (
     <div className="shadow-rounded-card mx-2 p-2">
       <div className="relative">
-        <img
+        <Photo
           className="h-32 w-full rounded-t-lg object-cover"
           src={touristSpot.image}
           alt={touristSpot.name}
         />
         <div className="absolute right-2 top-1">
-          <WishButton initialIsWished={touristSpot.isWished} />
+          <WishButton
+            filter={"touristSpot"}
+            id={touristSpot.id}
+            initialIsWished={isWished}
+            onWishChange={(newWishState) => setIsWished(newWishState)}
+          />
         </div>
       </div>
       <div className="flex h-16 w-full flex-col items-center justify-center">

@@ -16,6 +16,7 @@ import RegisterPage from "./components/features/formPages/registerPage/RegisterP
 
 import {persistor, store} from "./store";
 import {PersistGate} from "redux-persist/integration/react";
+import MyPage from "./components/features/myPage/MyPage";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
-              <Route element={<MainLayout/>}>
+              <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
                 <Route path="/festival/:id" element={<FestivalDetailPage />} />
