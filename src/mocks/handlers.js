@@ -12,6 +12,7 @@ import {
   getFestivalReservation,
   getRestaurantReservation,
 } from "./reservation";
+import { getUserinfo } from "./userinfo";
 
 export const handlers = [
   rest.get("/api/search", (req, res, ctx) => {
@@ -245,6 +246,16 @@ export const handlers = [
       ctx.json({
         success: true,
         message: `Wish status updated for ${filter} with ID ${id} to ${isWished}.`,
+      }),
+    );
+  }),
+
+  rest.get("/userinfo", (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: getUserinfo(),
       }),
     );
   }),
