@@ -49,12 +49,15 @@ function App() {
 
                 <Route path={"/foods"} element={<FoodSearchPage />} />
                 <Route path={"/foods/:id"} element={<FoodDetailPage />} />
+
                 <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
 
                 <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
 
                 <Route path={"/login"} element={<LoginPage />}/>
                 <Route path={"/register"} element={<RegisterPage />}/>
+
+                <Route path={"/userinfo"} element={<MyPage />}/>
               </Route>
             </Routes>
           </BrowserRouter>

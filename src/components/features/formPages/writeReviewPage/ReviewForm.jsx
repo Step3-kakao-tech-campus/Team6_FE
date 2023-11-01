@@ -4,7 +4,7 @@ import { useContext } from "react";
 import ReservationInfo from "./ReservationInfo";
 
 const ReviewForm = ({ reservation, onSubmit }) => {
-    const { hide } = useContext(ModalContext);
+  const { hide } = useContext(ModalContext);
   return (
     <>
       <div className={"review-form flex flex-col rounded-lg bg-white"}>

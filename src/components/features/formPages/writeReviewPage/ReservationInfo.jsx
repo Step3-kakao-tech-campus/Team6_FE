@@ -1,20 +1,15 @@
 import CardTitle from "../../../atoms/CardTitle";
 import MapIcon from "../../../atoms/MapIcon";
 import Photo from "../../../atoms/Photo";
-import {useContext, useMemo} from "react";
-import {useNavigate} from "react-router-dom";
-import {ModalContext} from "../../../../App";
-import ReviewForm from "../../formPages/writeReviewPage/ReviewForm";
-import {getReserveText} from "../../reservationListPage/utils";
+import { useMemo } from "react";
+import { getReserveText } from "../../reservationListPage/utils";
 import Stamp from "../../reservationListPage/atoms/Stamp";
 
-const ReservationCard = ({ reservation, reviewable }) => {
-
+const ReservationInfo = ({ reservation, reviewable }) => {
   const status = useMemo(
     () => getReserveText(reservation.status),
     [reservation.status],
   );
-  const { show } = useContext(ModalContext)
 
   return (
     <div className="reservation-card-wrapper relative flex h-40 w-full px-4">
@@ -53,4 +48,4 @@ const ReservationCard = ({ reservation, reviewable }) => {
   );
 };
 
-export default ReservationCard;
+export default ReservationInfo;
