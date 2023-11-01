@@ -12,6 +12,7 @@ import ReservationListPage from "./components/features/reservationListPage/Reser
 import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage";
 
 import { store } from "./store";
+import MyPage from "./components/features/myPage/MyPage";
 
 const queryClient = new QueryClient();
 
@@ -22,18 +23,27 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Routes>
-              <Route element={<MainLayout/>}>
+              <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
+                <Route
+                  path="/restaurant/:id"
+                  element={<RestaurantDetailPage />}
+                />
                 <Route path="/festival/:id" element={<FestivalDetailPage />} />
                 <Route path={"/search"} element={<SearchPage />} />
 
                 <Route path={"/foods"} element={<FoodSearchPage />} />
                 <Route path={"/foods/:id"} element={<FoodDetailPage />} />
-                <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
-
-                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}
+                <Route
+                  path={"/userinfo/wishlist/:filter"}
+                  element={<WishlistPage />}
                 />
+
+                <Route
+                  path={"/userinfo/reservations/:filter"}
+                  element={<ReservationListPage />}
+                />
+                <Route path={"/userinfo"} element={<MyPage />} />
               </Route>
             </Routes>
           </BrowserRouter>
