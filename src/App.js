@@ -16,37 +16,63 @@ import RegisterPage from "./components/features/formPages/registerPage/RegisterP
 
 import {persistor, store} from "./store";
 import {PersistGate} from "redux-persist/integration/react";
+import {useModal} from "./hooks/useModal";
+import Modal from "./components/atoms/Modals/Modal";
+import {createContext} from "react";
 
 const queryClient = new QueryClient();
+export const ModalContext = createContext(null);
 
 function App() {
+
+  const { hide, show, isShowing, modalContent } = useModal();
+
   return (
     <div className="App flex w-full flex-col items-center">
-      <Provider store={store}>
+      <ModalContext.Provider value={{ hide, show }}>
+        { isShowing &&
+            <Modal isOpen={isShowing} onClose={hide}>
+              {modalContent}
+            </Modal>
+        }
+        <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<MainLayout/>}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
-                <Route path="/festival/:id" element={<FestivalDetailPage />} />
-                <Route path={"/search"} element={<SearchPage />} />
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route
+                    path="/restaurant/:id"
+                    element={<RestaurantDetailPage />}
+                  />
+                  <Route
+                    path="/festival/:id"
+                    element={<FestivalDetailPage />}
+                  />
+                  <Route path={"/search"} element={<SearchPage />} />
 
-                <Route path={"/foods"} element={<FoodSearchPage />} />
-                <Route path={"/foods/:id"} element={<FoodDetailPage />} />
-                <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
+                  <Route path={"/foods"} element={<FoodSearchPage />} />
+                  <Route path={"/foods/:id"} element={<FoodDetailPage />} />
 
-                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
+                  <Route
+                    path={"/userinfo/wishlist/:filter"}
+                    element={<WishlistPage />}
+                  />
+                  <Route
+                    path={"/userinfo/reservations/:filter"}
+                    element={<ReservationListPage />}
+                  />
 
-                <Route path={"/login"} element={<LoginPage />}/>
-                <Route path={"/register"} element={<RegisterPage />}/>
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </QueryClientProvider>
+                  <Route path={"/login"} element={<LoginPage />} />
+                  <Route path={"/register"} element={<RegisterPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </QueryClientProvider>
         </PersistGate>
       </Provider>
+      </ModalContext.Provider>
     </div>
   );
 }

@@ -7,7 +7,7 @@ const Modal = ({ children, isOpen, onClose }) => {
       <ModalBackground isOpened={isOpen}>
         <button
           className={
-            "modal-close-button fixed bottom-4 left-[50%] z-10 translate-x-[-50%] rounded-full bg-gray-700 p-2"
+            "modal-close-button fixed bottom-4 left-[50%] z-10 translate-x-[-50%] p-2"
           }
           onClick={onClose}
         >
@@ -21,4 +21,5 @@ const Modal = ({ children, isOpen, onClose }) => {
   );
 };
 
+// TODO: 가운데에 위치하도록 수정
 export default Modal;
