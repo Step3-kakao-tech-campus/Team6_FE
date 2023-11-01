@@ -9,7 +9,7 @@ export const login = (data) => {
 };
 
 export const register = (data) => {
-  const { email, password, username, nationality, age, birthday, nickname } =
+  const { email, password, username } =
     data;
   return instance.post("/register", {
     email,
