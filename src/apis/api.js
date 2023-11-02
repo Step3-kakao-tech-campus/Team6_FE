@@ -23,6 +23,8 @@ instance.interceptors.response.use(
     (error) => {
       if (error.response.status === 401) { // 401 Unauthorized
         localStorage.removeItem("token");
+        alert("login is required.")
+        window.location.href = "/login";
       }
       return Promise.reject(error);
     },
