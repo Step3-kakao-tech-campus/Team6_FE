@@ -10,7 +10,6 @@ import { login } from "../../../../apis/account";
 import { useDispatch } from "react-redux";
 import {
   reducerLogin,
-  setExpirationTime,
 } from "../../../../store/slice/userSlice";
 
 const LoginPage = () => {
