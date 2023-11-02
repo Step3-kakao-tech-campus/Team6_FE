@@ -3,7 +3,7 @@ import MapIcon from "../../../atoms/MapIcon";
 import Photo from "../../../atoms/Photo";
 import { useMemo } from "react";
 import { getReserveText } from "../../reservationListPage/utils";
-import Stamp from "../../reservationListPage/atoms/Stamp";
+import Stamp from "../../../atoms/Stamp";
 
 const ReservationInfo = ({ reservation, reviewable }) => {
   const status = useMemo(

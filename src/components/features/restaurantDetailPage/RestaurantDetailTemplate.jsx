@@ -1,11 +1,11 @@
 import PageTitleBar from "../../molecules/PageTitleBar";
 import Carousel from "../carousel/Carousel";
 import { useState } from "react";
-import ReviewCards from "../../organisms/ReviewCards";
+import ReviewCards from "../../molecules/cards/ReviewCards";
 import { imagesToSlides } from "../carousel/utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../carousel/HorizontalListSection";
-import MenuCard from "../../molecules/MenuCard";
+import MenuCard from "../../molecules/cards/MenuCard";
 import ButtonAllReviews from "./atoms/ButtonAllReviews";
 import { useQuery } from "react-query";
 import { getReviewByIdAndType } from "../../../apis/review";

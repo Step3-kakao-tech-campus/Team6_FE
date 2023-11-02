@@ -37,31 +37,31 @@ function App() {
             </Modal>
         }
         <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<MainLayout/>}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
-                <Route path="/festival/:id" element={<FestivalDetailPage />} />
-                <Route path={"/search"} element={<SearchPage />} />
+          <PersistGate loading={null} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<MainLayout/>}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
+                  <Route path="/festival/:id" element={<FestivalDetailPage />} />
+                  <Route path={"/search"} element={<SearchPage />} />
 
-                <Route path={"/foods"} element={<FoodSearchPage />} />
-                <Route path={"/foods/:id"} element={<FoodDetailPage />} />
+                  <Route path={"/foods"} element={<FoodSearchPage />} />
+                  <Route path={"/foods/:id"} element={<FoodDetailPage />} />
 
-                <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
+                  <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
 
-                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
+                  <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
 
-                <Route path={"/login"} element={<LoginPage />}/>
-                <Route path={"/register"} element={<RegisterPage />}/>
+                  <Route path={"/login"} element={<LoginPage />}/>
+                  <Route path={"/register"} element={<RegisterPage />}/>
 
-                <Route path={"/userinfo"} element={<MyPage />}/>
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </QueryClientProvider>
+                  <Route path={"/userinfo"} element={<MyPage />}/>
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </QueryClientProvider>
         </PersistGate>
       </Provider>
       </ModalContext.Provider>

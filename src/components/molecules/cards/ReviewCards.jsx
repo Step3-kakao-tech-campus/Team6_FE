@@ -1,4 +1,4 @@
-import ReviewCard from "../molecules/ReviewCard";
+import ReviewCard from "./ReviewCard";
 
 const ReviewCards = ({ reviews }) => {
   return (

@@ -15,7 +15,7 @@ const getLabelColor = (id, activatedTab) => {
 
 const BottomNavBar = ({ activatedTab }) => {
   return (
-    <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow ">
+    <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow z-[2]">
       <NavIndicator activatedTab={activatedTab} />
       <NavItem
         id={1}

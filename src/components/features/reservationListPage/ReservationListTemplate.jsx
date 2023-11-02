@@ -1,4 +1,4 @@
-import ReservationCard from "./organisms/ReservationCard";
+import ReservationCard from "../../molecules/cards/ReservationCard";
 import {sortReservation} from "./utils";
 import { useMemo } from "react";
 

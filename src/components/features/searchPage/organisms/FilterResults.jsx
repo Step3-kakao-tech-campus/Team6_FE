@@ -1,6 +1,6 @@
-import RestaurantCard from "../../../molecules/RestaurantCard";
-import FestivalCard from "../../../molecules/FestivalCard";
-import TouristSpotCard from "../../../molecules/TouristSpotCard";
+import RestaurantCard from "../../../molecules/cards/RestaurantCard";
+import FestivalCard from "../../../molecules/cards/FestivalCard";
+import TouristSpotCard from "../../../molecules/cards/TouristSpotCard";
 
 const FilterResults = ({ results, filter }) => {
   return (

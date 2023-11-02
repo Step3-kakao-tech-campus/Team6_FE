@@ -1,12 +1,12 @@
-import CardTitle from "../../../atoms/CardTitle";
-import MapIcon from "../../../atoms/MapIcon";
-import Photo from "../../../atoms/Photo";
-import Stamp from "../atoms/Stamp";
-import { getReserveText } from "../utils";
+import CardTitle from "../../atoms/CardTitle";
+import MapIcon from "../../atoms/MapIcon";
+import Photo from "../../atoms/Photo";
+import Stamp from "../../atoms/Stamp";
+import { getReserveText } from "../../features/reservationListPage/utils";
 import {useContext, useMemo} from "react";
 import {useNavigate} from "react-router-dom";
-import {ModalContext} from "../../../../App";
-import ReviewForm from "../../formPages/writeReviewPage/ReviewForm";
+import {ModalContext} from "../../../App";
+import ReviewForm from "../../features/formPages/writeReviewPage/ReviewForm";
 
 const ReservationCard = ({ reservation, reviewable }) => {
 

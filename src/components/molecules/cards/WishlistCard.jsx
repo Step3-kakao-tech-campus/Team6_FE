@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import WishButton from "../atoms/WishButton";
-import Photo from "../atoms/Photo";
+import WishButton from "../../atoms/WishButton";
+import Photo from "../../atoms/Photo";
 
 const WishlistCard = ({ wishlist }) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import CardTitle from "../atoms/CardTitle";
-import Photo from "../atoms/Photo";
+import CardTitle from "../../atoms/CardTitle";
+import Photo from "../../atoms/Photo";
 
 const PlacePoster = ({ image, name, address, to, alt }) => {
   return (
