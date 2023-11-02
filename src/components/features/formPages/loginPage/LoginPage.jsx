@@ -8,9 +8,7 @@ import { EMAIL_CONDITION, LOGIN_PASSWORD_CONDITION } from "../constraints";
 import { Link } from "react-router-dom";
 import { login } from "../../../../apis/account";
 import { useDispatch } from "react-redux";
-import {
-  reducerLogin,
-} from "../../../../store/slice/userSlice";
+import { reducerLogin } from "../../../../store/slice/userSlice";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -26,6 +24,7 @@ const LoginPage = () => {
 
   const onSubmit = useCallback(
     (e) => {
+      console.log("onSubmit");
       e.preventDefault();
       if (validateEmail() && validatePassword()) {
         login({
@@ -33,12 +32,11 @@ const LoginPage = () => {
           password: password,
         })
           .then((res) => {
-            localStorage.setItem("token", res.headers.token);
             dispatch(reducerLogin(email));
             window.location.href = "/";
           })
           .catch((err) => {
-            setErrorMsgFromBE(err.response.error.message);
+            setErrorMsgFromBE(err);
           });
       }
     },
