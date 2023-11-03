@@ -2,7 +2,7 @@ import NavItem from "./NavItem";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiFoodMenu, BiMap } from "react-icons/bi";
 import { HiOutlineTicket } from "react-icons/hi";
-import NavIndicator from "./NavBarIndicator/NavIndicator";
+import NavIndicator from "./NavIndicator";
 import { activatedColor, deactivatedColor } from "./constants";
 
 const getIconColor = (id, activatedTab) => {
@@ -15,7 +15,7 @@ const getLabelColor = (id, activatedTab) => {
 
 const BottomNavBar = ({ activatedTab }) => {
   return (
-    <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow ">
+    <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 z-[20] flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow">
       <NavIndicator activatedTab={activatedTab} />
       <NavItem
         id={1}
