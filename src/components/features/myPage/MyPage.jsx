@@ -13,7 +13,7 @@ const MyPage = () => {
   console.log(userDetails);
 
   return (
-    <div className="userProfile-container flex h-screen flex-col items-center">
+    <div className="userProfile-container flex h-screen w-full flex-col items-center overflow-y-auto pb-20">
       <div className="userProfile-navigation mt-4 flex">
         <Button as={Link} to="/" className="mb-4">
           <AiOutlineHome size={24} />
@@ -26,7 +26,7 @@ const MyPage = () => {
       <div className="userProfile-infoSection flex flex-col items-center justify-center">
         <Photo
           src={"https://picsum.photos/230"}
-          className="userProfile-image my-2 rounded-full"
+          className="userProfile-image my-2 h-60 w-60 rounded-full object-cover"
         />
 
         <div className="userProfile-nickName my-2 text-2xl font-bold">
@@ -46,16 +46,26 @@ const MyPage = () => {
         Edit Profile
       </Button>
 
-      <div className="userProfile-actions flex flex-col items-center justify-center">
-        <Button as={Link} to="/userinfo/wishlist/all">
+      <div className="userProfile-actions mt-4 flex flex-col items-center justify-center">
+        <Button
+          as={Link}
+          to="/userinfo/wishlist/all"
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+        >
           My Wishlist
         </Button>
-
-        <Button as={Link} to="/userinfo/reviews">
+        <Button
+          as={Link}
+          to="/userinfo/reviews"
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+        >
           My Reviews
         </Button>
-
-        <Button as={Link} to="/userinfo/reservations/restaurant">
+        <Button
+          as={Link}
+          to="/userinfo/reservations/restaurant"
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+        >
           My Reservations
         </Button>
       </div>
