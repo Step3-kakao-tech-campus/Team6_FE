@@ -16,14 +16,11 @@ const ProfileEditPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  // Use `useMutation` hook for updating user data
   const mutation = useMutation((newData) => editUser(newData), {
     onSuccess: () => {
-      // Handle successful update
       setSuccessMessage("Profile updated successfully!");
     },
     onError: (error) => {
-      // Handle error situation
       setErrorMessage(
         error.message || "An error occurred while updating the profile.",
       );
@@ -32,13 +29,14 @@ const ProfileEditPage = () => {
 
   useEffect(() => {
     if (data?.data?.response) {
-      setFormValues({
+      setFormValues((prevValues) => ({
+        ...prevValues,
         name: data.data.response.name || "",
         nickName: data.data.response.nickName || "",
         email: data.data.response.email || "",
         nationality: data.data.response.nationality || "",
         birthday: data.data.response.birthday || "",
-      });
+      }));
     }
   }, [data]);
 
@@ -56,7 +54,7 @@ const ProfileEditPage = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="h-screen">
+    <div className="profile-edit-container h-screen w-full">
       <h1>Profile Edit Page</h1>
 
       <InputGroup
@@ -65,6 +63,23 @@ const ProfileEditPage = () => {
         type="text"
         value={formValues.name}
         onChange={handleChange}
+        errorMsg={errorMessage}
+      />
+      <InputGroup
+        label="Nickname"
+        name="nickName"
+        type="text"
+        value={formValues.nickName}
+        onChange={handleChange}
+        errorMsg={errorMessage}
+      />
+      <InputGroup
+        label="Email"
+        name="email"
+        type="email"
+        value={formValues.email}
+        onChange={handleChange}
+        errorMsg={errorMessage}
       />
     </div>
   );
