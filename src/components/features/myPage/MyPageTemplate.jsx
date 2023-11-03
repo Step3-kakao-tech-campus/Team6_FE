@@ -34,7 +34,7 @@ const MyPageTemplate = ({ userDetails }) => {
         to="/userinfo/edit"
         className="userProfile-editButton mb-2 text-lg text-[#FF4800] underline underline-offset-4"
       >
-        Edit Profile
+        View / Edit Profile
       </Button>
 
       <div className="userProfile-actions mt-4 flex flex-col items-center justify-center">
