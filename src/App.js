@@ -13,10 +13,10 @@ import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage"
 
 import LoginPage from "./components/features/formPages/loginPage/LoginPage";
 import RegisterPage from "./components/features/formPages/registerPage/RegisterPage";
-
-import {persistor, store} from "./store";
-import {PersistGate} from "redux-persist/integration/react";
 import MyPage from "./components/features/myPage/MyPage";
+
+import { persistor, store } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const queryClient = new QueryClient();
 
@@ -25,27 +25,40 @@ function App() {
     <div className="App flex w-full flex-col items-center">
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<MainLayout />}>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/restaurant/:id" element={<RestaurantDetailPage />}/>
-                <Route path="/festival/:id" element={<FestivalDetailPage />} />
-                <Route path={"/search"} element={<SearchPage />} />
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route
+                    path="/restaurant/:id"
+                    element={<RestaurantDetailPage />}
+                  />
+                  <Route
+                    path="/festival/:id"
+                    element={<FestivalDetailPage />}
+                  />
+                  <Route path={"/search"} element={<SearchPage />} />
 
-                <Route path={"/foods"} element={<FoodSearchPage />} />
-                <Route path={"/foods/:id"} element={<FoodDetailPage />} />
-                <Route path={"/userinfo/wishlist/:filter"} element={<WishlistPage />}/>
+                  <Route path={"/foods"} element={<FoodSearchPage />} />
+                  <Route path={"/foods/:id"} element={<FoodDetailPage />} />
+                  <Route
+                    path={"/userinfo/wishlist/:filter"}
+                    element={<WishlistPage />}
+                  />
 
-                <Route path={"/userinfo/reservations/:filter"} element={<ReservationListPage />}/>
+                  <Route
+                    path={"/userinfo/reservations/:filter"}
+                    element={<ReservationListPage />}
+                  />
 
-                <Route path={"/login"} element={<LoginPage />}/>
-                <Route path={"/register"} element={<RegisterPage />}/>
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </QueryClientProvider>
+                  <Route path={"/login"} element={<LoginPage />} />
+                  <Route path={"/register"} element={<RegisterPage />} />
+                  <Route path={"/userinfo"} element={<MyPage />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </QueryClientProvider>
         </PersistGate>
       </Provider>
     </div>
