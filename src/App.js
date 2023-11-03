@@ -17,6 +17,7 @@ import MyPage from "./components/features/myPage/MyPage";
 
 import { persistor, store } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import ProfileEditPage from "./components/features/profileEditPage/ProfileEditPage";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,10 @@ function App() {
                   <Route path={"/login"} element={<LoginPage />} />
                   <Route path={"/register"} element={<RegisterPage />} />
                   <Route path={"/userinfo"} element={<MyPage />} />
+                  <Route
+                    path={"/userinfo/edit"}
+                    element={<ProfileEditPage />}
+                  />
                 </Route>
               </Routes>
             </BrowserRouter>
