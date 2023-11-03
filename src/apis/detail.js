@@ -1,29 +1,17 @@
 import instance from "./api";
 
-const organizeError = (error) => {
-  return {
-    isSuccess: false,
-    error: error.response.status,
-    message: error.message,
-  };
-};
-
 export const getRestaurantById = async (id) => {
   return await instance
     .get(`${id}`)
-    .then((response) => {
-      return response.data.response;
-    })
-    .catch((error) => Promise.reject(organizeError(error)));
+    .then((response) => response.data.response)
+    .catch((error) => Promise.reject(error));
 };
 
 export const getFestivalById = async (id) => {
   return await instance
     .get(`/festival/${id}`)
-    .then((response) => {
-      return response.data.response;
-    })
-    .catch((error) => Promise.reject(organizeError(error)));
+    .then((response) => response.data.response)
+    .catch((error) => Promise.reject(error));
 };
 
 export const getFoodById = async (id) => {
@@ -35,16 +23,12 @@ export const getFoodById = async (id) => {
         result: response.data.response,
       };
     })
-    .catch((error) => Promise.reject(organizeError(error)));
+    .catch((error) => Promise.reject(error));
 };
 
 export const getCalenderByIdAndType = async (id, type) => {
   return await instance
     .get(`/${type}/bookings/calender/${id}`)
-    .then((response) => {
-      return response.data.response;
-    })
-    .catch((error) => {
-      return Promise.reject(organizeError(error));
-    });
+    .then((response) => response.data.response)
+    .catch((error) => Promise.reject(error));
 };

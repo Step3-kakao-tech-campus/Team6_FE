@@ -25,7 +25,7 @@
     }
 
     .modal-background {
-        @apply width-flex-layout absolute z-[5] h-full bg-black bg-opacity-50;
+        @apply width-flex-layout absolute z-[15] h-full bg-black bg-opacity-50;
     }
 
     .modal-background__hidden {
@@ -33,11 +33,11 @@
     }
 
     .bottom-modal-board__opened {
-        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
+        @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
     }
 
     .bottom-modal-board__closed {
-        @apply width-flex-layout fixed bottom-0 z-10 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
+        @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
     }
 
     .modal-board__opened {
@@ -57,7 +57,7 @@
     }
 
     @keyframes pulse {
-        50%{
+        50% {
             background-color: rgba(209, 213, 219, 1);
         }
     }
@@ -68,5 +68,13 @@
 
     .reservation-button {
         @apply w-full text-white bg-tripKoOrange text-2xl py-2 rounded-full absolute font-bold
+    }
+
+    .account-input {
+        @apply w-full h-12 border-2 border-gray-300 rounded-md px-3 text-lg focus:outline-none focus:ring-2 focus:ring-tripKoOrange;
+    }
+
+    .error-box {
+        @apply bg-red-200 p-4 text-red-600 text-lg font-semibold rounded-2xl text-center
     }
 }
