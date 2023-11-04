@@ -52,16 +52,14 @@ export const loginHandler = rest.post("/login", async (req, res, ctx) => {
       );
     else throw new Error("email or password is not correct");
   } catch (error) {
-    {
-      return res(
-        ctx.status(400),
-        ctx.json({
-          success: false,
-          response: null,
-          error: error,
-        }),
-      );
-    }
+    return res(
+      ctx.status(400),
+      ctx.json({
+        success: false,
+        response: null,
+        error: error,
+      }),
+    );
   }
 });
 
