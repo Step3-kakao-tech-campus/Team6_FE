@@ -12,7 +12,7 @@ const ReservationInfo = ({ reservation, reviewable }) => {
   );
 
   return (
-    <div className="reservation-info-wrapper relative flex h-40 border border-gray-500 mx-4 ruonded-2xl overflow-hidden">
+    <div className="reservation-info-wrapper relative flex h-40 mx-4 ruonded-2xl overflow-hidden shadow-rounded-card cursor-default">
       <Photo
         className={"reservation-image cutting-line h-40 w-[12rem] object-cover"}
         src={reservation.image}
