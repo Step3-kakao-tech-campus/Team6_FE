@@ -12,7 +12,7 @@ const ReservationInfo = ({ reservation, reviewable }) => {
   );
 
   return (
-    <div className="reservation-card-wrapper relative flex h-40 w-full px-4">
+    <div className="reservation-info-wrapper relative flex h-40 border border-gray-500 mx-4 ruonded-2xl overflow-hidden">
       <Photo
         className={"reservation-image cutting-line h-40 w-[12rem] object-cover"}
         src={reservation.image}
@@ -31,16 +31,17 @@ const ReservationInfo = ({ reservation, reviewable }) => {
           <div className={"reservation-time "}>
             Time : {reservation?.date} {reservation?.time}
           </div>
-          <div
-            className={"reservation-location line-clamp-2 flex items-center "}
-          >
-            <MapIcon color={"#FF4800"} /> {reservation?.address}
+          <div className={"reservation-location-wrapper flex items-center "}>
+            <MapIcon color={"#FF4800"} />
+            <div className={"reservation-location line-clamp-1 w-full"}>
+              {reservation?.address}
+            </div>
           </div>
           <div className={"reservation-message text-gray-500"}>
             {reservation?.message}{" "}
           </div>
         </div>
-        <Stamp className={"absolute bottom-4 right-4 -rotate-12"}>
+        <Stamp className={"absolute bottom-4 left-6 rotate-12 bg-white"}>
           {status}
         </Stamp>
       </div>
