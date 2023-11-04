@@ -10,6 +10,7 @@ import {
   NAME_CONDITION,
   REGISTER_PASSWORD_CONDITION,
 } from "../constraints";
+import ErrorBox from "../../../atoms/ErrorBox";
 
 const RegisterPage = () => {
 
@@ -144,7 +145,7 @@ const RegisterPage = () => {
           />
         </form>
         {errorMsgFromBE && (
-          <div className={"error-backend error-box"}>{errorMsgFromBE}</div>
+          <ErrorBox>{errorMsgFromBE}</ErrorBox>
         )}
         <Button
           as={button}
