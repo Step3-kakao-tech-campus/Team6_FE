@@ -2,7 +2,14 @@ import FOODS from "../datas/foods";
 import { rest } from "msw";
 
 export const getFoods = (length) => {
-  const selectedKeys = ["id", "name", "image", "category", "summary"];
+  const selectedKeys = [
+    "id",
+    "name",
+    "mainImage",
+    "category",
+    "description",
+    "foodImage",
+  ];
   const foodCard = Object.fromEntries(
     Object.entries(FOODS[0]).filter(([key, value]) =>
       selectedKeys.includes(key),
