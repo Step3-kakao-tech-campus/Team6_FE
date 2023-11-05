@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 /**
  * 컴포넌트의 크기를 가져오는 훅
@@ -10,11 +10,15 @@ export const useComponentSize = (ref) => {
     width: undefined,
     height: undefined,
   });
-  const observer = new ResizeObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      setSize(entry.contentRect);
-    });
-  });
+  const observer = useMemo(
+    () =>
+      new ResizeObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          setSize(entry.contentRect);
+        });
+      }),
+    [],
+  );
   useEffect(() => {
     if (ref.current) {
       observer.observe(ref.current);

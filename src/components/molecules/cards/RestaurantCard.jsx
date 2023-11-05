@@ -1,6 +1,6 @@
 import { useState } from "react";
-import StarRating from "../atoms/StarRating";
-import WishButton from "../atoms/WishButton";
+import StarRating from "../../atoms/StarRating";
+import WishButton from "../../atoms/WishButton";
 
 const RestaurantCard = ({ restaurant }) => {
   const [isWished, setIsWished] = useState(restaurant.isWished);

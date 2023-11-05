@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { comma } from "../../utils/convert";
-import WishButton from "../atoms/WishButton";
-import MapIcon from "../atoms/MapIcon";
+import { comma } from "../../../utils/convert";
+import WishButton from "../../atoms/WishButton";
+import MapIcon from "../../atoms/MapIcon";
 
 const FestivalCard = ({ festival }) => {
   const [isWished, setIsWished] = useState(festival.isWished);

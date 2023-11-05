@@ -2,7 +2,7 @@ import PageTitleBar from "../../molecules/PageTitleBar";
 import SectionTitle from "../../atoms/SectionTitle";
 import InfoElement from "../restaurantDetailPage/atoms/InfoElement";
 import { comma } from "../../../utils/convert";
-import ReviewCards from "../../organisms/ReviewCards";
+import ReviewCards from "../../molecules/cards/ReviewCards";
 import Carousel from "../carousel/Carousel";
 import { imagesToSlides } from "../carousel/utils";
 import ButtonAllReviews from "../restaurantDetailPage/atoms/ButtonAllReviews";

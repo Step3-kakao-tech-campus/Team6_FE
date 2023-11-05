@@ -5,7 +5,7 @@ import Button from "../atoms/Button";
 import { FaBars } from "react-icons/fa6";
 import UserAvatar from "../atoms/UserAvatar";
 import MapIcon from "../atoms/MapIcon";
-import SideBar from "../organisms/SideBar";
+import SideBar from "./cards/SideBar";
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const navigate = useNavigate();

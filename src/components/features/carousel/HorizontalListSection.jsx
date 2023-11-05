@@ -3,27 +3,31 @@ import { useComponentSize } from "../../../hooks/useComponentSize";
 import ScrollButtonLeft from "./ScrollButtonLeft";
 import ScrollButtonRight from "./ScrollButtonRight";
 
-const HorizontalListSection = ({ children }) => {
+const HorizontalListSection = ({ hideButton, children }) => {
   const innerDivRef = useRef(null);
   const innerDivSize = useComponentSize(innerDivRef);
   return (
     <div className={"relative"}>
-      <ScrollButtonLeft
-        onClick={() => {
-          innerDivRef.current.scrollBy({
-            left: innerDivSize.width,
-            behavior: "smooth",
-          });
-        }}
-      />
-      <ScrollButtonRight
-        onClick={() => {
-          innerDivRef.current.scrollBy({
-            left: -innerDivSize.width,
-            behavior: "smooth",
-          });
-        }}
-      />
+      {!hideButton && (
+        <>
+          <ScrollButtonLeft
+            onClick={() => {
+              innerDivRef.current.scrollBy({
+                left: innerDivSize.width,
+                behavior: "smooth",
+              });
+            }}
+          />
+          <ScrollButtonRight
+            onClick={() => {
+              innerDivRef.current.scrollBy({
+                left: -innerDivSize.width,
+                behavior: "smooth",
+              });
+            }}
+          />
+        </>
+      )}
       <div
         className="horizontal-list-wrapper w-full overflow-x-scroll"
         ref={innerDivRef}

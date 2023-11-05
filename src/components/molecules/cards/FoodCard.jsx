@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Photo from "../atoms/Photo";
+import Photo from "../../atoms/Photo";
 
 const FoodCard = ({ food }) => {
   return (
