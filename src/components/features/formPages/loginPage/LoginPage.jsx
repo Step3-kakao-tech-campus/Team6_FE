@@ -24,7 +24,6 @@ const LoginPage = () => {
 
   const onSubmit = useCallback(
     (e) => {
-      console.log("onSubmit");
       e.preventDefault();
       if (validateEmail() && validatePassword()) {
         login({
