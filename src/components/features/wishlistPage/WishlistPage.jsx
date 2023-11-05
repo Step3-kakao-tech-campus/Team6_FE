@@ -16,7 +16,7 @@ const WishlistPage = () => {
     isLoading,
     error,
   } = useQuery("wishlist", getWishlist);
-  const data = queryData?.data.response;
+  const data = queryData?.result?.data?.response;
 
   useEffect(() => {
     if (urlFilter !== filter) {
@@ -45,7 +45,7 @@ const WishlistPage = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;
 
-  // console.log(filteredData);
+  console.log(queryData?.result);
   return (
     <div className="wishlist-page h-screen w-full">
       <PageTitle title="Wishlist" />
