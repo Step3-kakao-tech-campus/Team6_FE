@@ -2,6 +2,7 @@ export const RESTAURANT_RESERVATIONS = [
   {
     id: 3,
     placeId: 1,
+    type: "restaurant",
     name: "Restaurant Name",
     address: "location of restaurant",
     image: "https://picsum.photos/211",
@@ -17,6 +18,7 @@ export const FESTIVAL_RESERVATIONS = [
   {
     id: 1,
     placeId: 1, //예약한 객체에 대한 id
+    type: "festival",
     name: "Festival Name",
     address: "location of festival",
     image: "https://picsum.photos/212",
@@ -27,6 +29,7 @@ export const FESTIVAL_RESERVATIONS = [
   },  {
     id: 2,
     placeId: 1, //예약한 객체에 대한 id
+    type: "festival",
     name: "festival Name",
     address: "location of festival",
     image: "https://picsum.photos/213",
