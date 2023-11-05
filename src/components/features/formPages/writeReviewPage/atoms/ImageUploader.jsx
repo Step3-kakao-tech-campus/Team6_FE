@@ -14,9 +14,11 @@ const ImageUploader = ({ setFile, file }) => {
         <img
           className="img_preview h-40 w-40 object-contain"
           src={previewURL}
-        ></img>,
+          alt="preview of the file you are about to upload"
+        />,
       );
     return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [previewURL]);
 
   const handleFileOnChange = (event) => {
@@ -49,7 +51,10 @@ const ImageUploader = ({ setFile, file }) => {
       />
       <HorizontalListSection hideButton={true}>
         <div className="preview-wrapper">{preview}</div>
-        <button onClick={handleFileButtonClick} className={"h-40 w-40 flex justify-center items-center bg-gray-300"}>
+        <button
+          onClick={handleFileButtonClick}
+          className={"flex h-40 w-40 items-center justify-center bg-gray-300"}
+        >
           <BiImage color={"#000000"} size={50} />
         </button>
       </HorizontalListSection>
