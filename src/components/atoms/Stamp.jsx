@@ -4,6 +4,7 @@
  * @returns {JSX.Element}
  * @constructor
  */
+//TODO : Stamp 색 변경 가능하게 하기
 const Stamp = ({ children, className }) => {
   return (
     <span
