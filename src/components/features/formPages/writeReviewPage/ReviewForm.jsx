@@ -3,10 +3,10 @@ import { ModalContext } from "../../../../App";
 import { useContext, useState } from "react";
 import ReservationInfo from "./ReservationInfo";
 import Button from "../../../atoms/Button";
-import StarInput from "./atoms/StarInput";
 import RatingInput from "./organisms/RatingInput";
 import ImageUploader from "./atoms/ImageUploader";
 import ErrorBox from "../../../atoms/ErrorBox";
+import {postReview} from "../../../../apis/review";
 
 const ReviewForm = ({ reservation, onSubmit }) => {
 
@@ -19,13 +19,18 @@ const ReviewForm = ({ reservation, onSubmit }) => {
   }
   const { hide } = useContext(ModalContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (score === 0) {
       setErrorMsg("Please select score");
       return;
     }
-    onSubmit(e);
+    if (reviewText === "") {
+      setErrorMsg("Please write review");
+      return;
+    }
+    const result = await postReview[reservation.type](reservation.id, score, reviewText);
+    alert(result.message);
     hide();
   };
 
