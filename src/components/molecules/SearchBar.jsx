@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { FaBars } from "react-icons/fa6";
 import UserAvatar from "../atoms/UserAvatar";
 import MapIcon from "../atoms/MapIcon";
+import SideBar from "./cards/SideBar";
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const navigate = useNavigate();
@@ -15,27 +17,40 @@ const SearchBar = ({ value, onChange, onSearch }) => {
     }
   };
 
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const toggleSideBar = () => setIsSideBarOpen(!isSideBarOpen);
+
   return (
-    <div className="relative m-2 flex items-center">
-      <Button onClick={() => console.log("to sideBar")}>
-        <FaBars size={28} />
-      </Button>
-      <div className="absolute left-11">
-        <MapIcon size={20} color={"#FF4800"} />
+    <div className="search-section relative flex items-center justify-between gap-2 p-2">
+      <div className="sidebar-button relative">
+        <Button onClick={toggleSideBar}>
+          <FaBars size={28} />
+        </Button>
+        <SideBar isOpen={isSideBarOpen} toggle={toggleSideBar} />
       </div>
-      <Input
-        className="text-md mx-1 w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
-        type="search"
-        placeholder="Search your place..."
-        value={value}
-        onChange={onChange}
-        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-      />
-      <UserAvatar
-        image={"https://picsum.photos/230"}
-        onClick={() => console.log("clicked")}
-        className="h-12 w-12 rounded-full"
-      />
+      <div
+        className={"input-wrapper relative w-[calc(100%-6rem)] rounded-full"}
+      >
+        <div className="absolute left-2 flex h-full items-center justify-center">
+          <MapIcon size={20} color={"#FF4800"} />
+        </div>
+        <Input
+          className="text-md w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
+          type="search"
+          placeholder="Search your place..."
+          value={value}
+          onChange={onChange}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        />
+      </div>
+      <Link to="/userinfo">
+        <UserAvatar
+          image={"https://picsum.photos/230"}
+          onClick={() => console.log("clicked")}
+          className="h-[3rem] w-[3rem] rounded-full"
+        />
+      </Link>
     </div>
   );
 };

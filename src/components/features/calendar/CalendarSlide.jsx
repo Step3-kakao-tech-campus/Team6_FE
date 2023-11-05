@@ -24,7 +24,7 @@ const CalendarSlide = ({ monthState, unavailableDays, setSelectedDate, selectedD
                 <CalendarDate
                   date={date}
                   selectDate={() => setSelectedDate(date)}
-                  available={isAvailableDay(date, unavailableDays)}
+                  available={isAvailableDay(date, unavailableDays) && date.getMonth() === monthState.getMonth()} // available이고, 현재 달에 속하는 날짜만 선택할 수 있도록 한다.
                   visible={date.getMonth() === monthState.getMonth()}
                   selected={selectedDate && isSameDay(selectedDate, date)}
                   key={i}
