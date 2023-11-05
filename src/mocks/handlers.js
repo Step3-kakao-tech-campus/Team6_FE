@@ -7,6 +7,8 @@ import { getFestivalCalendarHandler, getFestivalHandler } from "./get/festival";
 import {
   getFestivalReviewHandler,
   getRestaurantReviewHandler,
+  postFestivalReviewHandler,
+  postRestaurantReviewHandler,
 } from "./get/review";
 import { getTouristSpotHandler } from "./get/touristSpot";
 import { searchFoodHandler, getFoodHandler } from "./get/food";
@@ -35,4 +37,6 @@ export const handlers = [
   postWishHandler,
   loginHandler,
   registerHandler,
+  postFestivalReviewHandler,
+  postRestaurantReviewHandler,
 ];

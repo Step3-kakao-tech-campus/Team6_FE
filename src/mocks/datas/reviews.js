@@ -71,3 +71,16 @@ export const REVIEWS = [
     ],
   },
 ];
+
+export const REVIEW_POST_RESPONSE = {
+  code: 201,
+  message: "리뷰가 성공적으로 등록되었습니다.",
+  result: {
+    reviewId: 1,
+    placeId: 1,
+    rating: 4.5,
+    description: "맛있어요",
+    uploadTime: "2021-09-13T15:00:00.000Z",
+    nickName: "minmunui",
+  },
+};
