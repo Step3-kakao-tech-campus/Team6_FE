@@ -13,7 +13,6 @@ import {
 import ErrorBox from "../../../atoms/ErrorBox";
 
 const RegisterPage = () => {
-
   const [email, onChangeEmail, errorMsgEmail, validateEmail] = useInputGroup(
     "",
     (input) => checkConditions(EMAIL_CONDITION, input),
@@ -51,10 +50,10 @@ const RegisterPage = () => {
 
   const allInputValid = useCallback(() => {
     return (
-        validateEmail() &&
-        validatePassword() &&
-        validatePasswordConfirm() &&
-        validateUsername()
+      validateEmail() &&
+      validatePassword() &&
+      validatePasswordConfirm() &&
+      validateUsername()
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [validateEmail, validatePassword, validateUsername]);

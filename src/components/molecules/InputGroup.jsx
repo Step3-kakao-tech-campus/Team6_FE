@@ -29,7 +29,7 @@ const InputGroup = ({
         <label htmlFor={name} className={"text-lg font-semibold"}>
           {label}
         </label>
-        {errorMsg.length > 0 && (
+        {errorMsg?.length > 0 && (
           <span className={"font-semibold text-red-500"}>{errorMsg}</span>
         )}
       </div>
@@ -38,7 +38,7 @@ const InputGroup = ({
         value={value}
         onChange={onChange}
         className={
-          "account-input " + (errorMsg.length > 0 ? "border-red-500" : "")
+          "account-input " + (errorMsg?.length > 0 ? "border-red-500" : "")
         }
         type={type}
         onBlur={onBlur}

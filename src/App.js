@@ -13,6 +13,7 @@ import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage"
 
 import LoginPage from "./components/features/formPages/loginPage/LoginPage";
 import RegisterPage from "./components/features/formPages/registerPage/RegisterPage";
+import MyPage from "./components/features/myPage/MyPage";
 
 import {persistor, store} from "./store";
 import {PersistGate} from "redux-persist/integration/react";
@@ -58,6 +59,10 @@ function App() {
                   <Route path={"/register"} element={<RegisterPage />}/>
 
                   <Route path={"/userinfo"} element={<MyPage />}/>
+                  <Route
+                      path={"/userinfo/edit"}
+                      element={<ProfileEditPage />}
+                  />
                 </Route>
               </Routes>
             </BrowserRouter>

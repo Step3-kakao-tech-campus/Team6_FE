@@ -25,9 +25,14 @@ const WishlistCard = ({ wishlist }) => {
           />
         )}
 
-        <div className="wishlist-card__content mx-2 flex h-1/4 w-full flex-col items-center justify-center">
+        <div className="wishlist-card__content mx-2 flex w-full flex-col items-center justify-center">
           <h3 className="text-xl font-semibold">{wishlist.name}</h3>
-          <span className="text-sm text-gray-400">{wishlist.address}</span>
+          <div className="flex items-center">
+            <MapIcon size={13} color={"#22c55e"} />
+            <span className="ml-1 text-sm text-gray-400">
+              {wishlist.address}
+            </span>
+          </div>
         </div>
         <div onClick={handleWishButtonWrapperClick}>
           <WishButton

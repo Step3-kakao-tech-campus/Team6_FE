@@ -13,6 +13,9 @@ import {
 import { getTouristSpotHandler } from "./get/touristSpot";
 import { searchFoodHandler, getFoodHandler } from "./get/food";
 import { getWishlistHandler, postWishHandler } from "./get/wishlist";
+import { getReservationHandler } from "./get/reservation";
+import { loginHandler, registerHandler } from "./account/account";
+import { editUserHandler, getUserinfoHandler } from "./get/userinfo";
 import {
   getFestivalReservationHandler,
   getRestaurantReservationHandler,
@@ -37,6 +40,8 @@ export const handlers = [
   postWishHandler,
   loginHandler,
   registerHandler,
+  getUserinfoHandler,
+  editUserHandler,
   postFestivalReviewHandler,
   postRestaurantReviewHandler,
 ];

@@ -1,16 +1,29 @@
 import instance from "./api";
 
 export const wish = async (filter, id, isWished) => {
-  console.log(`filter: ${filter}, id: ${id}, isWished: ${isWished}`);
-  const result = await instance.patch(`/userinfo/wishlist`, {
-    filter,
-    id,
-    isWished,
-  });
-  return result.data.response;
+  return await instance
+    .patch(`/userinfo/wishlist`, {
+      filter,
+      id,
+      isWished,
+    })
+    .then((response) => {
+      return {
+        isSuccess: true,
+        result: response.data.response,
+      };
+    })
+    .catch((error) => Promise.reject(error));
 };
 
 export const getWishlist = async () => {
-  const result = await instance.get(`/userinfo/wishlist`);
-  return result.data.response;
+  return await instance
+    .get(`/userinfo/wishlist`)
+    .then((response) => {
+      return {
+        isSuccess: true,
+        result: response.data.response,
+      };
+    })
+    .catch((error) => Promise.reject(error));
 };
