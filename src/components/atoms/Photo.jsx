@@ -15,14 +15,6 @@ const Photo = ({ src, alt, className, onClick, extendable }) => {
 
   return (
     <>
-      {/*{isModalOpen && (*/}
-      {/*  <Modal*/}
-      {/*    isOpen={isModalOpen}*/}
-      {/*    onClose={() => setIsModalOpen(false)}*/}
-      {/*  >*/}
-      {/*      <img src={src} alt={alt} className="h-full w-full object-cover" />*/}
-      {/*  </Modal>*/}
-      {/*)}*/}
       <div className={"photo-wrapper " + className + " skeleton-wrapper "}>
         <img
           src={src}
