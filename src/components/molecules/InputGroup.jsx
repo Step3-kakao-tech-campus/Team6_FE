@@ -22,6 +22,7 @@ const InputGroup = ({
   errorMsg,
   onBlur,
   onKeyPress,
+  register,
 }) => {
   return (
     <div className="input-group">
@@ -43,6 +44,7 @@ const InputGroup = ({
         type={type}
         onBlur={onBlur}
         onKeyPress={onKeyPress}
+        register={register ? register(name) : {}}
       />
     </div>
   );
