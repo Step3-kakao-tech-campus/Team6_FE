@@ -18,6 +18,10 @@ import {
   getRestaurantReservationHandler,
 } from "./get/reservation";
 import { loginHandler, registerHandler } from "./account/account";
+import {
+  postFestivalReservationHandler,
+  postRestaurantReservationHandler,
+} from "./post/reservation";
 
 export const handlers = [
   searchSpotHandler,
@@ -39,4 +43,6 @@ export const handlers = [
   registerHandler,
   postFestivalReviewHandler,
   postRestaurantReviewHandler,
+  postRestaurantReservationHandler,
+  postFestivalReservationHandler,
 ];
