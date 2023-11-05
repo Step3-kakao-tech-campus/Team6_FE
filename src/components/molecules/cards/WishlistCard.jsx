@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import WishButton from "../../atoms/WishButton";
 import Photo from "../../atoms/Photo";
+import MapIcon from "../../atoms/MapIcon";
 
 const WishlistCard = ({ wishlist }) => {
   const navigate = useNavigate();
