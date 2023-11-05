@@ -16,7 +16,7 @@ import Button from "../../atoms/Button";
 import Photo from "../../atoms/Photo";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
-import {reserveFestival, reserveRestaurant} from "../../../apis/reservation";
+import {reserveFestival} from "../../../apis/reservation";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);

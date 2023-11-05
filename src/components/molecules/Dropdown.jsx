@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 /**
  * Dropdown component
  * @param options {string[]} - options to be shown in dropdown

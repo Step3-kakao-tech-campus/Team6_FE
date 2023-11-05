@@ -18,7 +18,8 @@ export const login = async (data) => {
 };
 
 export const register = async (data) => {
-  const { email, password, username, nationality, age, birthday, nickname } =
+  //TODO: 추가적인 회원가입 정보 추가
+  const { email, password, username } =
     data;
   return await instance.post("/register", {
     email,
