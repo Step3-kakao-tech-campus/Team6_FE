@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { FaBars } from "react-icons/fa6";
@@ -44,11 +44,13 @@ const SearchBar = ({ value, onChange, onSearch }) => {
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
       </div>
-      <UserAvatar
-        image={"https://picsum.photos/230"}
-        onClick={() => console.log("clicked")}
-        className="h-[3rem] w-[3rem] rounded-full"
-      />
+      <Link to="/userinfo">
+        <UserAvatar
+          image={"https://picsum.photos/230"}
+          onClick={() => console.log("clicked")}
+          className="h-[3rem] w-[3rem] rounded-full"
+        />
+      </Link>
     </div>
   );
 };

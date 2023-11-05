@@ -31,19 +31,7 @@ const ProfileEditPage = () => {
     },
   });
 
-  useEffect(() => {
-    if (data?.data?.response) {
-      setFormValues((prevValues) => ({
-        ...prevValues,
-        name: data.data.response.name || "",
-        nickname: data.data.response.nickname || "",
-        email: data.data.response.email || "",
-        nationality: data.data.response.nationality || "",
-        birthday: data.data.response.birthday || "",
-      }));
-    }
-  }, [data]);
-
+  // 별도의 validation 함수를 만들어서 사용할 수도 있음
   const emailValidation = yup
     .string()
     .required("Email is required.")
@@ -87,6 +75,12 @@ const ProfileEditPage = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    if (data?.data?.response) {
+      reset(data.data.response);
+    }
+  }, [data, reset]);
 
   const onSubmit = (formData) => {
     mutation.mutate(formData);
