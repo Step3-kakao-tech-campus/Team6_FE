@@ -11,6 +11,7 @@ const Modal = ({ children, isOpen, onClose }) => {
           }
           onClick={onClose}
         >
+            {/*TODO: modal close button*/}
           <AiOutlineClose size={60} color={"#ffffff"} />
         </button>
       </ModalBackground>
