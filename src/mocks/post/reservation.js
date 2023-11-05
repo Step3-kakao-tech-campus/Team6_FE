@@ -30,7 +30,7 @@ export const postRestaurantReservationHandler = rest.post(
   },
 );
 
-export const postFestivalReservationHandler = rest.get(
+export const postFestivalReservationHandler = rest.post(
   "/festival/bookings",
   async (req, res, ctx) => {
     try {

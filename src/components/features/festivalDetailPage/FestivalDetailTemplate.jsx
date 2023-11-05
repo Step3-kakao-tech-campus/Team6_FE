@@ -103,7 +103,7 @@ const FestivalDetailTemplate = ({ festival }) => {
               </div>
               <Button
                 as="button"
-                onClick={onReserve()}
+                onClick={onReserve}
                 variant="link"
                 className="rounded-button-[tripKoOrange] h-12 w-full rounded-full bg-tripKoOrange text-white"
               >
