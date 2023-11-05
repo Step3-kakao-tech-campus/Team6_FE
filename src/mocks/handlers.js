@@ -13,7 +13,7 @@ import { searchFoodHandler, getFoodHandler } from "./get/food";
 import { getWishlistHandler, postWishHandler } from "./get/wishlist";
 import { getReservationHandler } from "./get/reservation";
 import { loginHandler, registerHandler } from "./account/account";
-import { getUserinfoHandler } from "./get/userinfo";
+import { editUserHandler, getUserinfoHandler } from "./get/userinfo";
 
 export const handlers = [
   searchSpotHandler,
@@ -33,4 +33,5 @@ export const handlers = [
   loginHandler,
   registerHandler,
   getUserinfoHandler,
+  editUserHandler,
 ];

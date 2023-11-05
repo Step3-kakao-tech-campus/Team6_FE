@@ -6,6 +6,6 @@ export const user = async () => {
 };
 
 export const editUser = async (data) => {
-  const result = await instance.patch("/userinfo", data);
+  const result = await instance.patch("/userinfo/edit", data);
   return result.data.response;
 };

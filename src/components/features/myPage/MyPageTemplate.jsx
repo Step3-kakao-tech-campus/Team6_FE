@@ -21,8 +21,8 @@ const MyPageTemplate = ({ userDetails }) => {
           src={"https://picsum.photos/230"}
           className="userProfile-image my-2 h-60 w-60 rounded-full object-cover"
         />
-        <div className="userProfile-nickName my-2 text-2xl font-bold">
-          {userDetails?.nickName}
+        <div className="userProfile-nickname my-2 text-2xl font-bold">
+          {userDetails?.nickname}
         </div>
         <div className="userProfile-email mb-2">
           <span className="text-gray-400">email: {userDetails?.email}</span>
