@@ -2,15 +2,15 @@ import Carousel from "../carousel/Carousel";
 import { useQuery } from "react-query";
 import { getHome } from "../../../apis/home";
 import HorizontalListSection from "../carousel/HorizontalListSection";
-import FestivalPoster from "../../molecules/FestivalPoster";
-import PlacePoster from "../../molecules/PlacePoster";
+import FestivalPoster from "../../molecules/cards/FestivalPoster";
+import PlacePoster from "../../molecules/cards/PlacePoster";
 import { utils } from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../carousel/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
 import { search } from "../../../apis/search";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const dummySlides = [
   {
@@ -85,7 +85,6 @@ const HomePage = () => {
                   image={spot.image}
                   name={spot.name}
                   address={spot.address}
-                  to={`touristSpot/${spot.id}`}
                 />
               ))}
           </HorizontalListSectionMediaQuery>

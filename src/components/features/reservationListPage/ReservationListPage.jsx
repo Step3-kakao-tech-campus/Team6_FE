@@ -9,7 +9,7 @@ const ReservationListPage = () => {
   );
 
   return (
-    <div className={"w-full h-screen"}>
+    <div className={"main-layout-page"}>
       <PageTitleBar name={"My Booking List"} />
       {data && <ReservationListTemplate reservations={data} />}
       {isLoading && <div>Loading...</div>}

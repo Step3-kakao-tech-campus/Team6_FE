@@ -1,8 +1,8 @@
-import CardTitle from "../atoms/CardTitle";
-import UserAvatar from "../atoms/UserAvatar";
-import StarRating from "../atoms/StarRating";
+import CardTitle from "../../atoms/CardTitle";
+import UserAvatar from "../../atoms/UserAvatar";
+import StarRating from "../../atoms/StarRating";
 import { useState } from "react";
-import Photo from "../atoms/Photo";
+import Photo from "../../atoms/Photo";
 
 const ReviewCard = ({ review }) => {
   const [isExtended, setExtended] = useState(false);

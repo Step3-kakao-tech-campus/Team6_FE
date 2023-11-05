@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import WishButton from "../atoms/WishButton";
-import Photo from "../atoms/Photo";
-import MapIcon from "../atoms/MapIcon";
+import WishButton from "../../atoms/WishButton";
+import Photo from "../../atoms/Photo";
 
 const WishlistCard = ({ wishlist }) => {
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ const WishlistCard = ({ wishlist }) => {
             </span>
           </div>
         </div>
-
         <div onClick={handleWishButtonWrapperClick}>
           <WishButton
             filter={wishlist.type}

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../atoms/Input";
 import { foodSearch } from "../../../apis/search";
 import { FiSearch } from "react-icons/fi";
-import FoodCard from "../../molecules/FoodCard";
+import FoodCard from "../../molecules/cards/FoodCard";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import MapIcon from "../atoms/MapIcon";
-import WishButton from "../atoms/WishButton";
-import Photo from "../atoms/Photo";
+import MapIcon from "../../atoms/MapIcon";
+import WishButton from "../../atoms/WishButton";
+import Photo from "../../atoms/Photo";
 
 const TouristSpotCard = ({ touristSpot }) => {
   const [isWished, setIsWished] = useState(touristSpot.isWished);

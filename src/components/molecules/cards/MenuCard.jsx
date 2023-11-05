@@ -1,6 +1,6 @@
-import {comma, toUpperCaseFirstWord} from "../../utils/convert";
-import CardTitle from "../atoms/CardTitle";
-import Photo from "../atoms/Photo";
+import {comma, toUpperCaseFirstWord} from "../../../utils/convert";
+import CardTitle from "../../atoms/CardTitle";
+import Photo from "../../atoms/Photo";
 
 const MenuCard = ({ menu }) => {
   return (

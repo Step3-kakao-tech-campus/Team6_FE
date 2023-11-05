@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Photo from "../atoms/Photo";
+import Photo from "../../atoms/Photo";
 
 const FestivalPoster = ({ image, to, alt }) => {
   return (

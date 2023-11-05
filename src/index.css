@@ -41,11 +41,11 @@
     }
 
     .modal-board__opened {
-        @apply max-w-[50rem] max-h-[50%] z-[9] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+        @apply w-[90%] min-w-[20rem] max-w-[45rem] max-h-[70%] z-[20] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] overflow-y-scroll;
     }
 
     .ticket-card {
-        @apply width-flex-layout height-flex-layout-small relative rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl overflow-hidden;
+        @apply width-flex-layout relative rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl overflow-hidden;
     }
 
     .cutting-line {
@@ -76,5 +76,9 @@
 
     .error-box {
         @apply bg-red-200 p-4 text-red-600 text-lg font-semibold rounded-2xl text-center
+    }
+
+    .main-layout-page {
+        @apply h-screen w-full pt-[2.5rem] pb-[3.5rem];
     }
 }

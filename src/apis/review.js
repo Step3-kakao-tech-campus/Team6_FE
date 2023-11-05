@@ -19,3 +19,33 @@ export const getReviewByIdAndType = async (id, type) => {
     return null;
   }
 };
+
+const organizeReview = (placeId, rating, description) => {
+  return {
+    placeId: placeId,
+    rating: rating,
+    description: description,
+  };
+};
+
+export const postRestaurantReview = async (placeId, rating, description) => {
+  const result = await instance.post(
+    "/restaurant/reviews",
+    organizeReview(placeId, rating, description),
+  );
+  return result.data.response;
+};
+
+export const postFestivalReview = async (placeId, rating, description) => {
+
+  const result = await instance.post(
+    "/festival/reviews",
+    organizeReview(placeId, rating, description),
+  );
+  return result.data.response;
+};
+
+export const postReview = {
+    restaurant: postRestaurantReview,
+    festival: postFestivalReview,
+}

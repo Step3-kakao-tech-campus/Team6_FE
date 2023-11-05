@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { getWishlist } from "../../../apis/wish";
 import FilterBar from "../../molecules/FilterBar";
 import PageTitle from "../../atoms/PageTitle";
-import WishlistCard from "../../molecules/WishlistCard";
+import WishlistCard from "../../molecules/cards/WishlistCard";
 
 const WishlistPage = () => {
   const { filter: urlFilter } = useParams();
