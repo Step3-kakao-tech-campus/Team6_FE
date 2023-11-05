@@ -3,7 +3,7 @@ import { getStarOn } from "../atoms/utils";
 import StarInput from "../atoms/StarInput";
 
 const RatingInput = ({ score, setScore }) => {
-  const [array, setArray] = useState([1, 2, 3, 4, 5]);
+  const [array, ] = useState([1, 2, 3, 4, 5]);
 
   return (
     <div className="rating-input flex justify-center">

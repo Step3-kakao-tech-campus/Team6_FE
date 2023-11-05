@@ -1,6 +1,5 @@
 import { accounts } from "../datas/accounts.js";
 import { rest } from "msw";
-import { getHome } from "../../apis/home";
 
 export const addAccount = (account) => {
   accounts.push(account);
@@ -50,7 +49,7 @@ export const loginHandler = rest.post("/login", async (req, res, ctx) => {
           error: null,
         }),
       );
-    else throw new Error("email or password is not correct");
+    throw new Error("email or password is not correct");
   } catch (error) {
     return res(
       ctx.status(400),
