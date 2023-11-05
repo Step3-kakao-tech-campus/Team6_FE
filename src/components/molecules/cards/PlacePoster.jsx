@@ -5,7 +5,7 @@ import Photo from "../../atoms/Photo";
 const PlacePoster = ({ image, name, address, to, alt }) => {
   return (
     <Link
-      to={to}
+      to={to? to : "/"}
       className="place-card shadow-rounded-card flex flex-shrink-0 flex-col gap-1 p-2 md:w-[15rem]"
     >
       <div

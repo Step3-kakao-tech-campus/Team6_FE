@@ -9,8 +9,8 @@ import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../carousel/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
 import { search } from "../../../apis/search";
-import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const dummySlides = [
   {
@@ -85,7 +85,6 @@ const HomePage = () => {
                   image={spot.image}
                   name={spot.name}
                   address={spot.address}
-                  to={`touristSpot/${spot.id}`}
                 />
               ))}
           </HorizontalListSectionMediaQuery>
