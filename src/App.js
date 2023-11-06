@@ -22,6 +22,7 @@ import RequiredAuthLayout from "./components/layouts/RequiredAuthLayout";
 import Modal from "./components/atoms/Modals/Modal";
 import { createContext } from "react";
 import { useModal } from "./hooks/useModal";
+import ErrorPage from "./components/features/ErrorPage/ErrorPage";
 
 const queryClient = new QueryClient();
 export const ModalContext = createContext(null);
@@ -77,6 +78,8 @@ function App() {
                     <Route path={"/login"} element={<LoginPage />} />
                     <Route path={"/register"} element={<RegisterPage />} />
                   </Route>
+
+                  <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </BrowserRouter>
             </QueryClientProvider>

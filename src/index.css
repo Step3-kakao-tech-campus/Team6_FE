@@ -3,82 +3,91 @@
 @tailwind utilities;
 
 * {
-    font-family: "Montserrat", sans-serif;
-    box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
 }
 
 @layer components {
-    .width-flex-layout {
-        @apply w-full min-w-[20rem] max-w-[50rem];
-    }
+  .width-flex-layout {
+    @apply w-full min-w-[20rem] max-w-[50rem];
+  }
 
-    .height-flex-layout-small {
-        @apply h-[16rem] md:h-[24rem];
-    }
+  .height-flex-layout-small {
+    @apply h-[16rem] md:h-[24rem];
+  }
 
-    .height-flex-layout-medium {
-        @apply h-[24rem] md:h-[32rem];
-    }
+  .height-flex-layout-medium {
+    @apply h-[24rem] md:h-[32rem];
+  }
 
-    .shadow-rounded-card {
-        @apply rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
-    }
+  .shadow-rounded-card {
+    @apply rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
+  }
 
-    .modal-background {
-        @apply width-flex-layout absolute z-[15] h-full bg-black bg-opacity-50;
-    }
+  .modal-background {
+    @apply width-flex-layout absolute z-[15] h-full bg-black bg-opacity-50;
+  }
 
-    .modal-background__hidden {
-        @apply fixed z-[5] hidden bg-black bg-opacity-50;
-    }
+  .modal-background__hidden {
+    @apply fixed z-[5] hidden bg-black bg-opacity-50;
+  }
 
-    .bottom-modal-board__opened {
-        @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
-    }
+  .bottom-modal-board__opened {
+    @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out;
+  }
 
-    .bottom-modal-board__closed {
-        @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white opacity-100 duration-300 ease-in-out px-3;
-    }
+  .bottom-modal-board__closed {
+    @apply width-flex-layout fixed bottom-0 z-30 h-4/5 w-full translate-y-full overflow-y-scroll rounded-t-3xl bg-white px-3 opacity-100 duration-300 ease-in-out;
+  }
 
-    .modal-board__opened {
-        @apply w-[90%] min-w-[20rem] max-w-[45rem] max-h-[70%] z-[20] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] overflow-y-scroll;
-    }
+  .modal-board__opened {
+    @apply fixed left-[50%] top-[50%] z-[20] max-h-[70%] w-[90%] min-w-[20rem] max-w-[45rem] translate-x-[-50%] translate-y-[-50%] overflow-y-scroll;
+  }
 
-    .ticket-card {
-        @apply width-flex-layout relative rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl overflow-hidden;
-    }
+  .ticket-card {
+    @apply width-flex-layout relative overflow-hidden rounded-md shadow-lg transition duration-300 ease-in-out hover:scale-[102%] hover:bg-gray-50 hover:shadow-2xl;
+  }
 
-    .cutting-line {
-        @apply border-r-[0.20rem] border-tripKoOrange border-dashed
-    }
+  .cutting-line {
+    @apply border-r-[0.20rem] border-dashed border-tripKoOrange;
+  }
 
-    .skeleton-wrapper {
-        @apply w-full h-full bg-gray-200 skeleton-pulse overflow-hidden;
-    }
+  .skeleton-wrapper {
+    @apply skeleton-pulse h-full w-full overflow-hidden bg-gray-200;
+  }
 
-    @keyframes pulse {
-        50% {
-            background-color: rgba(209, 213, 219, 1);
-        }
+  @keyframes pulse {
+    50% {
+      background-color: rgba(209, 213, 219, 1);
     }
+  }
 
-    .skeleton-pulse {
-        animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
+  .skeleton-pulse {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 
-    .reservation-button {
-        @apply w-full text-white bg-tripKoOrange text-2xl py-2 rounded-full absolute font-bold
-    }
+  .reservation-button {
+    @apply absolute w-full rounded-full bg-tripKoOrange py-2 text-2xl font-bold text-white;
+  }
 
-    .account-input {
-        @apply w-full h-12 border-2 border-gray-300 rounded-md px-3 text-lg focus:outline-none focus:ring-2 focus:ring-tripKoOrange;
-    }
+  .account-input {
+    @apply h-12 w-full rounded-md border-2 border-gray-300 px-3 text-lg focus:outline-none focus:ring-2 focus:ring-tripKoOrange;
+  }
 
-    .error-box {
-        @apply bg-red-200 p-4 text-red-600 text-lg font-semibold rounded-2xl text-center
-    }
+  .error-box {
+    @apply rounded-2xl bg-red-200 p-4 text-center text-lg font-semibold text-red-600;
+  }
 
-    .main-layout-page {
-        @apply h-screen w-full pt-[2.5rem] pb-[3.5rem];
+  .main-layout-page {
+    @apply h-screen w-full pb-[3.5rem] pt-[2.5rem];
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

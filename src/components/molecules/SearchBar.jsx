@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
@@ -9,6 +9,12 @@ import SideBar from "./cards/SideBar";
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const navigate = useNavigate();
+  const [userToken, setUserToken] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setUserToken(token);
+  }, []);
 
   const handleSearch = () => {
     navigate(`/search?query=${encodeURIComponent(value)}`);
@@ -44,12 +50,21 @@ const SearchBar = ({ value, onChange, onSearch }) => {
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
       </div>
-      <Link to="/userinfo">
-        <UserAvatar
-          image={"https://picsum.photos/230"}
-          onClick={() => console.log("clicked")}
-          className="h-[3rem] w-[3rem] rounded-full"
-        />
+      <Link to={userToken ? "/userinfo" : "/login"}>
+        {userToken ? (
+          <UserAvatar
+            image="https://picsum.photos/230"
+            onClick={() => console.log("clicked")}
+            className="h-[3rem] w-[3rem] rounded-full"
+          />
+        ) : (
+          <Button
+            onClick={() => navigate("/login")}
+            className="text-tripKoOrange-500"
+          >
+            Login
+          </Button>
+        )}
       </Link>
     </div>
   );
