@@ -22,10 +22,9 @@ const InputGroup = ({
   errorMsg,
   onBlur,
   onKeyPress,
-  register,
 }) => {
   return (
-    <div className="input-group">
+    <div className="input-group w-full">
       <div className={"label-container flex w-full justify-between"}>
         <label htmlFor={name} className={"text-lg font-semibold"}>
           {label}
@@ -44,7 +43,6 @@ const InputGroup = ({
         type={type}
         onBlur={onBlur}
         onKeyPress={onKeyPress}
-        register={register ? register(name) : {}}
       />
     </div>
   );
