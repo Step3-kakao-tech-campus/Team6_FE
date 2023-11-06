@@ -76,7 +76,7 @@ function App() {
                       element={<ProfileEditPage />}
                     />
                   </Route>
-                  <Route path="/Error" element={<ErrorPage />} />
+
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </BrowserRouter>
