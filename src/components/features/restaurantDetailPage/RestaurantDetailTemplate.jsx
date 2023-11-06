@@ -15,11 +15,17 @@ import { getCalenderByIdAndType } from "../../../apis/detail";
 import Calendar from "../calendar/Calendar";
 import Photo from "../../atoms/Photo";
 import Button from "../../atoms/Button";
+import TimeDropdown from "../../molecules/TimeDropdown";
+import CardTitle from "../../atoms/CardTitle";
+import { reserveRestaurant } from "../../../apis/reservation";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [requestMessage, setRequestMessage] = useState("");
+  const [selectedTime, setSelectedTime] = useState("Time To Visit");
+  const [selectedPeople, setSelectedPeople] = useState(0);
 
   const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
     getReviewByIdAndType(restaurant.id, "restaurant"),
@@ -29,6 +35,30 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     `restaurant/unavailableDays/${restaurant.id}`,
     () => getCalenderByIdAndType(restaurant.id, "restaurant"),
   );
+
+  const onReserve = async () => {
+    if (!selectedDate || selectedTime === "Time To Visit") {
+      alert("Please select date and time to visit");
+      return;
+    }
+    if (!selectedDate) {
+      alert("Please select date to visit");
+      return;
+    }
+    const response = await reserveRestaurant(
+      restaurant.id,
+      selectedDate,
+      selectedTime,
+      selectedPeople,
+      requestMessage,
+    );
+    if (response.success) {
+      alert("Reservation success");
+      setIsActiveCalender(false);
+    } else {
+      alert("Reservation failed");
+    }
+  };
 
   return (
     <div className={"restaurant-detail-template w-full"}>
@@ -42,11 +72,58 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         >
           {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
-            <Calendar
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-              unavailableDays={operatingInfo.holiday}
-            />
+            <div className={"calendar-wrapper flex flex-col justify-center"}>
+              <Calendar
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                unavailableDays={operatingInfo.holiday}
+              />
+              <div className={"time-select-form flex flex-col py-2 text-lg"}>
+                <CardTitle title={"Visit Time"} />
+                <div className={"dropdown-wrapper"}>
+                  <TimeDropdown
+                    startTime={operatingInfo.reservationAvailableStartTime}
+                    endTime={operatingInfo.reservationAvailableEndTime}
+                    interval={10}
+                    value={selectedTime}
+                    onChange={setSelectedTime}
+                    startBreakTime={operatingInfo.breakStartTime}
+                    endBreakTime={operatingInfo.breakEndTime}
+                  />
+                </div>
+                <div className={"people-select-form flex flex-col"}>
+                  <CardTitle title={"Number of People"} />
+                  <input
+                    className={
+                      "people-select-input h-12 w-full rounded-md border-2 border-gray-300 p-2"
+                    }
+                    type={"number"}
+                    placeholder={"Please enter number of people"}
+                    value={selectedPeople}
+                    onChange={(e) => setSelectedPeople(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className={"request-message-form"}>
+                <CardTitle title={"Request Message"} />
+                <textarea
+                  className={
+                    "request-message-input h-20 w-full rounded-md border-2 border-gray-300 p-2"
+                  }
+                  placeholder={"Please enter your request message"}
+                  value={requestMessage}
+                  onChange={(e) => setRequestMessage(e.target.value)}
+                />
+              </div>
+              <Button
+                as="button"
+                onClick={onReserve}
+                variant="link"
+                className="rounded-button-[tripKoOrange] h-12 w-full rounded-full bg-tripKoOrange text-white"
+              >
+                Reserve
+              </Button>
+            </div>
           )}
         </BottomPopModal>
       )}
@@ -90,7 +167,12 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-        <Button className={"reservation-button"} onClick={() => setIsActiveCalender(true)}>Calender</Button>
+        <Button
+          className={"reservation-button"}
+          onClick={() => setIsActiveCalender(true)}
+        >
+          Reserve
+        </Button>
       </div>
     </div>
   );

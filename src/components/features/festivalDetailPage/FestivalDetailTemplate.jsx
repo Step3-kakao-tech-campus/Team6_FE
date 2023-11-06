@@ -14,11 +14,16 @@ import Calendar from "../calendar/Calendar";
 import { getCalenderByIdAndType } from "../../../apis/detail";
 import Button from "../../atoms/Button";
 import Photo from "../../atoms/Photo";
+import TimeDropdown from "../../molecules/TimeDropdown";
+import CardTitle from "../../atoms/CardTitle";
+import {reserveFestival} from "../../../apis/reservation";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState("Time To Visit");
+  const [selectedPeople, setSelectedPeople] = useState(0);
 
   const { data } = useQuery(`festival/review/${festival.id}`, () =>
     getReviewByIdAndType(festival.id, "festival"),
@@ -28,6 +33,29 @@ const FestivalDetailTemplate = ({ festival }) => {
     `festival/unavailableDays/${festival.id}`,
     () => getCalenderByIdAndType(festival.id, "festival"),
   );
+
+  const onReserve = async () => {
+    if (!selectedDate || selectedTime === "Time To Visit") {
+      alert("Please select date and time to visit");
+      return;
+    }
+    if (!selectedDate) {
+      alert("Please select date to visit");
+      return;
+    }
+    const response = await reserveFestival(
+      festival.id,
+      selectedDate,
+      selectedTime,
+      selectedPeople,
+    );
+    if (response.success) {
+      alert("Reservation success");
+      setIsActiveCalender(false);
+    } else {
+      alert("Reservation failed");
+    }
+  };
 
   return (
     <div className={"festival-detail-template w-full"}>
@@ -47,13 +75,39 @@ const FestivalDetailTemplate = ({ festival }) => {
                 setSelectedDate={setSelectedDate}
                 unavailableDays={operatingInfo.holiday}
               />
+              <div className={"time-select-form flex flex-col py-2 text-lg"}>
+                <CardTitle title={"Visit Time"} />
+                <div className={"dropdown-wrapper"}>
+                  <TimeDropdown
+                    startTime={operatingInfo.reservationAvailableStartTime}
+                    endTime={operatingInfo.reservationAvailableEndTime}
+                    interval={10}
+                    value={selectedTime}
+                    onChange={setSelectedTime}
+                    startBreakTime={operatingInfo.breakStartTime}
+                    endBreakTime={operatingInfo.breakEndTime}
+                  />
+                </div>
+                <div className={"people-select-form flex flex-col"}>
+                  <CardTitle title={"Number of People"} />
+                  <input
+                    className={
+                      "people-select-input h-12 w-full rounded-md border-2 border-gray-300 p-2"
+                    }
+                    type={"number"}
+                    placeholder={"Please enter number of people"}
+                    value={selectedPeople}
+                    onChange={(e) => setSelectedPeople(e.target.value)}
+                  />
+                </div>
+              </div>
               <Button
                 as="button"
-                onClick={() => alert("clicked!")}
+                onClick={onReserve}
                 variant="link"
-                className="rounded-button-[tripKoOrange] bg-tripKoOrange text-white w-full h-12 rounded-full"
+                className="rounded-button-[tripKoOrange] h-12 w-full rounded-full bg-tripKoOrange text-white"
               >
-                Click me!{" "}
+                Reservation
               </Button>
             </div>
           )}
@@ -67,7 +121,7 @@ const FestivalDetailTemplate = ({ festival }) => {
         <Photo
           src={festival.mainImage}
           alt={festival.name}
-          className={"w-full min-h-[50rem]"}
+          className={"min-h-[50rem] w-full"}
           extendable={true}
         />
       </div>
@@ -92,7 +146,12 @@ const FestivalDetailTemplate = ({ festival }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-        <Button className={"reservation-button"} onClick={() => setIsActiveCalender(true)}>Calender</Button>
+        <Button
+          className={"reservation-button"}
+          onClick={() => setIsActiveCalender(true)}
+        >
+          Reserve
+        </Button>
       </div>
     </div>
   );

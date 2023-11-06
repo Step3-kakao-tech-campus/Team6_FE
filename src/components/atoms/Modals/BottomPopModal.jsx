@@ -21,7 +21,7 @@ const BottomPopModal = ({ onClose, children }) => {
         <>
           <ModalBackground isOpened={opened} />
           <div className={opened ? "bottom-modal-board__opened" : "bottom-modal-board__closed"}>
-            <div className={"modal-board-header width-flex-layout fixed z-[15] w-full rounded-t-3xl bg-white p-4"}>
+            <div className={"modal-board-header width-flex-layout fixed z-[15] w-full rounded-t-3xl bg-white p-3"}>
               <button
                 className={"modal-board-close-button flex items-center justify-center"}
                 onClick={onCloseModal}
@@ -29,7 +29,7 @@ const BottomPopModal = ({ onClose, children }) => {
                 <AiOutlineClose size={30} />
               </button>
             </div>
-            <div className={"modal-board-body pt-16 z-[30]"}>
+            <div className={"modal-board-body pt-10 z-[30]"}>
             {children}
             </div>
           </div>
