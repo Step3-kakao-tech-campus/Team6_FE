@@ -21,6 +21,7 @@ import { useModal } from "./hooks/useModal";
 import Modal from "./components/atoms/Modals/Modal";
 import { createContext } from "react";
 import ProfileEditPage from "./components/features/profileEditPage/ProfileEditPage";
+import ErrorPage from "./components/features/ErrorPage/ErrorPage";
 
 const queryClient = new QueryClient();
 export const ModalContext = createContext(null);
@@ -75,6 +76,8 @@ function App() {
                       element={<ProfileEditPage />}
                     />
                   </Route>
+
+                  <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </BrowserRouter>
             </QueryClientProvider>

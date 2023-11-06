@@ -5,6 +5,7 @@ import { getWishlist } from "../../../apis/wish";
 import FilterBar from "../../molecules/FilterBar";
 import PageTitle from "../../atoms/PageTitle";
 import WishlistCard from "../../molecules/cards/WishlistCard";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const WishlistPage = () => {
   const { filter: urlFilter } = useParams();
@@ -42,10 +43,9 @@ const WishlistPage = () => {
     }
   }, [filter, data]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <div>Error occurred: {error.message}</div>;
 
-  console.log(queryData?.result);
   return (
     <div className="wishlist-page h-screen w-full">
       <PageTitle title="Wishlist" />
