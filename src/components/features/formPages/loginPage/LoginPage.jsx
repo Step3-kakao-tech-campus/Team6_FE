@@ -14,10 +14,10 @@ import { FcGoogle } from "react-icons/fc";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const [id, onChangeId, errorMsgId, validateId] = useInputGroup("", (input) =>
-    checkConditions(REQUIRED_CONDITION, input),
+    checkConditions([REQUIRED_CONDITION], input),
   );
   const [password, onChangePassword, errorMsgPassword, validatePassword] =
-    useInputGroup("", (input) => checkConditions(REQUIRED_CONDITION, input));
+    useInputGroup("", (input) => checkConditions([REQUIRED_CONDITION], input));
   const [errorMsgFromBE, setErrorMsgFromBE] = useState(null);
 
   const onSubmit = useCallback(
