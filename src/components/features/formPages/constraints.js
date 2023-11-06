@@ -22,7 +22,7 @@ export const EMAIL_CONDITION = [
   },
 ];
 
-export const REGISTER_ID_CONDITION = [
+export const ID_CONDITION = [
   REQUIRED_CONDITION,
   {
     condition: (id) => {
@@ -34,7 +34,7 @@ export const REGISTER_ID_CONDITION = [
       "ID must be at least 8 characters long and contain at least one letter and one number.",
   },
 ];
-export const REGISTER_PASSWORD_CONDITION = [
+export const PASSWORD_CONDITION = [
   REQUIRED_CONDITION,
   {
     condition: (password) => {

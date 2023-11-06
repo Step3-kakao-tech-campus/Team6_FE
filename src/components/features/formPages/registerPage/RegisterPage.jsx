@@ -8,7 +8,8 @@ import { register } from "../../../../apis/account";
 import {
   EMAIL_CONDITION,
   NAME_CONDITION,
-  REGISTER_PASSWORD_CONDITION,
+  ID_CONDITION,
+  PASSWORD_CONDITION,
 } from "../constraints";
 import ErrorBox from "../../../atoms/ErrorBox";
 
@@ -18,9 +19,7 @@ const RegisterPage = () => {
     (input) => checkConditions(EMAIL_CONDITION, input),
   );
   const [password, onChangePassword, errorMsgPassword, validatePassword] =
-    useInputGroup("", (input) =>
-      checkConditions(REGISTER_PASSWORD_CONDITION, input),
-    );
+    useInputGroup("", (input) => checkConditions(PASSWORD_CONDITION, input));
   const [
     passwordConfirm,
     onChangePasswordConfirm,
@@ -32,6 +31,12 @@ const RegisterPage = () => {
     useInputGroup("", (input, password) =>
       checkConditions(NAME_CONDITION, input, password),
     );
+
+  const [id, onChangeId, errorMsgId, validateId] = useInputGroup("", (input) =>
+    checkConditions(ID_CONDITION, input),
+  );
+  const [nickname, onChangeNickname, errorMsgNickname, validateNickname] =
+    useInputGroup("", (input) => checkConditions(ID_CONDITION, input));
 
   const [errorMsgFromBE, setErrorMsgFromBE] = useState(null);
 
@@ -53,10 +58,18 @@ const RegisterPage = () => {
       validateEmail() &&
       validatePassword() &&
       validatePasswordConfirm() &&
-      validateUsername()
+      validateUsername() &&
+      validateId() &&
+      validateNickname()
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [validateEmail, validatePassword, validateUsername]);
+  }, [
+    validateEmail,
+    validatePassword,
+    validateUsername,
+    validateId,
+    validateNickname,
+  ]);
 
   const onSubmit = useCallback(
     (e) => {
@@ -142,10 +155,28 @@ const RegisterPage = () => {
             onBlur={validateUsername}
             onKeyPress={onKeyPress}
           />
+          <InputGroup
+            label={"ID"}
+            name={"id"}
+            type={"text"}
+            onChange={onChangeId}
+            value={id}
+            errorMsg={errorMsgId}
+            onBlur={validateId}
+            onKeyPress={onKeyPress}
+          />
+          <InputGroup
+            label={"Nickname"}
+            name={"nickname"}
+            type={"text"}
+            onChange={onChangeNickname}
+            value={nickname}
+            errorMsg={errorMsgNickname}
+            onBlur={validateNickname}
+            onKeyPress={onKeyPress}
+          />
         </form>
-        {errorMsgFromBE && (
-          <ErrorBox>{errorMsgFromBE}</ErrorBox>
-        )}
+        {errorMsgFromBE && <ErrorBox>{errorMsgFromBE}</ErrorBox>}
         <Button
           as={button}
           className="login-button w-full rounded-full bg-tripKoOrange p-2 text-xl font-bold text-white"
