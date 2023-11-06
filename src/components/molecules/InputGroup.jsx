@@ -23,6 +23,7 @@ const InputGroup = ({
   onBlur,
   onKeyPress,
   register,
+  ...props
 }) => {
   return (
     <div className="input-group">
