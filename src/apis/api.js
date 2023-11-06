@@ -41,7 +41,7 @@ instance.interceptors.response.use(
       case 404:
         // 404 Not Found 에러 처리
         alert("The requested resource was not found.");
-        window.location.href = "/404";
+        window.location.href = "/Error";
         break;
       default:
         // 기타 에러 처리
