@@ -27,11 +27,11 @@ export const ID_CONDITION = [
   {
     condition: (id) => {
       // 숫자와 영문을 포함한 8~20자리
-      const idRegex = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,20}$");
+      const idRegex = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,20}$");
       return idRegex.test(id);
     },
     message:
-      "ID must be at least 8 characters long and contain at least one letter and one number.",
+      "at least 6 characters long and contain at least one letter and one number.",
   },
 ];
 export const PASSWORD_CONDITION = [
@@ -39,11 +39,10 @@ export const PASSWORD_CONDITION = [
   {
     condition: (password) => {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-      // 8자리 이상, 영문자와 숫자가 적어도 1개 이상씩 포함되어야 합니다.
       return passwordRegex.test(password);
     },
     message:
-      "Password must be at least 8 characters long and contain at least one letter and one number.",
+      "at least 8 characters long and contain at least one letter and one number.",
   },
 ];
 
@@ -66,7 +65,7 @@ export const NICKNAME_CONDITION = [
       return nicknameRegex.test(nickname);
     },
     message:
-      "Nickname must be at least 1 characters long and contain at least one letter.",
+      "Nickname must be at least 4 characters long.",
   },
 ];
 
