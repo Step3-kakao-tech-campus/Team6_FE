@@ -181,7 +181,7 @@ const RegisterPage = () => {
             />
             <div className={"flex w-full flex-col"}>
               <label htmlFor={"nation"} className={"text-lg font-semibold"}>
-                Nation
+                Nationality
               </label>
               <NationSelector
                 value={nation}
