@@ -16,7 +16,7 @@ import Button from "../../atoms/Button";
 import Photo from "../../atoms/Photo";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
-import {reserveFestival} from "../../../apis/reservation";
+import { reserveFestival } from "../../../apis/reservation";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -75,7 +75,7 @@ const FestivalDetailTemplate = ({ festival }) => {
                 setSelectedDate={setSelectedDate}
                 unavailableDays={operatingInfo.holiday}
               />
-              <div className={"time-select-form flex flex-col py-2 text-lg"}>
+              <div className={"time-select-form flex flex-col p-2 text-lg"}>
                 <CardTitle title={"Visit Time"} />
                 <div className={"dropdown-wrapper"}>
                   <TimeDropdown
@@ -100,15 +100,15 @@ const FestivalDetailTemplate = ({ festival }) => {
                     onChange={(e) => setSelectedPeople(e.target.value)}
                   />
                 </div>
+                <Button
+                  as="button"
+                  onClick={onReserve}
+                  variant="link"
+                  className="rounded-button-[tripKoOrange] mt-4 flex h-12 w-full items-center justify-center rounded-full bg-tripKoOrange text-white"
+                >
+                  Reservation
+                </Button>
               </div>
-              <Button
-                as="button"
-                onClick={onReserve}
-                variant="link"
-                className="rounded-button-[tripKoOrange] h-12 w-full rounded-full bg-tripKoOrange text-white"
-              >
-                Reservation
-              </Button>
             </div>
           )}
         </BottomPopModal>

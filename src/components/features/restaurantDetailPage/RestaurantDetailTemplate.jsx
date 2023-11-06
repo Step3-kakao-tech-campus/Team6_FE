@@ -72,7 +72,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         >
           {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
-            <div className={"calendar-wrapper flex flex-col justify-center"}>
+            <div
+              className={"calendar-wrapper flex flex-col justify-center px-2"}
+            >
               <Calendar
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
@@ -119,7 +121,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 as="button"
                 onClick={onReserve}
                 variant="link"
-                className="rounded-button-[tripKoOrange] h-12 w-full rounded-full bg-tripKoOrange text-white"
+                className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-white"
               >
                 Reserve
               </Button>
