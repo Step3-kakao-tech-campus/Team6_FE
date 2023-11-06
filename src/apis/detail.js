@@ -8,7 +8,10 @@ export const getRestaurantById = async (id) => {
 };
 
 export const getFestivalById = async (id) => {
-  return Promise.reject(new Error("Failed to fetch festival details"));
+  return await instance
+    .get(`/festival/${id}`)
+    .then((response) => response.data.response)
+    .catch((error) => Promise.reject(error));
 };
 
 export const getFoodById = async (id) => {
