@@ -100,7 +100,13 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     type={"number"}
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
-                    onChange={(e) => setSelectedPeople(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.value < 0) {
+                        alert("Please enter positive number");
+                        return;
+                      }
+                      setSelectedPeople(e.target.value);
+                    }}
                   />
                 </div>
               </div>
