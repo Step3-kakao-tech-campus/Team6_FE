@@ -9,11 +9,13 @@ import {
   EMAIL_CONDITION,
   NAME_CONDITION,
   ID_CONDITION,
-  PASSWORD_CONDITION,
+  PASSWORD_CONDITION, NICKNAME_CONDITION,
 } from "../constraints";
 import ErrorBox from "../../../atoms/ErrorBox";
+import NationSelector from "./NationSelector";
 
 const RegisterPage = () => {
+  const [nation, setNation] = useState(null);
   const [email, onChangeEmail, errorMsgEmail, validateEmail] = useInputGroup(
     "",
     (input) => checkConditions(EMAIL_CONDITION, input),
@@ -36,7 +38,7 @@ const RegisterPage = () => {
     checkConditions(ID_CONDITION, input),
   );
   const [nickname, onChangeNickname, errorMsgNickname, validateNickname] =
-    useInputGroup("", (input) => checkConditions(ID_CONDITION, input));
+    useInputGroup("", (input) => checkConditions(NICKNAME_CONDITION, input));
 
   const [errorMsgFromBE, setErrorMsgFromBE] = useState(null);
 
@@ -60,7 +62,8 @@ const RegisterPage = () => {
       validatePasswordConfirm() &&
       validateUsername() &&
       validateId() &&
-      validateNickname()
+      validateNickname() &&
+      nation
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -69,6 +72,7 @@ const RegisterPage = () => {
     validateUsername,
     validateId,
     validateNickname,
+    nation,
   ]);
 
   const onSubmit = useCallback(
@@ -79,6 +83,9 @@ const RegisterPage = () => {
           email: email,
           password: password,
           username: username,
+          id: id,
+          nickname: nickname,
+          country: nation,
         })
           .then((res) => {
             alert("you have successfully registered, please log in.");
@@ -89,7 +96,7 @@ const RegisterPage = () => {
           });
       }
     },
-    [allInputValid, email, password, username],
+    [allInputValid, email, password, username, id, nickname, nation],
   );
 
   // 엔터가 입력되었을 때, onSubmit 함수를 실행
@@ -103,58 +110,10 @@ const RegisterPage = () => {
   );
 
   return (
-    <div
-      className={
-        "login-page width-flex-layout flex h-screen items-center justify-center p-8"
-      }
-    >
-      <div
-        className={
-          "login-form-container flex w-full flex-col justify-center gap-4"
-        }
-      >
+    <div className={"login-page width-flex-layout flex h-screen p-8"}>
+      <div className={"login-form-container flex w-full flex-col gap-4"}>
         <h1 className={"text-4xl font-bold text-tripKoOrange"}>Sign Up</h1>
         <form className={"login-form w-full "}>
-          <InputGroup
-            label={"Email"}
-            name={"email"}
-            type={"text"}
-            onChange={onChangeEmail}
-            value={email}
-            errorMsg={errorMsgEmail}
-            onBlur={validateEmail}
-            onKeyPress={onKeyPress}
-          />
-          <InputGroup
-            label={"Password"}
-            name={"password"}
-            type={"password"}
-            onChange={onChangePassword}
-            value={password}
-            errorMsg={errorMsgPassword}
-            onBlur={validatePassword}
-            onKeyPress={onKeyPress}
-          />
-          <InputGroup
-            label={"Password Confirm"}
-            name={"passwordConfirm"}
-            type={"password"}
-            onChange={onChangePasswordConfirm}
-            value={passwordConfirm}
-            errorMsg={errorMsgPasswordConfirm}
-            onBlur={() => validatePasswordConfirm(password, passwordConfirm)}
-            onKeyPress={onKeyPress}
-          />
-          <InputGroup
-            label={"Username"}
-            name={"username"}
-            type={"text"}
-            onChange={onChangeUsername}
-            value={username}
-            errorMsg={errorMsgUsername}
-            onBlur={validateUsername}
-            onKeyPress={onKeyPress}
-          />
           <InputGroup
             label={"ID"}
             name={"id"}
@@ -165,6 +124,40 @@ const RegisterPage = () => {
             onBlur={validateId}
             onKeyPress={onKeyPress}
           />
+
+          <div className={"password-section flex gap-2"}>
+            <InputGroup
+              label={"Password"}
+              name={"password"}
+              type={"password"}
+              onChange={onChangePassword}
+              value={password}
+              errorMsg={errorMsgPassword}
+              onBlur={validatePassword}
+              onKeyPress={onKeyPress}
+            />
+            <InputGroup
+              label={"Password Confirm"}
+              name={"passwordConfirm"}
+              type={"password"}
+              onChange={onChangePasswordConfirm}
+              value={passwordConfirm}
+              errorMsg={errorMsgPasswordConfirm}
+              onBlur={() => validatePasswordConfirm(password, passwordConfirm)}
+              onKeyPress={onKeyPress}
+            />
+          </div>
+          <InputGroup
+            label={"Username"}
+            name={"username"}
+            type={"text"}
+            onChange={onChangeUsername}
+            value={username}
+            errorMsg={errorMsgUsername}
+            onBlur={validateUsername}
+            onKeyPress={onKeyPress}
+          />
+
           <InputGroup
             label={"Nickname"}
             name={"nickname"}
@@ -175,6 +168,34 @@ const RegisterPage = () => {
             onBlur={validateNickname}
             onKeyPress={onKeyPress}
           />
+          <div className={"section flex"}>
+            <InputGroup
+              label={"Email"}
+              name={"email"}
+              type={"text"}
+              onChange={onChangeEmail}
+              value={email}
+              errorMsg={errorMsgEmail}
+              onBlur={validateEmail}
+              onKeyPress={onKeyPress}
+            />
+            <div className={"flex w-full flex-col"}>
+              <label htmlFor={"nation"} className={"text-lg font-semibold"}>
+                Nation
+              </label>
+              <NationSelector
+                value={nation}
+                onChange={(e) => {
+                  setNation(e.value);
+                }}
+                onBlur={() => {
+                  if (!nation) {
+                    alert("please select a nation");
+                  }
+                }}
+              />
+            </div>
+          </div>
         </form>
         {errorMsgFromBE && <ErrorBox>{errorMsgFromBE}</ErrorBox>}
         <Button
