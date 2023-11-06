@@ -4,34 +4,32 @@ import InputGroup from "../../../molecules/InputGroup";
 import { useCallback, useState } from "react";
 import useInputGroup from "../../../../hooks/useInputGroup";
 import { checkConditions } from "../utils";
-import { EMAIL_CONDITION, LOGIN_PASSWORD_CONDITION } from "../constraints";
+import { REQUIRED_CONDITION } from "../constraints";
 import { Link } from "react-router-dom";
 import { login } from "../../../../apis/account";
 import { useDispatch } from "react-redux";
 import { reducerLogin } from "../../../../store/slice/userSlice";
+import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const [email, onChangeEmail, errorMsgEmail, validateEmail] = useInputGroup(
-    "",
-    (input) => checkConditions(EMAIL_CONDITION, input),
+  const [id, onChangeId, errorMsgId, validateId] = useInputGroup("", (input) =>
+    checkConditions(REQUIRED_CONDITION, input),
   );
   const [password, onChangePassword, errorMsgPassword, validatePassword] =
-    useInputGroup("", (input) =>
-      checkConditions(LOGIN_PASSWORD_CONDITION, input),
-    );
+    useInputGroup("", (input) => checkConditions(REQUIRED_CONDITION, input));
   const [errorMsgFromBE, setErrorMsgFromBE] = useState(null);
 
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      if (validateEmail() && validatePassword()) {
+      if (validateId() && validatePassword()) {
         login({
-          email: email,
+          email: id,
           password: password,
         })
           .then((res) => {
-            dispatch(reducerLogin(email));
+            dispatch(reducerLogin(id));
             window.location.href = "/";
           })
           .catch((err) => {
@@ -39,7 +37,7 @@ const LoginPage = () => {
           });
       }
     },
-    [validateEmail, validatePassword, email, password, dispatch],
+    [validateId, validatePassword, id, password, dispatch],
   );
 
   // 엔터가 입력되었을 때, onSubmit 함수를 실행
@@ -66,13 +64,13 @@ const LoginPage = () => {
         <h1 className={"text-4xl font-bold text-tripKoOrange"}>Login</h1>
         <div className={"login-form w-full"}>
           <InputGroup
-            label={"Email"}
-            name={"email"}
+            label={"ID"}
+            name={"ID"}
             type={"text"}
-            onChange={onChangeEmail}
-            value={email}
-            errorMsg={errorMsgEmail}
-            onBlur={validateEmail}
+            onChange={onChangeId}
+            value={id}
+            errorMsg={errorMsgId}
+            onBlur={validateId}
             onKeyPress={onKeyPress}
           />
           <InputGroup
@@ -106,6 +104,18 @@ const LoginPage = () => {
         <Link to={"/register"} className={"text-tripKoOrange"}>
           sign up
         </Link>
+      </div>
+      <div
+        className={
+          "additional-links flex items-center justify-center gap-2 text-lg font-bold"
+        }
+      >
+        <a href={process.env.REACT_APP_PATH + "/oauth2/authorization/google"}>
+          <div className={"flex rounded-full px-8 py-2 shadow"}>
+            <FcGoogle size={30} />
+            Login with Google
+          </div>
+        </a>
       </div>
     </div>
   );
