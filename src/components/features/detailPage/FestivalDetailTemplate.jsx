@@ -138,11 +138,12 @@ const FestivalDetailTemplate = ({ festival }) => {
           "festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"
         }
       >
+        <SectionTitle title={"Information"}/>
         {festival.contents.map((content) => (
           <Article
-            key={content.page}
-            content={content.description}
-            images={content.images}
+              key={content.page}
+              description={content.description}
+              images={content.image}
           />
         ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>

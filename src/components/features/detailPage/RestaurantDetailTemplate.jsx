@@ -164,8 +164,8 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         {restaurant.content.map((content) => (
           <Article
             key={content.page}
-            content={content.description}
-            images={content.images}
+            description={content.description}
+            images={content.image}
           />
         ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
