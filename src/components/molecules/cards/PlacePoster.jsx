@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import CardTitle from "../../atoms/CardTitle";
 import Photo from "../../atoms/Photo";
+import StarRating from "../../atoms/StarRating";
 
-const PlacePoster = ({ image, name, address, to, alt }) => {
+const PlacePoster = ({ image, name, address, to, alt, averageScore }) => {
   return (
     <Link
-      to={to? to : "/"}
+      to={to ? to : "/"}
       className="place-card shadow-rounded-card flex flex-shrink-0 flex-col gap-1 p-2 md:w-[15rem]"
     >
       <div
@@ -18,6 +19,12 @@ const PlacePoster = ({ image, name, address, to, alt }) => {
       <div className={"place-card-info"}>
         <CardTitle title={name} lineClamp={2} />
         <div className="place-card-address line-clamp-2 w-full">{address}</div>
+        {
+          averageScore &&
+          <div className={"place-card-score flex items-center text-sm"}>
+            <StarRating averageScore={averageScore} />{averageScore}
+          </div>
+        }
       </div>
     </Link>
   );

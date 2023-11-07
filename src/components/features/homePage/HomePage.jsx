@@ -72,6 +72,7 @@ const HomePage = () => {
                     to={`restaurant/${restaurant.id}`}
                     name={restaurant.name}
                     address={restaurant.address}
+                    averageScore={restaurant.averageScore}
                   />
                 );
               })}
