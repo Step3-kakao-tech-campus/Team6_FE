@@ -52,7 +52,7 @@ const CarouselSlide = ({ image, index, state, to, alt }) => {
   return (
     <Link
       to={to}
-      className={`carousel-slide-${index} absolute h-full w-full transform ${getTranslateX(slideState,)} duration-[400ms] ease-in-out`}
+      className={`carousel-slide-${index} absolute h-full w-full transform ${getTranslateX(slideState,)} duration-[400ms] ease-in-out ${slideState === SLIDE_STATE.CURRENT_INDEX ? "z-[10]" : "z-[0]"}`}
     >
       <Photo className={"h-full w-full object-cover"} src={image} alt={alt} />
     </Link>
