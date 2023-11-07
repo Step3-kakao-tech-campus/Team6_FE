@@ -1,6 +1,5 @@
 import TOURIST_SPOTS from "../datas/touristSpots";
 import { rest } from "msw";
-import { getRestaurantDetail } from "./restaurant";
 
 export const getTouristSpots = (length) => {
   const selectedKeys = ["id", "name", "summary", "address", "isWished"];
