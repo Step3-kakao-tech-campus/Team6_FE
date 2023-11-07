@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-import {NavContext} from "../MainLayout";
-import {useContext} from "react";
-
 /**
  *
  * @param id {number} 해당 요소의 id
@@ -13,9 +10,9 @@ import {useContext} from "react";
  * @constructor
  */
 const NavItem = ({ id, to, icon, label, labelColor}) => {
-  const {setActivatedTab} = useContext(NavContext)
+  // const {setActivatedTab} = useContext(NavContext)
   return (
-    <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`} onClick={() => setActivatedTab(id)}>
+    <div className={`nav-item-${id} flex w-full flex-col items-center justify-center`} >
       <Link to={to} className={"w-full hover:scale-110 duration-300 ease-in-out"}>
         <div className={"nav-bar-item-icon flex w-full flex-col items-center justify-center "}>
           {icon}

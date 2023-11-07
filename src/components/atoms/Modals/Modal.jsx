@@ -1,4 +1,3 @@
-import { AiOutlineClose } from "react-icons/ai";
 import ModalBackground from "./ModalBackground";
 
 const Modal = ({ children, isOpen, onClose }) => {

@@ -1,43 +1,50 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiFoodMenu, BiMap } from "react-icons/bi";
 import { HiOutlineTicket } from "react-icons/hi";
-// import NavIndicator from "./NavIndicator";
+
 import { activatedColor, deactivatedColor } from "./constants";
+import NavIndicator from "./NavIndicator";
+import { setIndicator } from "../../../store/slice/navStateSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const getIconColor = (id, activatedTab) => {
-  // return deactivatedColor;
   return id === activatedTab ? activatedColor : deactivatedColor;
 };
 
 const getLabelColor = (id, activatedTab) => {
-  // return "text-gray-500"
   return id === activatedTab ? "text-tripKoOrange" : "text-gray-500";
 };
 
-const BottomNavBar = ({ activatedTab }) => {
+const BottomNavBar = () => {
   const location = useLocation();
-  const [localActivatedTab, setLocalActivatedTab] = useState(activatedTab);
+  const localActivatedTab = useSelector(
+    (state) => state.navState.navState.indicator,
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (location.pathname === "/") {
-      setLocalActivatedTab(1);
+      dispatch(setIndicator(1));
     } else if (location.pathname.includes("/foods")) {
-      setLocalActivatedTab(2);
-    } else if (location.pathname.includes("/userinfo/wishlist/all")) {
-      setLocalActivatedTab(3);
-    } else if (
-      location.pathname.includes("/userinfo/reservations/restaurant")
-    ) {
-      setLocalActivatedTab(4);
+      dispatch(setIndicator(2));
+    } else if (location.pathname.includes("/userinfo/wishlist/")) {
+      dispatch(setIndicator(3));
+    } else if (location.pathname.includes("/userinfo/reservations/")) {
+      dispatch(setIndicator(4));
+    } else {
+      dispatch(setIndicator(0));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (
     <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 z-[20] flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow">
-      {/*<NavIndicator activatedTab={activatedTab} />*/}
+      {localActivatedTab !== 0 && (
+        <NavIndicator activatedTab={localActivatedTab} />
+      )}
       <NavItem
         id={1}
         to={"/"}
