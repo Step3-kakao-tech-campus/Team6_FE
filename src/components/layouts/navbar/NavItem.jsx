@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-import {NavContext} from "../MainLayout";
-import {useContext} from "react";
-
 /**
  *
  * @param id {number} 해당 요소의 id
