@@ -24,6 +24,7 @@ import { createContext } from "react";
 import { useModal } from "./hooks/useModal";
 import ErrorPage from "./components/features/ErrorPage/ErrorPage";
 import { Helmet } from "react-helmet-async";
+import SpotDetailPage from "./components/features/detailPage/spotDetailPage/SpotDetailPage";
 
 const queryClient = new QueryClient();
 export const ModalContext = createContext(null);
@@ -65,6 +66,11 @@ function App() {
                       path="/festival/:id"
                       element={<FestivalDetailPage />}
                     />
+                    <Route
+                        path="/touristSpot/:id"
+                        element={<SpotDetailPage />}
+                    />
+
                     <Route path={"/search"} element={<SearchPage />} />
 
                     <Route path={"/foods"} element={<FoodSearchPage />} />
