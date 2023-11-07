@@ -2,12 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout";
 import HomePage from "./components/features/homePage/HomePage";
 import SearchPage from "./components/features/searchPage/SearchPage";
-import RestaurantDetailPage from "./components/features/restaurantDetailPage/RestaurantDetailPage";
+import RestaurantDetailPage from "./components/features/detailPage/RestaurantDetailPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import FoodSearchPage from "./components/features/foodSearchPage/FoodSearchPage";
 import WishlistPage from "./components/features/wishlistPage/WishlistPage";
-import FestivalDetailPage from "./components/features/festivalDetailPage/FestivalDetailPage";
+import FestivalDetailPage from "./components/features/detailPage/FestivalDetailPage";
 import ReservationListPage from "./components/features/reservationListPage/ReservationListPage";
 import FoodDetailPage from "./components/features/foodDetailPage/FoodDetailPage";
 
