@@ -23,6 +23,7 @@ import Modal from "./components/atoms/Modals/Modal";
 import { createContext } from "react";
 import { useModal } from "./hooks/useModal";
 import ErrorPage from "./components/features/ErrorPage/ErrorPage";
+import { Helmet } from "react-helmet-async";
 
 const queryClient = new QueryClient();
 export const ModalContext = createContext(null);
@@ -32,6 +33,17 @@ function App() {
 
   return (
     <div className="App flex w-full flex-col items-center">
+      <Helmet>
+        <title>TripKo</title>
+        <meta
+          name="description"
+          content="TripKo offers a service for foreigners to search and book festivals, restaurants, and tourist attractions in South Korea. Discover and reserve the best of Korean cuisine and culture."
+        />
+        <meta
+          name="keywords"
+          content="TripKo, Korea tourism, Korea festivals, Korean food, Korea attractions, book restaurants Korea, reserve attractions Korea"
+        />
+      </Helmet>
       <ModalContext.Provider value={{ hide, show }}>
         {isShowing && (
           <Modal isOpen={isShowing} onClose={hide}>
