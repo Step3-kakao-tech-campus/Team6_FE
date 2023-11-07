@@ -8,6 +8,7 @@ const RequiredAuthLayout = () => {
     if (localStorage.getItem("token") === null) {
       navigate("/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
