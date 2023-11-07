@@ -2,7 +2,7 @@ import instance from "./api";
 
 export const login = async (data) => {
   const { id, password } = data;
-  const result = await instance.post("/login", {
+  return instance.post("/login", {
     id,
     password,
   }).then(
