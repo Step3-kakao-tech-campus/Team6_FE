@@ -66,7 +66,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
             "reservation-content-bottom flex items-center justify-between"
           }
         >
-          {reviewable && !data?.isReviewed && (
+          {reviewable && !data?.reviewed && (
             <Button
               as={"button"}
               className={
@@ -80,7 +80,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
               Write Review
             </Button>
           )}
-          {data?.isReviewed && (
+          {data?.reviewed && (
             <span
               className={"reservation-bottom cursor-pointer text-tripKoOrange-500 underline"}
               onClick={(e) => {

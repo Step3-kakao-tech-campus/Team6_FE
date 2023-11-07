@@ -93,7 +93,7 @@ export const getReviewedHandler = rest.get(
       ctx.json({
         success: true,
         response: {
-          isReviewed: reviewed,
+          reviewed: reviewed,
           review: reviewed ? 1 : null,
         },
       }),
