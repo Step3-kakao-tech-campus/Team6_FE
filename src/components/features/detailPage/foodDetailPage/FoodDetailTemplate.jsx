@@ -1,8 +1,8 @@
-import PageTitleBar from "../../molecules/PageTitleBar";
-import SectionTitle from "../../atoms/SectionTitle";
+import PageTitleBar from "../../../molecules/PageTitleBar";
+import SectionTitle from "../../../atoms/SectionTitle";
 import { FaStar } from "react-icons/fa";
-import Photo from "../../atoms/Photo";
-import HorizontalListSection from "../carousel/HorizontalListSection";
+import Photo from "../../../atoms/Photo";
+import HorizontalListSection from "../../carousel/HorizontalListSection";
 
 const FoodDetailTemplate = ({ food }) => {
   const { name, mainImage, description, foodImage, ingredients, restaurant } =
