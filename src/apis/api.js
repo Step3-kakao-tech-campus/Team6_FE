@@ -20,14 +20,20 @@ const organizeError = (error) => {
 
 instance.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("Refresh-Token");
   if (token) {
     config.headers.Authorization = token;
+    config.headers["Refresh-Token"] = refreshToken;
   }
   return config;
 });
 
 instance.interceptors.response.use(
   (response) => {
+    // refresh token이 발급되었을 때
+    if (response.headers["Refresh-Token"]) {
+      localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
+    }
     return response;
   },
   (error) => {
@@ -63,13 +69,19 @@ export const instanceFormData = axios.create({
 
 instanceFormData.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("Refresh-Token");
   if (token) {
     config.headers.Authorization = token;
+    config.headers["Refresh-Token"] = refreshToken;
   }
   return config;
 });
 
 instanceFormData.interceptors.response.use((response) => {
+  // refresh token이 발급되었을 때
+  if (response.headers["Refresh-Token"]) {
+    localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
+  }
   return response;
 });
 

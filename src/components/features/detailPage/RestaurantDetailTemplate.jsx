@@ -1,8 +1,6 @@
 import PageTitleBar from "../../molecules/PageTitleBar";
-import Carousel from "../carousel/Carousel";
 import { useState } from "react";
 import ReviewCards from "../../molecules/cards/ReviewCards";
-import { imagesToSlides } from "../carousel/utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSection from "../carousel/HorizontalListSection";
 import MenuCard from "../../molecules/cards/MenuCard";
@@ -18,7 +16,8 @@ import Button from "../../atoms/Button";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
 import { reserveRestaurant } from "../../../apis/reservation";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Article from "../../Organisms/Article";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -162,9 +161,13 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           ))}
         </HorizontalListSection>
         <SectionTitle title={"Information"} />
-        <div className={"detail-content-container px-2"}>
-          {restaurant.description}
-        </div>
+        {restaurant.content.map((content) => (
+          <Article
+            key={content.page}
+            content={content.description}
+            images={content.images}
+          />
+        ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
           <InfoElement title={"Address"} value={restaurant.address} />
           <InfoElement title={"Contact"} value={restaurant.contactInfo} />
@@ -172,9 +175,6 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant.breakTime} />
         </div>
         <SectionTitle title={"Photo"} />
-        <div className={"carousel-wrapper height-flex-layout-medium"}>
-          <Carousel slides={imagesToSlides(restaurant.images)} />
-        </div>
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
@@ -182,7 +182,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           className={"reservation-button"}
           onClick={() => {
             if (localStorage.getItem("token") === null) {
-              alert("Please login to reserve")
+              alert("Please login to reserve");
               navigate("/login");
             } else {
               setIsActiveCalender(true);
