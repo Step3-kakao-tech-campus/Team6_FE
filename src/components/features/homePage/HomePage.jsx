@@ -86,6 +86,7 @@ const HomePage = () => {
                   image={spot.image}
                   name={spot.name}
                   address={spot.address}
+                  to={`touristSpot/${spot.id}`}
                 />
               ))}
           </HorizontalListSectionMediaQuery>
