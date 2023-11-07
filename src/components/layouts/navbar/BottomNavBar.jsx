@@ -2,21 +2,23 @@ import NavItem from "./NavItem";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiFoodMenu, BiMap } from "react-icons/bi";
 import { HiOutlineTicket } from "react-icons/hi";
-import NavIndicator from "./NavIndicator";
+// import NavIndicator from "./NavIndicator";
 import { activatedColor, deactivatedColor } from "./constants";
 
 const getIconColor = (id, activatedTab) => {
-  return id === activatedTab ? activatedColor : deactivatedColor;
+    return deactivatedColor;
+  // return id === activatedTab ? activatedColor : deactivatedColor;
 };
 
 const getLabelColor = (id, activatedTab) => {
-  return id === activatedTab ? "text-tripKoOrange" : "text-gray-500";
+    return "text-gray-500"
+  // return id === activatedTab ? "text-tripKoOrange" : "text-gray-500";
 };
 
 const BottomNavBar = ({ activatedTab }) => {
   return (
     <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 z-[20] flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow">
-      <NavIndicator activatedTab={activatedTab} />
+      {/*<NavIndicator activatedTab={activatedTab} />*/}
       <NavItem
         id={1}
         to={"/"}

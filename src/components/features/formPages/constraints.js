@@ -1,57 +1,53 @@
+export const REQUIRED_CONDITION = {
+  condition: (value) => {
+    return value.length > 0;
+  },
+  message: "required.",
+};
+
 /**
  * email과 password의 조건들을 정의합니다. 조건에 맞지 않을 경우, message를 반환합니다. 모든 조건은 위에서 부터 검사하여 가장 먼저 조건에 맞지 않는 message를 반환합니다.
  * @type {[{condition: (function(*): boolean), message: string},{condition: (function(*): boolean), message: string}]}
  */
 export const EMAIL_CONDITION = [
+  REQUIRED_CONDITION,
   {
     condition: (email) => {
-      return email.length > 0;
-    },
-    message: "required.",
-  },
-  {
-    condition: (email) => {
-      const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+      const emailRegex = new RegExp(
+        "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+      );
       return emailRegex.test(email);
     },
     message: "Please enter a valid email address",
   },
 ];
 
-export const LOGIN_PASSWORD_CONDITION = [
+export const ID_CONDITION = [
+  REQUIRED_CONDITION,
   {
-    condition: (password) => {
-      return password.length > 0;
+    condition: (id) => {
+      // 숫자와 영문을 포함한 8~20자리
+      const idRegex = new RegExp("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,20}$");
+      return idRegex.test(id);
     },
-    message: "required.",
+    message:
+      "at least 6 characters long and contain at least one letter and one number.",
   },
 ];
-
-export const REGISTER_PASSWORD_CONDITION = [
-  {
-    condition: (password) => {
-      return password.length > 0;
-    },
-    message: "required.",
-  },
+export const PASSWORD_CONDITION = [
+  REQUIRED_CONDITION,
   {
     condition: (password) => {
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-      // 8자리 이상, 영문자와 숫자가 적어도 1개 이상씩 포함되어야 합니다.
       return passwordRegex.test(password);
     },
     message:
-      "Password must be at least 8 characters long and contain at least one letter and one number.",
+      "at least 8 characters long and contain at least one letter and one number.",
   },
 ];
 
 export const NAME_CONDITION = [
-  {
-    condition: (name) => {
-      return name.length > 0;
-    },
-    message: "required.",
-  },
+  REQUIRED_CONDITION,
   {
     condition: (name) => {
       const nameRegex = /^[a-zA-Z]+$/;
@@ -62,29 +58,19 @@ export const NAME_CONDITION = [
 ];
 
 export const NICKNAME_CONDITION = [
+  REQUIRED_CONDITION,
   {
     condition: (nickname) => {
-      return nickname.length > 0;
-    },
-    message: "required.",
-  },
-  {
-    condition: (nickname) => {
-      const nicknameRegex = /^(?=.*[a-zA-Z])[a-zA-Z\d]+$/;
+      const nicknameRegex = new RegExp("^[a-zA-Z0-9]{4,20}$");
       return nicknameRegex.test(nickname);
     },
     message:
-      "Nickname must be at least 1 characters long and contain at least one letter.",
+      "Nickname must be at least 4 characters long.",
   },
 ];
 
 export const PASSWORD_CONFIRM_CONDITION = [
-  {
-    condition: (passwordConfirm) => {
-      return passwordConfirm.length > 0;
-    },
-    message: "required.",
-  },
+  REQUIRED_CONDITION,
   {
     condition: (passwordConfirm, password) => {
       return passwordConfirm === password;

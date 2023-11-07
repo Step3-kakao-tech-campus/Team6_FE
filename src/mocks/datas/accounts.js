@@ -6,6 +6,7 @@ export const accounts = [
     password: "testPassword",
     nationality: "Korea, republic of",
     birthday: "2003/11/25",
+    id : "testId",
   },
   {
     name: "qwer",
@@ -14,5 +15,6 @@ export const accounts = [
     password: "qwer1234!",
     nationality: "Korea, republic of",
     birthday: "1999/09/21",
+    id : "qwer1234",
   }
 ];

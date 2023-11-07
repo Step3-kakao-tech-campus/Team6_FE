@@ -18,6 +18,7 @@ import Button from "../../atoms/Button";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
 import { reserveRestaurant } from "../../../apis/reservation";
+import {useNavigate} from "react-router-dom";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -30,6 +31,8 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
     getReviewByIdAndType(restaurant.id, "restaurant"),
   );
+
+  const navigate = useNavigate();
 
   const { data: operatingInfo } = useQuery(
     `restaurant/unavailableDays/${restaurant.id}`,
@@ -102,7 +105,13 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     type={"number"}
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
-                    onChange={(e) => setSelectedPeople(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.value < 0) {
+                        alert("Please enter positive number");
+                        return;
+                      }
+                      setSelectedPeople(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -171,7 +180,14 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
           className={"reservation-button"}
-          onClick={() => setIsActiveCalender(true)}
+          onClick={() => {
+            if (localStorage.getItem("token") === null) {
+              alert("Please login to reserve")
+              navigate("/login");
+            } else {
+              setIsActiveCalender(true);
+            }
+          }}
         >
           Reserve
         </Button>

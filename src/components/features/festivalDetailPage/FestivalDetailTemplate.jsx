@@ -16,7 +16,8 @@ import Button from "../../atoms/Button";
 import Photo from "../../atoms/Photo";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
-import { reserveFestival } from "../../../apis/reservation";
+import {reserveFestival} from "../../../apis/reservation";
+import {useNavigate} from "react-router-dom";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -24,6 +25,8 @@ const FestivalDetailTemplate = ({ festival }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
   const [selectedPeople, setSelectedPeople] = useState(0);
+
+  const navigate = useNavigate();
 
   const { data } = useQuery(`festival/review/${festival.id}`, () =>
     getReviewByIdAndType(festival.id, "festival"),
@@ -97,7 +100,13 @@ const FestivalDetailTemplate = ({ festival }) => {
                     type={"number"}
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
-                    onChange={(e) => setSelectedPeople(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.value < 0) {
+                        alert("Please enter positive number");
+                        return;
+                      }
+                      setSelectedPeople(e.target.value);
+                    }}
                   />
                 </div>
                 <Button
@@ -148,7 +157,15 @@ const FestivalDetailTemplate = ({ festival }) => {
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
           className={"reservation-button"}
-          onClick={() => setIsActiveCalender(true)}
+          onClick={() => {
+            if (localStorage.getItem("token") === null) {
+              alert("Please login to reserve")
+              navigate("/login");
+            }
+            else {
+              setIsActiveCalender(true);
+            }
+          }}
         >
           Reserve
         </Button>
