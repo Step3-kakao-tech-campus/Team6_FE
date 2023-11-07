@@ -17,7 +17,7 @@ import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
 import { reserveRestaurant } from "../../../apis/reservation";
 import { useNavigate } from "react-router-dom";
-import Article from "../../Organisms/Article";
+import Article from "../../organisms/Article";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);

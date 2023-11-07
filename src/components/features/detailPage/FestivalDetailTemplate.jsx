@@ -16,7 +16,7 @@ import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
 import {reserveFestival} from "../../../apis/reservation";
 import {useNavigate} from "react-router-dom";
-import Article from "../../Organisms/Article";
+import Article from "../../organisms/Article";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
