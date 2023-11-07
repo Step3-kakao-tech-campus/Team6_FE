@@ -6,13 +6,13 @@ import { HiOutlineTicket } from "react-icons/hi";
 import { activatedColor, deactivatedColor } from "./constants";
 
 const getIconColor = (id, activatedTab) => {
-    return deactivatedColor;
-  // return id === activatedTab ? activatedColor : deactivatedColor;
+  // return deactivatedColor;
+  return id === activatedTab ? activatedColor : deactivatedColor;
 };
 
 const getLabelColor = (id, activatedTab) => {
-    return "text-gray-500"
-  // return id === activatedTab ? "text-tripKoOrange" : "text-gray-500";
+  // return "text-gray-500"
+  return id === activatedTab ? "text-tripKoOrange" : "text-gray-500";
 };
 
 const BottomNavBar = ({ activatedTab }) => {
