@@ -25,7 +25,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [requestMessage, setRequestMessage] = useState("");
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
-  const [selectedPeople, setSelectedPeople] = useState(0);
+  const [selectedPeople, setSelectedPeople] = useState(1);
 
   const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
     getReviewByIdAndType(restaurant.id, "restaurant"),
@@ -105,7 +105,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value < 0) {
+                      if (e.target.value <= 0) {
                         alert("Please enter positive number");
                         return;
                       }
@@ -177,19 +177,23 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-        <Button
-          className={"reservation-button"}
-          onClick={() => {
-            if (localStorage.getItem("token") === null) {
-              alert("Please login to reserve");
-              navigate("/login");
-            } else {
-              setIsActiveCalender(true);
-            }
-          }}
-        >
-          Reserve
-        </Button>
+        {
+          <Button
+            as={"button"}
+            className={"reservation-button"}
+            onClick={() => {
+              if (localStorage.getItem("token") === null) {
+                alert("Please login to reserve");
+                navigate("/login");
+              } else {
+                setIsActiveCalender(true);
+              }
+            }}
+            disabled={!restaurant?.reservable}
+          >
+            Reserve
+          </Button>
+        }
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
-  const [selectedPeople, setSelectedPeople] = useState(0);
+  const [selectedPeople, setSelectedPeople] = useState(1);
 
   const navigate = useNavigate();
 
@@ -100,7 +100,7 @@ const FestivalDetailTemplate = ({ festival }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value < 0) {
+                      if (e.target.value <= 0) {
                         alert("Please enter positive number");
                         return;
                       }
@@ -138,12 +138,12 @@ const FestivalDetailTemplate = ({ festival }) => {
           "festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"
         }
       >
-        <SectionTitle title={"Information"}/>
+        <SectionTitle title={"Information"} />
         {festival.contents.map((content) => (
           <Article
-              key={content.page}
-              description={content.description}
-              images={content.image}
+            key={content.page}
+            description={content.description}
+            images={content.image}
           />
         ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
@@ -155,6 +155,7 @@ const FestivalDetailTemplate = ({ festival }) => {
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
+          as={"button"}
           className={"reservation-button"}
           onClick={() => {
             if (localStorage.getItem("token") === null) {
@@ -164,6 +165,7 @@ const FestivalDetailTemplate = ({ festival }) => {
               setIsActiveCalender(true);
             }
           }}
+          disabled={!festival?.reservable}
         >
           Reserve
         </Button>
