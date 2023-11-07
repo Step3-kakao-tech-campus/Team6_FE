@@ -24,8 +24,15 @@ export const register = (account) => {
 
 export const login = (account) => {
   return new Promise((resolve, reject) => {
+    console.log("request account", account);
+    console.log(
+      "accounts",
+      accounts.map((a) => {
+        return { id: a.id, password: a.password };
+      }),
+    );
     const found = accounts.find(
-      (a) => a.email === account.email && a.password === account.password,
+      (a) => a.id === account.id && a.password === account.password,
     );
     if (found) {
       resolve(found);
@@ -36,9 +43,9 @@ export const login = (account) => {
 };
 
 export const loginHandler = rest.post("/login", async (req, res, ctx) => {
-  const { email, password } = req.body;
+  const { id, password } = req.body;
   try {
-    const account = await login({ email, password });
+    const account = await login({ id, password });
     if (account)
       return res(
         ctx.set("token", "t0k1e2n3"),

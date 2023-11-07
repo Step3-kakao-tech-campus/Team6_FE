@@ -1,10 +1,11 @@
 import Button from "../../atoms/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Photo from "../../atoms/Photo";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 
 const MyPageTemplate = ({ userDetails }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="userProfile-navigation mt-4 flex">
@@ -47,17 +48,21 @@ const MyPageTemplate = ({ userDetails }) => {
         </Button>
         <Button
           as={Link}
-          to="/userinfo/reviews"
-          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
-        >
-          My Reviews
-        </Button>
-        <Button
-          as={Link}
           to="/userinfo/reservations/restaurant"
           className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
         >
           My Reservations
+        </Button>
+        <Button
+          as="button"
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/");
+            window.location.reload();
+          }}
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+        >
+          Logout
         </Button>
       </div>
     </>

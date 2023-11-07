@@ -25,7 +25,7 @@ const LoginPage = () => {
       e.preventDefault();
       if (validateId() && validatePassword()) {
         login({
-          email: id,
+          id: id,
           password: password,
         })
           .then((res) => {
