@@ -82,7 +82,6 @@ const ReviewForm = ({ reservation, onSubmit }) => {
       <Button as={"button"} className={"review-form-submit-button p-2 px-4 font-semibold text-lg bg-tripKoOrange text-white rounded-full"} onClick={handleSubmit}>
         Submit
       </Button>
-      {/*TODO implement submit */}
     </div>
   );
 };
