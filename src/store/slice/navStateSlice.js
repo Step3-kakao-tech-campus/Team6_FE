@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const navStateSlice = createSlice({
-  name: "navState",
+  name: "indicator",
   initialState: initialState,
   reducers: {
     setIndicator: (state, action) => {
