@@ -14,8 +14,8 @@ import Button from "../../atoms/Button";
 import Photo from "../../atoms/Photo";
 import TimeDropdown from "../../molecules/TimeDropdown";
 import CardTitle from "../../atoms/CardTitle";
-import {reserveFestival} from "../../../apis/reservation";
-import {useNavigate} from "react-router-dom";
+import { reserveFestival } from "../../../apis/reservation";
+import { useNavigate } from "react-router-dom";
 import Article from "../../organisms/Article";
 
 const FestivalDetailTemplate = ({ festival }) => {
@@ -138,11 +138,13 @@ const FestivalDetailTemplate = ({ festival }) => {
           "festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"
         }
       >
-        {
-          festival.contents.map((content) => (
-              <Article key={content.page} content={content.description} images={content.images} />
-            ))
-        }
+        {festival.contents.map((content) => (
+          <Article
+            key={content.page}
+            content={content.description}
+            images={content.images}
+          />
+        ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
           <InfoElement title={"Address"} value={festival.address} />
           <InfoElement title={"Period"} value={festival.period} />
@@ -155,10 +157,9 @@ const FestivalDetailTemplate = ({ festival }) => {
           className={"reservation-button"}
           onClick={() => {
             if (localStorage.getItem("token") === null) {
-              alert("Please login to reserve")
+              alert("Please login to reserve");
               navigate("/login");
-            }
-            else {
+            } else {
               setIsActiveCalender(true);
             }
           }}
