@@ -8,6 +8,8 @@ const instance = axios.create({
   },
 });
 
+// multi-part/formdata 형식으로 데이터를 전송하기 위한 instance
+
 const organizeError = (error) => {
   return {
     success: false,
@@ -50,5 +52,25 @@ instance.interceptors.response.use(
     return Promise.reject(organizeError(error));
   },
 );
+
+export const instanceFormData = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  timeout: 5000,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
+instanceFormData.interceptors.request.use(async (config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = token;
+  }
+  return config;
+});
+
+instanceFormData.interceptors.response.use((response) => {
+  return response;
+});
 
 export default instance;
