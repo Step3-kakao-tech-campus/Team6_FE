@@ -49,3 +49,8 @@ export const postReview = {
     restaurant: postRestaurantReview,
     festival: postFestivalReview,
 }
+
+export const getIsReviewed = async (placeId, type) => {
+  const result = await instance.get(`/userinfo/reviews/${type}/${placeId}`);
+    return result.data.response;
+}
