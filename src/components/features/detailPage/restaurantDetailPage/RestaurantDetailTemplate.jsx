@@ -1,24 +1,23 @@
-import PageTitleBar from "../../molecules/PageTitleBar";
-import Carousel from "../carousel/Carousel";
+import PageTitleBar from "../../../molecules/PageTitleBar";
 import { useState } from "react";
-import ReviewCards from "../../molecules/cards/ReviewCards";
-import { imagesToSlides } from "../carousel/utils";
-import SectionTitle from "../../atoms/SectionTitle";
-import HorizontalListSection from "../carousel/HorizontalListSection";
-import MenuCard from "../../molecules/cards/MenuCard";
-import ButtonAllReviews from "./atoms/ButtonAllReviews";
+import ReviewCards from "../../../molecules/cards/ReviewCards";
+import SectionTitle from "../../../atoms/SectionTitle";
+import HorizontalListSection from "../../carousel/HorizontalListSection";
+import MenuCard from "../../../molecules/cards/MenuCard";
+import ButtonAllReviews from "../atoms/ButtonAllReviews";
 import { useQuery } from "react-query";
-import { getReviewByIdAndType } from "../../../apis/review";
-import BottomPopModal from "../../atoms/Modals/BottomPopModal";
-import InfoElement from "./atoms/InfoElement";
-import { getCalenderByIdAndType } from "../../../apis/detail";
-import Calendar from "../calendar/Calendar";
-import Photo from "../../atoms/Photo";
-import Button from "../../atoms/Button";
-import TimeDropdown from "../../molecules/TimeDropdown";
-import CardTitle from "../../atoms/CardTitle";
-import { reserveRestaurant } from "../../../apis/reservation";
-import {useNavigate} from "react-router-dom";
+import { getReviewByIdAndType } from "../../../../apis/review";
+import BottomPopModal from "../../../atoms/Modals/BottomPopModal";
+import InfoElement from "../atoms/InfoElement";
+import { getCalenderByIdAndType } from "../../../../apis/detail";
+import Calendar from "../../calendar/Calendar";
+import Photo from "../../../atoms/Photo";
+import Button from "../../../atoms/Button";
+import TimeDropdown from "../../../molecules/TimeDropdown";
+import CardTitle from "../../../atoms/CardTitle";
+import { reserveRestaurant } from "../../../../apis/reservation";
+import { useNavigate } from "react-router-dom";
+import Article from "../../../organisms/Article";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -26,7 +25,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [requestMessage, setRequestMessage] = useState("");
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
-  const [selectedPeople, setSelectedPeople] = useState(0);
+  const [selectedPeople, setSelectedPeople] = useState(1);
 
   const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
     getReviewByIdAndType(restaurant.id, "restaurant"),
@@ -106,7 +105,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value < 0) {
+                      if (e.target.value <= 0) {
                         alert("Please enter positive number");
                         return;
                       }
@@ -162,35 +161,39 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           ))}
         </HorizontalListSection>
         <SectionTitle title={"Information"} />
-        <div className={"detail-content-container px-2"}>
-          {restaurant.description}
-        </div>
+        {restaurant.contents.map((content) => (
+          <Article
+            key={content.page}
+            description={content.description}
+            images={content.image}
+          />
+        ))}
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
           <InfoElement title={"Address"} value={restaurant.address} />
           <InfoElement title={"Contact"} value={restaurant.contactInfo} />
           <InfoElement title={"Operating Hours"} value={restaurant.open} />
           <InfoElement title={"Break Time"} value={restaurant.breakTime} />
         </div>
-        <SectionTitle title={"Photo"} />
-        <div className={"carousel-wrapper height-flex-layout-medium"}>
-          <Carousel slides={imagesToSlides(restaurant.images)} />
-        </div>
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
-        <Button
-          className={"reservation-button"}
-          onClick={() => {
-            if (localStorage.getItem("token") === null) {
-              alert("Please login to reserve")
-              navigate("/login");
-            } else {
-              setIsActiveCalender(true);
-            }
-          }}
-        >
-          Reserve
-        </Button>
+        {
+          <Button
+            as={"button"}
+            className={"reservation-button"}
+            onClick={() => {
+              if (localStorage.getItem("token") === null) {
+                alert("Please login to reserve");
+                navigate("/login");
+              } else {
+                setIsActiveCalender(true);
+              }
+            }}
+            disabled={!restaurant?.reservable}
+          >
+            Reserve
+          </Button>
+        }
       </div>
     </div>
   );

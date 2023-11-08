@@ -3,16 +3,25 @@ import MapIcon from "../../atoms/MapIcon";
 import Photo from "../../atoms/Photo";
 import Stamp from "../../atoms/Stamp";
 import { getReserveText } from "../../features/reservationListPage/utils";
-import {useContext, useMemo} from "react";
-import {useNavigate} from "react-router-dom";
-import {ModalContext} from "../../../App";
+import { useContext, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../../../App";
 import ReviewForm from "../../features/formPages/writeReviewPage/ReviewForm";
+import { useQuery } from "react-query";
+import { getIsReviewed } from "../../../apis/review";
+import Button from "../../atoms/Button";
 
 const ReservationCard = ({ reservation, reviewable }) => {
-
   const status = useMemo(
     () => getReserveText(reservation.status),
     [reservation.status],
+  );
+
+  const { data } = useQuery(
+    `isReviewable${reservation.type}/${reservation.id}`,
+    () => {
+      return getIsReviewed(reservation.id, reservation.type);
+    },
   );
 
   const navigate = useNavigate();
@@ -20,7 +29,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
     e.stopPropagation();
     navigate(`/${reservation.type}/${reservation.id}`);
   };
-  const { show } = useContext(ModalContext)
+  const { show } = useContext(ModalContext);
 
   return (
     <div className="reservation-card-wrapper ticket-card flex h-40 w-full">
@@ -57,16 +66,30 @@ const ReservationCard = ({ reservation, reviewable }) => {
             "reservation-content-bottom flex items-center justify-between"
           }
         >
-          {reviewable && (
-            <button
-              className={"reservation-bottom underline text-tripKoOrange-500 cursor-pointer"}
+          {reviewable && !data?.reviewed && (
+            <Button
+              as={"button"}
+              className={
+                "reservation-bottom cursor-pointer text-tripKoOrange-500 underline"
+              }
               onClick={(e) => {
                 e.stopPropagation();
                 show(<ReviewForm reservation={reservation} />);
               }}
             >
-              Submit Review
-            </button>
+              Write Review
+            </Button>
+          )}
+          {data?.reviewed && (
+            <span
+              className={"reservation-bottom cursor-pointer text-tripKoOrange-500 underline"}
+              onClick={(e) => {
+                e.stopPropagation();
+                show(<ReviewForm reservation={reservation} />);
+              }}
+            >
+              Modify Review
+            </span>
           )}
         </div>
         <Stamp className={"absolute bottom-4 left-1 rotate-12 bg-white"}>
@@ -76,5 +99,4 @@ const ReservationCard = ({ reservation, reviewable }) => {
     </div>
   );
 };
-
 export default ReservationCard;
