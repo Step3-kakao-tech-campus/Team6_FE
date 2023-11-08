@@ -49,20 +49,27 @@ const WishlistPage = () => {
 
   const filteredData = useMemo(() => {
     if (!data) return [];
+    const { touristSpots, restaurants, festivals } = data;
     switch (filter) {
       case "touristSpots":
-        return data.touristSpots;
+        return touristSpots || [];
       case "restaurants":
-        return data.restaurants;
+        return restaurants || [];
       case "festivals":
-        return data.festivals;
+        return festivals || [];
       default:
-        return [...data.touristSpots, ...data.restaurants, ...data.festivals];
+        return [
+          ...(touristSpots || []),
+          ...(restaurants || []),
+          ...(festivals || []),
+        ];
     }
   }, [filter, data]);
 
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error occurred: {error.message}</div>;
+
+  console.log(filteredData);
 
   return (
     <div className="wishlist-page h-screen w-full">
