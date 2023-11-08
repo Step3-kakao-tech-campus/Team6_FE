@@ -1,4 +1,4 @@
-import instance, {instanceFormData} from "./api";
+import instance from "./api";
 
 export const getRestaurantReviewById = async (id) => {
   const result = await instance.get(`/restaurant/reviews/${id}`);
@@ -20,28 +20,27 @@ export const getReviewByIdAndType = async (id, type) => {
   }
 };
 
-export const organizeReview = (placeId, rating, description, file) => {
-  const formData = new FormData();
-  formData.append("placeId", placeId);
-  formData.append("rating", rating);
-  formData.append("description", description);
-  formData.append("file", file);
-  return formData;
-}
+const organizeReview = (placeId, rating, description) => {
+  return {
+    placeId: placeId,
+    rating: rating,
+    description: description,
+  };
+};
 
-export const postRestaurantReview = async (placeId, rating, description, file) => {
-  const result = await instanceFormData.post(
+export const postRestaurantReview = async (placeId, rating, description) => {
+  const result = await instance.post(
     "/restaurant/reviews",
-    organizeReview(placeId, rating, description, file),
+    organizeReview(placeId, rating, description),
   );
   return result.data.response;
 };
 
-export const postFestivalReview = async (placeId, rating, description, file) => {
+export const postFestivalReview = async (placeId, rating, description) => {
 
-  const result = await instanceFormData.post(
+  const result = await instance.post(
     "/festival/reviews",
-    organizeReview(placeId, rating, description, file),
+    organizeReview(placeId, rating, description),
   );
   return result.data.response;
 };
@@ -49,9 +48,4 @@ export const postFestivalReview = async (placeId, rating, description, file) => 
 export const postReview = {
     restaurant: postRestaurantReview,
     festival: postFestivalReview,
-}
-
-export const getIsReviewed = async (placeId, type) => {
-  const result = await instance.get(`/userinfo/reviews/${type}/${placeId}`);
-    return result.data.response;
 }

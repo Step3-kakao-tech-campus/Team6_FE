@@ -1,29 +1,30 @@
-import PageTitleBar from "../../../molecules/PageTitleBar";
-import SectionTitle from "../../../atoms/SectionTitle";
-import InfoElement from "../atoms/InfoElement";
-import { comma } from "../../../../utils/convert";
-import ReviewCards from "../../../molecules/cards/ReviewCards";
-import ButtonAllReviews from "../atoms/ButtonAllReviews";
+import PageTitleBar from "../../molecules/PageTitleBar";
+import SectionTitle from "../../atoms/SectionTitle";
+import InfoElement from "../restaurantDetailPage/atoms/InfoElement";
+import { comma } from "../../../utils/convert";
+import ReviewCards from "../../molecules/cards/ReviewCards";
+import Carousel from "../carousel/Carousel";
+import { imagesToSlides } from "../carousel/utils";
+import ButtonAllReviews from "../restaurantDetailPage/atoms/ButtonAllReviews";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { getReviewByIdAndType } from "../../../../apis/review";
-import BottomPopModal from "../../../atoms/Modals/BottomPopModal";
-import Calendar from "../../calendar/Calendar";
-import { getCalenderByIdAndType } from "../../../../apis/detail";
-import Button from "../../../atoms/Button";
-import Photo from "../../../atoms/Photo";
-import TimeDropdown from "../../../molecules/TimeDropdown";
-import CardTitle from "../../../atoms/CardTitle";
-import { reserveFestival } from "../../../../apis/reservation";
-import { useNavigate } from "react-router-dom";
-import Article from "../../../organisms/Article";
+import { getReviewByIdAndType } from "../../../apis/review";
+import BottomPopModal from "../../atoms/Modals/BottomPopModal";
+import Calendar from "../calendar/Calendar";
+import { getCalenderByIdAndType } from "../../../apis/detail";
+import Button from "../../atoms/Button";
+import Photo from "../../atoms/Photo";
+import TimeDropdown from "../../molecules/TimeDropdown";
+import CardTitle from "../../atoms/CardTitle";
+import {reserveFestival} from "../../../apis/reservation";
+import {useNavigate} from "react-router-dom";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
-  const [selectedPeople, setSelectedPeople] = useState(1);
+  const [selectedPeople, setSelectedPeople] = useState(0);
 
   const navigate = useNavigate();
 
@@ -100,7 +101,7 @@ const FestivalDetailTemplate = ({ festival }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value <= 0) {
+                      if (e.target.value < 0) {
                         alert("Please enter positive number");
                         return;
                       }
@@ -139,33 +140,32 @@ const FestivalDetailTemplate = ({ festival }) => {
         }
       >
         <SectionTitle title={"Information"} />
-        {festival.contents.map((content) => (
-          <Article
-            key={content.page}
-            description={content.description}
-            images={content.image}
-          />
-        ))}
+        <div className={"detail-content-container px-2"}>
+          {festival.description}
+        </div>
         <div className={"information-card grid gap-2 px-4 py-2 md:grid-cols-2"}>
           <InfoElement title={"Address"} value={festival.address} />
           <InfoElement title={"Period"} value={festival.period} />
           <InfoElement title={"Price"} value={`₩${comma(festival.price)}`} />
         </div>
+        <SectionTitle title={"Photo"} />
+        <div className={"carousel-wrapper height-flex-layout-medium"}>
+          <Carousel slides={imagesToSlides(festival.images)} />
+        </div>
         <SectionTitle title={"Reviews"} />
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
-          as={"button"}
           className={"reservation-button"}
           onClick={() => {
             if (localStorage.getItem("token") === null) {
-              alert("Please login to reserve");
+              alert("Please login to reserve")
               navigate("/login");
-            } else {
+            }
+            else {
               setIsActiveCalender(true);
             }
           }}
-          disabled={!festival?.reservable}
         >
           Reserve
         </Button>
