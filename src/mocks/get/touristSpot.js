@@ -1,5 +1,6 @@
 import TOURIST_SPOTS from "../datas/touristSpots";
 import { rest } from "msw";
+import { getRestaurantDetail } from "./restaurant";
 
 export const getTouristSpots = (length) => {
   const selectedKeys = ["id", "name", "summary", "address", "isWished"];
@@ -12,16 +13,28 @@ export const getTouristSpots = (length) => {
   return new Array(length).fill(touristSpot);
 };
 
-export const getTouristSpotHandler = rest.get(
-  "/touristSpot/:id",
-  (req, res, ctx) => {
+export const getTouristSpotDetail = (id) => {
+  return TOURIST_SPOTS.find((restaurant) => restaurant.id === parseInt(id));
+};
 
-    return res(
-      ctx.status(200),
-      ctx.json({
-        success: true,
-        response: TOURIST_SPOTS[0],
-      }),
-    );
+export const getTouristSpotHandler = rest.get(
+  "/api/touristSpot/:id",
+  (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getRestaurantDetail(id),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          response: null,
+        }),
+      );
   },
 );

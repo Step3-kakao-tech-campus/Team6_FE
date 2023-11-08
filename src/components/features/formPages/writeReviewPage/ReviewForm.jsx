@@ -29,8 +29,7 @@ const ReviewForm = ({ reservation, onSubmit }) => {
       setErrorMsg("Please write review");
       return;
     }
-    console.log('file', file)
-    const result = await postReview[reservation.type](reservation.id, score, reviewText, file);
+    const result = await postReview[reservation.type](reservation.id, score, reviewText);
     alert(result.message);
     hide();
   };
@@ -83,6 +82,7 @@ const ReviewForm = ({ reservation, onSubmit }) => {
       <Button as={"button"} className={"review-form-submit-button p-2 px-4 font-semibold text-lg bg-tripKoOrange text-white rounded-full"} onClick={handleSubmit}>
         Submit
       </Button>
+      {/*TODO implement submit */}
     </div>
   );
 };
