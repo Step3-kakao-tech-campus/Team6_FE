@@ -31,7 +31,6 @@ const SearchPage = () => {
       navigate(`/search?location=${encodeURIComponent(query)}`);
     },
     onError: (error) => {
-      console.log(error);
       setCustomError("Something went wrong. Please try again.");
     },
   });
@@ -41,7 +40,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="h-screen w-full">
+    <div className="mb-20 h-screen w-full overflow-y-auto">
       <SearchBar
         baseUrl={"/search"}
         value={query}
@@ -53,9 +52,7 @@ const SearchPage = () => {
       {customError && (
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
       )}
-      {!customError && (
-        <FilterResults filter={filter} results={results || []} />
-      )}
+      {!customError && <FilterResults filter={filter} query={query} />}
     </div>
   );
 };

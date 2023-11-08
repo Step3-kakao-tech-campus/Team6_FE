@@ -1,9 +1,53 @@
+import { useState, useEffect } from "react";
 import RestaurantCard from "../../../molecules/cards/RestaurantCard";
 import FestivalCard from "../../../molecules/cards/FestivalCard";
 import TouristSpotCard from "../../../molecules/cards/TouristSpotCard";
 import { Link } from "react-router-dom";
+import {
+  festivalSearch,
+  restaurantSearch,
+  touristSpotSearch,
+} from "../../../../apis/search";
 
-const FilterResults = ({ results, filter }) => {
+const FilterResults = ({ filter, query }) => {
+  const [results, setResults] = useState({
+    restaurants: [],
+    festivals: [],
+    touristSpots: [],
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (filter === "all" || filter === "restaurants") {
+          const restaurantData = await restaurantSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            restaurants: restaurantData,
+          }));
+        }
+        if (filter === "all" || filter === "festivals") {
+          const festivalData = await festivalSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            festivals: festivalData,
+          }));
+        }
+        if (filter === "all" || filter === "touristSpots") {
+          const touristSpotData = await touristSpotSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            touristSpots: touristSpotData,
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch filter results:", error);
+      }
+    };
+
+    fetchData();
+  }, [filter]);
+
   return (
     <div>
       {filter === "all" || filter === "restaurants" ? (
