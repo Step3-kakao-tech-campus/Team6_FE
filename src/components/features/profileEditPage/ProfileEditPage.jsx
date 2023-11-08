@@ -16,6 +16,13 @@ const ProfileEditPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  useEffect(() => {
+    if (data?.data?.response) {
+      setSuccessMessage("");
+      setErrorMessage("");
+    }
+  }, [data]);
+
   const {
     register,
     handleSubmit,
@@ -101,7 +108,6 @@ const ProfileEditPage = () => {
             name="nickname"
             type="text"
             register={register}
-            // value={data?.data?.response?.nickname}
             errorMsg={errors.nickname?.message}
           />
           <InputGroup
@@ -109,7 +115,6 @@ const ProfileEditPage = () => {
             name="email"
             type="email"
             register={register}
-            // value={data?.data?.response?.email}
             errorMsg={errors.email?.message}
           />
 

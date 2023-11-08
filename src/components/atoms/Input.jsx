@@ -14,7 +14,7 @@ const Input = ({
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      {...register(name, { required: true })}
+      {...(register ? register(name, { required: true }) : {})}
       {...props}
     />
   );
