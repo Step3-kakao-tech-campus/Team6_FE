@@ -54,6 +54,7 @@ const ImageUploader = ({ setFile, file }) => {
         <button
           onClick={handleFileButtonClick}
           className={"flex h-40 w-40 items-center justify-center bg-gray-300"}
+          aria-label="image-upload-button"
         >
           <BiImage color={"#000000"} size={50} />
         </button>

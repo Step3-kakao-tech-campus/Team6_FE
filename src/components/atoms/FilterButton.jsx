@@ -13,6 +13,7 @@ const FilterButton = ({ label, value, filter, setFilter, onClick }) => {
           ? "border border-[#ff4800] bg-[#fcefe7] text-[#ff4800]"
           : "border border-gray-300 text-black"
       }`}
+      aria-label={`${value}-filter-button`}
     >
       {label}
     </button>

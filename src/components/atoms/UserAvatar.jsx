@@ -7,6 +7,7 @@ const UserAvatar = ({ image, onClick, className }) => {
       <button
         className={`user-avatar overflow-hidden rounded-full ${className}`}
         onClick={(e) => (onClick ? applyStopPropagation(e, onClick) : null)}
+        aria-label="user-avatar"
       >
         <Photo
           src={image}

@@ -48,7 +48,7 @@ const WishButton = ({ filter, id, initialIsWished, onWishChange }) => {
   };
 
   return (
-    <button onClick={handleWishButtonClick}>
+    <button onClick={handleWishButtonClick} aria-label="wish-button">
       <AiFillHeart
         size={20}
         color={isWished ? "#ff6b6b" : "#e4e5e9"}

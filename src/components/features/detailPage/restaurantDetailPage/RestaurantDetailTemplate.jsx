@@ -130,6 +130,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 onClick={onReserve}
                 variant="link"
                 className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-white"
+                aria-label="reserve-button"
               >
                 Reserve
               </Button>
@@ -190,6 +191,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
               }
             }}
             disabled={!restaurant?.reservable}
+            aria-label="reservation-button"
           >
             Reserve
           </Button>
