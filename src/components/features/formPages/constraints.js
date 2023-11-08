@@ -38,11 +38,13 @@ export const PASSWORD_CONDITION = [
   REQUIRED_CONDITION,
   {
     condition: (password) => {
-      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+      const passwordRegex = new RegExp(
+          "^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$",
+      );
       return passwordRegex.test(password);
     },
     message:
-      "at least 8 characters long and contain at least one letter and one number.",
+        "at least 8 characters long and contain at least one letter, one number and one special character.",
   },
 ];
 
