@@ -22,7 +22,7 @@ const ReviewCard = ({ review }) => {
         <div className={"review-card-header-info flex flex-col justify-evenly"}>
           <CardTitle title={review.authorNickname} lineClamp={1} />
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
-          <StarRating averageScore={review.rating} />
+          <div className={"review-rating text-sm text-gray-500 flex"}><StarRating averageScore={review.rating} />{review.rating.toFixed(1)}</div>
         </div>
       </div>
       <div className={"review-card-body"}>

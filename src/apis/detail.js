@@ -14,6 +14,13 @@ export const getFestivalById = async (id) => {
     .catch((error) => Promise.reject(error));
 };
 
+export const getSpotById = async (id) => {
+  return await instance
+    .get(`/touristSpot/${id}`)
+    .then((response) => response.data.response)
+    .catch((error) => Promise.reject(error));
+};
+
 export const getFoodById = async (id) => {
   return await instance
     .get(`/food/${id}`)

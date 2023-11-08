@@ -72,6 +72,7 @@ const HomePage = () => {
                     to={`restaurant/${restaurant.id}`}
                     name={restaurant.name}
                     address={restaurant.address}
+                    averageScore={restaurant.averageScore}
                   />
                 );
               })}
@@ -85,6 +86,7 @@ const HomePage = () => {
                   image={spot.image}
                   name={spot.name}
                   address={spot.address}
+                  to={`touristSpot/${spot.id}`}
                 />
               ))}
           </HorizontalListSectionMediaQuery>

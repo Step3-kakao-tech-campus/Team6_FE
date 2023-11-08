@@ -8,6 +8,8 @@ const instance = axios.create({
   },
 });
 
+// multi-part/formdata 형식으로 데이터를 전송하기 위한 instance
+
 const organizeError = (error) => {
   return {
     success: false,
@@ -18,14 +20,20 @@ const organizeError = (error) => {
 
 instance.interceptors.request.use(async (config) => {
   const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("Refresh-Token");
   if (token) {
     config.headers.Authorization = token;
+    config.headers["Refresh-Token"] = refreshToken;
   }
   return config;
 });
 
 instance.interceptors.response.use(
   (response) => {
+    // refresh token이 발급되었을 때
+    if (response.headers["Refresh-Token"]) {
+      localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
+    }
     return response;
   },
   (error) => {
@@ -50,5 +58,31 @@ instance.interceptors.response.use(
     return Promise.reject(organizeError(error));
   },
 );
+
+export const instanceFormData = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  timeout: 5000,
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+
+instanceFormData.interceptors.request.use(async (config) => {
+  const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("Refresh-Token");
+  if (token) {
+    config.headers.Authorization = token;
+    config.headers["Refresh-Token"] = refreshToken;
+  }
+  return config;
+});
+
+instanceFormData.interceptors.response.use((response) => {
+  // refresh token이 발급되었을 때
+  if (response.headers["Refresh-Token"]) {
+    localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
+  }
+  return response;
+});
 
 export default instance;
