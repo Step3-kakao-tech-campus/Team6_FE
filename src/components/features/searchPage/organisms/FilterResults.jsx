@@ -17,7 +17,7 @@ const FilterResults = ({ results, filter }) => {
       ) : null}
       {filter === "all" || filter === "festivals" ? (
         <div>
-          <h2 className="mx-4 text-xl font-bold">Festivals</h2>
+          <h2 className="m-4 text-xl font-bold">Festivals</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {results?.festivals?.map((festival, index) => (
               <FestivalCard key={index} festival={festival} />
@@ -27,7 +27,7 @@ const FilterResults = ({ results, filter }) => {
       ) : null}
       {filter === "all" || filter === "touristSpots" ? (
         <div>
-          <h2 className="mx-4 text-xl font-bold">Tourist Spots</h2>
+          <h2 className="m-4 text-xl font-bold">Tourist Spots</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {results?.touristSpots?.map((touristSpot, index) => (
               <TouristSpotCard key={index} touristSpot={touristSpot} />

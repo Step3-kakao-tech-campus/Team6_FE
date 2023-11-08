@@ -1,4 +1,5 @@
-import { getHomeHandler, getSearchHandler } from "./get/home";
+import { getHomeHandler } from "./get/home";
+import { getSearchHandler } from "./get/search";
 import {
   getRestaurantCalendarHandler,
   getRestaurantHandler,

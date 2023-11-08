@@ -23,8 +23,8 @@ const TouristSpotCard = ({ touristSpot }) => {
           />
         </div>
       </div>
-      <div className="flex h-16 w-full flex-col items-center justify-center">
-        <h3 className="mb-2 text-xl font-bold">{touristSpot.name}</h3>
+      <div className="touristSpot-inform flex h-20 w-full flex-col items-center justify-center">
+        <h3 className="my-2 text-xl font-bold">{touristSpot.name}</h3>
         <div className="flex items-center">
           <MapIcon size={12} color={"#22c55e"} />
           <p className="text-xs">{touristSpot.address}</p>
