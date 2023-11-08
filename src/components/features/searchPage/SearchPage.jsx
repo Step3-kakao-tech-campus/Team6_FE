@@ -52,7 +52,9 @@ const SearchPage = () => {
       {customError && (
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
       )}
-      {!customError && <FilterResults filter={filter} query={query} />}
+      {!customError && (
+        <FilterResults filter={filter} query={query} result={results} />
+      )}
     </div>
   );
 };

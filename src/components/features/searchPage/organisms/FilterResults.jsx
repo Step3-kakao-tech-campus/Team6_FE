@@ -9,7 +9,7 @@ import {
   touristSpotSearch,
 } from "../../../../apis/search";
 
-const FilterResults = ({ filter, query }) => {
+const FilterResults = ({ result, filter, query }) => {
   const [results, setResults] = useState({
     restaurants: [],
     festivals: [],
