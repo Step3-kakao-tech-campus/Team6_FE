@@ -28,7 +28,9 @@ const Carousel = ({ slides }) => {
 
   const prevSlide = useMemo(
     () => () => {
+      // 첫번째 슬라이드에서 이전 슬라이드로 넘어갈 때
       if (currentSlide === 1) {
+        // 마지막 슬라이드로 이동
         setCurrentSlide(0);
         setTimeout(() => {
           setCurrentSlide(length - 2);
@@ -42,6 +44,7 @@ const Carousel = ({ slides }) => {
 
   const nextSlide = useMemo(
     () => () => {
+      // 마지막 슬라이드에서 다음 슬라이드로 넘어갈 때
       if (currentSlide === length - 2) {
         setCurrentSlide(length - 1);
         setTimeout(() => {
@@ -89,8 +92,12 @@ const Carousel = ({ slides }) => {
           to={slide.to}
         />
       ))}
-      <ScrollButtonRight onClick={onClickRightButton} />
-      <ScrollButtonLeft onClick={onClickLeftButton} />
+      {slides.length > 1 && (
+        <>
+          <ScrollButtonRight onClick={onClickRightButton} />
+          <ScrollButtonLeft onClick={onClickLeftButton} />
+        </>
+      )}
     </div>
   );
 };

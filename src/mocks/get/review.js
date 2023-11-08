@@ -83,3 +83,20 @@ export const postFestivalReviewHandler = rest.post(
     );
   },
 );
+
+export const getReviewedHandler = rest.get(
+  "/userinfo/reviews/:type/:id",
+  (req, res, ctx) => {
+    const reviewed = Math.random() >= 0.5;
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: {
+          reviewed: reviewed,
+          review: reviewed ? 1 : null,
+        },
+      }),
+    );
+  },
+);

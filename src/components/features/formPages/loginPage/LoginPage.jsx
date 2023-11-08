@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import useInputGroup from "../../../../hooks/useInputGroup";
 import { checkConditions } from "../utils";
 import { REQUIRED_CONDITION } from "../constraints";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../../../apis/account";
 import { useDispatch } from "react-redux";
 import { reducerLogin } from "../../../../store/slice/userSlice";
@@ -13,6 +13,8 @@ import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [id, onChangeId, errorMsgId, validateId] = useInputGroup("", (input) =>
     checkConditions([REQUIRED_CONDITION], input),
   );
@@ -110,12 +112,15 @@ const LoginPage = () => {
           "additional-links flex items-center justify-center gap-2 text-lg font-bold"
         }
       >
-        <a href={process.env.REACT_APP_PATH + "/oauth2/authorization/google"}>
-          <div className={"flex rounded-full px-8 py-2 shadow"}>
-            <FcGoogle size={30} />
-            Login with Google
-          </div>
-        </a>
+        <div
+          className={"flex rounded-full px-8 py-2 shadow"}
+          onClick={() => {
+            navigate("/oauth2/authorization/google");
+          }}
+        >
+          <FcGoogle size={30} />
+          Login with Google
+        </div>
       </div>
     </div>
   );
