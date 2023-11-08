@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { getFoodById } from "../../../apis/detail";
+import { getFoodById } from "../../../../apis/detail";
 import FoodDetailTemplate from "./FoodDetailTemplate";
-import ErrorPage from "../ErrorPage/ErrorPage";
-import LoadingPage from "../loadingPage/LoadingPage";
+import ErrorPage from "../../ErrorPage/ErrorPage";
+import LoadingPage from "../../loadingPage/LoadingPage";
 
 const FoodDetailPage = () => {
   const params = useParams().id;
