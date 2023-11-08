@@ -28,7 +28,9 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
         <div
           className={"calender-month text-xl font-bold text-tripKoOrange-500"}
         >
-          {monthState.getFullYear()}년 {monthState.getMonth() + 1}월
+            {monthState.toLocaleString("en-US", { month: "long" }).slice(0, 3)}
+            {" "}
+            {monthState.getFullYear()}
         </div>
         <button
           className={"calender-header-button"}
