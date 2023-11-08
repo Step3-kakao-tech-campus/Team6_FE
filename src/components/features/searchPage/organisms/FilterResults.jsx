@@ -1,6 +1,7 @@
 import RestaurantCard from "../../../molecules/cards/RestaurantCard";
 import FestivalCard from "../../../molecules/cards/FestivalCard";
 import TouristSpotCard from "../../../molecules/cards/TouristSpotCard";
+import { Link } from "react-router-dom";
 
 const FilterResults = ({ results, filter }) => {
   return (
@@ -10,7 +11,9 @@ const FilterResults = ({ results, filter }) => {
           <h2 className="mx-4 text-xl font-bold">Restaurants</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {results?.restaurants?.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <Link to={`/restaurant/${restaurant.id}`}>
+                <RestaurantCard key={index} restaurant={restaurant} />
+              </Link>
             ))}
           </div>
         </div>
@@ -20,7 +23,9 @@ const FilterResults = ({ results, filter }) => {
           <h2 className="m-4 text-xl font-bold">Festivals</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {results?.festivals?.map((festival, index) => (
-              <FestivalCard key={index} festival={festival} />
+              <Link to={`/festival/${festival.id}`}>
+                <FestivalCard key={index} festival={festival} />
+              </Link>
             ))}
           </div>
         </div>
@@ -30,7 +35,9 @@ const FilterResults = ({ results, filter }) => {
           <h2 className="m-4 text-xl font-bold">Tourist Spots</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {results?.touristSpots?.map((touristSpot, index) => (
-              <TouristSpotCard key={index} touristSpot={touristSpot} />
+              <Link to={`/touristSpot/${touristSpot.id}`}>
+                <TouristSpotCard key={index} touristSpot={touristSpot} />
+              </Link>
             ))}
           </div>
         </div>
