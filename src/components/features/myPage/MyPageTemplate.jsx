@@ -62,6 +62,14 @@ const MyPageTemplate = ({ userDetails }) => {
           My Reservations
         </Button>
         <Button
+          as={Link}
+          to="/userinfo/reviews/all"
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+          aria-label="review-list-button"
+        >
+          My Reviews
+        </Button>
+        <Button
           as="button"
           onClick={() => {
             localStorage.removeItem("token");
