@@ -31,17 +31,17 @@ export const getWishlistHandler = rest.get(
   },
 );
 
-export const postWishHandler = rest.patch(
-  "/userinfo/wishlist",
-  (req, res, ctx) => {
-    const { filter, id, isWished } = req.body;
+// export const postWishHandler = rest.patch(
+//   "/userinfo/wishlist",
+//   (req, res, ctx) => {
+//     const { filter, id, isWished } = req.body;
 
-    return res(
-      ctx.status(200),
-      ctx.json({
-        success: true,
-        message: `Wish status updated for ${filter} with ID ${id} to ${isWished}.`,
-      }),
-    );
-  },
-);
+//     return res(
+//       ctx.status(200),
+//       ctx.json({
+//         success: true,
+//         message: `Wish status updated for ${filter} with ID ${id} to ${isWished}.`,
+//       }),
+//     );
+//   },
+// );

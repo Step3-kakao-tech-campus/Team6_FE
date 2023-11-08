@@ -12,7 +12,7 @@ import {
 } from "./get/review";
 import { getTouristSpotHandler } from "./get/touristSpot";
 import { searchFoodHandler, getFoodHandler } from "./get/food";
-import { getWishlistHandler, postWishHandler } from "./get/wishlist";
+import { getWishlistHandler } from "./get/wishlist";
 import { loginHandler, registerHandler } from "./account/account";
 import { editUserHandler, getUserinfoHandler } from "./get/userinfo";
 import {
@@ -23,6 +23,7 @@ import {
   postFestivalReservationHandler,
   postRestaurantReservationHandler,
 } from "./post/reservation";
+import { deleteWishHandler, postWishHandler } from "./post/wishlist";
 
 export const handlers = [
   searchSpotHandler,
@@ -40,6 +41,7 @@ export const handlers = [
   getFestivalReservationHandler,
   getWishlistHandler,
   postWishHandler,
+  deleteWishHandler,
   loginHandler,
   registerHandler,
   getUserinfoHandler,
