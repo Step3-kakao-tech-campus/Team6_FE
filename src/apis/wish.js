@@ -36,14 +36,44 @@ export const deleteWish = async (id) => {
     .catch((error) => Promise.reject(error));
 };
 
-export const getWishlist = async () => {
+export const getAllWishlist = async () => {
   return await instance
-    .get(`/userinfo/wishlist`)
+    .get(`/userinfo/wishlist/all`)
     .then((response) => {
       return {
         isSuccess: true,
         result: response.data.response,
       };
     })
+    .catch((error) => Promise.reject(error));
+};
+
+export const getRestaurantWishlist = async () => {
+  return await instance
+    .get(`/userinfo/wishlist/restaurant`)
+    .then((response) => ({
+      isSuccess: true,
+      result: response.data.response,
+    }))
+    .catch((error) => Promise.reject(error));
+};
+
+export const getFestivalWishlist = async () => {
+  return await instance
+    .get(`/userinfo/wishlist/festival`)
+    .then((response) => ({
+      isSuccess: true,
+      result: response.data.response,
+    }))
+    .catch((error) => Promise.reject(error));
+};
+
+export const getTouristSpotWishlist = async () => {
+  return await instance
+    .get(`/userinfo/wishlist/touristSpot`)
+    .then((response) => ({
+      isSuccess: true,
+      result: response.data.response,
+    }))
     .catch((error) => Promise.reject(error));
 };
