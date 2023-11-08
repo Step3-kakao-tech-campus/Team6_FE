@@ -31,7 +31,7 @@ const HomePage = () => {
 
   const handleSearch = async (searchQuery) => {
     await search(searchQuery);
-    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    navigate(`/search?location=${encodeURIComponent(searchQuery)}`);
   };
 
   return (

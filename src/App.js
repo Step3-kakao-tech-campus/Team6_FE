@@ -67,8 +67,8 @@ function App() {
                       element={<FestivalDetailPage />}
                     />
                     <Route
-                        path="/touristSpot/:id"
-                        element={<SpotDetailPage />}
+                      path="/touristSpot/:id"
+                      element={<SpotDetailPage />}
                     />
 
                     <Route path={"/search"} element={<SearchPage />} />
