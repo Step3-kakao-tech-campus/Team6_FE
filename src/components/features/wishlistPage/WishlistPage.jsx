@@ -69,8 +69,6 @@ const WishlistPage = () => {
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error occurred: {error.message}</div>;
 
-  console.log(filteredData);
-
   return (
     <div className="wishlist-page h-screen w-full">
       <PageTitle title="Wishlist" />

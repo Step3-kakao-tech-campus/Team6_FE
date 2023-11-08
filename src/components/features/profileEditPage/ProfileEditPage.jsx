@@ -8,6 +8,7 @@ import InputGroup from "../../molecules/InputGroup";
 import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -50,7 +51,11 @@ const ProfileEditPage = () => {
 
   useEffect(() => {
     if (data?.data?.response) {
-      reset(data.data.response);
+      reset({
+        name: data.data.response.name,
+        nickname: data.data.response.nickname,
+        email: data.data.response.email,
+      });
     }
   }, [data, reset]);
 
@@ -69,7 +74,7 @@ const ProfileEditPage = () => {
     mutation.mutate(formData);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -96,6 +101,7 @@ const ProfileEditPage = () => {
             name="nickname"
             type="text"
             register={register}
+            // value={data?.data?.response?.nickname}
             errorMsg={errors.nickname?.message}
           />
           <InputGroup
@@ -103,6 +109,7 @@ const ProfileEditPage = () => {
             name="email"
             type="email"
             register={register}
+            // value={data?.data?.response?.email}
             errorMsg={errors.email?.message}
           />
 

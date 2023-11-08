@@ -6,7 +6,7 @@ const MyPage = () => {
   const { data, isLoading, error } = useQuery("user", user);
 
   const userDetails = data?.data?.response;
-  // console.log(userDetails);
+  console.log(userDetails);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;
