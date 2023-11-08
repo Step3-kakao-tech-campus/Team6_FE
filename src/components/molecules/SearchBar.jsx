@@ -41,6 +41,9 @@ const SearchBar = ({ value, onChange, onSearch }) => {
         <div className="absolute left-2 flex h-full items-center justify-center">
           <MapIcon size={20} color={"#FF4800"} />
         </div>
+        <div className="absolute right-8 flex h-full items-center justify-center">
+          <Button onClick={handleSearch}>Search</Button>
+        </div>
         <Input
           className="text-md w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
           type="search"
