@@ -22,7 +22,10 @@ const ReviewCard = ({ review }) => {
         <div className={"review-card-header-info flex flex-col justify-evenly"}>
           <CardTitle title={review.authorNickname} lineClamp={1} />
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
-          <div className={"review-rating text-sm text-gray-500 flex"}><StarRating averageScore={review.rating} />{review.rating.toFixed(1)}</div>
+          <div className={"review-rating flex text-sm text-gray-500"}>
+            <StarRating averageScore={review.rating} />
+            {review.rating.toFixed(1)}
+          </div>
         </div>
       </div>
       <div className={"review-card-body"}>
@@ -34,7 +37,9 @@ const ReviewCard = ({ review }) => {
           <>
             <CardTitle title={"Photo"} />{" "}
             <div
-              className={"review-photo-section flex h-[15rem] w-full overflow-x-scroll"}
+              className={
+                "review-photo-section flex h-[15rem] w-full overflow-x-scroll"
+              }
             >
               <Photo
                 className={"h-[15rem] w-[15rem] "}

@@ -3,7 +3,7 @@ export const MYREVIEW = {
     {
       reviewId: 1,
       placeId: 1,
-      placeName: "정문토스트",
+      placeName: "식당1",
       address: "BuildingName1 RoadName1 GeumjeongGu JangjeonDong Busan",
       visitDay: "2023-10-10",
       rating: 4,
@@ -16,7 +16,7 @@ export const MYREVIEW = {
     {
       reviewId: 1,
       placeId: 1,
-      placeName: "정문토스트",
+      placeName: "축제1",
       address: "BuildingName1 RoadName1 GeumjeongGu JangjeonDong Busan",
       visitDay: "2023-10-10",
       rating: 4,
@@ -29,7 +29,7 @@ export const MYREVIEW = {
     {
       reviewId: 1,
       placeId: 1,
-      placeName: "정문토스트",
+      placeName: "관광지1",
       address: "BuildingName1 RoadName1 GeumjeongGu JangjeonDong Busan",
       visitDay: "2023-10-10",
       rating: 4,
