@@ -23,7 +23,7 @@ export const getSpotById = async (id) => {
 
 export const getFoodById = async (id) => {
   return await instance
-    .get(`/food/${id}`)
+    .get(`/foods/${id}`)
     .then((response) => {
       return {
         isSuccess: true,
