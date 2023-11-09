@@ -1,30 +1,8 @@
 import instance, { instanceFormData } from "./api";
 
-export const getRestaurantReviewById = async (id) => {
-  const result = await instance.get(`/restaurant/reviews/${id}`);
-  return result.data.response;
-};
-
-export const getFestivalReviewById = async (id) => {
-  const result = await instance.get(`/festival/reviews/${id}`);
-  return result.data.response;
-};
-
-export const getTouristSpotReviewById = async (id) => {
-  const result = await instance.get(`/touristSpot/reviews/${id}`);
-  return result.data.response;
-};
-
-export const getReviewByIdAndType = async (id, type) => {
-  if (type === "restaurant") {
-    return await getRestaurantReviewById(id);
-  } else if (type === "festival") {
-    return await getFestivalReviewById(id);
-  } else if (type === "touristSpot") {
-    return await getTouristSpotReviewById(id);
-  } else {
-    return null;
-  }
+export const getReviewByPage = async (id, page) => {
+    const result = await instance.get(`/reviews/${id}?page=${page}`);
+    return result.data.response.reviews;
 };
 
 export const organizeReview = (placeId, rating, description, file) => {
