@@ -10,6 +10,7 @@ const RestaurantDetailPage = () => {
   const { data, isLoading, error } = useQuery(`restaurant${params}`, () =>
     getRestaurantById(params),
   );
+
   return (
     <div className={"restaurant-detail-page w-full"}>
       {isLoading && <LoadingPage />}

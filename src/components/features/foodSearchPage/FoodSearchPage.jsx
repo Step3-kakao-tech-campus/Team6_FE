@@ -29,6 +29,10 @@ const FoodSearchPage = () => {
     setResults(data);
   };
 
+  const handleSearch = () => {
+    fetchSearchResults(currentQuery);
+  };
+
   return (
     <div className="relative flex h-screen w-full flex-col bg-food-search bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -45,16 +49,22 @@ const FoodSearchPage = () => {
               Find Korea only for you
             </h1>
           )}
-          <div className="relative flex w-full flex-col px-4">
+          <div className="food-search-bar relative flex w-full flex-col px-4">
             <FiSearch className="absolute left-10 top-3 text-gray-500" />
+            <button
+              className="absolute right-10 rounded py-2 font-bold text-black "
+              onClick={handleSearch}
+            >
+              Search
+            </button>
             <Input
               className="text-md w-full rounded-lg bg-gray-100 p-2 pl-16 outline-none"
               placeholder="Search for food"
+              value={currentQuery}
+              onChange={(e) => setCurrentQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  navigate(
-                    `/foods?query=${encodeURIComponent(e.target.value)}`,
-                  );
+                  handleSearch();
                 }
               }}
             />

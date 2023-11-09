@@ -85,3 +85,8 @@ export const getIsReviewed = async (placeId, type) => {
   const result = await instance.get(`/userinfo/reviews/${type}/${placeId}`);
   return result.data.response;
 };
+
+export const getMyReview = async () => {
+  const result = await instance.get("/userinfo/reviews");
+  return result.data.response;
+};

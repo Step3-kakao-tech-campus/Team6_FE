@@ -4,12 +4,13 @@ import FestivalCard from "../../../molecules/cards/FestivalCard";
 import TouristSpotCard from "../../../molecules/cards/TouristSpotCard";
 import { Link } from "react-router-dom";
 import {
+  search,
   festivalSearch,
   restaurantSearch,
   touristSpotSearch,
 } from "../../../../apis/search";
 
-const FilterResults = ({ result, filter, query }) => {
+const FilterResults = ({ filter, query }) => {
   const [results, setResults] = useState({
     restaurants: [],
     festivals: [],
@@ -19,21 +20,30 @@ const FilterResults = ({ result, filter, query }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (filter === "all" || filter === "restaurants") {
+        if (filter === "all") {
+          const allData = await search(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            restaurants: allData.restaurants,
+            festivals: allData.festivals,
+            touristSpots: allData.touristSpots,
+          }));
+        }
+        if (filter === "restaurants") {
           const restaurantData = await restaurantSearch(query);
           setResults((prevResults) => ({
             ...prevResults,
             restaurants: restaurantData,
           }));
         }
-        if (filter === "all" || filter === "festivals") {
+        if (filter === "festivals") {
           const festivalData = await festivalSearch(query);
           setResults((prevResults) => ({
             ...prevResults,
             festivals: festivalData,
           }));
         }
-        if (filter === "all" || filter === "touristSpots") {
+        if (filter === "touristSpots") {
           const touristSpotData = await touristSpotSearch(query);
           setResults((prevResults) => ({
             ...prevResults,
