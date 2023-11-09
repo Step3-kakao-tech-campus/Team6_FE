@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import SearchBar from "../../molecules/SearchBar";
@@ -28,10 +28,9 @@ const SearchPage = () => {
         return;
       }
       setCustomError(null);
-      navigate(`/search?query=${encodeURIComponent(query)}`);
+      navigate(`/search?location=${encodeURIComponent(query)}`);
     },
     onError: (error) => {
-      console.log(error);
       setCustomError("Something went wrong. Please try again.");
     },
   });
@@ -41,7 +40,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="h-screen w-full">
+    <div className="mb-20 h-screen w-full overflow-y-auto">
       <SearchBar
         baseUrl={"/search"}
         value={query}
@@ -54,7 +53,7 @@ const SearchPage = () => {
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
       )}
       {!customError && (
-        <FilterResults filter={filter} results={results || []} />
+        <FilterResults filter={filter} query={query} result={results} />
       )}
     </div>
   );

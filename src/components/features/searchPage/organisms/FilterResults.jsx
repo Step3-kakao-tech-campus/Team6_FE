@@ -1,8 +1,53 @@
+import { useState, useEffect } from "react";
 import RestaurantCard from "../../../molecules/cards/RestaurantCard";
 import FestivalCard from "../../../molecules/cards/FestivalCard";
 import TouristSpotCard from "../../../molecules/cards/TouristSpotCard";
+import { Link } from "react-router-dom";
+import {
+  festivalSearch,
+  restaurantSearch,
+  touristSpotSearch,
+} from "../../../../apis/search";
 
-const FilterResults = ({ results, filter }) => {
+const FilterResults = ({ result, filter, query }) => {
+  const [results, setResults] = useState({
+    restaurants: [],
+    festivals: [],
+    touristSpots: [],
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (filter === "all" || filter === "restaurants") {
+          const restaurantData = await restaurantSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            restaurants: restaurantData,
+          }));
+        }
+        if (filter === "all" || filter === "festivals") {
+          const festivalData = await festivalSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            festivals: festivalData,
+          }));
+        }
+        if (filter === "all" || filter === "touristSpots") {
+          const touristSpotData = await touristSpotSearch(query);
+          setResults((prevResults) => ({
+            ...prevResults,
+            touristSpots: touristSpotData,
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch filter results:", error);
+      }
+    };
+
+    fetchData();
+  }, [filter]);
+
   return (
     <div>
       {filter === "all" || filter === "restaurants" ? (
@@ -10,27 +55,33 @@ const FilterResults = ({ results, filter }) => {
           <h2 className="mx-4 text-xl font-bold">Restaurants</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {results?.restaurants?.map((restaurant, index) => (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <Link to={`/restaurant/${restaurant.id}`}>
+                <RestaurantCard key={index} restaurant={restaurant} />
+              </Link>
             ))}
           </div>
         </div>
       ) : null}
       {filter === "all" || filter === "festivals" ? (
         <div>
-          <h2 className="mx-4 text-xl font-bold">Festivals</h2>
+          <h2 className="m-4 text-xl font-bold">Festivals</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {results?.festivals?.map((festival, index) => (
-              <FestivalCard key={index} festival={festival} />
+              <Link to={`/festival/${festival.id}`}>
+                <FestivalCard key={index} festival={festival} />
+              </Link>
             ))}
           </div>
         </div>
       ) : null}
       {filter === "all" || filter === "touristSpots" ? (
         <div>
-          <h2 className="mx-4 text-xl font-bold">Tourist Spots</h2>
+          <h2 className="m-4 text-xl font-bold">Tourist Spots</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {results?.touristSpots?.map((touristSpot, index) => (
-              <TouristSpotCard key={index} touristSpot={touristSpot} />
+              <Link to={`/touristSpot/${touristSpot.id}`}>
+                <TouristSpotCard key={index} touristSpot={touristSpot} />
+              </Link>
             ))}
           </div>
         </div>
