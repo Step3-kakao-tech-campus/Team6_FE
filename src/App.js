@@ -24,7 +24,7 @@ import { createContext } from "react";
 import { useModal } from "./hooks/useModal";
 import ErrorPage from "./components/features/ErrorPage/ErrorPage";
 import { Helmet } from "react-helmet-async";
-import SpotDetailPage from "./components/features/detailPage/spotDetailPage/SpotDetailPage";
+import TouristSpotDetailPage from "./components/features/detailPage/spotDetailPage/TouristSpotDetailPage";
 import ReviewlistPage from "./components/features/reviewlistPage/ReviewlistPage";
 
 const queryClient = new QueryClient();
@@ -69,8 +69,8 @@ function App() {
                       element={<FestivalDetailPage />}
                     />
                     <Route
-                      path="/touristSpot/:id"
-                      element={<SpotDetailPage />}
+                        path="/touristSpot/:id"
+                        element={<TouristSpotDetailPage />}
                     />
 
                     <Route path={"/search"} element={<SearchPage />} />

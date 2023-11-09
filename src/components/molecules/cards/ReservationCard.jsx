@@ -6,7 +6,7 @@ import { getReserveText } from "../../features/reservationListPage/utils";
 import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../../../App";
-import ReviewForm from "../../features/formPages/writeReviewPage/ReviewForm";
+import ReviewFormReservation from "../../features/formPages/writeReviewPage/ReviewFormReservation";
 import { useQuery } from "react-query";
 import { getIsReviewed } from "../../../apis/review";
 import Button from "../../atoms/Button";
@@ -74,7 +74,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
               }
               onClick={(e) => {
                 e.stopPropagation();
-                show(<ReviewForm reservation={reservation} />);
+                show(<ReviewFormReservation reservation={reservation} />);
               }}
               aria-label={"write-review-button"}
             >
@@ -88,7 +88,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
               }
               onClick={(e) => {
                 e.stopPropagation();
-                show(<ReviewForm reservation={reservation} />);
+                show(<ReviewFormReservation reservation={reservation} />);
               }}
             >
               Modify Review
