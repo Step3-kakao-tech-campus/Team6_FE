@@ -23,6 +23,6 @@ export const touristSpotSearch = async (location) => {
 };
 
 export const foodSearch = async (query) => {
-  const result = await instance.get(`/api/search/food?query=${query}`);
+  const result = await instance.get(`/food?query=${query}`);
   return result.data.response;
 };
