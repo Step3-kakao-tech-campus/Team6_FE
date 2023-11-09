@@ -10,11 +10,18 @@ export const getFestivalReviewById = async (id) => {
   return result.data.response;
 };
 
+export const getTouristSpotReviewById = async (id) => {
+  const result = await instance.get(`/touristSpot/reviews/${id}`);
+  return result.data.response;
+};
+
 export const getReviewByIdAndType = async (id, type) => {
   if (type === "restaurant") {
     return await getRestaurantReviewById(id);
   } else if (type === "festival") {
     return await getFestivalReviewById(id);
+  } else if (type === "touristSpot") {
+    return await getTouristSpotReviewById(id);
   } else {
     return null;
   }
@@ -55,9 +62,23 @@ export const postFestivalReview = async (
   return result.data.response;
 };
 
+export const postTouristSpotReview = async (
+  placeId,
+  ratings,
+  description,
+  file,
+) => {
+  const result = await instanceFormData.post(
+    "/touristSpot/reviews",
+    organizeReview(placeId, ratings, description, file),
+  );
+  return result.data.response;
+};
+
 export const postReview = {
   restaurant: postRestaurantReview,
   festival: postFestivalReview,
+  touristSpot: postTouristSpotReview,
 };
 
 export const getIsReviewed = async (placeId, type) => {

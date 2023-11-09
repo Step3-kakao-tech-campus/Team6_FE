@@ -1,4 +1,4 @@
-import { REVIEW_POST_RESPONSE, REVIEWS } from "../datas/reviews";
+import { REVIEWS } from "../datas/reviews";
 import { rest } from "msw";
 import { getRestaurantDetail } from "./restaurant";
 import { getFestivalDetail } from "./festival";
@@ -56,31 +56,26 @@ export const getFestivalReviewHandler = rest.get(
   },
 );
 
-export const postRestaurantReviewHandler = rest.post(
-  "/restaurant/reviews",
+export const getTouristSpotReviewHandler = rest.get(
+  "/touristSpot/reviews/:id",
   (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        success: true,
-        error: null,
-        response: REVIEW_POST_RESPONSE,
-      }),
-    );
-  },
-);
-
-export const postFestivalReviewHandler = rest.post(
-  "/festival/reviews",
-  (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        success: true,
-        error: null,
-        response: REVIEW_POST_RESPONSE,
-      }),
-    );
+    const id = req.params.id;
+    if (getFestivalDetail(id) != null)
+      return res(
+        ctx.status(200),
+        ctx.json({
+          success: true,
+          response: getReviews(8),
+        }),
+      );
+    else
+      return res(
+        ctx.status(404),
+        ctx.json({
+          success: false,
+          response: null,
+        }),
+      );
   },
 );
 
