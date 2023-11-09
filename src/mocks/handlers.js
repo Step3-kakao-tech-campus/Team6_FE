@@ -12,6 +12,7 @@ import {
 import { getFestivalCalendarHandler, getFestivalHandler } from "./get/festival";
 import {
   getFestivalReviewHandler,
+  getMyReviewsHandler,
   getRestaurantReviewHandler,
   getReviewedHandler,
   postFestivalReviewHandler,
@@ -61,4 +62,5 @@ export const handlers = [
   postRestaurantReservationHandler,
   postFestivalReservationHandler,
   getReviewedHandler,
+  getMyReviewsHandler,
 ];

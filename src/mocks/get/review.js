@@ -2,6 +2,7 @@ import { REVIEW_POST_RESPONSE, REVIEWS } from "../datas/reviews";
 import { rest } from "msw";
 import { getRestaurantDetail } from "./restaurant";
 import { getFestivalDetail } from "./festival";
+import { MYREVIEW } from "../datas/myreview";
 
 export const getReviews = (length) => {
   if (typeof length !== "number") {
@@ -96,6 +97,19 @@ export const getReviewedHandler = rest.get(
           reviewed: reviewed,
           review: reviewed ? 1 : null,
         },
+      }),
+    );
+  },
+);
+
+export const getMyReviewsHandler = rest.get(
+  "/userinfo/reviews",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: MYREVIEW,
       }),
     );
   },
