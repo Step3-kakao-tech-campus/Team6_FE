@@ -17,7 +17,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
   }, []);
 
   const handleSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(value)}`);
+    navigate(`/search?location=${encodeURIComponent(value)}`);
     if (typeof onSearch === "function") {
       onSearch(value);
     }

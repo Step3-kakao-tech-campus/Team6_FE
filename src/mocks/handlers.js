@@ -1,4 +1,4 @@
-import { getHomeHandler, searchSpotHandler } from "./get/home";
+import { getHomeHandler, getSearchHandler } from "./get/home";
 import {
   getRestaurantCalendarHandler,
   getRestaurantHandler,
@@ -27,7 +27,7 @@ import {
 import { deleteWishHandler, postWishHandler } from "./post/wishlist";
 
 export const handlers = [
-  searchSpotHandler,
+  getSearchHandler,
   getHomeHandler,
   getRestaurantHandler,
   getRestaurantCalendarHandler,

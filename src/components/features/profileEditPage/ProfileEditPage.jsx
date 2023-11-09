@@ -8,12 +8,20 @@ import InputGroup from "../../molecules/InputGroup";
 import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    if (data?.data?.response) {
+      setSuccessMessage("");
+      setErrorMessage("");
+    }
+  }, [data]);
 
   const {
     register,
@@ -50,7 +58,11 @@ const ProfileEditPage = () => {
 
   useEffect(() => {
     if (data?.data?.response) {
-      reset(data.data.response);
+      reset({
+        name: data.data.response.name,
+        nickname: data.data.response.nickname,
+        email: data.data.response.email,
+      });
     }
   }, [data, reset]);
 
@@ -69,7 +81,7 @@ const ProfileEditPage = () => {
     mutation.mutate(formData);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
