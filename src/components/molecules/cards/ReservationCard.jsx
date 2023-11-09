@@ -84,14 +84,10 @@ const ReservationCard = ({ reservation, reviewable }) => {
           {data?.reviewed && (
             <span
               className={
-                "reservation-bottom cursor-pointer text-tripKoOrange-500 underline"
+                "reservation-bottom cursor-pointer text-tripKoOrange-500"
               }
-              onClick={(e) => {
-                e.stopPropagation();
-                show(<ReviewFormReservation reservation={reservation} />);
-              }}
             >
-              Modify Review
+              Reviewed
             </span>
           )}
         </div>
