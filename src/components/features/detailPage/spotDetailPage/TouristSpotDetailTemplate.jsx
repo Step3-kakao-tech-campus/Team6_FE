@@ -6,8 +6,6 @@ import Article from "../../../organisms/Article";
 import ReviewCards from "../../../molecules/cards/ReviewCards";
 import ButtonAllReviews from "../atoms/ButtonAllReviews";
 import {useContext, useState} from "react";
-import { useQuery } from "react-query";
-import { getReviewByIdAndType } from "../../../../apis/review";
 import BottomPopModal from "../../../atoms/Modals/BottomPopModal";
 import Button from "../../../atoms/Button";
 import {ModalContext} from "../../../../App";
@@ -15,10 +13,6 @@ import ReviewFormTouristSpot from "../../formPages/writeReviewPage/ReviewFormTou
 
 const TouristSpotDetailTemplate = ({ touristSpot }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
-
-  const { data } = useQuery(`touristSpot/review/${touristSpot.id}`, () =>
-    getReviewByIdAndType(touristSpot.id, "touristSpot"),
-  );
 
   const { show } = useContext(ModalContext);
   return (
@@ -29,7 +23,7 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
             setIsActiveReview(false);
           }}
         >
-          {isActiveReview && <ReviewCards reviews={data.reviews} />}
+          {isActiveReview && <ReviewCards placeId={touristSpot.id} />}
         </BottomPopModal>
       )}
       <PageTitleBar name={touristSpot.name} />
@@ -58,7 +52,7 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
           <InfoElement title={"Address"} value={touristSpot.address} />
         </div>
         <SectionTitle title={"Reviews"} />
-        {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
+        <ReviewCards placeId={touristSpot.id} count={2} />
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <div className={"review-input-wrapper flex flex-col gap-2"}>
           <Button

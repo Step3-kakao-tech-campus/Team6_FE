@@ -6,7 +6,6 @@ import HorizontalListSection from "../../carousel/HorizontalListSection";
 import MenuCard from "../../../molecules/cards/MenuCard";
 import ButtonAllReviews from "../atoms/ButtonAllReviews";
 import { useQuery } from "react-query";
-import { getReviewByIdAndType } from "../../../../apis/review";
 import BottomPopModal from "../../../atoms/Modals/BottomPopModal";
 import InfoElement from "../atoms/InfoElement";
 import { getCalenderByIdAndType } from "../../../../apis/detail";
@@ -26,10 +25,6 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const [requestMessage, setRequestMessage] = useState("");
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
   const [selectedPeople, setSelectedPeople] = useState(1);
-
-  const { data } = useQuery(`restaurant/review/${restaurant.id}`, () =>
-    getReviewByIdAndType(restaurant.id, "restaurant"),
-  );
 
   const navigate = useNavigate();
 
@@ -72,7 +67,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
             setIsActiveCalender(false);
           }}
         >
-          {isActiveReview && <ReviewCards reviews={data.reviews} />}
+          {isActiveReview && <ReviewCards placeId={restaurant.id} />}
           {isActiveCalender && (
             <div
               className={"calendar-wrapper flex flex-col justify-center px-2"}
@@ -176,7 +171,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
-        {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
+        <ReviewCards placeId={restaurant.id} count={2} />
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         {
           <Button
