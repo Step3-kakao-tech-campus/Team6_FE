@@ -76,13 +76,16 @@ const ReservationCard = ({ reservation, reviewable }) => {
                 e.stopPropagation();
                 show(<ReviewFormReservation reservation={reservation} />);
               }}
+              aria-label={"write-review-button"}
             >
               Write Review
             </Button>
           )}
           {data?.reviewed && (
             <span
-              className={"reservation-bottom cursor-pointer text-tripKoOrange-500 underline"}
+              className={
+                "reservation-bottom cursor-pointer text-tripKoOrange-500 underline"
+              }
               onClick={(e) => {
                 e.stopPropagation();
                 show(<ReviewFormReservation reservation={reservation} />);

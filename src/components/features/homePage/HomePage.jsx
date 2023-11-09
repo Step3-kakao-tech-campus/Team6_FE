@@ -31,8 +31,10 @@ const HomePage = () => {
 
   const handleSearch = async (searchQuery) => {
     await search(searchQuery);
-    navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    navigate(`/search?location=${encodeURIComponent(searchQuery)}`);
   };
+
+  console.log(data);
 
   return (
     <div className={"home-page flex w-full flex-col gap-2 py-2 pb-16"}>

@@ -14,7 +14,8 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
         <button
           className={"calender-header-button"}
           onClick={() => {
-            if ( // 현재 달보다 작은 달로 이동할 경우, 이전 달로 이동할 수 없다.
+            if (
+              // 현재 달보다 작은 달로 이동할 경우, 이전 달로 이동할 수 없다.
               new Date(monthState.getFullYear(), monthState.getMonth() - 1) >=
               new Date(new Date().getFullYear(), new Date().getMonth())
             )
@@ -22,6 +23,7 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
                 new Date(monthState.getFullYear(), monthState.getMonth() - 1),
               );
           }}
+          aria-label="previous-month-button"
         >
           <BiLeftArrowAlt size={30} />
         </button>
@@ -39,6 +41,7 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
               new Date(monthState.getFullYear(), monthState.getMonth() + 1),
             );
           }}
+          aria-label="next-month-button"
         >
           <BiRightArrowAlt size={30} />
         </button>

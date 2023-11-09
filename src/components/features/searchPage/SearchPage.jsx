@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import SearchBar from "../../molecules/SearchBar";
 import FilterBar from "../../molecules/FilterBar";
 import FilterResults from "./organisms/FilterResults";
 import { search } from "../../../apis/search";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const SearchPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const initialQuery = searchParams.get("query") || "";
+  const initialQuery = searchParams.get("location") || "";
 
   const [query, setQuery] = useState(initialQuery);
   const [filter, setFilter] = useState("all");
@@ -27,11 +28,10 @@ const SearchPage = () => {
         return;
       }
       setCustomError(null);
-      navigate(`/search?query=${encodeURIComponent(query)}`);
+      navigate(`/search?location=${encodeURIComponent(query)}`);
     },
     onError: (error) => {
-      console.log(error);
-      setCustomError("검색 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      setCustomError("Something went wrong. Please try again.");
     },
   });
 
@@ -40,20 +40,20 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="mb-20 h-screen w-full overflow-y-auto">
       <SearchBar
         baseUrl={"/search"}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onSearch={handleSearch}
       />
-      {isLoading && <div>검색 중...</div>}
+      {isLoading && <LoadingPage />}
       <FilterBar filter={filter} setFilter={setFilter} />
       {customError && (
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
       )}
       {!customError && (
-        <FilterResults filter={filter} results={results || []} />
+        <FilterResults filter={filter} query={query} result={results} />
       )}
     </div>
   );

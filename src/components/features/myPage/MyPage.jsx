@@ -1,14 +1,14 @@
 import { useQuery } from "react-query";
 import { user } from "../../../apis/user";
 import MyPageTemplate from "./MyPageTemplate";
+import LoadingPage from "../loadingPage/LoadingPage";
 
 const MyPage = () => {
   const { data, isLoading, error } = useQuery("user", user);
 
   const userDetails = data?.data?.response;
-  // console.log(userDetails);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
   if (error) return <div>Error occurred: {error.message}</div>;
 
   return (

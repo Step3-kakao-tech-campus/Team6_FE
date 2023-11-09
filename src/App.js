@@ -25,6 +25,7 @@ import { useModal } from "./hooks/useModal";
 import ErrorPage from "./components/features/ErrorPage/ErrorPage";
 import { Helmet } from "react-helmet-async";
 import TouristSpotDetailPage from "./components/features/detailPage/spotDetailPage/TouristSpotDetailPage";
+import ReviewlistPage from "./components/features/reviewlistPage/ReviewlistPage";
 
 const queryClient = new QueryClient();
 export const ModalContext = createContext(null);
@@ -90,6 +91,11 @@ function App() {
                       <Route
                         path={"/userinfo/edit"}
                         element={<ProfileEditPage />}
+                      />
+
+                      <Route
+                        path={"/userinfo/reviews/:filter"}
+                        element={<ReviewlistPage />}
                       />
                     </Route>
 

@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa6";
 import UserAvatar from "../atoms/UserAvatar";
 import MapIcon from "../atoms/MapIcon";
 import SideBar from "./cards/SideBar";
+import { FiSearch } from "react-icons/fi";
 
 const SearchBar = ({ value, onChange, onSearch }) => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
   }, []);
 
   const handleSearch = () => {
-    navigate(`/search?query=${encodeURIComponent(value)}`);
+    navigate(`/search?location=${encodeURIComponent(value)}`);
     if (typeof onSearch === "function") {
       onSearch(value);
     }
@@ -30,7 +31,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
   return (
     <div className="search-section relative flex items-center justify-between gap-2 p-2">
       <div className="sidebar-button relative">
-        <Button onClick={toggleSideBar}>
+        <Button onClick={toggleSideBar} aria-label="sidebar-button">
           <FaBars size={28} />
         </Button>
         <SideBar isOpen={isSideBarOpen} toggle={toggleSideBar} />
@@ -41,10 +42,15 @@ const SearchBar = ({ value, onChange, onSearch }) => {
         <div className="absolute left-2 flex h-full items-center justify-center">
           <MapIcon size={20} color={"#FF4800"} />
         </div>
+        <div className="search-button absolute right-6 flex h-full items-center justify-center">
+          <Button onClick={handleSearch} aria-label="search-button">
+            <FiSearch />
+          </Button>
+        </div>
         <Input
           className="text-md w-full rounded-lg bg-zinc-200 p-2 pl-10 outline-none"
           type="search"
-          placeholder="Search your place..."
+          placeholder="Search your place.."
           value={value}
           onChange={onChange}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -61,6 +67,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
           <Button
             onClick={() => navigate("/login")}
             className="text-tripKoOrange-500"
+            aria-label="login-button"
           >
             Login
           </Button>

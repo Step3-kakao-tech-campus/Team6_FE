@@ -46,7 +46,7 @@ const FoodSearchPage = () => {
             </h1>
           )}
           <div className="relative flex w-full flex-col px-4">
-            <FiSearch className="absolute left-6 top-3 text-gray-500" />
+            <FiSearch className="absolute left-10 top-3 text-gray-500" />
             <Input
               className="text-md w-full rounded-lg bg-gray-100 p-2 pl-16 outline-none"
               placeholder="Search for food"

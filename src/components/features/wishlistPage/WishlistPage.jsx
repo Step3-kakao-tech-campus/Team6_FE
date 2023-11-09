@@ -1,11 +1,23 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import { getWishlist } from "../../../apis/wish";
+import {
+  getAllWishlist,
+  getRestaurantWishlist,
+  getFestivalWishlist,
+  getTouristSpotWishlist,
+} from "../../../apis/wish";
 import FilterBar from "../../molecules/FilterBar";
 import PageTitle from "../../atoms/PageTitle";
 import WishlistCard from "../../molecules/cards/WishlistCard";
 import LoadingPage from "../loadingPage/LoadingPage";
+
+const fetchWishlist = {
+  all: getAllWishlist,
+  restaurants: getRestaurantWishlist,
+  festivals: getFestivalWishlist,
+  touristSpots: getTouristSpotWishlist,
+};
 
 const WishlistPage = () => {
   const { filter: urlFilter } = useParams();
@@ -15,15 +27,21 @@ const WishlistPage = () => {
   const {
     data: queryData,
     isLoading,
+    isError,
     error,
-  } = useQuery("wishlist", getWishlist);
-  const data = queryData?.result?.data?.response;
+    refetch,
+  } = useQuery(["wishlist", filter], () => fetchWishlist[filter](), {
+    keepPreviousData: true,
+  });
+
+  const data = queryData?.result;
 
   useEffect(() => {
     if (urlFilter !== filter) {
       setFilter(urlFilter);
+      refetch();
     }
-  }, [urlFilter, filter]);
+  }, [urlFilter, filter, refetch]);
 
   const handleFilterChange = (newFilter) => {
     navigate(`/userinfo/wishlist/${newFilter}`);
@@ -31,15 +49,20 @@ const WishlistPage = () => {
 
   const filteredData = useMemo(() => {
     if (!data) return [];
+    const { touristSpots, restaurants, festivals } = data;
     switch (filter) {
       case "touristSpots":
-        return data.touristSpots;
+        return touristSpots || [];
       case "restaurants":
-        return data.restaurants;
+        return restaurants || [];
       case "festivals":
-        return data.festivals;
+        return festivals || [];
       default:
-        return [...data.touristSpots, ...data.restaurants, ...data.festivals];
+        return [
+          ...(touristSpots || []),
+          ...(restaurants || []),
+          ...(festivals || []),
+        ];
     }
   }, [filter, data]);
 
@@ -53,7 +76,7 @@ const WishlistPage = () => {
         <FilterBar filter={filter} setFilter={handleFilterChange} />
       </div>
       <div className="wishlist-items grid md:grid-cols-2">
-        {filteredData.map((item) => (
+        {filteredData?.map((item) => (
           <WishlistCard key={item.id} wishlist={item} />
         ))}
       </div>

@@ -5,14 +5,26 @@ const SideBar = ({ isOpen, toggle }) => {
 
   return (
     <div className={containerStyles} style={{ width: "256px" }}>
-      <button onClick={toggle} className="absolute right-0 top-0 p-4">
+      <button
+        onClick={toggle}
+        className="absolute right-0 top-0 p-4"
+        aria-label="close-button"
+      >
         Close
       </button>
       <nav>
-        <a href="/" className="block p-4 text-black hover:bg-gray-50">
+        <a
+          href="/"
+          className="block p-4 text-black hover:bg-gray-50"
+          aria-label="home-button"
+        >
           Home
         </a>
-        <a href="/userinfo" className="block p-4 text-black hover:bg-gray-50">
+        <a
+          href="/userinfo"
+          className="block p-4 text-black hover:bg-gray-50"
+          aria-label="my-profile-button"
+        >
           My Profile
         </a>
         <a href="#" className="block p-4 text-black hover:bg-gray-50">

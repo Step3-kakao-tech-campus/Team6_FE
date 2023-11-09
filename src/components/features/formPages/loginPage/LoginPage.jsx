@@ -93,6 +93,7 @@ const LoginPage = () => {
           as={button}
           className="login-button w-full rounded-full bg-tripKoOrange p-2 text-xl font-bold text-white"
           onClick={onSubmit}
+          aria-label="login-button"
         >
           Login
         </Button>
