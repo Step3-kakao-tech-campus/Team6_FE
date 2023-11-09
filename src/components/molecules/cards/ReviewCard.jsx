@@ -38,17 +38,20 @@ const ReviewCard = ({ review }) => {
             <CardTitle title={"Photo"} />{" "}
             <div
               className={
-                "review-photo-section flex h-[15rem] w-full overflow-x-scroll"
+                "review-photo-section flex w-full overflow-x-scroll py-2"
               }
             >
-              review.images.map((image, index) => (
-              <Photo
-                className={"h-[15rem] w-[15rem] "}
-                src={review.image}
-                alt={""}
-                extendable={true}
-              />
-              ))
+              <div className={"flex gap-2"}>
+              {review.reviewImages.map((image, index) => (
+                <Photo
+                  className={"h-[15rem] w-[15rem] "}
+                  src={image}
+                  alt={""}
+                  extendable={true}
+                  key={index}
+                />
+              ))}
+              </div>
             </div>
           </>
         )}
