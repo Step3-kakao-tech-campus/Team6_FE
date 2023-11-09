@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BiImage } from "react-icons/bi";
+import {BiImage, BiPlus} from "react-icons/bi";
 import HorizontalListSection from "../../../carousel/HorizontalListSection";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Button from "../../../../atoms/Button";
@@ -23,7 +23,7 @@ const ImageUploader = ({ setFile, file, multiple }) => {
       return;
     }
     if (multiple) {
-        setFile([...file, ...files]);
+      setFile([...file, ...files]);
     } else {
       setFile(files[0]);
     }
@@ -96,14 +96,16 @@ const ImageUploader = ({ setFile, file, multiple }) => {
         multiple={multiple ? "multiple" : ""}
       />
       <HorizontalListSection hideButton={true}>
-        <div className="preview-wrapper flex gap-2">{preview}</div>
-        <button
-          onClick={handleFileButtonClick}
-          className={"flex h-40 w-40 items-center justify-center bg-gray-300"}
-          aria-label="image-upload-button"
-        >
-          <BiImage color={"#000000"} size={50} />
-        </button>
+        <div className="preview-wrapper flex gap-2">
+          {preview}
+          <button
+            onClick={handleFileButtonClick}
+            className={"flex h-40 w-40 items-center justify-center bg-gray-300 relative"}
+            aria-label="image-upload-button"
+          >
+              <BiPlus color={"#000000"} size={50} />
+          </button>
+        </div>
       </HorizontalListSection>
     </aside>
   );
