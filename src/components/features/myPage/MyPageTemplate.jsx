@@ -9,10 +9,15 @@ const MyPageTemplate = ({ userDetails }) => {
   return (
     <>
       <div className="userProfile-navigation mt-4 flex">
-        <Button as={Link} to="/" className="mb-4">
+        <Button as={Link} to="/" className="mb-4" aria-label="home-button">
           <AiOutlineHome size={24} />
         </Button>
-        <Button as={Link} to="/userinfo/settings" className="mb-4 ml-4">
+        <Button
+          as={Link}
+          to="/userinfo/settings"
+          className="mb-4 ml-4"
+          aria-label="settings-button"
+        >
           <IoSettingsOutline size={24} />
         </Button>
       </div>
@@ -34,6 +39,7 @@ const MyPageTemplate = ({ userDetails }) => {
         as={Link}
         to="/userinfo/edit"
         className="userProfile-editButton mb-2 text-lg text-[#FF4800] underline underline-offset-4"
+        aria-label="edit-profile-button"
       >
         View / Edit Profile
       </Button>
@@ -43,6 +49,7 @@ const MyPageTemplate = ({ userDetails }) => {
           as={Link}
           to="/userinfo/wishlist/all"
           className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+          aria-label="wishlist-button"
         >
           My Wishlist
         </Button>
@@ -50,8 +57,17 @@ const MyPageTemplate = ({ userDetails }) => {
           as={Link}
           to="/userinfo/reservations/restaurant"
           className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+          aria-label="reservation-list-button"
         >
           My Reservations
+        </Button>
+        <Button
+          as={Link}
+          to="/userinfo/reviews/all"
+          className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+          aria-label="review-list-button"
+        >
+          My Reviews
         </Button>
         <Button
           as="button"
@@ -61,6 +77,7 @@ const MyPageTemplate = ({ userDetails }) => {
             window.location.reload();
           }}
           className="mb-2 flex h-10 w-60 items-center justify-center rounded-md shadow-md"
+          aria-label="logout-button"
         >
           Logout
         </Button>

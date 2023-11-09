@@ -6,17 +6,16 @@ import Button from "../../../atoms/Button";
 import RatingInput from "./organisms/RatingInput";
 import ImageUploader from "./atoms/ImageUploader";
 import ErrorBox from "../../../atoms/ErrorBox";
-import {postReview} from "../../../../apis/review";
+import { postReview } from "../../../../apis/review";
 
 const ReviewForm = ({ reservation, onSubmit }) => {
-
   const [score, setScore] = useState(0);
   const [file, setFile] = useState(""); // 이미지 파일
   const [errorMsg, setErrorMsg] = useState(null); // 에러 메시지
   const [reviewText, setReviewText] = useState(""); // 리뷰 텍스트
   const onChangeReviewText = (e) => {
     setReviewText(e.target.value);
-  }
+  };
   const { hide } = useContext(ModalContext);
 
   const handleSubmit = async (e) => {
@@ -29,8 +28,13 @@ const ReviewForm = ({ reservation, onSubmit }) => {
       setErrorMsg("Please write review");
       return;
     }
-    console.log('file', file)
-    const result = await postReview[reservation.type](reservation.id, score, reviewText, file);
+    console.log("file", file);
+    const result = await postReview[reservation.type](
+      reservation.id,
+      score,
+      reviewText,
+      file,
+    );
     alert(result.message);
     hide();
   };
@@ -38,7 +42,7 @@ const ReviewForm = ({ reservation, onSubmit }) => {
   return (
     <div
       className={
-        "review-form width-flex-layout relative flex flex-col rounded-lg bg-white px-2 gap-4 pb-4"
+        "review-form width-flex-layout relative flex flex-col gap-4 rounded-lg bg-white px-2 pb-4"
       }
     >
       <div
@@ -80,7 +84,14 @@ const ReviewForm = ({ reservation, onSubmit }) => {
         </div>
       </form>
       {errorMsg && <ErrorBox>{errorMsg}</ErrorBox>}
-      <Button as={"button"} className={"review-form-submit-button p-2 px-4 font-semibold text-lg bg-tripKoOrange text-white rounded-full"} onClick={handleSubmit}>
+      <Button
+        as={"button"}
+        className={
+          "review-form-submit-button rounded-full bg-tripKoOrange p-2 px-4 text-lg font-semibold text-white"
+        }
+        onClick={handleSubmit}
+        aria-label={"review-form-submit-button"}
+      >
         Submit
       </Button>
     </div>

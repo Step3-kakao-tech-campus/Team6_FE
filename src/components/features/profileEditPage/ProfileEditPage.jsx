@@ -91,7 +91,7 @@ const ProfileEditPage = () => {
           <span className="text-4xl font-bold text-tripKoOrange">
             Edit My Profile
           </span>
-          <Button as={Link} to="/" className="mt-2">
+          <Button as={Link} to="/" className="mt-2" aria-label="home-button">
             <AiOutlineHome size={24} />
           </Button>
         </h1>
@@ -121,6 +121,7 @@ const ProfileEditPage = () => {
           <Button
             className="mt-4 w-full rounded-full bg-tripKoOrange p-2 text-xl font-bold text-white"
             type="submit"
+            aria-label="save-changes-button"
           >
             Save Changes
           </Button>

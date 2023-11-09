@@ -113,6 +113,7 @@ const FestivalDetailTemplate = ({ festival }) => {
                   onClick={onReserve}
                   variant="link"
                   className="rounded-button-[tripKoOrange] mt-4 flex h-12 w-full items-center justify-center rounded-full bg-tripKoOrange text-white"
+                  aria-label="reserve-button"
                 >
                   Reservation
                 </Button>
@@ -166,6 +167,7 @@ const FestivalDetailTemplate = ({ festival }) => {
             }
           }}
           disabled={!festival?.reservable}
+          aria-label="reservation-button"
         >
           Reserve
         </Button>
