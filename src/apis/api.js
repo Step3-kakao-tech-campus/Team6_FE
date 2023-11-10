@@ -44,6 +44,9 @@ instance.interceptors.response.use(
   (error) => {
     // 특정 HTTP 상태 코드에 대한 전역 처리
     switch (error.response.status) {
+      case 400:
+        alert("Try again.");
+        break;
       case 401:
       case 402:
         // 인증 에러 처리
@@ -51,13 +54,7 @@ instance.interceptors.response.use(
         alert("Login is required.");
         window.location.href = "/login";
         break;
-      case 404:
-        // 404 Not Found 에러 처리
-        // alert("The requested resource was not found.");
-        break;
       default:
-        // 기타 에러 처리
-        alert("An error occurred.");
         break;
     }
     return Promise.reject(organizeError(error));
