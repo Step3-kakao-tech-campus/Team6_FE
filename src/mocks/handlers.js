@@ -34,6 +34,7 @@ import {
   postTouristSpotReviewHandler,
 } from "./post/review";
 import { deleteWishHandler, postWishHandler } from "./post/wishlist";
+import { patchReviewHandler } from "./patch/review";
 
 export const handlers = [
   getSearchHandler,
@@ -46,11 +47,8 @@ export const handlers = [
   getFestivalCalendarHandler,
   getFestivalHandler,
   getTouristSpotHandler,
-  getReviewHandler,
   searchFoodHandler,
   getFoodHandler,
-  getRestaurantReservationHandler,
-  getFestivalReservationHandler,
   getWishlistHandler,
   postWishHandler,
   deleteWishHandler,
@@ -58,11 +56,20 @@ export const handlers = [
   registerHandler,
   getUserinfoHandler,
   editUserHandler,
+
+  // Reservations
   postRestaurantReservationHandler,
+  getRestaurantReservationHandler,
   postFestivalReservationHandler,
+  getFestivalReservationHandler,
+  // Reviews
+
+  getReviewHandler,
   getReviewedHandler,
   getMyReviewHandler,
   postRestaurantReviewHandler,
   postFestivalReviewHandler,
   postTouristSpotReviewHandler,
+
+  patchReviewHandler,
 ];
