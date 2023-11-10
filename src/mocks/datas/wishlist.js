@@ -49,3 +49,5 @@ const WISHLIST = [
     averageRating: 4,
   },
 ];
+
+export default WISHLIST;

@@ -2,7 +2,7 @@ import WISHLIST from "../datas/wishlist";
 import { rest } from "msw";
 
 export const getRestaurantWishlistHandler = rest.get(
-  "/userinfo/wishlist/restaurant",
+  "/userinfo/wishlist/restaurants",
   (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -15,7 +15,7 @@ export const getRestaurantWishlistHandler = rest.get(
 );
 
 export const getFestivalWishlistHandler = rest.get(
-  "/userinfo/wishlist/festival",
+  "/userinfo/wishlist/festivals",
   (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -28,7 +28,7 @@ export const getFestivalWishlistHandler = rest.get(
 );
 
 export const getTouristSpotWishlistHandler = rest.get(
-  "/userinfo/wishlist/touristSpot",
+  "/userinfo/wishlist/touristSpots",
   (req, res, ctx) => {
     return res(
       ctx.status(200),

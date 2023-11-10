@@ -11,10 +11,27 @@ import PageTitle from "../../atoms/PageTitle";
 import WishlistCard from "../../molecules/cards/WishlistCard";
 import LoadingPage from "../loadingPage/LoadingPage";
 
+const mergeResults = (apiResults) => {
+  if (!apiResults) return [];
+
+  return apiResults.reduce((acc, curr) => {
+    if (curr?.isSuccess && Array.isArray(curr.result)) {
+      return [...acc, ...curr.result];
+    }
+    return acc;
+  }, []);
+};
+
 const fetchWishlist = {
-  restaurant: getRestaurantWishlist,
-  festival: getFestivalWishlist,
-  touristSpot: getTouristSpotWishlist,
+  all: () =>
+    Promise.all([
+      getRestaurantWishlist(),
+      getFestivalWishlist(),
+      getTouristSpotWishlist(),
+    ]),
+  restaurants: getRestaurantWishlist,
+  festivals: getFestivalWishlist,
+  touristSpots: getTouristSpotWishlist,
 };
 
 const WishlistPage = () => {
@@ -32,8 +49,6 @@ const WishlistPage = () => {
     keepPreviousData: true,
   });
 
-  const data = queryData?.result;
-
   useEffect(() => {
     if (urlFilter !== filter) {
       setFilter(urlFilter);
@@ -42,43 +57,28 @@ const WishlistPage = () => {
   }, [urlFilter, filter, refetch]);
 
   const handleFilterChange = (newFilter) => {
-    navigate(`/userinfo/wishlist/${newFilter}`);
+    navigate(`/userinfo/wishlist/${newFilter}`, { replace: true });
   };
 
-  const filteredData = useMemo(() => {
-    if (!data) return [];
-    const { touristSpots, restaurants, festivals } = data;
-
-    const isArray = (array) => (Array.isArray(array) ? array : []);
-
-    switch (filter) {
-      case "touristSpots":
-        return isArray(touristSpots);
-      case "restaurants":
-        return isArray(restaurants);
-      case "festivals":
-        return isArray(festivals);
-      case "all":
-      default:
-        return [
-          ...isArray(touristSpots),
-          ...isArray(restaurants),
-          ...isArray(festivals),
-        ];
+  const mergedData = useMemo(() => {
+    if (filter === "all") {
+      return mergeResults(queryData);
     }
-  }, [filter, data]);
+
+    return queryData?.result || [];
+  }, [filter, queryData]);
 
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error occurred: {error.message}</div>;
 
   return (
-    <div className="wishlist-page h-screen w-full">
+    <div className="wishlist-page mb-20 h-screen w-full overflow-auto">
       <PageTitle title="Wishlist" />
       <div className="filter-bar my-2">
         <FilterBar filter={filter} setFilter={handleFilterChange} />
       </div>
       <div className="wishlist-items grid md:grid-cols-2">
-        {filteredData?.map((item) => (
+        {mergedData?.map((item) => (
           <WishlistCard key={item.id} wishlist={item} />
         ))}
       </div>
