@@ -28,8 +28,3 @@ export const reserveRestaurant = async (id, date, time, headCount, message) => {
   });
   return response.data.response;
 };
-
-export const reserve = {
-  restaurant: reserveRestaurant,
-  festival: reserveFestival,
-};
