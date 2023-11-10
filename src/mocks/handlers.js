@@ -47,8 +47,6 @@ export const handlers = [
   getSearchTouristSpotHandler,
   getHomeHandler,
   getRestaurantHandler,
-  getRestaurantCalendarHandler,
-  getFestivalCalendarHandler,
   getFestivalHandler,
   getTouristSpotHandler,
   searchFoodHandler,
@@ -60,6 +58,10 @@ export const handlers = [
   registerHandler,
   getUserinfoHandler,
   editUserHandler,
+
+  // Calendar
+  getRestaurantCalendarHandler,
+  getFestivalCalendarHandler,
 
   // Reservations
   postRestaurantReservationHandler,

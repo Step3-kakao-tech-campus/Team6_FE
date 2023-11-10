@@ -8,9 +8,7 @@ export const restaurantAvailable = {
 };
 
 export const festivalAvailable = {
-  response: {
-    startDate: "23-10-20",
-    endDate: "23-10-21",
-    reservationAvailable: false,
-  },
+  startDate: "23-11-20",
+  endDate: "23-11-24",
+  reservationAvailable: false,
 };
