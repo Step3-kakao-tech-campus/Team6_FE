@@ -36,7 +36,7 @@ const ReviewlistPage = () => {
   const filteredReviews = getFilteredReviews();
 
   return (
-    <div className="main-layout-page mb-4 h-screen w-full">
+    <div className="main-layout-page mb-4 min-h-screen w-full">
       <PageTitleBar name={"My Reviews"} />
       <FilterBar filter={filter} setFilter={setFilter} />
 

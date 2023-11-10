@@ -79,7 +79,7 @@
   }
 
   .main-layout-page {
-    @apply h-screen w-full pb-[3.5rem] pt-[2.5rem];
+    @apply min-h-screen w-full pb-[3.5rem] pt-[2.5rem];
   }
 
   @keyframes spin {
