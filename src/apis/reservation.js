@@ -15,7 +15,7 @@ export const reserveFestival = async (id, date, headCount) => {
     reservationDate:date,
     headCount:headCount,
   });
-  return response.data;
+  return response.data.response;
 };
 
 export const reserveRestaurant = async (id, date, time, headCount, message) => {
@@ -26,7 +26,7 @@ export const reserveRestaurant = async (id, date, time, headCount, message) => {
     headCount: headCount,
     message: message,
   });
-  return response.data;
+  return response.data.response;
 };
 
 export const reserve = {
