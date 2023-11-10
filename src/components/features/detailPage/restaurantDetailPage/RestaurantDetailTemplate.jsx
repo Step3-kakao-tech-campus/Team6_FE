@@ -17,8 +17,11 @@ import CardTitle from "../../../atoms/CardTitle";
 import { reserveRestaurant } from "../../../../apis/reservation";
 import { useNavigate } from "react-router-dom";
 import Article from "../../../organisms/Article";
+import { getReviewByIdAndType } from "../../../../apis/review";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
+
+  console.log("restaurnat",restaurant)
   const [isActiveReview, setIsActiveReview] = useState(false);
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -33,7 +36,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     () => getCalenderByIdAndType(restaurant.id, "restaurant"),
   );
 
-  console.log('restaurant', restaurant)
+  const { data: reviews } = useQuery(`restaurant/review/${restaurant.id}`, () =>
+    getReviewByIdAndType(restaurant.id, "RESTAURANT"),
+  );
 
   const onReserve = async () => {
     if (!selectedDate || selectedTime === "Time To Visit") {
@@ -69,7 +74,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
             setIsActiveCalender(false);
           }}
         >
-          {isActiveReview && <ReviewCards placeId={restaurant.id} />}
+          {isActiveReview && <ReviewCards reviews={reviews.reviews} />}
           {isActiveCalender && (
             <div
               className={"calendar-wrapper flex flex-col justify-center px-2"}
@@ -173,7 +178,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant?.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <ReviewCards placeId={restaurant.id} count={2} />
+        {reviews && (
+          <ReviewCards reviews={reviews.reviews.slice(0, 2)} count={2} />
+        )}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         {
           <Button
