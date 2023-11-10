@@ -1,8 +1,8 @@
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
-const StarRating = ({ averageScore }) => {
+const StarRating = ({ averageRating }) => {
   const renderRatingStars = () => {
-    const roundedScore = Math.round(averageScore * 2) / 2;
+    const roundedScore = Math.round(averageRating * 2) / 2;
     const fullStars = Math.floor(roundedScore);
     const hasHalfStar = roundedScore % 1 === 0.5;
 

@@ -161,7 +161,7 @@ const FestivalDetailTemplate = ({ festival }) => {
               setIsActiveCalender(true);
             }
           }}
-          disabled={!festival?.reservable}
+          disabled={!festival?.isReservable}
           aria-label="reservation-button"
         >
           Reserve

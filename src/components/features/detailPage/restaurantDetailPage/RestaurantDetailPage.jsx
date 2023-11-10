@@ -12,7 +12,7 @@ const RestaurantDetailPage = () => {
   );
 
   return (
-    <div className={"restaurant-detail-page w-full"}>
+    <div className={"restaurant-detail-page w-full min-h-screen"}>
       {isLoading && <LoadingPage />}
       {data && <RestaurantDetailTemplate restaurant={data} />}
       {error & <ErrorPage />}

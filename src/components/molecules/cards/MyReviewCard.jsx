@@ -44,7 +44,7 @@ const MyReviewCard = ({ review }) => {
         <CardTitle title={review.placeName} lineClamp={1} />
         <span className="text-sm text-gray-500">{review.visitDay}</span>
         <div className="review-rating flex text-sm text-gray-500">
-          <StarRating averageScore={review.rating} />
+          <StarRating averageRating={review.rating} />
           {review.rating.toFixed(1)}
         </div>
       </div>

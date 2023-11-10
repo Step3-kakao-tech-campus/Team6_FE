@@ -22,8 +22,8 @@ const RestaurantCard = ({ restaurant }) => {
           </span>
           <div className="clamp-3">{restaurant.summary}</div>
           <div className="flex items-center">
-            <StarRating averageScore={restaurant.averageScore} />
-            <span className="text-xs">{restaurant.averageScore}</span>
+            <StarRating averageRating={restaurant.averageRating} />
+            <span className="text-xs">{restaurant.averageRating}</span>
           </div>
         </div>
         <div className="mt-2">

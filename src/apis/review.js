@@ -103,9 +103,9 @@ export const modifyTouristSpotReview = async (
 };
 
 export const modifyReview = {
-  restaurant: modifyRestaurantReview,
-  festival: modifyFestivalReview,
-  touristSpot: modifyTouristSpotReview,
+  RESTAURANT: modifyRestaurantReview,
+  FESTIVAL: modifyFestivalReview,
+  TOURIST_SPOT: modifyTouristSpotReview,
 };
 
 export const postTouristSpotReview = async (
@@ -122,9 +122,9 @@ export const postTouristSpotReview = async (
 };
 
 export const postReview = {
-  restaurant: postRestaurantReview,
-  festival: postFestivalReview,
-  touristSpot: postTouristSpotReview,
+  RESTAURANT: postRestaurantReview,
+  FESTIVAL: postFestivalReview,
+  TOURIST_SPOT: postTouristSpotReview,
 };
 
 export const getIsReviewed = async (placeId, type) => {

@@ -15,7 +15,7 @@ const ReviewCard = ({ review }) => {
     >
       <div className={"review-card-header flex gap-2"}>
         <UserAvatar
-          image={review.authorImages}
+          image={review.authorImage}
           onClick={() => console.log("userinfo")}
           className={"h-[4rem] w-[4rem] overflow-hidden rounded-full"}
         />
@@ -23,7 +23,7 @@ const ReviewCard = ({ review }) => {
           <CardTitle title={review.authorNickname} lineClamp={1} />
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
           <div className={"review-rating flex text-sm text-gray-500"}>
-            <StarRating averageScore={review.rating} />
+            <StarRating averageRating={review.rating} />
             {review.rating.toFixed(1)}
           </div>
         </div>
@@ -42,7 +42,7 @@ const ReviewCard = ({ review }) => {
               }
             >
               <div className={"flex gap-2"}>
-                {review.reviewImages.map((image, index) => (
+                {review.reviewImage.map((image, index) => (
                   <Photo
                     className={"h-[15rem] w-[15rem] "}
                     src={image}

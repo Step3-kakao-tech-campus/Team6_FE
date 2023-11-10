@@ -9,7 +9,7 @@ export const getFestivals = (length) => {
     "name",
     "summary",
     "address",
-    "averageScore",
+    "averageRating",
     "isWished",
     "period",
     "price",

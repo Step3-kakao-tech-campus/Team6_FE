@@ -33,6 +33,8 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     () => getCalenderByIdAndType(restaurant.id, "restaurant"),
   );
 
+  console.log('restaurant', restaurant)
+
   const onReserve = async () => {
     if (!selectedDate || selectedTime === "Time To Visit") {
       alert("Please select date and time to visit");
@@ -152,7 +154,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       >
         <SectionTitle title={"Menu"} />
         <HorizontalListSection>
-          {restaurant?.menu?.map((menu, index) => (
+          {restaurant?.menus?.map((menu, index) => (
             <MenuCard menu={menu} key={index} />
           ))}
         </HorizontalListSection>
@@ -185,7 +187,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 setIsActiveCalender(true);
               }
             }}
-            disabled={!restaurant?.reservable}
+            disabled={!restaurant?.isReservable}
             aria-label="reservation-button"
           >
             Reserve

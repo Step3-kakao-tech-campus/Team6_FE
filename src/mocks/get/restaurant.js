@@ -8,7 +8,7 @@ export const getRestaurants = (length) => {
     "name",
     "summary",
     "address",
-    "averageScore",
+    "averageRating",
     "isWished",
   ];
   const restaurantCard = Object.fromEntries(
