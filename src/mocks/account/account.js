@@ -13,12 +13,6 @@ export const register = (account) => {
   if (duplicatedId) {
     throw new Error("id is already exist");
   }
-  const duplicatedNickname = accounts.find(
-    (a) => a.nickname === account.nickname,
-  );
-  if (duplicatedNickname) {
-    throw new Error("nickname is already exist");
-  }
   return addAccount(account);
 };
 

@@ -66,6 +66,7 @@ const RegisterPage = () => {
       validateNickname() &&
       nation
     );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     validateEmail,
@@ -93,8 +94,14 @@ const RegisterPage = () => {
             window.location.href = "/login";
           })
           .catch((err) => {
-            setErrorMsgFromBE(err.response.error.message);
+            if (err.code === 500) {
+              alert("server error. please try again later.");
+              return;
+            }
+            setErrorMsgFromBE(err.error.message);
           });
+      } else {
+        alert("please check your inputs");
       }
     },
     [allInputValid, email, password, username, id, nickname, nation],
