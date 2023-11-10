@@ -28,6 +28,18 @@ const ImageUploader = ({ setFile, file, multiple }) => {
     }
   };
 
+  const handleFileOnChange = (e) => {
+    const files = e.target.files;
+    if (files.length === 0) {
+      return;
+    }
+    if (multiple) {
+      setFile([...file, ...files]);
+    } else {
+      setFile(files[0]);
+    }
+  };
+
   useEffect(() => {
     if (file) {
       if (multiple) {
