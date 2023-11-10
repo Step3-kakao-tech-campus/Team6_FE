@@ -9,7 +9,7 @@ export const RESTAURANT_RESERVATIONS = [
     date: "2023/09/13",
     time: "18:30",
     message: "please give me a good seat",
-    status: "이용완료",
+    status: "리뷰완료",
     headCount: 2,
   },
 ];
@@ -25,7 +25,7 @@ export const FESTIVAL_RESERVATIONS = [
     date: "2023/09/13",
     time: "18:30",
     message: "",
-    status: "확인중",
+    status: "예약대기",
   },  {
     id: 2,
     placeId: 1, //예약한 객체에 대한 id
@@ -36,6 +36,6 @@ export const FESTIVAL_RESERVATIONS = [
     date: "2023/09/13",
     time: "18:30",
     message: "",
-    status: "확인중",
+    status: "예약완료",
   },
 ];
