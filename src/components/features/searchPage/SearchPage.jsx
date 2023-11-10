@@ -1,42 +1,65 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useSearchParams } from "react-router-dom";
 import SearchBar from "../../molecules/SearchBar";
 import FilterBar from "../../molecules/FilterBar";
 import FilterResults from "./organisms/FilterResults";
 import { search } from "../../../apis/search";
-import LoadingPage from "../loadingPage/LoadingPage";
+import {
+  restaurantSearch,
+  festivalSearch,
+  touristSpotSearch,
+} from "../../../apis/search";
 
 const SearchPage = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const initialQuery = searchParams.get("location") || "";
 
   const [query, setQuery] = useState(initialQuery);
   const [filter, setFilter] = useState("all");
-  const [searchKey, setSearchKey] = useState(["searchResults", query]);
+  const [searchResults, setSearchResults] = useState({
+    restaurants: [],
+    festivals: [],
+    touristSpots: [],
+  });
   const [customError, setCustomError] = useState(null);
 
-  // const {
-  //   data: results,
-  //   isLoading,
-  //   error,
-  // } = useQuery(searchKey, () => search(query), {
-  //   onSuccess: (data) => {
-  //     if (!data || data.length === 0) {
-  //       setCustomError("No results found. Please try again.");
-  //       return;
-  //     }
-  //     setCustomError(null);
-  //     navigate(`/search?location=${encodeURIComponent(query)}`);
-  //   },
-  //   onError: (error) => {
-  //     setCustomError("Something went wrong. Please try again.");
-  //   },
-  // });
+  useEffect(() => {
+    if (!query.trim()) {
+      setCustomError("Please enter a search term.");
+    }
+  }, [query]);
 
-  const handleSearch = (value) => {
-    setSearchKey(["searchResults", value]);
+  const handleSearch = async () => {
+    setCustomError(null);
+    if (!query.trim()) {
+      setCustomError("Please enter a search term.");
+      return;
+    }
+
+    try {
+      let results = {};
+
+      switch (filter) {
+        case "all":
+          results = await search(query);
+          break;
+        case "restaurants":
+          results.restaurants = await restaurantSearch(query);
+          break;
+        case "festivals":
+          results.festivals = await festivalSearch(query);
+          break;
+        case "touristSpots":
+          results.touristSpots = await touristSpotSearch(query);
+          break;
+        default:
+          throw new Error("Invalid filter option");
+      }
+      setSearchResults(results);
+    } catch (error) {
+      console.log(error);
+      setCustomError("Failed to fetch results. Please try again.");
+    }
   };
 
   return (
@@ -48,10 +71,11 @@ const SearchPage = () => {
         onSearch={handleSearch}
       />
       <FilterBar filter={filter} setFilter={setFilter} />
-      {customError && (
+      {customError ? (
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
+      ) : (
+        <FilterResults filter={filter} searchResults={searchResults} />
       )}
-      {!customError && <FilterResults filter={filter} query={query} />}
     </div>
   );
 };
