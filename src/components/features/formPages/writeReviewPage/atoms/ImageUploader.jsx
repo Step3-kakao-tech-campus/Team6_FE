@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {BiImage, BiPlus} from "react-icons/bi";
+import { BiImage, BiPlus } from "react-icons/bi";
 import HorizontalListSection from "../../../carousel/HorizontalListSection";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Button from "../../../../atoms/Button";
@@ -15,18 +15,7 @@ import Button from "../../../../atoms/Button";
 const ImageUploader = ({ setFile, file, multiple }) => {
   const [preview, setPreview] = useState(null);
   const fileRef = useRef();
-  console.log("file", file)
-  const handleFileOnChange = (e) => {
-    const files = e.target.files;
-    if (files.length === 0) {
-      return;
-    }
-    if (multiple) {
-      setFile([...file, ...files]);
-    } else {
-      setFile(files[0]);
-    }
-  };
+  console.log("file", file);
 
   const handleFileOnChange = (e) => {
     const files = e.target.files;
@@ -111,10 +100,12 @@ const ImageUploader = ({ setFile, file, multiple }) => {
           {preview}
           <button
             onClick={handleFileButtonClick}
-            className={"flex h-40 w-40 items-center justify-center bg-gray-300 relative"}
+            className={
+              "relative flex h-40 w-40 items-center justify-center bg-gray-300"
+            }
             aria-label="image-upload-button"
           >
-              <BiPlus color={"#000000"} size={50} />
+            <BiPlus color={"#000000"} size={50} />
           </button>
         </div>
       </HorizontalListSection>

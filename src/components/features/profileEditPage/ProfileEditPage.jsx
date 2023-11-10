@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
+import ButtonBack from "../../atoms/ButtonBack";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -87,14 +88,18 @@ const ProfileEditPage = () => {
   return (
     <div className="profile-edit-page width-flex-layout flex h-screen items-center justify-center p-8">
       <div className="profile-edit-container flex w-full flex-col justify-center gap-4">
-        <h1 className="flex justify-between">
+        <div className="flex justify-between">
+          <div className="ml-4 mt-2">
+            <ButtonBack />
+          </div>
           <span className="text-4xl font-bold text-tripKoOrange">
             Edit My Profile
           </span>
+
           <Button as={Link} to="/" className="mt-2" aria-label="home-button">
             <AiOutlineHome size={24} />
           </Button>
-        </h1>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup
             label="Name"
