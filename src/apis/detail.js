@@ -35,7 +35,7 @@ export const getFoodById = async (id) => {
 
 export const getCalenderByIdAndType = async (id, type) => {
   return await instance
-    .get(`/${type}/bookings/calender/${id}`)
+    .get(`/${type}/bookings/calendar/${id}`)
     .then((response) => response.data.response)
     .catch((error) => Promise.reject(error));
 };
