@@ -10,7 +10,7 @@ const MainLayout = () => {
         <NavContext.Provider value={{ activatedTab, setActivatedTab }}>
             <div
                 className={
-                    "main-layout width-flex-layout flex flex-col items-center shadow-lg"
+                    "main-layout width-flex-layout flex flex-col items-center shadow-lg min-h-screen"
                 }
             >
                 <Outlet />

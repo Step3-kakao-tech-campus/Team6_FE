@@ -15,14 +15,17 @@ const ReviewCard = ({ review }) => {
     >
       <div className={"review-card-header flex gap-2"}>
         <UserAvatar
-          image={review.authorImage}
+          image={review.authorImages}
           onClick={() => console.log("userinfo")}
           className={"h-[4rem] w-[4rem] overflow-hidden rounded-full"}
         />
         <div className={"review-card-header-info flex flex-col justify-evenly"}>
           <CardTitle title={review.authorNickname} lineClamp={1} />
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
-          <div className={"review-rating text-sm text-gray-500 flex"}><StarRating averageScore={review.rating} />{review.rating.toFixed(1)}</div>
+          <div className={"review-rating flex text-sm text-gray-500"}>
+            <StarRating averageScore={review.rating} />
+            {review.rating.toFixed(1)}
+          </div>
         </div>
       </div>
       <div className={"review-card-body"}>
@@ -34,14 +37,21 @@ const ReviewCard = ({ review }) => {
           <>
             <CardTitle title={"Photo"} />{" "}
             <div
-              className={"review-photo-section flex h-[15rem] w-full overflow-x-scroll"}
+              className={
+                "review-photo-section flex w-full overflow-x-scroll py-2"
+              }
             >
-              <Photo
-                className={"h-[15rem] w-[15rem] "}
-                src={review.image}
-                alt={""}
-                extendable={true}
-              />
+              <div className={"flex gap-2"}>
+                {review.reviewImages.map((image, index) => (
+                  <Photo
+                    className={"h-[15rem] w-[15rem] "}
+                    src={image}
+                    alt={""}
+                    extendable={true}
+                    key={index}
+                  />
+                ))}
+              </div>
             </div>
           </>
         )}

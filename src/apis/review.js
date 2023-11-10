@@ -1,30 +1,12 @@
 import instance, { instanceFormData } from "./api";
 
-export const getRestaurantReviewById = async (id) => {
-  const result = await instance.get(`/restaurant/reviews/${id}`);
+export const getMyReviewById = async (id) => {
+  const result = await instance.get(`/userinfo/reviews/${id}`);
   return result.data.response;
 };
-
-export const getFestivalReviewById = async (id) => {
-  const result = await instance.get(`/festival/reviews/${id}`);
-  return result.data.response;
-};
-
-export const getTouristSpotReviewById = async (id) => {
-  const result = await instance.get(`/touristSpot/reviews/${id}`);
-  return result.data.response;
-};
-
-export const getReviewByIdAndType = async (id, type) => {
-  if (type === "restaurant") {
-    return await getRestaurantReviewById(id);
-  } else if (type === "festival") {
-    return await getFestivalReviewById(id);
-  } else if (type === "touristSpot") {
-    return await getTouristSpotReviewById(id);
-  } else {
-    return null;
-  }
+export const getReviewByPage = async (id, page) => {
+  const result = await instance.get(`/reviews/${id}?page=${page}`);
+  return result.data.response.reviews;
 };
 
 export const organizeReview = (placeId, rating, description, file) => {
@@ -33,6 +15,22 @@ export const organizeReview = (placeId, rating, description, file) => {
   formData.append("rating", rating);
   formData.append("description", description);
   formData.append("file", file);
+  return formData;
+};
+
+export const organizeModifyReview = (
+  placeId,
+  rating,
+  description,
+  file,
+  deleteFile,
+) => {
+  const formData = new FormData();
+  formData.append("placeId", placeId);
+  formData.append("rating", rating);
+  formData.append("description", description);
+  formData.append("file", file);
+  formData.append("deleteFile", deleteFile);
   return formData;
 };
 
@@ -60,6 +58,54 @@ export const postFestivalReview = async (
     organizeReview(placeId, rating, description, file),
   );
   return result.data.response;
+};
+
+export const modifyRestaurantReview = async (
+  placeId,
+  rating,
+  description,
+  file,
+  deleteFile,
+) => {
+  const result = await instanceFormData.patch(
+    `/restaurant/reviews/${placeId}`,
+    organizeModifyReview(placeId, rating, description, file, deleteFile),
+  );
+  return result.data.response;
+};
+
+export const modifyFestivalReview = async (
+  placeId,
+  rating,
+  description,
+  file,
+  deleteFile,
+) => {
+  const result = await instanceFormData.patch(
+    `/festival/reviews/${placeId}`,
+    organizeModifyReview(placeId, rating, description, file, deleteFile),
+  );
+  return result.data.response;
+};
+
+export const modifyTouristSpotReview = async (
+  placeId,
+  rating,
+  description,
+  file,
+  deleteFile,
+) => {
+  const result = await instanceFormData.patch(
+    `/touristSpot/reviews/${placeId}`,
+    organizeModifyReview(placeId, rating, description, file, deleteFile),
+  );
+  return result.data.response;
+};
+
+export const modifyReview = {
+  restaurant: modifyRestaurantReview,
+  festival: modifyFestivalReview,
+  touristSpot: modifyTouristSpotReview,
 };
 
 export const postTouristSpotReview = async (
