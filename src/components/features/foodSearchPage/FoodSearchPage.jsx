@@ -13,8 +13,13 @@ const FoodSearchPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const fetchSearchResults = async (query) => {
-    const data = await foodSearch(query);
-    setResults(data);
+    try {
+      const data = await foodSearch(query);
+      setResults(data);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage("Failed to fetch results.");
+    }
   };
 
   const handleSearch = () => {
