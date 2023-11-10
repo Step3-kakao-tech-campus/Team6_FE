@@ -8,8 +8,6 @@ const instance = axios.create({
   },
 });
 
-// multi-part/formdata 형식으로 데이터를 전송하기 위한 instance
-
 const organizeError = (error) => {
   return {
     success: false,
@@ -34,6 +32,13 @@ instance.interceptors.response.use(
     if (response.headers["Refresh-Token"]) {
       localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
     }
+    // token이 발급되었을 때
+    if (response.headers["Authorization"]) {
+      const currentToken = localStorage.getItem("token");
+      if (currentToken !== response.headers["Authorization"]) {
+        localStorage.setItem("token", response.headers["Authorization"]);
+      }
+    }
     return response;
   },
   (error) => {
@@ -48,7 +53,7 @@ instance.interceptors.response.use(
         break;
       case 404:
         // 404 Not Found 에러 처리
-        alert("The requested resource was not found.");
+        // alert("The requested resource was not found.");
         break;
       default:
         // 기타 에러 처리

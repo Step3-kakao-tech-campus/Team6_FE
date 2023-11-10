@@ -15,7 +15,7 @@ const ReviewForm = ({
     <div className={"review-form-container flex w-full flex-col"}>
       <div className={"review-form-form flex w-full flex-col p-2"}>
         <div className={"image-upload-wrapper"}>
-          <ImageUploader file={file} setFile={setFile} />
+          <ImageUploader file={file} setFile={setFile} multiple={true} />
         </div>
         <div className={"review-form-text w-full"}>
           <textarea
