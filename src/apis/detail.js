@@ -3,7 +3,10 @@ import instance from "./api";
 export const getRestaurantById = async (id) => {
   return await instance
     .get(`/restaurant/${id}`)
-    .then((response) => response.data.response)
+    .then((response) => {
+        // console.log("response.data", response.data)
+      return response.data;
+    })
     .catch((error) => Promise.reject(error));
 };
 
