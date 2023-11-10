@@ -34,7 +34,7 @@ export const organizeReview = (placeId, rating, description, file) => {
   formData.append("placeId", placeId);
   formData.append("rating", rating);
   formData.append("description", description);
-  formData.append("file", file);
+  formData.append("image", file);
   return formData;
 };
 
@@ -49,7 +49,7 @@ export const organizeModifyReview = (
   formData.append("placeId", placeId);
   formData.append("rating", rating);
   formData.append("description", description);
-  formData.append("file", file);
+  formData.append("image", file);
   formData.append("deleteFile", deleteFile);
   return formData;
 };
