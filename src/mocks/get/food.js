@@ -1,15 +1,9 @@
 import FOODS from "../datas/foods";
+import FOOD from "../datas/food";
 import { rest } from "msw";
 
 export const getFoods = (length) => {
-  const selectedKeys = [
-    "id",
-    "name",
-    "mainImage",
-    "category",
-    "description",
-    "foodImage",
-  ];
+  const selectedKeys = ["id", "name", "image", "category", "summary"];
   const foodCard = Object.fromEntries(
     Object.entries(FOODS[0]).filter(([key, value]) =>
       selectedKeys.includes(key),
@@ -20,7 +14,7 @@ export const getFoods = (length) => {
 };
 
 export const getFoodDetail = (id) => {
-  return FOODS.find((food) => food.id === parseInt(id));
+  return FOOD.find((food) => food.id === parseInt(id));
 };
 
 export const searchFoodHandler = rest.get("/food", (req, res, ctx) => {
