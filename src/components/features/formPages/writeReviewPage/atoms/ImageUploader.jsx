@@ -13,10 +13,9 @@ import Button from "../../../../atoms/Button";
  * @constructor
  */
 const ImageUploader = ({ setFile, file, multiple }) => {
-  const [previewURL, setPreviewURL] = useState("");
   const [preview, setPreview] = useState(null);
   const fileRef = useRef();
-
+  console.log("file", file)
   const handleFileOnChange = (e) => {
     const files = e.target.files;
     if (files.length === 0) {
