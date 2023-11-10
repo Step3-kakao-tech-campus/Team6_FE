@@ -93,7 +93,8 @@ const RegisterPage = () => {
             window.location.href = "/login";
           })
           .catch((err) => {
-            setErrorMsgFromBE(err.response.error.message);
+            console.log("error", err)
+            setErrorMsgFromBE(err.error.message);
           });
       }
     },
