@@ -9,7 +9,7 @@ const ReservationListTemplate = ({ reservations }) => {
     if (!reservations) return [];
 
     reservations?.restaurant.forEach(
-      (reservation) => (reservation.type = "restaurant"),
+      (reservation) => (reservation.type = "RESTAURANT"),
     );
     reservations?.festival.forEach(
       (reservation) => (reservation.type = "FESTIVAL"),
