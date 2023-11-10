@@ -11,7 +11,7 @@ const EditReviewPage = () => {
   );
 
   return (
-    <div className={"edit-review-page min-h-[100vh] w-full flex flex-col justify-center"}>
+    <div className={"edit-review-page min-h-screen w-full flex flex-col justify-center"}>
       {data && <EditReviewTemplate prevReview={data} />}
       {error && <div>Cannot Find Review</div>}
     </div>
