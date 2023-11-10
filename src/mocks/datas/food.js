@@ -1,6 +1,6 @@
 const FOOD = [
   {
-    id: 3,
+    id: 1,
     name: "bibimbap",
     category: "KOREAN",
     description:
