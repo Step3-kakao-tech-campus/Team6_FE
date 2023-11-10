@@ -42,15 +42,15 @@ const ReviewCard = ({ review }) => {
               }
             >
               <div className={"flex gap-2"}>
-              {review.reviewImages.map((image, index) => (
-                <Photo
-                  className={"h-[15rem] w-[15rem] "}
-                  src={image}
-                  alt={""}
-                  extendable={true}
-                  key={index}
-                />
-              ))}
+                {review.reviewImages.map((image, index) => (
+                  <Photo
+                    className={"h-[15rem] w-[15rem] "}
+                    src={image}
+                    alt={""}
+                    extendable={true}
+                    key={index}
+                  />
+                ))}
               </div>
             </div>
           </>

@@ -17,23 +17,23 @@ const SearchPage = () => {
   const [searchKey, setSearchKey] = useState(["searchResults", query]);
   const [customError, setCustomError] = useState(null);
 
-  const {
-    data: results,
-    isLoading,
-    error,
-  } = useQuery(searchKey, () => search(query), {
-    onSuccess: (data) => {
-      if (!data || data.length === 0) {
-        setCustomError("No results found. Please try again.");
-        return;
-      }
-      setCustomError(null);
-      navigate(`/search?location=${encodeURIComponent(query)}`);
-    },
-    onError: (error) => {
-      setCustomError("Something went wrong. Please try again.");
-    },
-  });
+  // const {
+  //   data: results,
+  //   isLoading,
+  //   error,
+  // } = useQuery(searchKey, () => search(query), {
+  //   onSuccess: (data) => {
+  //     if (!data || data.length === 0) {
+  //       setCustomError("No results found. Please try again.");
+  //       return;
+  //     }
+  //     setCustomError(null);
+  //     navigate(`/search?location=${encodeURIComponent(query)}`);
+  //   },
+  //   onError: (error) => {
+  //     setCustomError("Something went wrong. Please try again.");
+  //   },
+  // });
 
   const handleSearch = (value) => {
     setSearchKey(["searchResults", value]);
@@ -47,14 +47,11 @@ const SearchPage = () => {
         onChange={(e) => setQuery(e.target.value)}
         onSearch={handleSearch}
       />
-      {isLoading && <LoadingPage />}
       <FilterBar filter={filter} setFilter={setFilter} />
       {customError && (
         <div className="error-message m-4 text-xl font-bold">{customError}</div>
       )}
-      {!customError && (
-        <FilterResults filter={filter} query={query} result={results} />
-      )}
+      {!customError && <FilterResults filter={filter} query={query} />}
     </div>
   );
 };

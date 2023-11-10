@@ -1,5 +1,6 @@
 import { MY_REVIEW, REVIEWS } from "../datas/reviews";
 import { rest } from "msw";
+import { MYREVIEW } from "../datas/myreview";
 
 export const getReviews = (length) => {
   if (typeof length !== "number") {
@@ -56,6 +57,19 @@ export const getMyReviewHandler = rest.get(
       ctx.json({
         success: true,
         response: MY_REVIEW,
+      }),
+    );
+  },
+);
+
+export const getMyReviewsHandler = rest.get(
+  "/userinfo/reviews",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: MYREVIEW,
       }),
     );
   },
