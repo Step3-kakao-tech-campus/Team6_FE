@@ -20,8 +20,6 @@ import Article from "../../../organisms/Article";
 import { getReviewByIdAndType } from "../../../../apis/review";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
-
-  console.log("restaurnat",restaurant)
   const [isActiveReview, setIsActiveReview] = useState(false);
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -49,12 +47,12 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       alert("Please select date to visit");
       return;
     }
+    // date 를 YYYY-MM-DD 형식으로 변환
+    const dateString = selectedDate.toISOString().split("T")[0];
     const response = await reserveRestaurant(
       restaurant.id,
-      selectedDate,
-      selectedTime,
+      dateString,
       selectedPeople,
-      requestMessage,
     );
     if (response.success) {
       alert("Reservation success");
@@ -82,7 +80,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
               <Calendar
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
-                unavailableDays={operatingInfo.holiday}
+                holidays={operatingInfo.holiday}
               />
               <div className={"time-select-form flex flex-col py-2 text-lg"}>
                 <CardTitle title={"Visit Time"} />
