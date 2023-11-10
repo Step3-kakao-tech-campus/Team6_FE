@@ -2,7 +2,7 @@ export const RESTAURANT_RESERVATIONS = [
   {
     id: 3,
     placeId: 1,
-    type: "restaurant",
+    type: "RESTAURANT",
     name: "Restaurant Name",
     address: "location of restaurant",
     image: "https://picsum.photos/211",

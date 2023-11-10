@@ -5,14 +5,20 @@ import Photo from "../../../atoms/Photo";
 import Article from "../../../organisms/Article";
 import ReviewCards from "../../../molecules/cards/ReviewCards";
 import ButtonAllReviews from "../atoms/ButtonAllReviews";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import BottomPopModal from "../../../atoms/Modals/BottomPopModal";
 import Button from "../../../atoms/Button";
-import {ModalContext} from "../../../../App";
+import { ModalContext } from "../../../../App";
 import ReviewFormTouristSpot from "../../formPages/writeReviewPage/ReviewFormTouristSpot";
+import { useQuery } from "react-query";
+import {getReviewByIdAndType} from "../../../../apis/review";
 
 const TouristSpotDetailTemplate = ({ touristSpot }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
+
+  const { data: reviews } = useQuery(`festival/review/${touristSpot.id}`, () =>
+    getReviewByIdAndType(touristSpot.id, "TOURIST_SPOT"),
+  );
 
   const { show } = useContext(ModalContext);
   return (
@@ -23,12 +29,14 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
             setIsActiveReview(false);
           }}
         >
-          {isActiveReview && <ReviewCards placeId={touristSpot.id} />}
+          {isActiveReview && <ReviewCards reviews={reviews.reviews} />}
         </BottomPopModal>
       )}
       <PageTitleBar name={touristSpot.name} />
       <div
-        className={"touristSpot-image-wrapper width-flex-layout fixed top-0 w-full "}
+        className={
+          "touristSpot-image-wrapper width-flex-layout fixed top-0 w-full "
+        }
       >
         <Photo
           src={touristSpot.mainImage}
@@ -38,7 +46,9 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
         />
       </div>
       <div
-        className={"touristSpot-detail-content relative mt-[30rem] bg-white pb-[6rem]"}
+        className={
+          "touristSpot-detail-content relative mt-[30rem] bg-white pb-[6rem]"
+        }
       >
         <SectionTitle title={"Information"} />
         {touristSpot.contents.map((content) => (
@@ -52,7 +62,7 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
           <InfoElement title={"Address"} value={touristSpot.address} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <ReviewCards placeId={touristSpot.id} count={2} />
+        {reviews && <ReviewCards reviews={reviews.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <div className={"review-input-wrapper flex flex-col gap-2"}>
           <Button

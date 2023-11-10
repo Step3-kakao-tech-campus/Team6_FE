@@ -17,6 +17,7 @@ import CardTitle from "../../../atoms/CardTitle";
 import { reserveRestaurant } from "../../../../apis/reservation";
 import { useNavigate } from "react-router-dom";
 import Article from "../../../organisms/Article";
+import { getReviewByIdAndType } from "../../../../apis/review";
 
 const RestaurantDetailTemplate = ({ restaurant }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -33,6 +34,10 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     () => getCalenderByIdAndType(restaurant.id, "restaurant"),
   );
 
+  const { data: reviews } = useQuery(`restaurant/review/${restaurant.id}`, () =>
+    getReviewByIdAndType(restaurant.id, "RESTAURANT"),
+  );
+
   const onReserve = async () => {
     if (!selectedDate || selectedTime === "Time To Visit") {
       alert("Please select date and time to visit");
@@ -42,12 +47,12 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       alert("Please select date to visit");
       return;
     }
+    // date 를 YYYY-MM-DD 형식으로 변환
+    const dateString = selectedDate.toISOString().split("T")[0];
     const response = await reserveRestaurant(
       restaurant.id,
-      selectedDate,
-      selectedTime,
+      dateString,
       selectedPeople,
-      requestMessage,
     );
     if (response.success) {
       alert("Reservation success");
@@ -67,7 +72,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
             setIsActiveCalender(false);
           }}
         >
-          {isActiveReview && <ReviewCards placeId={restaurant.id} />}
+          {isActiveReview && <ReviewCards reviews={reviews.reviews} />}
           {isActiveCalender && (
             <div
               className={"calendar-wrapper flex flex-col justify-center px-2"}
@@ -75,7 +80,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
               <Calendar
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
-                unavailableDays={operatingInfo.holiday}
+                holidays={operatingInfo.holiday}
               />
               <div className={"time-select-form flex flex-col py-2 text-lg"}>
                 <CardTitle title={"Visit Time"} />
@@ -152,7 +157,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       >
         <SectionTitle title={"Menu"} />
         <HorizontalListSection>
-          {restaurant?.menu?.map((menu, index) => (
+          {restaurant?.menus?.map((menu, index) => (
             <MenuCard menu={menu} key={index} />
           ))}
         </HorizontalListSection>
@@ -171,7 +176,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant?.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <ReviewCards placeId={restaurant.id} count={2} />
+        {reviews && (
+          <ReviewCards reviews={reviews.reviews.slice(0, 2)} count={2} />
+        )}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         {
           <Button
@@ -185,7 +192,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 setIsActiveCalender(true);
               }
             }}
-            disabled={!restaurant?.reservable}
+            disabled={!restaurant?.isReservable}
             aria-label="reservation-button"
           >
             Reserve

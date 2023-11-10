@@ -1,7 +1,7 @@
 import FESTIVALS from "../datas/festivals";
 import { rest } from "msw";
-import {getRestaurantDetail} from "./restaurant";
-import {availableDate} from "../datas/availableDates";
+import { getRestaurantDetail } from "./restaurant";
+import { festivalAvailable } from "../datas/availableDates";
 
 export const getFestivals = (length) => {
   const selectedKeys = [
@@ -9,7 +9,7 @@ export const getFestivals = (length) => {
     "name",
     "summary",
     "address",
-    "averageScore",
+    "averageRating",
     "isWished",
     "period",
     "price",
@@ -48,14 +48,17 @@ export const getFestivalHandler = rest.get("/festival/:id", (req, res, ctx) => {
     );
 });
 
-export const getFestivalCalendarHandler =   rest.get("/festival/bookings/calender/:id", (req, res, ctx) => {
-  const id = req.params.id;
-  if (getRestaurantDetail(id) != null)
-    return res(
+export const getFestivalCalendarHandler = rest.get(
+  "/festival/bookings/calendar/:id",
+  (req, res, ctx) => {
+    const id = req.params.id;
+    if (getRestaurantDetail(id) != null)
+      return res(
         ctx.status(200),
         ctx.json({
           success: true,
-          response: availableDate,
+          response: festivalAvailable,
         }),
-    );
-})
+      );
+  },
+);

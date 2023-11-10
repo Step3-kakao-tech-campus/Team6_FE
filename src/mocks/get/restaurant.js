@@ -1,6 +1,6 @@
 import RESTAURANTS from "../datas/restaurants";
 import { rest } from "msw";
-import { availableDate } from "../datas/availableDates";
+import { restaurantAvailable } from "../datas/availableDates";
 
 export const getRestaurants = (length) => {
   const selectedKeys = [
@@ -8,7 +8,7 @@ export const getRestaurants = (length) => {
     "name",
     "summary",
     "address",
-    "averageScore",
+    "averageRating",
     "isWished",
   ];
   const restaurantCard = Object.fromEntries(
@@ -48,7 +48,7 @@ export const getRestaurantHandler = rest.get(
 );
 
 export const getRestaurantCalendarHandler = rest.get(
-  "/restaurant/bookings/calender/:id",
+  "/restaurant/bookings/calendar/:id",
   (req, res, ctx) => {
     const id = req.params.id;
     if (getRestaurantDetail(id) != null)
@@ -56,7 +56,7 @@ export const getRestaurantCalendarHandler = rest.get(
         ctx.status(200),
         ctx.json({
           success: true,
-          response: availableDate,
+          response: restaurantAvailable,
         }),
       );
   },

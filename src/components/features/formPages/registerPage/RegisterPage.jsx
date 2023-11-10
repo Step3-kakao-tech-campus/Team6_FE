@@ -98,6 +98,7 @@ const RegisterPage = () => {
               alert("server error. please try again later.");
               return;
             }
+
             setErrorMsgFromBE(err.error.message);
           });
       } else {
