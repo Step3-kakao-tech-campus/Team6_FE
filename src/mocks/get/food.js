@@ -23,23 +23,20 @@ export const getFoodDetail = (id) => {
   return FOODS.find((food) => food.id === parseInt(id));
 };
 
-export const searchFoodHandler = rest.get(
-  "api/search/food",
-  (req, res, ctx) => {
-    const query = req.url.searchParams.get("query");
+export const searchFoodHandler = rest.get("/food", (req, res, ctx) => {
+  const query = req.url.searchParams.get("query");
 
-    if (query) {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          success: true,
-          response: getFoods(8),
-        }),
-      );
-    }
-    return res(ctx.status(200), ctx.json({ result: {} }));
-  },
-);
+  if (query) {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: getFoods(8),
+      }),
+    );
+  }
+  return res(ctx.status(200), ctx.json({ result: {} }));
+});
 
 export const getFoodHandler = rest.get("/food/:id", (req, res, ctx) => {
   console.log(req.params);

@@ -4,10 +4,13 @@ import Input from "../../atoms/Input";
 import { foodSearch } from "../../../apis/search";
 import { FiSearch } from "react-icons/fi";
 import FoodCard from "../../molecules/cards/FoodCard";
+import { useQuery } from "react-query";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  // const params = new URLSearchParams(location.search);
+  // const query = params.get("query");
   const [results, setResults] = useState([]);
   const [currentQuery, setCurrentQuery] = useState("");
 
@@ -25,6 +28,9 @@ const FoodSearchPage = () => {
   }, [location.search, navigate]);
 
   const fetchSearchResults = async (query) => {
+    // const { data, isLoading, error } = useQuery(`foodSearch${query}`, () =>
+    //   foodSearch(query),
+    // );
     const data = await foodSearch(query);
     setResults(data);
   };
@@ -39,7 +45,7 @@ const FoodSearchPage = () => {
       <div className="absolute inset-0 flex flex-col overflow-y-auto">
         <div
           className={`input flex w-full transition-all ${
-            results.length > 0
+            results?.length > 0
               ? "mt-6"
               : "h-[calc(100vh-66px)] flex-col items-center justify-center"
           }`}
