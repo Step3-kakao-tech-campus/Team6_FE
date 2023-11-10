@@ -10,7 +10,11 @@ import {
   getRestaurantHandler,
 } from "./get/restaurant";
 import { getFestivalCalendarHandler, getFestivalHandler } from "./get/festival";
-import { getReviewHandler, getReviewedHandler } from "./get/review";
+import {
+  getReviewHandler,
+  getReviewedHandler,
+  getMyReviewHandler,
+} from "./get/review";
 import { getTouristSpotHandler } from "./get/touristSpot";
 import { searchFoodHandler, getFoodHandler } from "./get/food";
 import { getWishlistHandler } from "./get/wishlist";
@@ -57,6 +61,7 @@ export const handlers = [
   postRestaurantReservationHandler,
   postFestivalReservationHandler,
   getReviewedHandler,
+  getMyReviewHandler,
   postRestaurantReviewHandler,
   postFestivalReviewHandler,
   postTouristSpotReviewHandler,

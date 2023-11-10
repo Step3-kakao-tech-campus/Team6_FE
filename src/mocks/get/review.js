@@ -1,4 +1,4 @@
-import { REVIEWS } from "../datas/reviews";
+import { MY_REVIEW, REVIEWS } from "../datas/reviews";
 import { rest } from "msw";
 
 export const getReviews = (length) => {
@@ -43,6 +43,19 @@ export const getReviewedHandler = rest.get(
           reviewed: reviewed,
           review: reviewed ? 1 : null,
         },
+      }),
+    );
+  },
+);
+
+export const getMyReviewHandler = rest.get(
+  "/userinfo/reviews/:id",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: MY_REVIEW,
       }),
     );
   },

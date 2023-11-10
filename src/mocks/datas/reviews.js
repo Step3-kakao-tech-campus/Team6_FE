@@ -166,3 +166,15 @@ export const REVIEW_POST_RESPONSE = {
     nickName: "minmunui",
   },
 };
+
+export const MY_REVIEW = {
+  reviewId: 1,
+  placeId: 1, // 리뷰한 객체의 id
+  type: "restaurant", // 리뷰한 객체의 타입
+  placeName: "식당 이름",
+  address: "부산광역시 금정구 장전동",
+  rating: 4,
+  description: "a review I wrote",
+  visitDay: "2023/09/12",
+  image: ["https://picsum.photos/220", "https://picsum.photos/202"],
+};
