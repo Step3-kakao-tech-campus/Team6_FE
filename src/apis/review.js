@@ -4,9 +4,29 @@ export const getMyReviewById = async (id) => {
   const result = await instance.get(`/userinfo/reviews/${id}`);
   return result.data.response;
 };
-export const getReviewByPage = async (id, page) => {
-  const result = await instance.get(`/reviews/${id}?page=${page}`);
-  return result.data.response.reviews;
+export const getRestaurantReviewById = async (id) => {
+  const result = await instance.get(`/reviews/restaurant/${id}`);
+  return result.data.response;
+};
+
+export const getFestivalReviewById = async (id) => {
+  const result = await instance.get(`/reviews/festival/${id}`);
+  return result.data.response;
+};
+
+export const getTouristSpotReviewById = async (id) => {
+  const result = await instance.get(`/reviews/touristSpot/${id}`);
+  return result.data.response;
+};
+
+export const getReviewByIdAndType = async (id, type) => {
+  if (type === "RESTAURANT") {
+    return await getRestaurantReviewById(id);
+  } else if (type === "FESTIVAL") {
+    return await getFestivalReviewById(id);
+  } else if (type === "TOURIST_SPOT") {
+    return await getTouristSpotReviewById(id);
+  }
 };
 
 export const organizeReview = (placeId, rating, description, file) => {
@@ -138,7 +158,7 @@ export const getMyReview = async () => {
 };
 
 export const deleteReview = async (reviewId) => {
-  const {type} = await getMyReviewById(reviewId);
+  const { type } = await getMyReviewById(reviewId);
   // console.log(reviewInfo)
   const result = await instance.delete(`/${type}/reviews/${reviewId}`);
   // throw new Error("삭제되었습니다.");

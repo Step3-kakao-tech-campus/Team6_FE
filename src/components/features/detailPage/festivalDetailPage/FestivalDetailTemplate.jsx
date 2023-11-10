@@ -16,6 +16,7 @@ import CardTitle from "../../../atoms/CardTitle";
 import { reserveFestival } from "../../../../apis/reservation";
 import { useNavigate } from "react-router-dom";
 import Article from "../../../organisms/Article";
+import {getReviewByIdAndType} from "../../../../apis/review";
 
 const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveReview, setIsActiveReview] = useState(false);
@@ -29,6 +30,10 @@ const FestivalDetailTemplate = ({ festival }) => {
   const { data: operatingInfo } = useQuery(
     `festival/unavailableDays/${festival.id}`,
     () => getCalenderByIdAndType(festival.id, "festival"),
+  );
+
+  const { data } = useQuery(`festival/review/${festival.id}`, () =>
+      getReviewByIdAndType(festival.id, "FESTIVAL"),
   );
 
   const onReserve = async () => {
@@ -64,7 +69,7 @@ const FestivalDetailTemplate = ({ festival }) => {
             setIsActiveCalender(false);
           }}
         >
-          {isActiveReview && <ReviewCards placeId={festival.id} />}
+          {isActiveReview && <ReviewCards reviews={data.reviews} />}
           {isActiveCalender && (
             <div className={"calendar-wrapper flex flex-col justify-center"}>
               <Calendar
@@ -148,7 +153,7 @@ const FestivalDetailTemplate = ({ festival }) => {
           <InfoElement title={"Price"} value={`₩${comma(festival.price)}`} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <ReviewCards placeId={festival.id} count={2} />
+        {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
           as={"button"}
