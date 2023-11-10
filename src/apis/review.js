@@ -1,8 +1,12 @@
 import instance, { instanceFormData } from "./api";
 
+export const getMyReviewById = async (id) => {
+  const result = await instance.get(`/userinfo/reviews/${id}`);
+  return result.data.response;
+};
 export const getReviewByPage = async (id, page) => {
-    const result = await instance.get(`/reviews/${id}?page=${page}`);
-    return result.data.response.reviews;
+  const result = await instance.get(`/reviews/${id}?page=${page}`);
+  return result.data.response.reviews;
 };
 
 export const organizeReview = (placeId, rating, description, file) => {
