@@ -3,7 +3,7 @@ import SectionTitle from "../../atoms/SectionTitle";
 import CalendarSlide from "./CalendarSlide";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
-const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
+const Calendar = ({ selectedDate, setSelectedDate, holidays, startDate, endDate }) => {
   const [monthState, setMonthState] = useState(
     new Date(new Date().getFullYear(), new Date().getMonth()),
   );
@@ -48,9 +48,11 @@ const Calendar = ({ selectedDate, setSelectedDate, unavailableDays }) => {
       </div>
       <CalendarSlide
         monthState={monthState}
-        unavailableDays={unavailableDays}
+        holidays={holidays}
         setSelectedDate={setSelectedDate}
         selectedDate={selectedDate}
+        startDate={startDate}
+        endDate={endDate}
       />
     </div>
   );
