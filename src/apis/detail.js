@@ -13,14 +13,14 @@ export const getRestaurantById = async (id) => {
 export const getFestivalById = async (id) => {
   return await instance
     .get(`/festival/${id}`)
-    .then((response) => response.data.response)
+    .then((response) => response.data)
     .catch((error) => Promise.reject(error));
 };
 
 export const getSpotById = async (id) => {
   return await instance
     .get(`/touristSpot/${id}`)
-    .then((response) => response.data.response)
+    .then((response) => response.data)
     .catch((error) => Promise.reject(error));
 };
 
