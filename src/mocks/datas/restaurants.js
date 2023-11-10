@@ -1,7 +1,7 @@
 const RESTAURANTS = [
   {
     id: 1,
-    type: "restaurants",
+    type: "RESTAURANT",
     name: "Main Gate Toast",
     summary:
       "Jeongmun Toast is an old toast house famous among Pusan National University students. this store was dis...",
@@ -24,14 +24,14 @@ const RESTAURANTS = [
       },
     ],
     address: "BuildingName1 RoadName1 GeumjeongGu JangjeonDong Busan",
-    averageScore: 4.4,
+    averageRating: 4.4,
     holidayDate: "2021-10-10",
     open: "11:00~22:00",
     breakTime: "15:00~17:00",
     contactInfo: "010-1234-5678",
-    reservable: true,
+    isReservable: true,
     isWished: true,
-    menu: [
+    menus: [
       {
         id: 1,
         name: "toast",

@@ -30,6 +30,9 @@ const HomePage = () => {
   const [query, setQuery] = useState("");
 
   const handleSearch = async (searchQuery) => {
+    if (!searchQuery) {
+      return;
+    }
     await search(searchQuery);
     navigate(`/search?location=${encodeURIComponent(searchQuery)}`);
   };
@@ -72,7 +75,7 @@ const HomePage = () => {
                     to={`restaurant/${restaurant.id}`}
                     name={restaurant.name}
                     address={restaurant.address}
-                    averageScore={restaurant.averageScore}
+                    averageRating={restaurant.averageRating}
                   />
                 );
               })}
