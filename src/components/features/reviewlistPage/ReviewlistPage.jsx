@@ -40,7 +40,7 @@ const ReviewlistPage = () => {
       <PageTitleBar name={"My Reviews"} />
       <FilterBar filter={filter} setFilter={setFilter} />
 
-      <div className="review-cards flex-grow overflow-auto px-2">
+      <div className="review-cards flex-grow flex flex-col gap-4 px-2">
         {filteredReviews.length > 0 ? (
           filteredReviews.map((review) => (
             <MyReviewCard review={review} key={review.reviewId} />
