@@ -1,7 +1,7 @@
 import FESTIVALS from "../datas/festivals";
 import { rest } from "msw";
 import {getRestaurantDetail} from "./restaurant";
-import {availableDate} from "../datas/availableDates";
+import {restaurantAvailable} from "../datas/availableDates";
 
 export const getFestivals = (length) => {
   const selectedKeys = [
@@ -55,7 +55,7 @@ export const getFestivalCalendarHandler =   rest.get("/festival/bookings/calende
         ctx.status(200),
         ctx.json({
           success: true,
-          response: availableDate,
+          response: restaurantAvailable,
         }),
     );
 })
