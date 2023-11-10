@@ -1,6 +1,7 @@
 import ImageUploader from "../atoms/ImageUploader";
 import ErrorBox from "../../../../atoms/ErrorBox";
 import RatingInput from "../molecules/RatingInput";
+import ImageModifier from "../atoms/ImageModifier";
 
 const ReviewForm = ({
   file,
@@ -10,12 +11,24 @@ const ReviewForm = ({
   score,
   setScore,
   errorMsg,
+  initImage,
+  setDeletedImage,
 }) => {
   return (
     <div className={"review-form-container flex w-full flex-col"}>
       <div className={"review-form-form flex w-full flex-col p-2"}>
         <div className={"image-upload-wrapper"}>
-          <ImageUploader file={file} setFile={setFile} multiple={true} />
+          {initImage && setDeletedImage ? (
+            <ImageModifier
+              file={file}
+              setFile={setFile}
+              multiple={true}
+              setDeletedImage={setDeletedImage}
+              initImage={initImage}
+            />
+          ) : (
+            <ImageUploader file={file} setFile={setFile} multiple={true} />
+          )}
         </div>
         <div className={"review-form-text w-full"}>
           <textarea
