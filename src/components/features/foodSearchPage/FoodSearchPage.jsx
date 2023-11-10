@@ -11,27 +11,26 @@ const FoodSearchPage = () => {
   const [results, setResults] = useState([]);
   const [currentQuery, setCurrentQuery] = useState("");
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const query = params.get("query");
-    if (query) {
-      navigate(`/foods?query=${encodeURIComponent(query)}`, { replace: true });
-      fetchSearchResults(query);
-      setCurrentQuery(query);
-    } else {
-      setResults([]);
-      setCurrentQuery("");
-    }
-  }, [location.search, navigate]);
-
   const fetchSearchResults = async (query) => {
     const data = await foodSearch(query);
     setResults(data);
   };
 
   const handleSearch = () => {
-    fetchSearchResults(currentQuery);
+    navigate(`/foods?query=${encodeURIComponent(currentQuery)}`);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get("query") || "";
+    setCurrentQuery(query);
+
+    if (query) {
+      fetchSearchResults(query);
+    } else {
+      setResults([]);
+    }
+  }, [location.search]);
 
   return (
     <div className="relative flex h-screen w-full flex-col bg-food-search bg-cover bg-center bg-no-repeat">

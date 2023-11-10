@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import {
-  getAllWishlist,
   getRestaurantWishlist,
   getFestivalWishlist,
   getTouristSpotWishlist,
@@ -13,10 +12,9 @@ import WishlistCard from "../../molecules/cards/WishlistCard";
 import LoadingPage from "../loadingPage/LoadingPage";
 
 const fetchWishlist = {
-  all: getAllWishlist,
-  restaurants: getRestaurantWishlist,
-  festivals: getFestivalWishlist,
-  touristSpots: getTouristSpotWishlist,
+  restaurant: getRestaurantWishlist,
+  festival: getFestivalWishlist,
+  touristSpot: getTouristSpotWishlist,
 };
 
 const WishlistPage = () => {
@@ -50,18 +48,22 @@ const WishlistPage = () => {
   const filteredData = useMemo(() => {
     if (!data) return [];
     const { touristSpots, restaurants, festivals } = data;
+
+    const isArray = (array) => (Array.isArray(array) ? array : []);
+
     switch (filter) {
       case "touristSpots":
-        return touristSpots || [];
+        return isArray(touristSpots);
       case "restaurants":
-        return restaurants || [];
+        return isArray(restaurants);
       case "festivals":
-        return festivals || [];
+        return isArray(festivals);
+      case "all":
       default:
         return [
-          ...(touristSpots || []),
-          ...(restaurants || []),
-          ...(festivals || []),
+          ...isArray(touristSpots),
+          ...isArray(restaurants),
+          ...isArray(festivals),
         ];
     }
   }, [filter, data]);
