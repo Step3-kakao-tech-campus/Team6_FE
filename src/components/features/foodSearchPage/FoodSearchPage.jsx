@@ -10,6 +10,7 @@ const FoodSearchPage = () => {
   const location = useLocation();
   const [results, setResults] = useState([]);
   const [currentQuery, setCurrentQuery] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchSearchResults = async (query) => {
     const data = await foodSearch(query);
@@ -17,6 +18,11 @@ const FoodSearchPage = () => {
   };
 
   const handleSearch = () => {
+    if (!currentQuery.trim()) {
+      setErrorMessage("Please enter a valid search term.");
+      return;
+    }
+    setErrorMessage("");
     navigate(`/foods?query=${encodeURIComponent(currentQuery)}`);
   };
 
@@ -67,11 +73,12 @@ const FoodSearchPage = () => {
                 }
               }}
             />
+            {errorMessage && (
+              <div className="mt-2 text-lg text-red-500">{errorMessage}</div>
+            )}
           </div>
         </div>
-        {results?.length > 0 && currentQuery && (
-          <h3 className="mx-4 mt-2 text-lg">Searching for "{currentQuery}"</h3>
-        )}
+
         <div className="food-list grid w-full grid-cols-1 gap-0 pb-16 md:grid-cols-2">
           {results?.map((food) => (
             <FoodCard key={food.id} food={food} />
