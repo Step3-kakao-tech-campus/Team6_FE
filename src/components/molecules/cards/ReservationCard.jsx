@@ -81,7 +81,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
               Write Review
             </Button>
           )}
-          {data?.reviewed && (
+          {reservation?.status === "리뷰완료" && (
             <span
               className={
                 "reservation-bottom cursor-pointer text-tripKoOrange-500"
