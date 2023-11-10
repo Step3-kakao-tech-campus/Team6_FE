@@ -41,19 +41,27 @@ import { patchReviewHandler } from "./patch/review";
 import { deleteReviewHandler } from "./delete/review";
 
 export const handlers = [
+  // Search
   getSearchHandler,
   getSearchRestaurantHandler,
   getSearchFestivalHandler,
   getSearchTouristSpotHandler,
+  searchFoodHandler,
+
   getHomeHandler,
+
+  //detail
   getRestaurantHandler,
   getFestivalHandler,
   getTouristSpotHandler,
-  searchFoodHandler,
   getFoodHandler,
+
+  //wishlist
   getWishlistHandler,
   postWishHandler,
   deleteWishHandler,
+
+  //account
   loginHandler,
   registerHandler,
   getUserinfoHandler,
@@ -68,11 +76,12 @@ export const handlers = [
   getRestaurantReservationHandler,
   postFestivalReservationHandler,
   getFestivalReservationHandler,
-  // Reviews
 
+  // Reviews
   getReviewedHandler,
   getMyReviewHandler,
   getMyReviewsHandler,
+
   getFestivalReviewHandler,
   getRestaurantReviewHandler,
   getTouristSpotReviewHandler,
