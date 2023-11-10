@@ -7,19 +7,11 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../../../App";
 import ReviewFormReservation from "../../features/formPages/writeReviewPage/ReviewFormReservation";
-import { useQuery } from "react-query";
-import { getIsReviewed } from "../../../apis/review";
 import Button from "../../atoms/Button";
 import { isReviewable } from "./utils";
 import { BsFillPersonFill } from "react-icons/bs";
 
 const ReservationCard = ({ reservation }) => {
-  const { data } = useQuery(
-    `isReviewable${reservation.type}/${reservation.id}`,
-    () => {
-      return getIsReviewed(reservation.id, reservation.type);
-    },
-  );
 
   const navigate = useNavigate();
   const navigateToDetail = (e) => {
