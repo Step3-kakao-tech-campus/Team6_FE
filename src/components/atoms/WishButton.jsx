@@ -7,17 +7,6 @@ const WishButton = ({ filter, id, initialIsWished, onWishChange }) => {
   const [isWished, setIsWished] = useState(initialIsWished);
   const queryClient = useQueryClient();
 
-  // const { mutate } = useMutation(() => wish(filter, id, !isWished), {
-  //   onSuccess: () => {
-  //     setIsWished(!isWished);
-
-  //     if (onWishChange) {
-  //       onWishChange(!isWished);
-  //     }
-  //     queryClient.refetchQueries("wishlist");
-  //   },
-  // });
-
   const addMutation = useMutation(() => addWish(id), {
     onSuccess: () => {
       setIsWished(true);

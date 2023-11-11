@@ -6,7 +6,12 @@ export const postWishHandler = rest.post("/wishlist/:id", (req, res, ctx) => {
     ctx.status(200),
     ctx.json({
       success: true,
-      message: `Wish status updated for ${id}.`,
+      response: {
+        id: id,
+        placeName: "명물토스트",
+        type: "RESTAURANT",
+      },
+      error: null,
     }),
   );
 });
