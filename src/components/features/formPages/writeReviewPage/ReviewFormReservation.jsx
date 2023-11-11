@@ -17,27 +17,35 @@ const ReviewFormReservation = ({ reservation }) => {
   const { hide } = useContext(ModalContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (rating === 0) {
-      setErrorMsg("Please select score");
+    try {
+      e.preventDefault();
+      if (rating === 0) {
+        alert("Please select score");
+        setErrorMsg("Please select score");
+        return;
+      }
+      if (description === "") {
+        alert("Please write review");
+        setErrorMsg("Please write review");
+        return;
+      }
+      if (file.length === 0) {
+        alert("Please upload image");
+        setErrorMsg("Please upload image");
+        return;
+      }
+      await postReview[reservation.type](
+        reservation.placeId,
+        rating,
+        description,
+        file,
+      );
+      alert("Successfully posted review");
+      hide();
+    } catch (e) {
+      alert("Failed to post review due to server error");
       return;
     }
-    if (description === "") {
-      setErrorMsg("Please write review");
-      return;
-    }
-    if (file.length === 0) {
-      setErrorMsg("Please upload image");
-      return;
-    }
-    const result = await postReview[reservation.type](
-      reservation.placeId,
-      rating,
-      description,
-      file,
-    );
-    alert(result.message);
-    hide();
   };
 
   return (

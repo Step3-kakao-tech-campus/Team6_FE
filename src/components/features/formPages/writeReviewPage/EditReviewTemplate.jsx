@@ -38,15 +38,16 @@ const EditReviewTemplate = ({
       setErrorMsg("Please write review");
       return;
     }
+    if (file.length === 0) {
+      setErrorMsg("Please upload image");
+      return;
+    }
+    if (deleteFile.length === 0) {
+      setDeleteFile(["noDeletion"]);
+    }
     try {
-      const result = await modifyReview[type](
-        placeId,
-        rating,
-        description,
-        file,
-        deleteFile,
-      );
-      alert("Successfully modified review")
+      await modifyReview[type](placeId, rating, description, file, deleteFile);
+      alert("Successfully modified review");
       navigate(-1);
     } catch (e) {
       alert("Failed to modify review due to server error");
