@@ -24,7 +24,9 @@ const SearchPage = () => {
   const [customError, setCustomError] = useState(null);
 
   useEffect(() => {
-    if (!query.trim()) {
+    if (query.trim()) {
+      handleSearch();
+    } else {
       setCustomError("Please enter a search term.");
     }
   }, [query]);
@@ -37,11 +39,10 @@ const SearchPage = () => {
     }
 
     try {
-      let results = {};
+      const results = await search(query);
 
       switch (filter) {
         case "all":
-          results = await search(query);
           break;
         case "restaurants":
           results.restaurants = await restaurantSearch(query);
@@ -57,11 +58,11 @@ const SearchPage = () => {
       }
       setSearchResults(results);
     } catch (error) {
-      console.log(error);
       setCustomError("Failed to fetch results. Please try again.");
     }
   };
 
+  console.log(searchResults);
   return (
     <div className="mb-20 h-screen w-full overflow-y-auto">
       <SearchBar
