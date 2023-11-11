@@ -27,7 +27,7 @@ import {
 } from "./get/wishlist";
 import { loginHandler, registerHandler } from "./account/account";
 import { getUserinfoHandler } from "./get/userinfo";
-import { editUserHandler } from "./patch/userinfo";
+import {editUserHandler, uploadUserImageHandler} from "./patch/userinfo";
 import {
   getFestivalReservationHandler,
   getRestaurantReservationHandler,
@@ -74,6 +74,7 @@ export const handlers = [
   registerHandler,
   getUserinfoHandler,
   editUserHandler,
+  uploadUserImageHandler,
 
   // Calendar
   getRestaurantCalendarHandler,

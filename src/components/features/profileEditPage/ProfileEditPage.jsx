@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { useQuery, useMutation } from "react-query";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { user, editUser } from "../../../apis/user";
 import InputGroup from "../../molecules/InputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
 import ButtonBack from "../../atoms/ButtonBack";
-import { set } from "lodash";
+import Photo from "../../atoms/Photo";
+import ErrorBox from "../../atoms/ErrorBox";
+import {ModalContext} from "../../../App";
+import ProfileImageEditTemplate from "./ProfileImageEditTemplate";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -19,7 +22,7 @@ const ProfileEditPage = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    if (data?.data?.response) {
+    if (data) {
       setSuccessMessage("");
       setErrorMessage("");
     }
@@ -40,7 +43,7 @@ const ProfileEditPage = () => {
             /^[a-zA-Z]+$/,
             "Name must contain at least 1 letter and only alphabetic characters are allowed.",
           ),
-        nickname: yup
+        nickName: yup
           .string()
           .required("Nickname is required.")
           .matches(
@@ -59,11 +62,11 @@ const ProfileEditPage = () => {
   });
 
   useEffect(() => {
-    if (data?.data?.response) {
+    if (data) {
       reset({
-        name: data.data.response.name,
-        nickname: data.data.response.nickname,
-        email: data.data.response.email,
+        name: data?.name,
+        nickName: data?.nickName,
+        email: data?.email,
       });
     }
   }, [data, reset]);
@@ -84,6 +87,14 @@ const ProfileEditPage = () => {
   const onSubmit = (formData) => {
     mutation.mutate(formData);
   };
+  // 파일 업로드
+
+  const {show, hide } = useContext(ModalContext);
+  const onOpenImageChange = (e) => {
+    show(<ProfileImageEditTemplate initImageURL={data?.image} />)
+  }
+
+  const navigate = useNavigate();
 
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
@@ -103,6 +114,25 @@ const ProfileEditPage = () => {
             <AiOutlineHome size={24} />
           </Button>
         </div>
+        <div className={"avatar-wrapper flex w-full justify-center "}>
+          <div
+            className={"relative overflow-hidden rounded-full"}
+            onClick={onOpenImageChange}
+          >
+            <Photo
+              src={data?.image}
+              alt={data?.name}
+              className={"mx-auto h-40 w-40 rounded-full"}
+            />
+            <div
+              className={
+                "edit-avatar-sign absolute bottom-0 w-full bg-black py-2 text-center text-xl font-semibold text-tripKoOrange-100 opacity-70"
+              }
+            >
+              Edit
+            </div>
+          </div>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup
             label="Name"
@@ -113,10 +143,10 @@ const ProfileEditPage = () => {
           />
           <InputGroup
             label="Nickname"
-            name="nickname"
+            name="nickName"
             type="text"
             register={register}
-            errorMsg={errors.nickname?.message}
+            errorMsg={errors.nickName?.message}
           />
           <InputGroup
             label="Email"
@@ -139,7 +169,7 @@ const ProfileEditPage = () => {
         )}
         {errorMessage && (
           <div className="alert alert-danger font-semibold text-red-500">
-            {errorMessage}
+            <ErrorBox>{errorMessage}</ErrorBox>
           </div>
         )}
       </div>

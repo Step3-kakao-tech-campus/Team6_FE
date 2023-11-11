@@ -30,3 +30,17 @@ export const editUserHandler = rest.patch("/userinfo/edit", (req, res, ctx) => {
     }),
   );
 });
+
+export const uploadUserImageHandler = rest.post(
+  "/userinfo/image",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: "https://picsum.photos/200",
+        error: null,
+      }),
+    );
+  },
+);
