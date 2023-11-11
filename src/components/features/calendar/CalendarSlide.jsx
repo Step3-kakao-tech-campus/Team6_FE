@@ -1,6 +1,5 @@
 import CalendarDate from "./CalendarDate";
 import {isInPeriod, isOperatingDay, isSameDay, stringToDate} from "./utils";
-import { useMemo } from "react";
 
 const CalendarSlide = ({
   monthState,

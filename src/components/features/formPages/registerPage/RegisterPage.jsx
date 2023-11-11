@@ -99,6 +99,7 @@ const RegisterPage = () => {
               return;
             }
 
+            alert(err.error.message);
             setErrorMsgFromBE(err.error.message);
           });
       } else {

@@ -63,7 +63,7 @@ const Carousel = ({ slides }) => {
       setEnabled(false);
       setTimeout(() => {
         setEnabled(true);
-      }, 400);
+      }, 600);
     }
   };
 
@@ -73,7 +73,7 @@ const Carousel = ({ slides }) => {
       setEnabled(false);
       setTimeout(() => {
         setEnabled(true);
-      }, 400);
+      }, 600);
     }
   };
 

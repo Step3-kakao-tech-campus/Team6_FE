@@ -3,31 +3,20 @@ import MapIcon from "../../atoms/MapIcon";
 import Photo from "../../atoms/Photo";
 import Stamp from "../../atoms/Stamp";
 import { getReserveText } from "../../features/reservationListPage/utils";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../../../App";
 import ReviewFormReservation from "../../features/formPages/writeReviewPage/ReviewFormReservation";
-import { useQuery } from "react-query";
-import { getIsReviewed } from "../../../apis/review";
 import Button from "../../atoms/Button";
+import { isReviewable } from "./utils";
+import { BsFillPersonFill } from "react-icons/bs";
 
-const ReservationCard = ({ reservation, reviewable }) => {
-  const status = useMemo(
-    () => getReserveText(reservation.status),
-    [reservation.status],
-  );
-
-  const { data } = useQuery(
-    `isReviewable${reservation.type}/${reservation.id}`,
-    () => {
-      return getIsReviewed(reservation.id, reservation.type);
-    },
-  );
+const ReservationCard = ({ reservation }) => {
 
   const navigate = useNavigate();
   const navigateToDetail = (e) => {
     e.stopPropagation();
-    navigate(`/${reservation.type}/${reservation.id}`);
+    navigate(`/${reservation.type.toLowerCase()}/${reservation.id}`);
   };
   const { show } = useContext(ModalContext);
 
@@ -66,7 +55,11 @@ const ReservationCard = ({ reservation, reviewable }) => {
             "reservation-content-bottom flex items-center justify-between"
           }
         >
-          {reviewable && !data?.reviewed && (
+          {isReviewable(
+            reservation.status,
+            reservation.date,
+            reservation.time,
+          ) && (
             <Button
               as={"button"}
               className={
@@ -81,7 +74,7 @@ const ReservationCard = ({ reservation, reviewable }) => {
               Write Review
             </Button>
           )}
-          {data?.reviewed && (
+          {reservation?.status === "리뷰완료" && (
             <span
               className={
                 "reservation-bottom cursor-pointer text-tripKoOrange-500"
@@ -92,8 +85,17 @@ const ReservationCard = ({ reservation, reviewable }) => {
           )}
         </div>
         <Stamp className={"absolute bottom-4 left-1 rotate-12 bg-white"}>
-          {status}
+          {getReserveText(reservation.status)}
         </Stamp>
+        <div
+          className={
+            "absolute bottom-2 right-2 flex text-2xl text-tripKoOrange-500"
+          }
+          aria-label={`the number of people reserved ${reservation.headCount}`}
+        >
+          <BsFillPersonFill color={"#ff4000"} size={30} />
+          {reservation?.headCount}
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { BiImage, BiPlus } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
 import HorizontalListSection from "../../../carousel/HorizontalListSection";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import Button from "../../../../atoms/Button";
+import Photo from "../../../../atoms/Photo";
+import {IoMdClose} from "react-icons/io";
 
 /**
  * 이미지를 업로드하는 컴포넌트
@@ -52,7 +53,7 @@ const ImageModifier = ({
           <div className={"image-wrapper relative h-40 w-40"} key={index}>
             <Button
               as={"button"}
-              className={"delete-button absolute right-2 top-2"}
+              className={"delete-button absolute right-2 top-2 bg-white rounded-full opacity-70"}
               onClick={() => {
                 // 이미지를 삭제할 때 이미지가 서버에 있는 이미지인지 staged 이미지인지 구분해서 삭제
                 if (index < imageOnServer.length) {
@@ -67,10 +68,10 @@ const ImageModifier = ({
                 }
               }}
             >
-              <AiOutlineCloseCircle color={"#ff0000"} size={20} />
+              <IoMdClose color={"#ff7000"} size={30} />
             </Button>
 
-            <img
+            <Photo
               key={index}
               className="h-40 w-40 object-cover"
               src={url}
@@ -104,7 +105,8 @@ const ImageModifier = ({
       <HorizontalListSection hideButton={true}>
         <div className="preview-wrapper flex gap-2">
           {preview}
-          <button
+          <Button
+              as={"button"}
             onClick={handleFileButtonClick}
             className={
               "relative flex h-40 w-40 items-center justify-center bg-gray-300"
@@ -112,7 +114,7 @@ const ImageModifier = ({
             aria-label="image-upload-button"
           >
             <BiPlus color={"#000000"} size={50} />
-          </button>
+          </Button>
         </div>
       </HorizontalListSection>
     </aside>

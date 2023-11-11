@@ -87,6 +87,7 @@ const HomePage = () => {
                   name={spot.name}
                   address={spot.address}
                   to={`touristSpot/${spot.id}`}
+                  averageRating={spot.averageRating}
                 />
               ))}
           </HorizontalListSectionMediaQuery>

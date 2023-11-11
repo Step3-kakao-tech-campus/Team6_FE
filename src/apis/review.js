@@ -159,8 +159,6 @@ export const getMyReview = async () => {
 
 export const deleteReview = async (reviewId) => {
   const { type } = await getMyReviewById(reviewId);
-  // console.log(reviewInfo)
   const result = await instance.delete(`/${type}/reviews/${reviewId}`);
-  // throw new Error("삭제되었습니다.");
   return result.data.response;
 };
