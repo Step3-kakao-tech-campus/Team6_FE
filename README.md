@@ -1,28 +1,18 @@
 # TripKoFE
 
-## 작업 내역
-- [x] 홈페이지 작성
-- [x] 검색페이지 작성
-- [x] 상세페이지 작성 
-- [x] 리뷰 페이지
-- [x] 예약 페이지
-- [x] 음식 검색 페이지
-- [x] 음식 상세 페이지
-## 진행중
+<img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
 
-## TODO NOW
-- [ ] Redux를 이용한 nav indicator 상태관리
-- [ ] 변경된 api에 따른 review
-- [ ] 변경된 api에 따른 spot detail page
-- [ ] 변경된 api에 따른 food detail page
-- [ ] 위시리스트 추가
-- [ ] 예약 내역 확인
-- [ ] 예약 기능
-- [ ] 위시리스트 페이지
-- [ ] 사용자 정보 페이지
-- [ ] 마이페이지
-- [ ] 마이페이지 수정
-      
+
+## 프로젝트 소개
+
+
+
 ## 디렉터리 구조
 
 ```
