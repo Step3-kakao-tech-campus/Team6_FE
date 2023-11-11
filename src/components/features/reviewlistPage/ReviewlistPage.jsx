@@ -11,7 +11,6 @@ const ReviewlistPage = () => {
   const {
     data: reviewsData,
     isLoading,
-    error,
   } = useQuery("myreviews", getMyReview);
 
   if (isLoading) return <LoadingPage />;
