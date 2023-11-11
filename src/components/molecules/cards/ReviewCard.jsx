@@ -24,7 +24,7 @@ const ReviewCard = ({ review }) => {
           <span className={"text-sm text-gray-500"}>{review.visitTime}</span>
           <div className={"review-rating flex text-sm text-gray-500"}>
             <StarRating averageRating={review.rating} />
-            {review.rating.toFixed(1)}
+            {review?.rating.toFixed(1)}
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ const ReviewForm = ({
               "selected-score text-3xl font-semibold text-tripKoOrange-500"
             }
           >
-            {score.toFixed(1)}/5.0
+            {score?.toFixed(1)}/5.0
           </span>
         </div>
       </div>

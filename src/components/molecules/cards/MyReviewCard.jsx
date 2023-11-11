@@ -24,7 +24,9 @@ const MyReviewCard = ({ review }) => {
 
   return (
     <div className="review-card shadow-rounded-card relative flex flex-col gap-2 p-4">
-      <div className={"review-control-buttons absolute right-3 top-3 flex gap-4"}>
+      <div
+        className={"review-control-buttons absolute right-3 top-3 flex gap-4"}
+      >
         <Link
           to={`/reviews/${review.reviewId}`}
           className="review-card-header flex gap-2"
@@ -45,7 +47,7 @@ const MyReviewCard = ({ review }) => {
         <span className="text-sm text-gray-500">{review.visitDay}</span>
         <div className="review-rating flex text-sm text-gray-500">
           <StarRating averageRating={review.rating} />
-          {review.rating.toFixed(1)}
+          {review?.rating.toFixed(1)}
         </div>
       </div>
 

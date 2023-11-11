@@ -27,7 +27,7 @@ const PlacePoster = ({ image, name, address, to, alt, averageRating }) => {
       </div>
       <div className={"place-card-score flex items-center text-sm"}>
         <StarRating averageRating={averageRating} />
-        {averageRating.toFixed(1)}
+        {averageRating?.toFixed(1)}
       </div>
     </Link>
   );
