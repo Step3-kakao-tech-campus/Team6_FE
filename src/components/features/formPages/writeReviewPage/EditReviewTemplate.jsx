@@ -83,6 +83,7 @@ const EditReviewTemplate = ({
           "review-form-submit-button rounded-full bg-tripKoOrange p-2 px-4 text-lg font-semibold text-white"
         }
         onClick={handleSubmit}
+        aria-label={"submit-review"}
       >
         Edit Review
       </Button>
