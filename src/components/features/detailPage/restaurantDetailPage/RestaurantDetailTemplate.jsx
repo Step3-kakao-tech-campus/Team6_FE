@@ -184,7 +184,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Address"} value={restaurant?.address} />
           <InfoElement title={"Contact"} value={restaurant?.contactInfo} />
           <InfoElement title={"Operating Hours"} value={restaurant?.open} />
-          <InfoElement title={"Break Time"} value={restaurant?.breakTime} />
+          <InfoElement title={"Break Time"} value={restaurant?.breakTime==="null~null"? "No break":restaurant?.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
         <div className={"flex flex-row items-center justify-between font-bold text-2xl px-2 text-tripKoOrange-500"}>

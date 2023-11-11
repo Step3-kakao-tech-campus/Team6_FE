@@ -78,6 +78,7 @@ const ImageUploader = ({ setFile, file, multiple }) => {
         );
       }
     }
+    //  eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file]);
 
   const handleFileButtonClick = (e) => {

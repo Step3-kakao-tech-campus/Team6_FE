@@ -84,6 +84,7 @@ const ImageModifier = ({
       setPreview(newPreview);
     };
     generatePreview();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [file, imageOnServer]);
 
   const handleFileButtonClick = (e) => {
