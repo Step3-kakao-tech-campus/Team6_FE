@@ -27,7 +27,7 @@ const LoginPage = () => {
       e.preventDefault();
       if (validateId() && validatePassword()) {
         login({
-          id: id,
+          memberId: id,
           password: password,
         })
           .then((res) => {
@@ -35,7 +35,10 @@ const LoginPage = () => {
             window.location.href = "/";
           })
           .catch((err) => {
-            setErrorMsgFromBE(err.message);
+            if (err.message) setErrorMsgFromBE(err.message);
+            else {
+              setErrorMsgFromBE("Unknown error");
+            }
           });
       }
     },
