@@ -31,6 +31,9 @@ export const isInPeriod = (targetDay, startDate, endDate) => {
 };
 
 export const stringToDate = (dateString) => {
+  if (dateString === undefined) {
+    return undefined;
+  }
   let [year, month, date] = dateString.split("-");
   if (year.length === 2) {
     year = "20" + year;

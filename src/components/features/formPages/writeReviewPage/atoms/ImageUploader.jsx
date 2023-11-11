@@ -17,7 +17,6 @@ import {IoMdClose} from "react-icons/io";
 const ImageUploader = ({ setFile, file, multiple }) => {
   const [preview, setPreview] = useState(null);
   const fileRef = useRef();
-  console.log("file", file);
 
   const handleFileOnChange = (e) => {
     const files = e.target.files;
