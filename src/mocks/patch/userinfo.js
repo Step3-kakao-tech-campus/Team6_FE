@@ -1,11 +1,9 @@
 import { rest } from "msw";
-import { USER } from "../datas/user";
+import { accounts } from "../datas/accounts";
 
 export const editUserHandler = rest.patch("/userinfo/edit", (req, res, ctx) => {
   const { email } = req.body;
-
-  // USER 데이터에 있는 이메일과 일치하는지 확인
-  const isEmailUsed = USER.some((user) => user.email === email);
+  const isEmailUsed = accounts.some((user) => user.email === email);
 
   if (isEmailUsed) {
     // 이메일이 이미 사용 중인 경우

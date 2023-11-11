@@ -10,6 +10,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
 import ButtonBack from "../../atoms/ButtonBack";
+import { set } from "lodash";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -70,9 +71,10 @@ const ProfileEditPage = () => {
   const mutation = useMutation((newData) => editUser(newData), {
     onSuccess: () => {
       setSuccessMessage("Profile updated successfully!");
+      setErrorMessage("");
     },
     onError: (error) => {
-      console.log(error);
+      setSuccessMessage("");
       setErrorMessage(
         error.message || "An error occurred while updating the profile.",
       );
