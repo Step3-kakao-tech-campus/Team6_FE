@@ -124,7 +124,7 @@ const FestivalDetailTemplate = ({ festival }) => {
       </div>
       <div
         className={
-          "festival-detail-content relative mt-[50rem] bg-white pb-[8rem]"
+          "festival-detail-content relative mt-[20rem] bg-white pb-[8rem]"
         }
       >
         <SectionTitle title={"Information"} />
