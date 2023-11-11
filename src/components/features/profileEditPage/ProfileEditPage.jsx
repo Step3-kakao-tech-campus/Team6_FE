@@ -11,6 +11,7 @@ import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
 import ButtonBack from "../../atoms/ButtonBack";
 import Photo from "../../atoms/Photo";
+import { set } from "lodash";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -71,8 +72,10 @@ const ProfileEditPage = () => {
   const mutation = useMutation((newData) => editUser(newData), {
     onSuccess: () => {
       setSuccessMessage("Profile updated successfully!");
+      setErrorMessage("");
     },
     onError: (error) => {
+      setSuccessMessage("");
       setErrorMessage(
         error.message || "An error occurred while updating the profile.",
       );
@@ -160,7 +163,9 @@ const ProfileEditPage = () => {
           <div className="alert alert-success">{successMessage}</div>
         )}
         {errorMessage && (
-          <div className="alert alert-danger">{errorMessage}</div>
+          <div className="alert alert-danger font-semibold text-red-500">
+            {errorMessage}
+          </div>
         )}
       </div>
     </div>

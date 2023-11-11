@@ -20,9 +20,14 @@ import {
 } from "./get/review";
 import { getTouristSpotHandler } from "./get/touristSpot";
 import { searchFoodHandler, getFoodHandler } from "./get/food";
-import { getWishlistHandler } from "./get/wishlist";
+import {
+  getFestivalWishlistHandler,
+  getRestaurantWishlistHandler,
+  getTouristSpotWishlistHandler,
+} from "./get/wishlist";
 import { loginHandler, registerHandler } from "./account/account";
-import { editUserHandler, getUserinfoHandler } from "./get/userinfo";
+import { getUserinfoHandler } from "./get/userinfo";
+import { editUserHandler } from "./patch/userinfo";
 import {
   getFestivalReservationHandler,
   getRestaurantReservationHandler,
@@ -56,8 +61,11 @@ export const handlers = [
   getTouristSpotHandler,
   getFoodHandler,
 
+  getRestaurantWishlistHandler,
+  getFestivalWishlistHandler,
+  getTouristSpotWishlistHandler,
+
   //wishlist
-  getWishlistHandler,
   postWishHandler,
   deleteWishHandler,
 
