@@ -5,11 +5,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { user, editUser } from "../../../apis/user";
 import InputGroup from "../../molecules/InputGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
 import ButtonBack from "../../atoms/ButtonBack";
+import Photo from "../../atoms/Photo";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -81,6 +82,9 @@ const ProfileEditPage = () => {
   const onSubmit = (formData) => {
     mutation.mutate(formData);
   };
+  // 파일 업로드
+
+  const navigate = useNavigate();
 
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
@@ -99,6 +103,27 @@ const ProfileEditPage = () => {
           <Button as={Link} to="/" className="mt-2" aria-label="home-button">
             <AiOutlineHome size={24} />
           </Button>
+        </div>
+        <div className={"avatar-wrapper flex w-full justify-center "}>
+          <div
+            className={"relative overflow-hidden rounded-full"}
+            onClick={() => {
+              navigate("/userinfo/edit/image");
+            }}
+          >
+            <Photo
+              src={data?.image}
+              alt={data?.name}
+              className={"mx-auto h-40 w-40 rounded-full"}
+            />
+            <div
+              className={
+                "edit-avatar-sign absolute bottom-0 w-full bg-black py-2 text-center text-xl font-semibold text-tripKoOrange-100 opacity-70"
+              }
+            >
+              Edit
+            </div>
+          </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup
