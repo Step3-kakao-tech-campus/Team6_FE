@@ -19,12 +19,10 @@ const PlacePoster = ({ image, name, address, to, alt, averageRating }) => {
       <div className={"place-card-info"}>
         <CardTitle title={name} lineClamp={2} />
         <div className="place-card-address line-clamp-2 w-full">{address}</div>
-        {
-          averageRating &&
           <div className={"place-card-score flex items-center text-sm"}>
-            <StarRating averageRating={averageRating} />{averageRating}
+            <StarRating averageRating={averageRating} />{averageRating.toFixed(1)}
           </div>
-        }
+
       </div>
     </Link>
   );
