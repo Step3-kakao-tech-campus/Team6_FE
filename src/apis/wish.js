@@ -1,13 +1,23 @@
 import instance from "./api";
 
 export const addWish = async (id) => {
-  return await instance
-    .post(`/wishlist/${id}`)
-    .then((response) => ({
-      isSuccess: true,
+  try {
+    const response = await instance.post(`/wishlist/${id}`);
+    return {
+      success: true,
       message: response.data.message,
-    }))
-    .catch((error) => Promise.reject(error));
+    };
+  } catch (error) {
+    const status = error.response?.status || 500;
+    const message =
+      error.response?.data?.message || "알 수 없는 오류가 발생했습니다.";
+
+    return {
+      success: false,
+      status,
+      message,
+    };
+  }
 };
 
 export const deleteWish = async (id) => {
