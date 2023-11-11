@@ -29,6 +29,7 @@ const SearchPage = () => {
     } else {
       setCustomError("Please enter a search term.");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const handleSearch = async () => {
