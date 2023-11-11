@@ -8,7 +8,7 @@ import ReviewForm from "./organisms/ReviewForm";
 
 const ReviewFormTouristSpot = ({ touristSpot }) => {
   const [rating, setRating] = useState(0);
-  const [file, setFile] = useState(""); // 이미지 파일
+  const [file, setFile] = useState([]); // 이미지 파일
   const [errorMsg, setErrorMsg] = useState(null); // 에러 메시지
   const [description, setDescription] = useState(""); // 리뷰 텍스트
   const onChangeReviewText = (e) => {
@@ -26,7 +26,11 @@ const ReviewFormTouristSpot = ({ touristSpot }) => {
       setErrorMsg("Please write review");
       return;
     }
-    const result = await postReview.touristSpot(
+    if (file.length === 0) {
+        setErrorMsg("Please upload image");
+        return;
+    }
+    const result = await postReview.TOURIST_SPOT(
       touristSpot.id,
       rating,
       description,
