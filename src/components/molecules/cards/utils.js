@@ -37,7 +37,6 @@ export const isTimeOver = (time) => {
  * @returns {boolean}
  */
 export const isReviewable = (status, date, time) => {
-    console.log(status, date, time)
     if (status !== "예약완료") return false;
     return isDateOver(date) && isTimeOver(time);
 };
