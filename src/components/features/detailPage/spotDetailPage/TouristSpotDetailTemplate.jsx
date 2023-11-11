@@ -62,6 +62,9 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
           <InfoElement title={"Address"} value={touristSpot.address} />
         </div>
         <SectionTitle title={"Reviews"} />
+        <div className={"flex flex-row items-center justify-between font-bold text-2xl px-2 text-tripKoOrange-500"}>
+          {touristSpot?.averageRating}/5.0
+        </div>
         {reviews && <ReviewCards reviews={reviews.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <div className={"review-input-wrapper flex flex-col gap-2"}>

@@ -187,6 +187,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant?.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
+        <div className={"flex flex-row items-center justify-between font-bold text-2xl px-2 text-tripKoOrange-500"}>
+          {restaurant?.averageRating}/5.0
+        </div>
         {reviews && (
           <ReviewCards reviews={reviews.reviews.slice(0, 2)} />
         )}

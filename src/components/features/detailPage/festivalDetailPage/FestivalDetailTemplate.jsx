@@ -141,6 +141,9 @@ const FestivalDetailTemplate = ({ festival }) => {
           <InfoElement title={"Price"} value={`₩${comma(festival.price)}`} />
         </div>
         <SectionTitle title={"Reviews"} />
+        <div className={"flex flex-row items-center justify-between font-bold text-2xl px-2 text-tripKoOrange-500"}>
+          {festival?.averageRating}/5.0
+        </div>
         {data && <ReviewCards reviews={data.reviews.slice(0, 2)} />}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         <Button
