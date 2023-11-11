@@ -1,10 +1,10 @@
 import instance from "./api";
 
 export const login = async (data) => {
-  const { id, password } = data;
+  const { memberId, password } = data;
   return instance
     .post("/login", {
-      id,
+      memberId,
       password,
     })
     .then((response) => {
