@@ -8,7 +8,6 @@ import { utils } from "./utils";
 import SectionTitle from "../../atoms/SectionTitle";
 import HorizontalListSectionMediaQuery from "../carousel/HorizontalListSectionMediaQuery";
 import SearchBar from "../../molecules/SearchBar";
-import { search } from "../../../apis/search";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -30,7 +29,6 @@ const HomePage = () => {
   const [query, setQuery] = useState("");
 
   const handleSearch = async (searchQuery) => {
-    await search(searchQuery);
     navigate(`/search?location=${encodeURIComponent(searchQuery)}`);
   };
 

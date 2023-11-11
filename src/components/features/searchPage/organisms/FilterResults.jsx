@@ -20,7 +20,7 @@ const FilterResults = ({ filter, searchResults }) => {
       ) : null}
       {filter === "all" || filter === "festivals" ? (
         <div>
-          <h2 className="m-4 text-xl font-bold">Festivals</h2>
+          <h2 className="mx-4 text-xl font-bold">Festivals</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2">
             {searchResults?.festivals?.map((festival, index) => (
               <Link to={`/festival/${festival.id}`}>
@@ -32,7 +32,7 @@ const FilterResults = ({ filter, searchResults }) => {
       ) : null}
       {filter === "all" || filter === "touristSpots" ? (
         <div>
-          <h2 className="m-4 text-xl font-bold">Tourist Spots</h2>
+          <h2 className="mx-4 text-xl font-bold">Tourist Spots</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {searchResults?.touristSpots?.map((touristSpot, index) => (
               <Link to={`/touristSpot/${touristSpot.id}`}>
