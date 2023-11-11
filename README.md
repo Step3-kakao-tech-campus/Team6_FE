@@ -12,7 +12,8 @@
 
 ### 최신 ERD 이미지
 
-- 
+![image](https://github.com/Step3-kakao-tech-campus/Team6_FE/assets/82745129/9e19fc11-7b7c-47b4-975b-6247d7003da8)
+ 
 
 ### 코딩에 대한 간략한 소개
 
@@ -85,7 +86,8 @@
 
 ## 구성도
 
-![구성도](%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%981.png)
+![KakaoTalk_Photo_2023-11-11-15-21-09](https://github.com/Step3-kakao-tech-campus/Team6_FE/assets/82745129/1f568612-43de-4e9a-bd2a-f824b51c2277)
+
 
 ## 프로젝트 설치
 
