@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { activatedColor, deactivatedColor } from "./constants";
 import NavIndicator from "./NavIndicator";
 import { setIndicator } from "../../../store/slice/navStateSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ModalContext } from "../../../App";
 
 const getIconColor = (id, activatedTab) => {
   return id === activatedTab ? activatedColor : deactivatedColor;
@@ -24,6 +25,8 @@ const BottomNavBar = () => {
     (state) => state.navState.navState.indicator,
   );
   const dispatch = useDispatch();
+
+  const { hide } = useContext(ModalContext);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -41,7 +44,12 @@ const BottomNavBar = () => {
   }, [location]);
 
   return (
-    <nav className="bottom-nav-bar width-flex-layout fixed bottom-0 z-[20] flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow">
+    <nav
+      className="bottom-nav-bar width-flex-layout fixed bottom-0 z-[20] flex justify-around divide-x divide-gray-300 rounded-t-2xl bg-white py-2 shadow-2xl drop-shadow"
+      onClick={(e) => {
+        hide();
+      }}
+    >
       {localActivatedTab !== 0 && (
         <NavIndicator activatedTab={localActivatedTab} />
       )}
