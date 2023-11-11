@@ -22,7 +22,7 @@ const FestivalDetailTemplate = ({ festival }) => {
   const [isActiveCalender, setIsActiveCalender] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedPeople, setSelectedPeople] = useState(1);
-
+  const [isReserving, setIsReserving] = useState(false);
   const navigate = useNavigate();
 
   const { data: operatingInfo } = useQuery(
@@ -39,18 +39,21 @@ const FestivalDetailTemplate = ({ festival }) => {
       alert("Please select date to visit");
       return;
     }
+    if (!selectedPeople) {
+      alert("Please enter number of people");
+      return;
+    }
     // date 를 YYYY-MM-DD 형식으로 변환
     const dateString = selectedDate.toISOString().split("T")[0];
-    const response = await reserveFestival(
-      festival.id,
-      dateString,
-      selectedPeople,
-    );
-    if (response.success) {
+    setIsReserving(true);
+    try {
+      await reserveFestival(festival.id, dateString, selectedPeople);
       alert("Reservation success");
       setIsActiveCalender(false);
-    } else {
+    } catch (error) {
       alert("Reservation failed");
+    } finally {
+      setIsReserving(false);
     }
   };
 
@@ -84,7 +87,7 @@ const FestivalDetailTemplate = ({ festival }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value <= 0) {
+                      if (e.target.value <= 0 && e.target.value !== "") {
                         alert("Please enter positive number");
                         return;
                       }
@@ -96,10 +99,11 @@ const FestivalDetailTemplate = ({ festival }) => {
                   as="button"
                   onClick={onReserve}
                   variant="link"
-                  className="rounded-button-[tripKoOrange] mt-4 flex h-12 w-full items-center justify-center rounded-full bg-tripKoOrange text-white"
+                  className="rounded-button-[tripKoOrange] mt-4 flex h-12 w-full items-center justify-center rounded-full bg-tripKoOrange text-white font-bold text-xl"
                   aria-label="reserve-button"
+                  disabled={isReserving}
                 >
-                  Reservation
+                  Reserve
                 </Button>
               </div>
             </div>

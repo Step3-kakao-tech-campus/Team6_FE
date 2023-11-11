@@ -1,4 +1,3 @@
-import { USER } from "../datas/user";
 import { rest } from "msw";
 
 export const getUserinfo = () => {
