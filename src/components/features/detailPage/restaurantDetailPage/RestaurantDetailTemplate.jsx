@@ -26,6 +26,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
   const [requestMessage, setRequestMessage] = useState("");
   const [selectedTime, setSelectedTime] = useState("Time To Visit");
   const [selectedPeople, setSelectedPeople] = useState(1);
+  const [isReserving, setIsReserving] = useState(false);
 
   const navigate = useNavigate();
 
@@ -47,18 +48,27 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
       alert("Please select date to visit");
       return;
     }
+    if (!selectedPeople) {
+      alert("Please enter number of people");
+      return;
+    }
     // date 를 YYYY-MM-DD 형식으로 변환
     const dateString = selectedDate.toISOString().split("T")[0];
-    const response = await reserveRestaurant(
-      restaurant.id,
-      dateString,
-      selectedPeople,
-    );
-    if (response.success) {
+    setIsReserving(true)
+    try {
+      await reserveRestaurant(
+          restaurant.id,
+          dateString,
+            selectedTime,
+          selectedPeople,
+          requestMessage,
+      );
       alert("Reservation success");
       setIsActiveCalender(false);
-    } else {
+    } catch (e) {
       alert("Reservation failed");
+    } finally {
+      setIsReserving(false);
     }
   };
 
@@ -105,7 +115,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value <= 0) {
+                      if (e.target.value <= 0 && e.target.value!=="" ) {
                         alert("Please enter positive number");
                         return;
                       }
@@ -129,8 +139,9 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 as="button"
                 onClick={onReserve}
                 variant="link"
-                className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-white"
+                className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-white font-bold text-xl"
                 aria-label="reserve-button"
+                disabled={isReserving}
               >
                 Reserve
               </Button>
@@ -177,7 +188,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         </div>
         <SectionTitle title={"Reviews"} />
         {reviews && (
-          <ReviewCards reviews={reviews.reviews.slice(0, 2)} count={2} />
+          <ReviewCards reviews={reviews.reviews.slice(0, 2)} />
         )}
         <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
         {
