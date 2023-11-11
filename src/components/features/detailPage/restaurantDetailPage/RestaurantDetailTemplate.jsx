@@ -54,14 +54,14 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
     }
     // date 를 YYYY-MM-DD 형식으로 변환
     const dateString = selectedDate.toISOString().split("T")[0];
-    setIsReserving(true)
+    setIsReserving(true);
     try {
       await reserveRestaurant(
-          restaurant.id,
-          dateString,
-            selectedTime,
-          selectedPeople,
-          requestMessage,
+        restaurant.id,
+        dateString,
+        selectedTime,
+        selectedPeople,
+        requestMessage,
       );
       alert("Reservation success");
       setIsActiveCalender(false);
@@ -115,7 +115,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                     placeholder={"Please enter number of people"}
                     value={selectedPeople}
                     onChange={(e) => {
-                      if (e.target.value <= 0 && e.target.value!=="" ) {
+                      if (e.target.value <= 0 && e.target.value !== "") {
                         alert("Please enter positive number");
                         return;
                       }
@@ -139,7 +139,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
                 as="button"
                 onClick={onReserve}
                 variant="link"
-                className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-white font-bold text-xl"
+                className="rounded-button-[tripKoOrange] my-2 h-12 w-full rounded-full bg-tripKoOrange text-xl font-bold text-white"
                 aria-label="reserve-button"
                 disabled={isReserving}
               >
@@ -187,13 +187,18 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
           <InfoElement title={"Break Time"} value={restaurant?.breakTime} />
         </div>
         <SectionTitle title={"Reviews"} />
-        <div className={"flex flex-row items-center justify-between font-bold text-2xl px-2 text-tripKoOrange-500"}>
+        <div
+          className={
+            "flex flex-row items-center justify-between px-2 text-2xl font-bold text-tripKoOrange-500"
+          }
+        >
           {restaurant?.averageRating}/5.0
         </div>
-        {reviews && (
-          <ReviewCards reviews={reviews.reviews.slice(0, 2)} />
-        )}
-        <ButtonAllReviews onClick={() => setIsActiveReview(true)} aria-label={"confirm-all-reviews-button"} />
+        {reviews && <ReviewCards reviews={reviews.reviews.slice(0, 2)} />}
+        <ButtonAllReviews
+          onClick={() => setIsActiveReview(true)}
+          aria-label={"confirm-all-reviews-button"}
+        />
         {
           <Button
             as={"button"}
