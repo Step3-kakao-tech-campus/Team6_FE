@@ -21,6 +21,8 @@ instance.interceptors.request.use(async (config) => {
   const refreshToken = localStorage.getItem("Refresh-Token");
   if (token) {
     config.headers.Authorization = token;
+  }
+  if (refreshToken) {
     config.headers["Refresh-Token"] = refreshToken;
   }
   return config;
@@ -34,10 +36,7 @@ instance.interceptors.response.use(
     }
     // token이 발급되었을 때
     if (response.headers["Authorization"]) {
-      const currentToken = localStorage.getItem("token");
-      if (currentToken !== response.headers["Authorization"]) {
-        localStorage.setItem("token", response.headers["Authorization"]);
-      }
+      localStorage.setItem("token", response.headers["Authorization"]);
     }
     return response;
   },
@@ -74,6 +73,8 @@ instanceFormData.interceptors.request.use(async (config) => {
   const refreshToken = localStorage.getItem("Refresh-Token");
   if (token) {
     config.headers.Authorization = token;
+  }
+  if (refreshToken) {
     config.headers["Refresh-Token"] = refreshToken;
   }
   return config;
@@ -83,6 +84,10 @@ instanceFormData.interceptors.response.use((response) => {
   // refresh token이 발급되었을 때
   if (response.headers["Refresh-Token"]) {
     localStorage.setItem("Refresh-Token", response.headers["Refresh-Token"]);
+  }
+  // token이 발급되었을 때
+  if (response.headers["Authorization"]) {
+    localStorage.setItem("token", response.headers["Authorization"]);
   }
   return response;
 });
