@@ -12,7 +12,7 @@ import WishlistCard from "../../molecules/cards/WishlistCard";
 import LoadingPage from "../loadingPage/LoadingPage";
 
 const mergeResults = (apiResults) => {
-  if (!apiResults) return [];
+  if (!Array.isArray(apiResults)) return [];
 
   return apiResults.reduce((acc, curr) => {
     if (curr?.isSuccess && Array.isArray(curr.result)) {
@@ -44,7 +44,6 @@ const WishlistPage = () => {
     isLoading,
     isError,
     error,
-    refetch,
   } = useQuery(["wishlist", filter], () => fetchWishlist[filter](), {
     keepPreviousData: true,
   });
@@ -52,9 +51,8 @@ const WishlistPage = () => {
   useEffect(() => {
     if (urlFilter !== filter) {
       setFilter(urlFilter);
-      refetch();
     }
-  }, [urlFilter, filter, refetch]);
+  }, [urlFilter, filter]);
 
   const handleFilterChange = (newFilter) => {
     navigate(`/userinfo/wishlist/${newFilter}`, { replace: true });
