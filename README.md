@@ -8,6 +8,7 @@
 <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
 <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
 </div>
+
 ## 프로젝트 소개
 
 한국을 여행하는 외국인들을 위한 여행지 추천, 예약, 리뷰 서비스입니다.
