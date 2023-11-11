@@ -9,14 +9,21 @@ const Modal = ({ children, isOpen, onClose }) => {
       }
     });
 
-    window.onpopstate = () => {
-      if (isOpen) {
-        onClose();
+    if (isOpen) {
+      console.log("lock!");
+      window.onpopstate = () => {
         window.history.forward();
-      }
-    };
-  }, []);
-
+        setTimeout(window.onpopstate = () => {
+        }, 50)
+        onClose();
+      };
+    }
+    else {
+      console.log("unlock!")
+      window.onpopstate = () => onClose();
+    }
+  }, [isOpen, onClose]);
+  console.log("isOpen", isOpen)
   return (
     <>
       <ModalBackground isOpened={isOpen} onClick={onClose} />
