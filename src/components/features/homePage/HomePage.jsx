@@ -10,17 +10,10 @@ import HorizontalListSectionMediaQuery from "../carousel/HorizontalListSectionMe
 import SearchBar from "../../molecules/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import LoadingPage from "../loadingPage/LoadingPage";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const dummySlides = [
-  {
-    image: "https://picsum.photos/200/300",
-  },
-  {
-    image: "https://picsum.photos/200/301",
-  },
-  {
-    image: "https://picsum.photos/200/302",
-  },
   {
     image: "/images/carousel/carousel1.jpg"
   },
@@ -34,7 +27,7 @@ const dummySlides = [
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { data } = useQuery("products", () => getHome());
+  const { data, isLoading, error } = useQuery("products", () => getHome());
   const [query, setQuery] = useState("");
   console.log(data)
   const handleSearch = async (searchQuery) => {
@@ -101,7 +94,10 @@ const HomePage = () => {
         </>
       )}
       {
-        // error && <ErrorSign error={error.response} />
+        isLoading && <LoadingPage />
+      }
+      {
+        error && <ErrorPage/>
       }
     </div>
   );
