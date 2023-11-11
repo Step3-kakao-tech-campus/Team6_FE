@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY . .
 
-ENV REACT_APP_API_URL=https://ka692d23662bca.user-app.krampoline.com/api/
+ENV REACT_APP_API_URL=https://k50c1bf82e6cfa.user-app.krampoline.com/api
 
 RUN npm ci
 RUN npm run build
