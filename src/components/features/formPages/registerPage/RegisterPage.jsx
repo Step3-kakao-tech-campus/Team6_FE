@@ -98,7 +98,6 @@ const RegisterPage = () => {
               alert("server error. please try again later.");
               return;
             }
-
             alert(err.error.message);
             setErrorMsgFromBE(err.error.message);
           });
