@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { user, editUser } from "../../../apis/user";
 import InputGroup from "../../molecules/InputGroup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
@@ -89,12 +89,10 @@ const ProfileEditPage = () => {
   };
   // 파일 업로드
 
-  const {show, hide } = useContext(ModalContext);
+  const {show} = useContext(ModalContext);
   const onOpenImageChange = (e) => {
     show(<ProfileImageEditTemplate initImageURL={data?.image} />)
   }
-
-  const navigate = useNavigate();
 
   if (isLoading) return <LoadingPage />;
   if (error) return <div>Error: {error.message}</div>;
@@ -118,6 +116,7 @@ const ProfileEditPage = () => {
           <div
             className={"relative overflow-hidden rounded-full"}
             onClick={onOpenImageChange}
+            aria-label={"change-profile-image"}
           >
             <Photo
               src={data?.image}

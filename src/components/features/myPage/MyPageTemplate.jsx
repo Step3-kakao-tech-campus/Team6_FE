@@ -73,6 +73,7 @@ const MyPageTemplate = ({ userDetails }) => {
           as="button"
           onClick={() => {
             localStorage.removeItem("token");
+            localStorage.removeItem("Refresh-Token")
             alert("You have successfully logged out.");
             navigate("/login");
             window.location.reload();

@@ -32,7 +32,7 @@ export const getReviewByIdAndType = async (id, type) => {
 export const organizeReview = (placeId, rating, description, file) => {
   const formData = new FormData();
   formData.append("placeId", placeId);
-  formData.append("rating", rating);
+  formData.append("rating", Math.ceil(rating));
   formData.append("description", description);
   formData.append("image", file);
   return formData;
@@ -47,7 +47,7 @@ export const organizeModifyReview = (
 ) => {
   const formData = new FormData();
   formData.append("placeId", placeId);
-  formData.append("rating", rating);
+  formData.append("rating", Math.ceil(rating));
   formData.append("description", description);
   formData.append("image", file);
   formData.append("deleteFile", deleteFile);

@@ -1,7 +1,6 @@
 # TripKoFE
 
 한국이 <span style="color:#FF8A00">**처음**</span>이라도, 한국어를 <span style="color:#FF8A00">**몰라도**</span>
-
 <span style="color:#FF8A00">**제약없이**</span> 즐기는 한국 로컬여행
 
 ## 필수 첨부자료

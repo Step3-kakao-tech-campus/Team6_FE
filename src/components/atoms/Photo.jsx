@@ -1,15 +1,9 @@
 import { cursorPointer } from "../../utils/classNameUtils";
-// import Modal from "./Modals/Modal";
-// import { useState } from "react";
 
 const Photo = ({ src, alt, className, onClick, extendable }) => {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   const handleClick = () => {
     if (onClick) {
       onClick();
-    } else if (extendable) {
-      // setIsModalOpen(true);
-    } else {
     }
   };
 

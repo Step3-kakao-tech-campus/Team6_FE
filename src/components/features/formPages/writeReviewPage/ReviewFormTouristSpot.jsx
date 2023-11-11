@@ -8,7 +8,7 @@ import ReviewForm from "./organisms/ReviewForm";
 
 const ReviewFormTouristSpot = ({ touristSpot }) => {
   const [rating, setRating] = useState(0);
-  const [file, setFile] = useState(""); // 이미지 파일
+  const [file, setFile] = useState([]); // 이미지 파일
   const [errorMsg, setErrorMsg] = useState(null); // 에러 메시지
   const [description, setDescription] = useState(""); // 리뷰 텍스트
   const onChangeReviewText = (e) => {
@@ -17,23 +17,30 @@ const ReviewFormTouristSpot = ({ touristSpot }) => {
   const { hide } = useContext(ModalContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (rating === 0) {
-      setErrorMsg("Please select score");
+    try {
+      e.preventDefault();
+      if (rating === 0) {
+        alert("Please select score");
+        setErrorMsg("Please select score");
+        return;
+      }
+      if (description === "") {
+        alert("Please write review");
+        setErrorMsg("Please write review");
+        return;
+      }
+      if (file.length === 0) {
+        alert("Please upload image");
+        setErrorMsg("Please upload image");
+        return;
+      }
+      await postReview.TOURIST_SPOT(touristSpot.id, rating, description, file);
+      alert("Successfully posted review");
+      hide();
+    } catch (e) {
+      alert("Failed to post review due to server error");
       return;
     }
-    if (description === "") {
-      setErrorMsg("Please write review");
-      return;
-    }
-    const result = await postReview.touristSpot(
-      touristSpot.id,
-      rating,
-      description,
-      file,
-    );
-    alert(result.message);
-    hide();
   };
 
   return (
@@ -49,12 +56,10 @@ const ReviewFormTouristSpot = ({ touristSpot }) => {
       >
         <SectionTitle title={"Review"}>Review Form</SectionTitle>
       </div>
-      <div className="place-card shadow-rounded-card flex flex-shrink-0 flex-col gap-1 p-2 md:w-[15rem]">
-        <div className={"place-card-info"}>
-          <CardTitle title={touristSpot.name} lineClamp={1} />
-          <div className="place-card-address line-clamp-2 w-full">
-            {touristSpot.address}
-          </div>
+      <div className={"place-card-info p-2"}>
+        <CardTitle title={touristSpot.name} lineClamp={1} />
+        <div className="place-card-address line-clamp-2 w-full">
+          {touristSpot.address}
         </div>
       </div>
       <ReviewForm
@@ -72,6 +77,7 @@ const ReviewFormTouristSpot = ({ touristSpot }) => {
           "review-form-submit-button rounded-full bg-tripKoOrange p-2 px-4 text-lg font-semibold text-white"
         }
         onClick={handleSubmit}
+        aria-label={"submit-review"}
       >
         Submit
       </Button>
