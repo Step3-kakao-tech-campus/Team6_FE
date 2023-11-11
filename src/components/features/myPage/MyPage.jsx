@@ -12,7 +12,7 @@ const MyPage = () => {
   if (error) return <div>Error occurred: {error.message}</div>;
 
   return (
-    <div className="userProfile-container flex h-screen w-full flex-col items-center justify-center overflow-y-auto pb-20">
+    <div className="userProfile-container flex min-h-screen w-full flex-col items-center justify-center overflow-y-auto pb-20">
       <MyPageTemplate userDetails={userDetails} />
     </div>
   );

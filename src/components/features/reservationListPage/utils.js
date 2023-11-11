@@ -15,10 +15,9 @@ export const sortReservation = (reservations) => {
 };
 
 export const RESERVE_STATUS = {
+    예약대기 : "Pending",
     예약완료 : "Reserved",
-    확인중 : "Checking",
-    예약거절 : "Rejected",
-    이용완료 : "Finished",
+    리뷰완료 : "Reviewed",
 }
 
 export const getReserveText = (status) => {

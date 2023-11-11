@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { modifyReview } from "../../../../apis/review";
 import Button from "../../../atoms/Button";
-import ReviewForm from "../writeReviewPage/organisms/ReviewForm";
+import ReviewForm from "./organisms/ReviewForm";
 
 const EditReviewTemplate = ({
   prevReview: {

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { BiImage, BiPlus } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
 import HorizontalListSection from "../../../carousel/HorizontalListSection";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Button from "../../../../atoms/Button";
+import Photo from "../../../../atoms/Photo";
+import {IoMdClose} from "react-icons/io";
 
 /**
  * 이미지를 업로드하는 컴포넌트
@@ -44,10 +46,10 @@ const ImageUploader = ({ setFile, file, multiple }) => {
                   setFile(newFile);
                 }}
               >
-                <AiOutlineCloseCircle color={"#ff0000"} size={20} />
+                  <IoMdClose color={"#ff7000"} size={30} />
               </Button>
 
-              <img
+              <Photo
                 key={index}
                 className="h-40 w-40 object-cover"
                 src={URL.createObjectURL(f)}
@@ -67,7 +69,7 @@ const ImageUploader = ({ setFile, file, multiple }) => {
             >
               <AiOutlineCloseCircle color={"#ff0000"} size={20} />
             </Button>
-            <img
+            <Photo
               className="h-full w-full object-cover"
               src={URL.createObjectURL(file)}
               alt="preview"
