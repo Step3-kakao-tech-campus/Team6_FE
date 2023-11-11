@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import { useQuery, useMutation } from "react-query";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -11,7 +11,9 @@ import Button from "../../atoms/Button";
 import LoadingPage from "../loadingPage/LoadingPage";
 import ButtonBack from "../../atoms/ButtonBack";
 import Photo from "../../atoms/Photo";
-import { set } from "lodash";
+import ErrorBox from "../../atoms/ErrorBox";
+import {ModalContext} from "../../../App";
+import ProfileImageEditTemplate from "./ProfileImageEditTemplate";
 
 const ProfileEditPage = () => {
   const { data, isLoading, error } = useQuery("userProfile", user);
@@ -87,6 +89,11 @@ const ProfileEditPage = () => {
   };
   // 파일 업로드
 
+  const {show, hide } = useContext(ModalContext);
+  const onOpenImageChange = (e) => {
+    show(<ProfileImageEditTemplate initImageURL={data?.image} />)
+  }
+
   const navigate = useNavigate();
 
   if (isLoading) return <LoadingPage />;
@@ -110,9 +117,7 @@ const ProfileEditPage = () => {
         <div className={"avatar-wrapper flex w-full justify-center "}>
           <div
             className={"relative overflow-hidden rounded-full"}
-            onClick={() => {
-              navigate("/userinfo/edit/image");
-            }}
+            onClick={onOpenImageChange}
           >
             <Photo
               src={data?.image}
@@ -138,10 +143,10 @@ const ProfileEditPage = () => {
           />
           <InputGroup
             label="Nickname"
-            name="nickname"
+            name="nickName"
             type="text"
             register={register}
-            errorMsg={errors.nickname?.message}
+            errorMsg={errors.nickName?.message}
           />
           <InputGroup
             label="Email"
@@ -164,7 +169,7 @@ const ProfileEditPage = () => {
         )}
         {errorMessage && (
           <div className="alert alert-danger font-semibold text-red-500">
-            {errorMessage}
+            <ErrorBox>{errorMessage}</ErrorBox>
           </div>
         )}
       </div>
