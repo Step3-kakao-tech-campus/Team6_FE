@@ -42,7 +42,6 @@ const WishlistPage = () => {
   const {
     data: queryData,
     isLoading,
-    isError,
     error,
   } = useQuery(["wishlist", filter], () => fetchWishlist[filter](), {
     keepPreviousData: true,

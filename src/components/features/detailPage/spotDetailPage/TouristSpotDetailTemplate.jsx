@@ -47,7 +47,7 @@ const TouristSpotDetailTemplate = ({ touristSpot }) => {
       </div>
       <div
         className={
-          "touristSpot-detail-content relative mt-[30rem] bg-white pb-[6rem]"
+          "touristSpot-detail-content relative mt-[24rem] bg-white pb-[6rem]"
         }
       >
         <SectionTitle title={"Information"} />

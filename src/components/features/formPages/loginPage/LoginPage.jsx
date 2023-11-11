@@ -35,7 +35,7 @@ const LoginPage = () => {
             window.location.href = "/";
           })
           .catch((err) => {
-            setErrorMsgFromBE(err);
+            setErrorMsgFromBE(err.message);
           });
       }
     },

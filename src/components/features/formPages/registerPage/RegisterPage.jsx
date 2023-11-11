@@ -84,9 +84,9 @@ const RegisterPage = () => {
         register({
           email: email,
           password: password,
-          username: username,
-          id: id,
-          nickname: nickname,
+          realName: username,
+          memberId: id,
+          nickName: nickname,
           country: nation,
         })
           .then((res) => {
@@ -94,10 +94,7 @@ const RegisterPage = () => {
             window.location.href = "/login";
           })
           .catch((err) => {
-            if (err.code === 500) {
-              alert("server error. please try again later.");
-              return;
-            }
+            console.log(err)
             alert(err.error.message);
             setErrorMsgFromBE(err.error.message);
           });

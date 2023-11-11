@@ -6,7 +6,7 @@ import EditReviewTemplate from "./EditReviewTemplate";
 const EditReviewPage = () => {
   const { id } = useParams();
 
-  const { data, error, isLoading } = useQuery(`review${id}`, () =>
+  const { data, error } = useQuery(`review${id}`, () =>
     getMyReviewById(id),
   );
 
