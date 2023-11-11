@@ -67,6 +67,7 @@ const ImageModifier = ({
                   setFile(newFile);
                 }
               }}
+              aria-label={"delete-image-button"}
             >
               <IoMdClose color={"#ff7000"} size={30} />
             </Button>

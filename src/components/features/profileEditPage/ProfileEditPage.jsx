@@ -116,6 +116,7 @@ const ProfileEditPage = () => {
           <div
             className={"relative overflow-hidden rounded-full"}
             onClick={onOpenImageChange}
+            aria-label={"change-profile-image"}
           >
             <Photo
               src={data?.image}

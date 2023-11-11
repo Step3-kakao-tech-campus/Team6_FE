@@ -190,7 +190,7 @@ const RestaurantDetailTemplate = ({ restaurant }) => {
         {reviews && (
           <ReviewCards reviews={reviews.reviews.slice(0, 2)} />
         )}
-        <ButtonAllReviews onClick={() => setIsActiveReview(true)} />
+        <ButtonAllReviews onClick={() => setIsActiveReview(true)} aria-label={"confirm-all-reviews-button"} />
         {
           <Button
             as={"button"}

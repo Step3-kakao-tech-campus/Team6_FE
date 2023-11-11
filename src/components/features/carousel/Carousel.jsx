@@ -94,8 +94,10 @@ const Carousel = ({ slides }) => {
       ))}
       {slides.length > 1 && (
         <>
-          <ScrollButtonRight onClick={onClickRightButton} />
-          <ScrollButtonLeft onClick={onClickLeftButton} />
+          <ScrollButtonRight onClick={onClickRightButton}
+          aria-label={"scroll-right-button"}/>
+          <ScrollButtonLeft onClick={onClickLeftButton}
+          aria-label={"scroll-left-button"}/>
         </>
       )}
     </div>

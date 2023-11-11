@@ -65,6 +65,7 @@ const ImageUploader = ({ setFile, file, multiple }) => {
               as={"button"}
               className={"delete-button absolute right-2 top-2"}
               onClick={() => setFile(null)}
+              aria-label={"delete-image-button"}
             >
               <AiOutlineCloseCircle color={"#ff0000"} size={20} />
             </Button>
