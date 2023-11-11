@@ -1,9 +1,9 @@
 # TripKoFE
 
-한국이 <span style="color:#FF8A00">**처음**</span>이라도, 한국어를 <span style="color:#FF8A00">**몰라도**</span>
-<span style="color:#FF8A00">**제약없이**</span> 즐기는 한국 로컬여행
+[한국이 <span style="color:#FF8A00">**처음**</span>이라도, 한국어를 <span style="color:#FF8A00">**몰라도**</span>
+<span style="color:#FF8A00">**제약없이**</span> 즐기는 한국 로컬여행](https://k50c1bf82e6cfa.user-app.krampoline.com/)
 
-https://k50c1bf82e6cfa.user-app.krampoline.com/
+
 
 ## 서비스 소개
 
@@ -131,7 +131,7 @@ TripKoFE
 
 ### 팀 내 배포 링크
 
-- 배포 중인 인스턴스 주소 모음
+https://k50c1bf82e6cfa.user-app.krampoline.com/
 
 ### 최신 ERD 이미지
 
