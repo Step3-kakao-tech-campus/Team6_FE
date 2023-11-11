@@ -85,7 +85,7 @@ const RegisterPage = () => {
           email: email,
           password: password,
           username: username,
-          id: id,
+          memberId: id,
           nickname: nickname,
           country: nation,
         })
