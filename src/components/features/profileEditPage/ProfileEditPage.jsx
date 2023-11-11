@@ -20,7 +20,7 @@ const ProfileEditPage = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    if (data?.data?.response) {
+    if (data) {
       setSuccessMessage("");
       setErrorMessage("");
     }
@@ -41,7 +41,7 @@ const ProfileEditPage = () => {
             /^[a-zA-Z]+$/,
             "Name must contain at least 1 letter and only alphabetic characters are allowed.",
           ),
-        nickname: yup
+        nickName: yup
           .string()
           .required("Nickname is required.")
           .matches(
@@ -60,11 +60,11 @@ const ProfileEditPage = () => {
   });
 
   useEffect(() => {
-    if (data?.data?.response) {
+    if (data) {
       reset({
-        name: data.data.response.name,
-        nickname: data.data.response.nickname,
-        email: data.data.response.email,
+        name: data?.name,
+        nickName: data?.nickName,
+        email: data?.email,
       });
     }
   }, [data, reset]);
