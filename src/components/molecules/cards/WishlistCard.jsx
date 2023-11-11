@@ -18,9 +18,9 @@ const WishlistCard = ({ wishlist }) => {
   return (
     <div onClick={handleCardClick} className="wishlist-card-container">
       <div className="wishlist-card shadow-rounded-card m-2 flex p-2">
-        {wishlist.mainImage && (
+        {wishlist.image && (
           <Photo
-            src={wishlist.mainImage}
+            src={wishlist.image}
             alt="Wishlist Item"
             className="wishlist-card__image h-28 w-28 rounded-lg object-cover"
           />

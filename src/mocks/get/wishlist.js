@@ -1,42 +1,40 @@
-import FESTIVALS from "../datas/festivals";
-import RESTAURANTS from "../datas/restaurants";
-import TOURIST_SPOTS from "../datas/touristSpots";
+import WISHLIST from "../datas/wishlist";
 import { rest } from "msw";
 
-export const getWishlist = (filter) => {
-  switch (filter) {
-    case "touristSpot":
-      return {
-        touristSpots: TOURIST_SPOTS.filter((item) => item.isWished),
-      };
-    case "restaurant":
-      return {
-        restaurants: RESTAURANTS.filter((item) => item.isWished),
-      };
-    case "festival":
-      return {
-        festivals: FESTIVALS.filter((item) => item.isWished),
-      };
-    default:
-      return {
-        touristSpots: TOURIST_SPOTS.filter((item) => item.isWished),
-        restaurants: RESTAURANTS.filter((item) => item.isWished),
-        festivals: FESTIVALS.filter((item) => item.isWished),
-      };
-  }
-};
-
-export const getWishlistHandler = rest.get(
-  "/userinfo/wishlist/:filter",
+export const getRestaurantWishlistHandler = rest.get(
+  "/userinfo/wishlist/restaurants",
   (req, res, ctx) => {
-    const { filter } = req.params;
-    const wishlistResponse = getWishlist(filter);
-
     return res(
       ctx.status(200),
       ctx.json({
         success: true,
-        response: wishlistResponse,
+        response: WISHLIST,
+      }),
+    );
+  },
+);
+
+export const getFestivalWishlistHandler = rest.get(
+  "/userinfo/wishlist/festivals",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: WISHLIST,
+      }),
+    );
+  },
+);
+
+export const getTouristSpotWishlistHandler = rest.get(
+  "/userinfo/wishlist/touristSpots",
+  (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        response: WISHLIST,
       }),
     );
   },

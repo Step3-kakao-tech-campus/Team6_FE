@@ -4,40 +4,44 @@ import Input from "../../atoms/Input";
 import { foodSearch } from "../../../apis/search";
 import { FiSearch } from "react-icons/fi";
 import FoodCard from "../../molecules/cards/FoodCard";
-import { useQuery } from "react-query";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  // const params = new URLSearchParams(location.search);
-  // const query = params.get("query");
   const [results, setResults] = useState([]);
   const [currentQuery, setCurrentQuery] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const query = params.get("query");
-    if (query) {
-      navigate(`/foods?query=${encodeURIComponent(query)}`, { replace: true });
-      fetchSearchResults(query);
-      setCurrentQuery(query);
-    } else {
-      setResults([]);
-      setCurrentQuery("");
-    }
-  }, [location.search, navigate]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const fetchSearchResults = async (query) => {
-    // const { data, isLoading, error } = useQuery(`foodSearch${query}`, () =>
-    //   foodSearch(query),
-    // );
-    const data = await foodSearch(query);
-    setResults(data);
+    try {
+      const data = await foodSearch(query);
+      setResults(data);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage("Failed to fetch results.");
+    }
   };
 
   const handleSearch = () => {
-    fetchSearchResults(currentQuery);
+    if (!currentQuery.trim()) {
+      setErrorMessage("Please enter a valid search term.");
+      return;
+    }
+    setErrorMessage("");
+    navigate(`/foods?query=${encodeURIComponent(currentQuery)}`);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get("query") || "";
+    setCurrentQuery(query);
+
+    if (query) {
+      fetchSearchResults(query);
+    } else {
+      setResults([]);
+    }
+  }, [location.search]);
 
   return (
     <div className="relative flex h-screen w-full flex-col bg-food-search bg-cover bg-center bg-no-repeat">
@@ -74,11 +78,12 @@ const FoodSearchPage = () => {
                 }
               }}
             />
+            {errorMessage && (
+              <div className="mt-2 text-lg text-red-500">{errorMessage}</div>
+            )}
           </div>
         </div>
-        {results?.length > 0 && currentQuery && (
-          <h3 className="mx-4 mt-2 text-lg">Searching for "{currentQuery}"</h3>
-        )}
+
         <div className="food-list grid w-full grid-cols-1 gap-0 pb-16 md:grid-cols-2">
           {results?.map((food) => (
             <FoodCard key={food.id} food={food} />

@@ -1,21 +1,5 @@
 import instance from "./api";
 
-// export const wish = async (filter, id, isWished) => {
-//   return await instance
-//     .patch(`/userinfo/wishlist`, {
-//       filter,
-//       id,
-//       isWished,
-//     })
-//     .then((response) => {
-//       return {
-//         isSuccess: true,
-//         result: response.data.response,
-//       };
-//     })
-//     .catch((error) => Promise.reject(error));
-// };
-
 export const addWish = async (id) => {
   return await instance
     .post(`/wishlist/${id}`)
@@ -50,7 +34,7 @@ export const getAllWishlist = async () => {
 
 export const getRestaurantWishlist = async () => {
   return await instance
-    .get(`/userinfo/wishlist/restaurant`)
+    .get(`/userinfo/wishlist/restaurants`)
     .then((response) => ({
       isSuccess: true,
       result: response.data.response,
@@ -60,7 +44,7 @@ export const getRestaurantWishlist = async () => {
 
 export const getFestivalWishlist = async () => {
   return await instance
-    .get(`/userinfo/wishlist/festival`)
+    .get(`/userinfo/wishlist/festivals`)
     .then((response) => ({
       isSuccess: true,
       result: response.data.response,
@@ -70,7 +54,7 @@ export const getFestivalWishlist = async () => {
 
 export const getTouristSpotWishlist = async () => {
   return await instance
-    .get(`/userinfo/wishlist/touristSpot`)
+    .get(`/userinfo/wishlist/touristSpots`)
     .then((response) => ({
       isSuccess: true,
       result: response.data.response,
