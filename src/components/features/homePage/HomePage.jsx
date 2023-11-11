@@ -21,13 +21,22 @@ const dummySlides = [
   {
     image: "https://picsum.photos/200/302",
   },
+  {
+    image: "/images/carousel/carousel1.jpg"
+  },
+  {
+    image: "/images/carousel/carousel2.jpg"
+  },
+  {
+    image: "/images/carousel/carousel3.webp"
+  }
 ];
 
 const HomePage = () => {
   const navigate = useNavigate();
   const { data } = useQuery("products", () => getHome());
   const [query, setQuery] = useState("");
-
+  console.log(data)
   const handleSearch = async (searchQuery) => {
     navigate(`/search?location=${encodeURIComponent(searchQuery)}`);
   };
