@@ -26,7 +26,8 @@ import {
   getTouristSpotWishlistHandler,
 } from "./get/wishlist";
 import { loginHandler, registerHandler } from "./account/account";
-import { editUserHandler, getUserinfoHandler } from "./get/userinfo";
+import { getUserinfoHandler } from "./get/userinfo";
+import { editUserHandler } from "./patch/userinfo";
 import {
   getFestivalReservationHandler,
   getRestaurantReservationHandler,

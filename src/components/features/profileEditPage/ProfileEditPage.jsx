@@ -72,6 +72,7 @@ const ProfileEditPage = () => {
       setSuccessMessage("Profile updated successfully!");
     },
     onError: (error) => {
+      console.log(error);
       setErrorMessage(
         error.message || "An error occurred while updating the profile.",
       );
@@ -135,7 +136,9 @@ const ProfileEditPage = () => {
           <div className="alert alert-success">{successMessage}</div>
         )}
         {errorMessage && (
-          <div className="alert alert-danger">{errorMessage}</div>
+          <div className="alert alert-danger font-semibold text-red-500">
+            {errorMessage}
+          </div>
         )}
       </div>
     </div>

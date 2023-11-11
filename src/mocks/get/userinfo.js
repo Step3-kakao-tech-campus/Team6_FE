@@ -18,13 +18,3 @@ export const getUserinfoHandler = rest.get("/userinfo", (req, res, ctx) => {
     }),
   );
 });
-
-export const editUserHandler = rest.patch("/userinfo/edit", (req, res, ctx) => {
-  return res(
-    ctx.status(200),
-    ctx.json({
-      success: true,
-      response: getUserinfo(),
-    }),
-  );
-});
