@@ -1,7 +1,19 @@
+import PageTitleBar from "../../molecules/PageTitleBar";
+import { useQuery } from "react-query";
+import { getReservation } from "../../../apis/reservation";
+import ReservationListTemplate from "./ReservationListTemplate";
+
 const ReservationListPage = () => {
+  const { data, error, isLoading } = useQuery("reservationList", () =>
+    getReservation(),
+  );
+
   return (
-    <div>
-      <h1>ReservationListPage</h1>
+    <div className={"main-layout-page"}>
+      <PageTitleBar name={"My Booking List"} />
+      {data && <ReservationListTemplate reservations={data} />}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Input from "../../atoms/Input";
 import { foodSearch } from "../../../apis/search";
 import { FiSearch } from "react-icons/fi";
-import FoodCard from "../../molecules/FoodCard";
+import FoodCard from "../../molecules/cards/FoodCard";
 
 const FoodSearchPage = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const FoodSearchPage = () => {
       setResults([]);
       setCurrentQuery("");
     }
-  }, [location.search]);
+  }, [location.search, navigate]);
 
   const fetchSearchResults = async (query) => {
     const data = await foodSearch(query);
